@@ -1,0 +1,188 @@
+<?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Pwex</title>
+        <!-- Tell the browser to be responsive to screen width -->
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+        <!-- Bootstrap 3.3.7 -->
+        <link rel="stylesheet" href="<?php echo base_url('assets/bower_components/bootstrap/dist/css/bootstrap.min.css') ?>">
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="<?php echo base_url('assets/bower_components/font-awesome/css/font-awesome.min.css') ?>">
+        <!-- Ionicons -->
+        <link rel="stylesheet" href="<?php echo base_url('assets/bower_components/Ionicons/css/ionicons.min.css') ?>">
+        <!-- Theme style -->
+        <link rel="stylesheet" href="<?php echo base_url('assets/dist/css/AdminLTE.min.css') ?>">
+        <!-- AdminLTE Skins. Choose a skin from the css/skins
+            folder instead of downloading all of them to reduce the load. -->
+        <link rel="stylesheet" href="<?php echo base_url('assets/dist/css/skins/_all-skins.min.css') ?>">
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+        <!-- Google Font -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    </head>
+    <body class="hold-transition skin-blue sidebar-mini">
+        <!-- Site wrapper -->
+        <div class="wrapper">
+            <header class="main-header">
+                <!-- Logo -->
+                <a href="<?php echo base_url('escritorio') ?>" class="logo">
+                    <!-- mini logo for sidebar mini 50x50 pixels -->
+                    <span class="logo-mini"><b>PWX</b></span>
+                    <!-- logo for regular state and mobile devices -->
+                    <span class="logo-lg"><img src="<?php echo base_url('assets/dist/img/pwex.png') ?>" width="80"></span>
+                </a>
+                <!-- Header Navbar: style can be found in header.less -->
+                <nav class="navbar navbar-static-top">
+                    <!-- Sidebar toggle button-->
+                    <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    </a>
+                    <div class="navbar-custom-menu">
+                        <ul class="nav navbar-nav">
+                            <!-- Messages: style can be found in dropdown.less-->
+                            
+                            <!-- Notifications: style can be found in dropdown.less -->
+                            <li class="dropdown notifications-menu">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-bell-o"></i>
+                                    <?php if (!empty($number_of_pending_notifications) and count($number_of_pending_notifications) > 0): ?>
+                                        <span class="label label-danger"><?php echo $number_of_pending_notifications ?></span>    
+                                    <?php endif ?>
+                                </a>
+                                    <ul class="dropdown-menu">
+                                        <li class="header">
+                                            <?php if (empty($number_of_pending_notifications)): ?>
+                                                No Tienes notificaciones disponibles
+                                            <?php endif ?>
+                                            <?php if (!empty($number_of_pending_notifications)): ?>
+                                                Tienes <?php echo $number_of_pending_notifications ?> notificaciones disponibles
+                                            <?php endif ?>
+                                        </li>
+                                        <?php foreach ($notification_details as $key => $value): ?>
+                                            <li>
+                                                <!-- inner menu: contains the actual data -->
+                                                <ul class="menu">
+                                                    <li>
+                                                        <a href="<?php echo base_url('notification_details').'/'.$value['notifications'] ?>">
+                                                            <?php if ($value['type_of_notification'] == 'error_access_other_user'): ?>
+                                                                <i class="fa fa-warning text-danger"></i> 
+                                                                 Intento de acceso <?php echo $value['ip_error_access'] ?>
+                                                            <?php endif ?>
+                                                            <?php if ($value['type_of_notification'] == 'change_password'): ?>
+                                                                <i class="fa fa-check-circle text-success"></i> 
+                                                                 Cambio de clave de seguridad
+                                                            <?php endif ?> 
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        <?php endforeach ?>
+                                        <li class="footer"><a href="<?php echo base_url('all_notification_details') ?>">Ver todo</a></li>
+                                    </ul>
+                            </li>
+                           
+                            <!-- User Account: style can be found in dropdown.less -->
+                            <li class="dropdown user user-menu">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <img src="<?php echo base_url('assets/dist/img/user2-160x160.jpg') ?>" class="user-image" alt="User Image">
+                                <span class="hidden-xs"><?php echo $this->session->userdata['user']['name']; ?></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <!-- User image -->
+                                    <li class="user-header">
+                                        <img src="<?php echo base_url('assets/dist/img/user2-160x160.jpg') ?>" class="img-circle" alt="User Image">
+                                        <p>
+                                            <?php echo $this->session->userdata['user']['name'].' '.$this->session->userdata['user']['last_name']; ?>
+                                            <small><?php echo ucfirst($this->session->userdata['user']['type_of_access']) ?> | <?php echo date('d-m-Y') ?></small>
+                                        </p>
+                                    </li>
+                                    <!-- Menu Body -->
+                                    <li class="user-body">
+                                        <div class="row">
+                                            <div class="col-xs-12 text-center">
+                                                <a href="<?php echo base_url('exit') ?>"><i class="fa fa-power-off"></i> Cerrar sesión</a>
+                                            </div>
+                                        </div>
+                                        <!-- /.row -->
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </header>
+            <!-- =============================================== -->
+            <!-- Left side column. contains the sidebar -->
+            <aside class="main-sidebar">
+                <!-- sidebar: style can be found in sidebar.less -->
+                <section class="sidebar">
+                    <!-- Sidebar user panel -->
+                    <div class="user-panel">
+                        <div class="pull-left image">
+                            <img src="<?php echo base_url('assets/dist/img/user2-160x160.jpg') ?>" class="img-circle" alt="User Image">
+                        </div>
+                        <div class="pull-left info">
+                            <p><?php echo $this->session->userdata['user']['name'] ?></p>
+                            <a href=""><i class="fa fa-circle text-success"></i> Online</a>
+                        </div>
+                    </div>
+                    <!-- search form -->
+                    <form action="#" method="get" class="sidebar-form">
+                        <div class="input-group">
+                            <input type="text" name="q" class="form-control" placeholder="Buscador...">
+                            <span class="input-group-btn">
+                            <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+                            </button>
+                            </span>
+                        </div>
+                    </form>
+                    <!-- /.search form -->
+                    <!-- sidebar menu: : style can be found in sidebar.less -->
+                    <ul class="sidebar-menu" data-widget="tree">
+                        <li class="header">MENU PRINCIPAL</li>
+                        <li>
+                            <a href="<?php echo base_url('escritorio') ?>">
+                                <i class="fa fa-dashboard"></i> <span>Escritorio</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-power-off"></i> <span>Cerrar sesión</span>
+                            </a>
+                        </li>
+                    </ul>
+                </section>
+                <!-- /.sidebar -->
+            </aside>
+            <!-- =============================================== -->
+            <!-- Content Wrapper. Contains page content -->
+            <div class="content-wrapper">
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <h1>
+                        <?php echo $option_nav['box_title'] ?>
+                        <small><?php echo $option_nav['box_span'] ?></small>
+                    </h1>
+                    <ol class="breadcrumb">
+                        <?php foreach ($option_nav_item as $key => $value): ?>
+                            <li <?php if(!empty($value['class']) and $value['class'] == 'active'){ echo 'class="'.$value['class'].'"'; } ?> >
+                                <a <?php if(!empty($value['url'])){ echo 'href="'.$value['url'].'"'; } ?> > 
+                                    <?php if (!empty($value['icon'])): ?>
+                                        <i class="<?php echo $value['icon'] ?>"></i>
+                                    <?php endif ?>
+                                    <?php echo ucfirst($key) ?>
+                                </a>
+                            </li>
+                        <?php endforeach ?>
+                    </ol>
+                </section>
