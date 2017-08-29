@@ -22,7 +22,7 @@ class Dashboard extends CI_Controller {
 		# Opciones items del menu principal del contenido
 		$data['option_nav'] = array(
 			'box_title' => 'Escritorio',
-			'box_span' 	=> 'Pwex'
+			'box_span' 	=> 'Pwex Administrador'
 		);
 		$data['option_nav_item'] = array(
 			'escritorio'	=> array(
