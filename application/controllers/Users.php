@@ -8,7 +8,6 @@ class Users extends CI_Controller {
         parent::__construct();
         $this->load->library(array('managerauth'));
         $this->managerauth->validate_session();
-        /* comentario */
     }
 
     # Listado completo de usuarios
