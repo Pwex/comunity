@@ -76,7 +76,7 @@ class Managerauth {
 							'name'			=> $data_user[0]['name'],
 							'last_name'		=> $data_user[0]['last_name'],
 							'email'			=> $data_user[0]['email'],
-							'username'		=> $data_user[0]['username'],
+							'country'		=> $data_user[0]['country'],
 							'type_of_access'=> $data_user[0]['type_of_access']
 						);
 						# Geolocalización del usuario

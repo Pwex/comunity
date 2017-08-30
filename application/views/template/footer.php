@@ -29,5 +29,73 @@
               $('.sidebar-menu').tree()
             });
         </script>
+        <!-- DataTables -->
+        <?php if ($this->uri->segment(1) == 'users'): ?>
+            <script src="<?php echo base_url('assets/bower_components/datatables.net/js/jquery.dataTables.min.js') ?>"></script>
+            <script src="<?php echo base_url('assets/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') ?>"></script>       
+            <script type="text/javascript">
+                $(document).ready(function(){
+                    $('#table-default').DataTable({
+                        'language' : {
+                            "sProcessing":     "Procesando...",
+                            "sLengthMenu":     "Mostrar _MENU_ registros",
+                            "sZeroRecords":    "No se encontraron resultados",
+                            "sEmptyTable":     "Ningún dato disponible en esta tabla",
+                            "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                            "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+                            "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+                            "sInfoPostFix":    "",
+                            "sSearch":         "Buscar:",
+                            "sUrl":            "",
+                            "sInfoThousands":  ",",
+                            "sLoadingRecords": "Cargando...",
+                            "oPaginate": {
+                                "sFirst":    "Primero",
+                                "sLast":     "Último",
+                                "sNext":     "Siguiente",
+                                "sPrevious": "Anterior"
+                            },
+                            "oAria": {
+                                "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+                                "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                            }
+                        }
+                    });
+                });
+            </script>
+            <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+            <script>
+                $(document).ready(function(){
+                    $('button.btn.btn-danger.btn-delete').on('click', function(){
+                        var id = $(this).attr('id');
+                        $( "#dialog-confirm" ).dialog({
+                            resizable: false,
+                            height: "auto",
+                            width: 400,
+                            modal: true,
+                            buttons: {
+                                "Eliminar": function() {
+                                    $( this ).dialog( "close" );
+                                    $.ajax({
+                                        url : '<?php echo base_url("users/delete") ?>',
+                                        data: { id : id },
+                                        type: 'POST',
+                                        success : function(response){
+                                            window.location = 'users/success-delete';
+                                        },
+                                        error : function(){
+                                            alert('Ha ocurrido un error...');
+                                        }
+                                    });
+                                },
+                                "Cancelar": function() {
+                                    $( this ).dialog( "close" );
+                                }
+                            }
+                        });
+                    });
+                });
+              </script>
+        <?php endif ?>
     </body>
 </html>

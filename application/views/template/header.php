@@ -26,6 +26,11 @@
         <![endif]-->
         <!-- Google Font -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+        <?php if ($this->uri->segment(1) == 'users'): ?>
+            <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+            <!-- DataTables -->
+            <link rel="stylesheet" href="<?php echo base_url('assets/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css') ?>">
+        <?php endif ?>
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
         <!-- Site wrapper -->
@@ -153,6 +158,11 @@
                         <li>
                             <a href="<?php echo base_url('escritorio') ?>">
                                 <i class="fa fa-dashboard"></i> <span>Escritorio</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="<?php echo base_url('users') ?>">
+                                <i class="fa fa-users"></i> <span>Usuarios</span>
                             </a>
                         </li>
                         <li>

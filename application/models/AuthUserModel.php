@@ -26,7 +26,7 @@ class AuthUserModel extends CI_Model {
     # Buscar el id de usuario que inicia sesion
     public function search_id_user($email)
     {
-    	return $this->db->select('id_user, name, last_name, email, username, type_of_access')->where('email', $email)->get('users')->result_array();
+    	return $this->db->select('id_user, name, last_name, email, country, type_of_access')->where('email', $email)->get('users')->result_array();
     }
 
     # Cambiar el estatus de sesion del usuario
