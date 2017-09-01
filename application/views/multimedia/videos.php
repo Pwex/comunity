@@ -5,11 +5,11 @@
     .img-responsive {
         height: 15.35em;
     }
-    .btn-action-img {
+    .btn-action {
         position: absolute;
         display: none;
     }
-        .img-main {
+        .container-video{
             border: 3px solid #f1f1f1;
             border-radius: 3px;
             height: 15.8em;
@@ -23,12 +23,12 @@
             .container-details:hover{
                 background-color: #f9f9f9;
             }
-    .btn-action-img button {
+    .btn-action button {
         border-radius: 0;
         border: 0;
     }
     @media (max-width: 991px) {
-        .img-main {
+        .icontainer-video {
             height: 15.8em;
         }
         .img-responsive {
@@ -38,7 +38,7 @@
 </style>
 <!-- Main content -->
 <section class="content">
-    <?php if ($this->uri->segment(2) == 'success-images'): ?>
+    <?php if ($this->uri->segment(2) == 'videos' and $this->uri->segment(3) == 'success'): ?>
         <div class="row">
             <div class="col-sm-12">
                 <div class="alert alert-success alert-dismissible">
@@ -51,7 +51,7 @@
             </div>
         </div>
     <?php endif ?>
-    <?php if ($this->uri->segment(2) == 'success-delete-images'): ?>
+    <?php if ($this->uri->segment(2) == 'videos' and $this->uri->segment(3) == 'success-delete'): ?>
         <div class="row">
             <div class="col-sm-12">
                 <div class="alert alert-danger alert-dismissible">
@@ -64,7 +64,7 @@
             </div>
         </div>
     <?php endif ?>
-    <?php if ($this->uri->segment(2) == 'error-select-images'): ?>
+    <?php if ($this->uri->segment(2) == 'videos' and $this->uri->segment(3) == 'error-select'): ?>
         <div class="row">
             <div class="col-sm-12">
                 <div class="alert alert-info alert-dismissible">
@@ -79,13 +79,15 @@
     <?php endif ?>
     <div class="box box-warning">
         <div class="box-header">
-            <h3 class="box-title"><button title="Agregar Archivos" class="btn btn-primary btn-md" id="btn-file-manager"><i class="fa fa-plus-circle" id="btn-icon"></i></button> | Vista previa de archivos</h3>
+            <blockquote>
+                Vista previa de archivos <span style="float: right;"><button title="Agregar Archivos" class="btn btn-primary btn-md" id="btn-file-manager"><i class="fa fa-plus-circle" id="btn-icon"></i></button></span>
+            </blockquote>
         </div>
         <!-- /.box-header -->
         <div class="box-body">
-            <div class="row" style="display: none;" id="file-manager">
+            <div class="row" style="display: none; margin-top: -1em;" id="container-form">
                 <div class="col-xs-12">
-                    <?php echo form_open_multipart('multimedia/add-file-manager-images') ?>
+                    <?php echo form_open_multipart('multimedia/videos/add-file-manager') ?>
                         <div class="form-group">
                             <label>Seleccione los recursos</label>
                             <input type="file" name="files">
@@ -96,11 +98,11 @@
                     </form>
                 </div>
             </div>
-            <div id="main-manager">
+            <div id="container-main-manager">
                 <?php foreach ($list_videos as $key => $value): ?>
                     <div class="col-md-4 col-sm-6 col-xs-12">
-                        <div class="img-main text-center" id="<?php echo $value['file'] ?>">
-                            <div class="btn-action-img" id="<?php echo $value['file'] ?>" value="<?php echo $value['file_name'] ?>">
+                        <div class="container-video text-center" id="<?php echo $value['file'] ?>">
+                            <div class="btn-action" id="<?php echo $value['file'] ?>" value="<?php echo $value['file_name'] ?>">
                                 <button type="button" class="btn btn-danger btn-delete-medios"><i class="fa fa-trash"></i></button>
                             </div>
                             <video width="320" height="240" controls class="img img-responsive center-block">
