@@ -82,3 +82,18 @@ $route['users/success-delete'] 	= 'Users/full_listing';
 
 $route['404_override'] 			= '';
 $route['translate_uri_dashes'] 	= FALSE;
+
+# Administrador de medios
+$route['multimedia'] 				  		 = 'Multimedia/files_images';
+$route['multimedia/success-images']   		 = 'Multimedia/files_images';
+$route['multimedia/success-delete-images']	 = 'Multimedia/files_images';
+$route['multimedia/error-select-images'] 	 = 'Multimedia/files_images';
+$route['multimedia/delete-images']	 		 = 'Multimedia/delete_images';
+$route['multimedia/add-file-manager-images'] = 'Multimedia/add_file_manager_images';
+
+$route['multimedia/videos'] 				 		= 'Multimedia/files_videos';
+$route['multimedia/videos/success-images']   		= 'Multimedia/files_videos';
+$route['multimedia/videos/success-delete-images']	= 'Multimedia/files_videos';
+$route['multimedia/videos/error-select-images'] 	= 'Multimedia/files_videos';
+$route['multimedia/videos/delete-images']	 		= 'Multimedia/delete_videos';
+$route['multimedia/videos/add-file-manager-images'] = 'Multimedia/add_file_manager_videos';

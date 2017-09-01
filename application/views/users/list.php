@@ -39,7 +39,7 @@
             </div>
         </div>
     <?php endif ?>
-    <div class="box">
+    <div class="box box-warning">
         <div class="box-header">
             <h3 class="box-title"><a href="<?php echo base_url('users/add') ?>" class="btn btn-primary btn-sm" title="Agregar Usuarios"><i class="fa fa-plus-circle"></i></a> | Listado completo de usuarios</h3>
         </div>

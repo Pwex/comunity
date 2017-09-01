@@ -97,5 +97,154 @@
                 });
               </script>
         <?php endif ?>
+        <!-- DataTables End -->
+        <!-- Manager Files Images -->
+        <?php if ($this->uri->segment(1) == 'multimedia'): ?>
+            <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+            <!-- Manager File -->
+            <script src="<?php echo base_url('assets/bower_components/fileuploader/src/jquery.fileuploader.min.js') ?>" type="text/javascript"></script>
+            <script src="<?php echo base_url('assets/bower_components/fileuploader/examples/thumbnails/js/custom.js') ?>" type="text/javascript"></script>
+            <script type="text/javascript">
+            </script>
+            <script type="text/javascript">
+                $(document).ready(function(){
+                    // Accion para seleccionar imagene
+                    $('.img-main').on('click', function(){
+                        var id = $(this).attr('id');
+                        var main = $(this);
+                        if ($('.btn-action-img[id="' + id + '"]').css('display') == 'none') { 
+                            // main.css('border', '3px solid #e9e9f9', 'border-radius', '5px');
+                            $('.btn-action-img[id="' + id + '"]').show();
+                        } else{
+                            // main.css('border', 'none', 'border-radius', '0');
+                            $('.btn-action-img[id="' + id + '"]').hide();
+                        }
+                    });
+                    // Eliminar imagen seleccionada
+                    $('.btn-delete-medios').on('click', function(){
+                        var id   = $(this).parent().attr('id');
+                        var name = $(this).parent().attr('value');
+                        $( "#dialog-confirm" ).dialog({
+                                resizable: false,
+                                height: "auto",
+                                width: 400,
+                                modal: true,
+                                buttons: {
+                                    "Eliminar": function() {
+                                        $( this ).dialog( "close" );
+                                        $.ajax({
+                                            url : '<?php echo base_url("multimedia/delete-images") ?>',
+                                            data: { id : id, name : name },
+                                            type: 'POST',
+                                            success : function(response){
+                                                window.location = 'multimedia/success-delete-images';
+                                            },
+                                            error : function(){
+                                                alert('Ha ocurrido un error...');
+                                            }
+                                        });
+                                    },
+                                    "Cancelar": function() {
+                                        $( this ).dialog( "close" );
+                                    }
+                                }
+                        });
+                    });
+                    // Administrador de archivos
+                    $('#btn-file-manager').on('click', function(){
+                        var manager = $('#file-manager');
+                        var button  = $('#btn-file-manager');
+                        manager.toggle(); 
+                        $('#main-manager').toggle();
+                        if (manager.css('display') == 'block') {
+                            button.removeClass('btn-primary');
+                            button.addClass('btn-danger');
+                            $('#btn-icon').removeClass('fa-plus-circle');
+                            $('#btn-icon').addClass('fa-minus');
+                        } else {
+                            button.removeClass('btn-danger');
+                            button.addClass('btn-primary');
+                            $('#btn-icon').removeClass('fa-minus');
+                            $('#btn-icon').addClass('fa-plus-circle');
+                        }
+                    });
+                });
+            </script>
+        <?php endif ?>
+        <!-- Manager Files Imagenes End -->
+        <!-- Manager Files Videos -->
+        <?php if ($this->uri->segment(1) == 'multimedia' and $this->uri->segment(2) == 'videos'): ?>
+            <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+            <!-- Manager File -->
+            <script src="<?php echo base_url('assets/bower_components/fileuploader/src/jquery.fileuploader.min.js') ?>" type="text/javascript"></script>
+            <script src="<?php echo base_url('assets/bower_components/fileuploader/examples/thumbnails/js/custom.js') ?>" type="text/javascript"></script>
+            <script type="text/javascript">
+            </script>
+            <script type="text/javascript">
+                $(document).ready(function(){
+                    // Accion para seleccionar imagene
+                    $('.img-main').on('click', function(){
+                        var id = $(this).attr('id');
+                        var main = $(this);
+                        if ($('.btn-action-img[id="' + id + '"]').css('display') == 'none') { 
+                            // main.css('border', '3px solid #e9e9f9', 'border-radius', '5px');
+                            $('.btn-action-img[id="' + id + '"]').show();
+                        } else{
+                            // main.css('border', 'none', 'border-radius', '0');
+                            $('.btn-action-img[id="' + id + '"]').hide();
+                        }
+                    });
+                    // Eliminar imagen seleccionada
+                    $('.btn-delete-medios').on('click', function(){
+                        var id   = $(this).parent().attr('id');
+                        var name = $(this).parent().attr('value');
+                        $( "#dialog-confirm" ).dialog({
+                                resizable: false,
+                                height: "auto",
+                                width: 400,
+                                modal: true,
+                                buttons: {
+                                    "Eliminar": function() {
+                                        $( this ).dialog( "close" );
+                                        $.ajax({
+                                            url : '<?php echo base_url("multimedia/delete-images") ?>',
+                                            data: { id : id, name : name },
+                                            type: 'POST',
+                                            success : function(response){
+                                                window.location = 'multimedia/success-delete-images';
+                                            },
+                                            error : function(){
+                                                alert('Ha ocurrido un error...');
+                                            }
+                                        });
+                                    },
+                                    "Cancelar": function() {
+                                        $( this ).dialog( "close" );
+                                    }
+                                }
+                        });
+                    });
+                    // Administrador de archivos
+                    $('#btn-file-manager').on('click', function(){
+                        var manager = $('#file-manager');
+                        var button  = $('#btn-file-manager');
+                        manager.toggle(); 
+                        $('#main-manager').toggle();
+                        if (manager.css('display') == 'block') {
+                            button.removeClass('btn-primary');
+                            button.addClass('btn-danger');
+                            $('#btn-icon').removeClass('fa-plus-circle');
+                            $('#btn-icon').addClass('fa-minus');
+                        } else {
+                            button.removeClass('btn-danger');
+                            button.addClass('btn-primary');
+                            $('#btn-icon').removeClass('fa-minus');
+                            $('#btn-icon').addClass('fa-plus-circle');
+                        }
+                    });
+                });
+            </script>
+        <?php endif ?>
+        <!-- Manager Files Videos End -->
     </body>
 </html>

@@ -31,6 +31,12 @@
             <!-- DataTables -->
             <link rel="stylesheet" href="<?php echo base_url('assets/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css') ?>">
         <?php endif ?>
+        <?php if ($this->uri->segment(1) == 'multimedia'): ?>
+            <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+            <!-- Manager file -->
+            <link href="<?php echo base_url('assets/bower_components/fileuploader/src/jquery.fileuploader.css') ?>" media="all" rel="stylesheet">
+            <link href="<?php echo base_url('assets/bower_components/fileuploader/examples/thumbnails/css/jquery.fileuploader-theme-thumbnails.css') ?>" media="all" rel="stylesheet">
+        <?php endif ?>
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
         <!-- Site wrapper -->
@@ -159,6 +165,23 @@
                             <a href="<?php echo base_url('escritorio') ?>">
                                 <i class="fa fa-dashboard"></i> <span>Escritorio</span>
                             </a>
+                        </li>
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-film"></i>
+                                <span>Multimedia</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu" style="display: none;">
+                                <li>
+                                    <a href="<?php echo base_url('multimedia') ?>"><i class="fa fa-image"></i> Imágenes</a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo base_url('multimedia/videos') ?>"><i class="fa fa-video-camera"></i> Vídeos</a>
+                                </li>
+                            </ul>
                         </li>
                         <li>
                             <a href="<?php echo base_url('users') ?>">
