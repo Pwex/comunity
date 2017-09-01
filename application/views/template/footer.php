@@ -30,7 +30,8 @@
             });
         </script>
         <!-- DataTables -->
-        <?php if ($this->uri->segment(1) == 'users'): ?>
+        <!-- <?php //if ($this->uri->segment(1) == 'users'): ?> -->
+        <?php if (($this->uri->segment(1) == 'users') || ($this->uri->segment(1) == 'categories')): ?>
             <script src="<?php echo base_url('assets/bower_components/datatables.net/js/jquery.dataTables.min.js') ?>"></script>
             <script src="<?php echo base_url('assets/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') ?>"></script>       
             <script type="text/javascript">
@@ -65,7 +66,18 @@
             </script>
             <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
             <script>
-                $(document).ready(function(){
+            <?php 
+                if ($this->uri->segment(1) == 'users')
+                {
+                    $url = "users";
+                }
+                elseif ($this->uri->segment(1) == 'categories')
+                {
+                    $url = "categories";
+                }
+            ?>
+                $(document).ready(function()
+                {
                     $('button.btn.btn-danger.btn-delete').on('click', function(){
                         var id = $(this).attr('id');
                         $( "#dialog-confirm" ).dialog({
@@ -74,21 +86,23 @@
                             width: 400,
                             modal: true,
                             buttons: {
-                                "Eliminar": function() {
+                                "Eliminar": function() 
+                                {
                                     $( this ).dialog( "close" );
                                     $.ajax({
-                                        url : '<?php echo base_url("users/delete") ?>',
+                                        url : '<?php echo base_url("$url/delete") ?>',
                                         data: { id : id },
                                         type: 'POST',
                                         success : function(response){
-                                            window.location = 'users/success-delete';
+                                            window.location = '<?php echo $url;?>/success-delete';
                                         },
                                         error : function(){
                                             alert('Ha ocurrido un error...');
                                         }
                                     });
                                 },
-                                "Cancelar": function() {
+                                "Cancelar": function() 
+                                {
                                     $( this ).dialog( "close" );
                                 }
                             }

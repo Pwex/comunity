@@ -26,7 +26,8 @@
         <![endif]-->
         <!-- Google Font -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-        <?php if ($this->uri->segment(1) == 'users'): ?>
+        <!-- estilo para el data tables encabezado y para el jquery ui para el borrado -->
+        <?php if ($this->uri->segment(1) == 'users' or $this->uri->segment(1) == 'categories'): ?>
             <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
             <!-- DataTables -->
             <link rel="stylesheet" href="<?php echo base_url('assets/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css') ?>">
@@ -165,6 +166,28 @@
                                 <i class="fa fa-users"></i> <span>Usuarios</span>
                             </a>
                         </li>
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-table"></i> <span>Tables</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li>
+                                    <a href="<?php echo base_url('categories') ?>">
+                                        <i class="fa fa-circle-o"></i> Categorias
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo base_url('products') ?>">
+                                        <i class="fa fa-circle-o"></i> Productos
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+
                         <li>
                             <a href="#">
                                 <i class="fa fa-power-off"></i> <span>Cerrar sesión</span>
