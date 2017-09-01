@@ -77,6 +77,14 @@ $route['users/success-edit'] 	= 'Users/full_listing';
 
 $route['users/delete'] 			= 'Users/delete';
 $route['users/success-delete'] 	= 'Users/full_listing';
+# Categorias
+$route['categories'] 				= 'Categories/full_listing';
+$route['categories/success'] 		= 'Categories/full_listing';
+$route['categories/add'] 			= 'Categories/add_validate';
+$route['categories/edit/(:num)'] 	= 'Categories/edit_validate/$1';
+$route['categories/success-edit'] 	= 'Categories/full_listing';
+$route['categories/delete'] 		= 'Categories/delete';
+$route['categories/success-delete'] = 'Categories/full_listing';
 
 # Auth Users
 
