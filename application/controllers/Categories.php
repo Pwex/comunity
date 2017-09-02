@@ -136,7 +136,6 @@ class Categories extends CI_Controller {
 		$data['information_category'] = $this->categories->information_category($id);
 		# Listado de categorias
 		$data['category'] = $this->categories->categories_listing();
-
 		# Renderizando la vista | plantilla
 		$this->load->view('template/header', $data);
 		$this->load->view('categories/edit');

@@ -31,7 +31,9 @@
         </script>
         <!-- DataTables -->
         <!-- <?php //if ($this->uri->segment(1) == 'users'): ?> -->
-        <?php if (($this->uri->segment(1) == 'users') || ($this->uri->segment(1) == 'categories')): ?>
+        <?php 
+            if (($this->uri->segment(1) == 'users') || ($this->uri->segment(1) == 'categories') || ($this->uri->segment(1) == 'warehouses') || ($this->uri->segment(1) == 'countrys')): 
+        ?>
             <script src="<?php echo base_url('assets/bower_components/datatables.net/js/jquery.dataTables.min.js') ?>"></script>
             <script src="<?php echo base_url('assets/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') ?>"></script>       
             <script type="text/javascript">
@@ -75,10 +77,19 @@
                 {
                     $url = "categories";
                 }
+                elseif ($this->uri->segment(1) == 'warehouses')
+                {
+                    $url = "warehouses";
+                }
+                elseif ($this->uri->segment(1) == 'countrys')
+                {
+                    $url = "countrys";
+                }
             ?>
                 $(document).ready(function()
                 {
-                    $('button.btn.btn-danger.btn-delete').on('click', function(){
+                    $('button.btn.btn-danger.btn-delete').on('click', function()
+                    {
                         var id = $(this).attr('id');
                         $( "#dialog-confirm" ).dialog({
                             resizable: false,

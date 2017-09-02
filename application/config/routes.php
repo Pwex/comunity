@@ -85,7 +85,22 @@ $route['categories/edit/(:num)'] 	= 'Categories/edit_validate/$1';
 $route['categories/success-edit'] 	= 'Categories/full_listing';
 $route['categories/delete'] 		= 'Categories/delete';
 $route['categories/success-delete'] = 'Categories/full_listing';
-
+# Bodegas
+$route['warehouses'] 				= 'Warehouses/full_listing';
+$route['warehouses/success'] 		= 'Warehouses/full_listing';
+$route['warehouses/add'] 			= 'Warehouses/add_validate';
+$route['warehouses/edit/(:num)'] 	= 'Warehouses/edit_validate/$1';
+$route['warehouses/success-edit'] 	= 'Warehouses/full_listing';
+$route['warehouses/delete'] 		= 'Warehouses/delete';
+$route['warehouses/success-delete'] = 'Warehouses/full_listing';
+# paises
+$route['countrys'] 					= 'Countrys/full_listing';
+$route['countrys/success'] 			= 'Countrys/full_listing';
+$route['countrys/add'] 				= 'Countrys/add_validate';
+$route['countrys/edit/(:num)'] 		= 'Countrys/edit_validate/$1';
+$route['countrys/success-edit'] 	= 'Countrys/full_listing';
+$route['countrys/delete'] 			= 'Countrys/delete';
+$route['countrys/success-delete'] 	= 'Countrys/full_listing';
 # Auth Users
 
 $route['404_override'] 			= '';

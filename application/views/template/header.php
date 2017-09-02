@@ -27,7 +27,9 @@
         <!-- Google Font -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
         <!-- estilo para el data tables encabezado y para el jquery ui para el borrado -->
-        <?php if ($this->uri->segment(1) == 'users' or $this->uri->segment(1) == 'categories'): ?>
+        <?php 
+            if ($this->uri->segment(1) == 'users' or $this->uri->segment(1) == 'categories' or $this->uri->segment(1) == 'warehouses' or $this->uri->segment(1) == 'countrys'): 
+        ?>
             <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
             <!-- DataTables -->
             <link rel="stylesheet" href="<?php echo base_url('assets/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css') ?>">
@@ -202,6 +204,17 @@
                                         <i class="fa fa-circle-o"></i> Categorias
                                     </a>
                                 </li>
+                                <li>
+                                    <a href="<?php echo base_url('warehouses') ?>">
+                                        <i class="fa fa-circle-o"></i> Bodegas
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo base_url('countrys') ?>">
+                                        <i class="fa fa-circle-o"></i> Paises
+                                    </a>
+                                </li>
+
                                 <li>
                                     <a href="<?php echo base_url('products') ?>">
                                         <i class="fa fa-circle-o"></i> Productos
