@@ -2,7 +2,9 @@
 <section class="content">
     <div class="box box-warning">
         <div class="box-header">
-            <h3 class="box-title">Editar categorias</h3>
+            <blockquote style="margin-bottom: 0">
+                Editar Categoría
+            </blockquote>
         </div>
         <!-- /.box-header -->
         <div class="box-body">

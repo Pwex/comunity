@@ -193,7 +193,7 @@
                         </li>
                         <li class="treeview">
                             <a href="#">
-                                <i class="fa fa-table"></i> <span>Tables</span>
+                                <i class="fa fa-th-large"></i> <span>Administración</span>
                                 <span class="pull-right-container">
                                     <i class="fa fa-angle-left pull-right"></i>
                                 </span>
@@ -201,7 +201,7 @@
                             <ul class="treeview-menu">
                                 <li>
                                     <a href="<?php echo base_url('categories') ?>">
-                                        <i class="fa fa-circle-o"></i> Categorias
+                                        <i class="fa fa-chevron-right"></i> Categorias
                                     </a>
                                 </li>
                                 <li>
@@ -217,7 +217,7 @@
 
                                 <li>
                                     <a href="<?php echo base_url('products') ?>">
-                                        <i class="fa fa-circle-o"></i> Productos
+                                        <i class="fa fa-chevron-right"></i> Productos
                                     </a>
                                 </li>
                             </ul>
@@ -245,7 +245,7 @@
                     <ol class="breadcrumb">
                         <?php foreach ($option_nav_item as $key => $value): ?>
                             <li <?php if(!empty($value['class']) and $value['class'] == 'active'){ echo 'class="'.$value['class'].'"'; } ?> >
-                                <a <?php if(!empty($value['url'])){ echo 'href="'.$value['url'].'"'; } ?> > 
+                                <a <?php if(!empty($value['url'])){ echo 'href="'.base_url().$value['url'].'"'; } ?> > 
                                     <?php if (!empty($value['icon'])): ?>
                                         <i class="<?php echo $value['icon'] ?>"></i>
                                     <?php endif ?>

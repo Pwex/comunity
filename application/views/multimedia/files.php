@@ -79,11 +79,13 @@
     <?php endif ?>
     <div class="box box-warning">
         <div class="box-header">
-            <h3 class="box-title"><button title="Agregar Archivos" class="btn btn-primary btn-md" id="btn-file-manager"><i class="fa fa-plus-circle" id="btn-icon"></i></button> | Vista previa de archivos</h3>
+            <blockquote>
+                Vista previa de archivos <span style="float: right;"><button title="Agregar Archivos" class="btn btn-primary btn-md" id="btn-file-manager"><i class="fa fa-plus-circle" id="btn-icon"></i></button></span>
+            </blockquote>
         </div>
         <!-- /.box-header -->
         <div class="box-body">
-            <div class="row" style="display: none;" id="file-manager">
+            <div class="row" style="display: none; margin-top: -1em;" id="file-manager">
                 <div class="col-xs-12">
                     <?php echo form_open_multipart('multimedia/add-file-manager-images') ?>
                         <div class="form-group">

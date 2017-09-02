@@ -15,7 +15,7 @@ class ActivitiesModel extends CI_Model {
     # Todas las notificaciones
     public function all_notification_details($user)
     {
-        return $this->db->select('notifications, type_of_notification, ip_error_access, date, status')->where('disable', 0)->order_by('notifications', 'DESC')->get('notifications')->result_array(); 
+        return $this->db->select('notifications, type_of_notification, ip_error_access, date, status')->where(array('disable' => 0, 'user_notification' => $this->session->userdata['user']['id_user']))->order_by('notifications', 'DESC')->get('notifications')->result_array(); 
     }
 
     # Detalles de las notificaciones
@@ -27,7 +27,7 @@ class ActivitiesModel extends CI_Model {
     # Detalles de las notificaciones
     public function notification_details($user)
     {
-        return $this->db->select('notifications, type_of_notification, ip_error_access, date')->like('user_notification', $user)->where(array('status' => 1, 'disable' => 0))->get('notifications')->result_array(); 
+        return $this->db->select('notifications, type_of_notification, ip_error_access, date')->like('user_notification', $user)->where(array('status' => 1, 'disable' => 0))->order_by('notifications', 'DESC')->get('notifications')->result_array(); 
     }
 
     # Notificación verificada
