@@ -13,7 +13,6 @@ class Dashboard extends CI_Controller {
 	public function index()
 	{
 		# Cargando el modelo
-		$this->load->model('DashboardModel', 'dashboard', TRUE);
 		$this->load->model('ActivitiesModel', 'activity', TRUE);
 		
 		# Notificaciones
@@ -37,9 +36,6 @@ class Dashboard extends CI_Controller {
 				'class' 	=> 'active'
 			)
 		);
-
-		# Usuarios conectados
-		$data['users_online'] = $this->dashboard->users_online();
 
 		# Renderizando la vista | plantilla
 		$this->load->view('template/header', $data);

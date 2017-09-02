@@ -2,9 +2,7 @@
 <section class="content">
     <div class="box box-warning">
         <div class="box-header">
-            <blockquote style="margin-bottom: 0">
-                Agregar Usuarios
-            </blockquote>
+            <h3 class="box-title">Agregar usuarios</h3>
         </div>
         <!-- /.box-header -->
         <div class="box-body">

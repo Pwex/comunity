@@ -10,7 +10,7 @@ class AuthUserModel extends CI_Model {
     public function validation($data)
     {
     	$this->load->library('encrypt');
-		$user = $this->db->select('email, password')->where('email', $data['email'])->or_where(array('status' => 1, 'ip' => $this->input->ip_address()))->get('users')->result_array();
+		$user = $this->db->select('email, password')->where('email', $data['email'])->get('users')->result_array();
 			if (count($user) > 0) {
 				$password_decode = $this->encrypt->decode($user[0]['password']);
 					if ($password_decode == $data['password']) {
@@ -56,10 +56,10 @@ class AuthUserModel extends CI_Model {
     # Verificar si el usuario no ha iniciado sesion en otro dispositivo de forma simultanea
     public function validate_session_other_device($user)
     {
-    	if ($this->db->from('users')->where(array('email' => $user, 'status' => 1, 'ip !=' => $this->input->ip_address()))->count_all_results() > 0) {
+    	if ($this->db->from('users')->where(array('email' => $user, 'status' => 0, 'ip' => ''))->count_all_results() > 0) {
+    		return TRUE;
+    	} else {
     		return FALSE;
-        } else {
-            return TRUE;
     	}
     }
 
