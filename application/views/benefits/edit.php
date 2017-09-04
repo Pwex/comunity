@@ -3,33 +3,21 @@
     <div class="box box-warning">
         <div class="box-header">
             <blockquote style="margin-bottom: 0">
-                Editar Categoría
+                Editar Beneficio
             </blockquote>
         </div>
         <!-- /.box-header -->
         <div class="box-body">
-            <?php echo form_open('categories/edit/'.$this->uri->segment(3)) ?>
+            <?php echo form_open('benefits/edit/'.$this->uri->segment(3)) ?>
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label for="name">Categoria</label>
-                            <input type="text" name="name_category" id="name_category" class="form-control" placeholder="Ingresa un nombre" value="<?php echo set_value('name_category', $information_category[0]["name_category"]) ?>" required="" />
+                            <label for="name">Beneficio</label>
+                            <input type="text" name="name_benefit" id="name_benefit" class="form-control" placeholder="Ingresa un nombre de beneficio" value="<?php echo set_value('name_benefit', $information_benefit[0]["name_benefit"]) ?>" required="" />
                             <?php echo form_error('name') ?>
                         </div>
                     </div>
                 </div>
- 
-                <div class="row">
-                    <div class="col-sm-3">
-                        <div class="form-group">
-                            <label for="id_father_category">Categoria padre</label>
-                            <?php echo form_dropdown('id_father_category', $category, set_value('id_father_category',$information_category[0]["id_father_category"]), 'class="form-control" required=""'); ?>
-                            <?php echo form_error('id_father_category') ?>
-                        </div>
-                    </div>
-                </div>
-
-
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="form-group">

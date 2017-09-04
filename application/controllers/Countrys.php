@@ -27,7 +27,7 @@ class Countrys extends CI_Controller {
 			'box_span' 	=> 'Listado'
 		);
 		$data['option_nav_item'] = array(
-			'categorias'	=> array(
+				'paises'	=> array(
 				'icon' 		=> 'fa fa-flag',
 				'url' 		=> 'countrys',
 				'class' 	=> NULL
@@ -44,7 +44,7 @@ class Countrys extends CI_Controller {
 		$this->load->view('template/footer');
 	}
 
-	# Formulario Principal para Agregar categorias
+	# Formulario Principal para Agregar pais
 	public function add()
 	{
 		# Librerias
@@ -61,7 +61,7 @@ class Countrys extends CI_Controller {
 			'box_span' 	=> 'Agregar'
 		);
 		$data['option_nav_item'] = array(
-			'categorias'	=> array(
+				'paises'	=> array(
 				'icon' 		=> 'fa fa-flag',
 				'url' 		=> 'countrys',
 				'class' 	=> NULL
@@ -103,7 +103,7 @@ class Countrys extends CI_Controller {
 		}
 	}
 
-	# Formulario Principal para Editar categorias
+	# Formulario Principal para Editar pais
 	public function edit($id = NULL)
 	{
 		# Librerias
@@ -119,7 +119,7 @@ class Countrys extends CI_Controller {
 			'box_span' 	=> 'Editar'
 		);
 		$data['option_nav_item'] = array(
-				'categorias'	=> array(
+				'pais'			=> array(
 				'icon' 			=> 'fa fa-flag',
 				'url' 			=> 'countrys',
 				'class' 		=> NULL

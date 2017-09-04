@@ -32,7 +32,7 @@
         <!-- DataTables -->
         <!-- <?php //if ($this->uri->segment(1) == 'users'): ?> -->
         <?php 
-            if (($this->uri->segment(1) == 'users') || ($this->uri->segment(1) == 'categories') || ($this->uri->segment(1) == 'warehouses') || ($this->uri->segment(1) == 'countrys')): 
+            if (($this->uri->segment(1) == 'users') || ($this->uri->segment(1) == 'categories') || ($this->uri->segment(1) == 'warehouses') || ($this->uri->segment(1) == 'countrys') || ($this->uri->segment(1) == 'benefits') || ($this->uri->segment(1) == 'typesinventory') || ($this->uri->segment(1) == 'components')): 
         ?>
             <script src="<?php echo base_url('assets/bower_components/datatables.net/js/jquery.dataTables.min.js') ?>"></script>
             <script src="<?php echo base_url('assets/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') ?>"></script>       
@@ -84,6 +84,19 @@
                 elseif ($this->uri->segment(1) == 'countrys')
                 {
                     $url = "countrys";
+                }
+                elseif ($this->uri->segment(1) == 'benefits')
+                {
+                    $url = "benefits";
+                }
+                elseif ($this->uri->segment(1) == 'components')
+                {
+                    $url = "components";
+                }
+
+                elseif ($this->uri->segment(1) == 'typesinventory')
+                {
+                    $url = "typesinventory";
                 }
             ?>
                 $(document).ready(function()

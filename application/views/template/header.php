@@ -28,7 +28,7 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
         <!-- estilo para el data tables encabezado y para el jquery ui para el borrado -->
         <?php 
-            if ($this->uri->segment(1) == 'users' or $this->uri->segment(1) == 'categories' or $this->uri->segment(1) == 'warehouses' or $this->uri->segment(1) == 'countrys'): 
+            if ($this->uri->segment(1) == 'users' or $this->uri->segment(1) == 'categories' or $this->uri->segment(1) == 'warehouses' or $this->uri->segment(1) == 'countrys' or $this->uri->segment(1) == 'benefits' or $this->uri->segment(1) == 'typesinventory' or $this->uri->segment(1) == 'components'): 
         ?>
             <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
             <!-- DataTables -->
@@ -200,8 +200,23 @@
                             </a>
                             <ul class="treeview-menu">
                                 <li>
+                                    <a href="<?php echo base_url('typesinventory') ?>">
+                                        <i class="fa fa-circle-o"></i> Tipos Inventario
+                                    </a>
+                                </li>
+                                <li>
                                     <a href="<?php echo base_url('categories') ?>">
                                         <i class="fa fa-circle-o"></i> Categorias
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo base_url('components') ?>">
+                                        <i class="fa fa-circle-o"></i> Componentes
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo base_url('benefits') ?>">
+                                        <i class="fa fa-circle-o"></i> Beneficios
                                     </a>
                                 </li>
                                 <li>

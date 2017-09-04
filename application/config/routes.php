@@ -85,6 +85,31 @@ $route['categories/edit/(:num)'] 	= 'Categories/edit_validate/$1';
 $route['categories/success-edit'] 	= 'Categories/full_listing';
 $route['categories/delete'] 		= 'Categories/delete';
 $route['categories/success-delete'] = 'Categories/full_listing';
+# beneficios
+$route['benefits'] 					= 'Benefits/full_listing';
+$route['benefits/success'] 			= 'Benefits/full_listing';
+$route['benefits/add'] 				= 'Benefits/add_validate';
+$route['benefits/edit/(:num)'] 		= 'Benefits/edit_validate/$1';
+$route['benefits/success-edit'] 	= 'Benefits/full_listing';
+$route['benefits/delete'] 			= 'Benefits/delete';
+$route['benefits/success-delete'] 	= 'Benefits/full_listing';
+# componentes
+$route['components'] 					= 'Components/full_listing';
+$route['components/success'] 			= 'Components/full_listing';
+$route['components/add'] 				= 'Components/add_validate';
+$route['components/edit/(:num)'] 		= 'Components/edit_validate/$1';
+$route['components/success-edit'] 		= 'Components/full_listing';
+$route['components/delete'] 			= 'Components/delete';
+$route['components/success-delete'] 	= 'Components/full_listing';
+# tipos inventario
+$route['typesinventory'] 					= 'Typesinventory/full_listing';
+$route['typesinventory/success'] 			= 'Typesinventory/full_listing';
+$route['typesinventory/add'] 				= 'Typesinventory/add_validate';
+$route['typesinventory/edit/(:num)'] 		= 'Typesinventory/edit_validate/$1';
+$route['typesinventory/success-edit'] 		= 'Typesinventory/full_listing';
+$route['typesinventory/delete'] 			= 'Typesinventory/delete';
+$route['typesinventory/success-delete'] 	= 'Typesinventory/full_listing';
+
 # Bodegas
 $route['warehouses'] 				= 'Warehouses/full_listing';
 $route['warehouses/success'] 		= 'Warehouses/full_listing';

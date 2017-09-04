@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Warehouses extends CI_Controller {
+class Components extends CI_Controller {
 
 	public function __construct()
     {
@@ -10,26 +10,26 @@ class Warehouses extends CI_Controller {
         $this->managerauth->validate_session();
     }
 
-    # Listado completo de Bodegas
+    # Listado completo de Componentes
 	public function full_listing()
 	{
 		# Carga del modelo de base de datos
-		$this->load->model('WarehousesModel', 'warehouses', TRUE);
+		$this->load->model('ComponentsModel', 'components', TRUE);
 		$this->load->model('ActivitiesModel', 'activity', TRUE);
 		# Notificaciones
 		$data['number_of_pending_notifications'] = $this->activity->number_of_pending_notifications($this->session->userdata['user']['id_user']);
 		$data['notification_details']	 		 = $this->activity->notification_details($this->session->userdata['user']['id_user']);
 		# Envio de registros
-		$data['full_listing'] = $this->warehouses->full_listing();
+		$data['full_listing'] = $this->components->full_listing();
 		# Opciones items del menu principal del contenido
 		$data['option_nav'] = array(
-			'box_title' => 'Bodegas',
+			'box_title' => 'Componentes',
 			'box_span' 	=> 'Listado'
 		);
 		$data['option_nav_item'] = array(
-				'bodegas'	=> array(
-				'icon' 		=> 'fa fa-cubes',
-				'url' 		=> 'warehouses',
+				'Componentes'	=> array(
+				'icon' 		=> 'fa fa-users',
+				'url' 		=> 'components',
 				'class' 	=> NULL
 			), 
 			'listado'=> array(
@@ -40,31 +40,31 @@ class Warehouses extends CI_Controller {
 		);
 		# Renderizando la vista | plantilla
 		$this->load->view('template/header', $data);
-		$this->load->view('warehouses/list');
+		$this->load->view('components/list');
 		$this->load->view('template/footer');
 	}
 
-	# Formulario Principal para Agregar bodegas
+	# Formulario Principal para Agregar Componentes
 	public function add()
 	{
 		# Librerias
 		$this->load->helper('form');
 		$this->load->model('ActivitiesModel', 'activity', TRUE);
-		$this->load->model('WarehousesModel', 'warehouses', TRUE);
+		$this->load->model('ComponentsModel', 'components', TRUE);
 	
 		# Notificaciones
 		$data['number_of_pending_notifications'] = $this->activity->number_of_pending_notifications($this->session->userdata['user']['id_user']);
 		$data['notification_details']	 		 = $this->activity->notification_details($this->session->userdata['user']['id_user']);
 		# Opciones items del menu principal del contenido
 		$data['option_nav'] = array(
-			'box_title' => 'Bodegas',
+			'box_title' => 'Componentes',
 			'box_span' 	=> 'Agregar'
 		);
 		$data['option_nav_item'] = array(
-				'bodegas'		=> array(
-				'icon' 			=> 'fa fa-cubes',
-				'url' 			=> 'warehouses',
-				'class' 		=> NULL
+			'Componentes'	=> array(
+				'icon' 		=> 'fa fa-users',
+				'url' 		=> 'components',
+				'class' 	=> NULL
 			), 
 			'agregar' => array(
 				'icon' 		=> '',
@@ -74,7 +74,7 @@ class Warehouses extends CI_Controller {
 		);
 		# Renderizando la vista | plantilla
 		$this->load->view('template/header', $data);
-		$this->load->view('warehouses/add');
+		$this->load->view('components/add');
 		$this->load->view('template/footer');
 	}
 
@@ -86,41 +86,42 @@ class Warehouses extends CI_Controller {
 				$this->add();
 			break;
 			case TRUE:
-				$this->rules_insert_warehouses();
+				$this->rules_insert_components();
 				switch ($this->form_validation->run()) {
 					case FALSE:
 						$this->add();
 					break;
 					case TRUE:
 						# Cargar el modelo de base de datos
-						$this->load->model('WarehousesModel', 'warehouses', TRUE);
+						$this->load->model('ComponentsModel', 'components', TRUE);
 						# Insertar información en la base de datos
-						$this->warehouses->save($this->input->post());
-						redirect('warehouses/success'); 
+						$this->components->save($this->input->post());
+						redirect('components/success'); 
 					break;
 				}
 			break;
 		}
 	}
-	# Formulario Principal para Editar bodegas
+
+	# Formulario Principal para Editar Componentes
 	public function edit($id = NULL)
 	{
 		# Librerias
 		$this->load->helper('form');
 		$this->load->model('ActivitiesModel', 'activity', TRUE);
-		$this->load->model('WarehousesModel', 'warehouses', TRUE);
+		$this->load->model('ComponentsModel', 'components', TRUE);
 		# Notificaciones
 		$data['number_of_pending_notifications'] = $this->activity->number_of_pending_notifications($this->session->userdata['user']['id_user']);
 		$data['notification_details']	 		 = $this->activity->notification_details($this->session->userdata['user']['id_user']);
 		# Opciones items del menu principal del contenido
 		$data['option_nav'] = array(
-			'box_title' => 'Bodegas',
+			'box_title' => 'Componentes',
 			'box_span' 	=> 'Editar'
 		);
 		$data['option_nav_item'] = array(
-				'bodegas'	=> array(
-				'icon' 			=> 'fa fa-cubes',
-				'url' 			=> 'warehouses',
+				'Componentes'	=> array(
+				'icon' 			=> 'fa fa-users',
+				'url' 			=> 'components',
 				'class' 		=> NULL
 			), 
 			'editar' => array(
@@ -129,34 +130,32 @@ class Warehouses extends CI_Controller {
 				'class' 	=> 'active'
 			)
 		);
-		$data['warehouse'] = $this->warehouses->information_warehouse($id);
+		$data['information_component'] = $this->components->information_component($id);
 		# Renderizando la vista | plantilla
 		$this->load->view('template/header', $data);
-		$this->load->view('warehouses/edit');
+		$this->load->view('components/edit');
 		$this->load->view('template/footer');
 	}
 
 	# Recibir el Formulario de Editar y Validar las Reglas
 	public function edit_validate($id = NULL)
 	{
-		switch ($this->input->post()) 
-		{
+		switch ($this->input->post()) {
 			case FALSE:
 				$this->edit($id);
 			break;
 			case TRUE:
-				$this->rules_edit_warehouses();
-				switch ($this->form_validation->run()) 
-				{
+				$this->rules_edit_components();
+				switch ($this->form_validation->run()) {
 					case FALSE:
 						$this->edit($id);
 					break;
 					case TRUE:
 						# Cargar el modelo de base de datos
-						$this->load->model('WarehousesModel', 'warehouses', TRUE);
+						$this->load->model('ComponentsModel', 'components', TRUE);
 						# Insertar información en la base de datos
-						$this->warehouses->edit($id, $this->input->post());
-						redirect('warehouses/success-edit'); 
+						$this->components->edit($id, $this->input->post());
+						redirect('components/success-edit'); 
 					break;
 				}
 			break;
@@ -164,12 +163,12 @@ class Warehouses extends CI_Controller {
 	}
 
 	# Reglas de validación al insertar
-	public function rules_insert_warehouses()
+	public function rules_insert_components()
 	{
 		$config = array(
 			array(
-				'field' => 'name_warehouse',
-				'label' => 'Bodega',
+				'field' => 'name_component',
+				'label' => 'Componente',
 				'rules' => 'required|max_length[50]|trim',
 				'errors' => array(
 								'required' 	=> 'Es necesario ingresar un %s',
@@ -183,12 +182,12 @@ class Warehouses extends CI_Controller {
 	}
 
 	# Reglas de validación al editar
-	public function rules_edit_warehouses()
+	public function rules_edit_components()
 	{
 		$config = array(
 			array(
-				'field' => 'name_warehouse',
-				'label' => 'nombre bodega',
+				'field' => 'name_component',
+				'label' => 'nombre componente',
 				'rules' => 'required|max_length[50]|trim',
 				'errors' => array(
 								'required' 	=> 'Es necesario ingresar un %s',
@@ -201,12 +200,12 @@ class Warehouses extends CI_Controller {
 		$this->form_validation->set_rules($config);
 	}
 
-	# Eliminar bodega
+	# Eliminar usuario
 	public function delete()
 	{
 		# Carga del modelo de base de datos
-		$this->load->model('WarehousesModel', 'warehouses', TRUE);
+		$this->load->model('ComponentsModel', 'components', TRUE);
 		# Eliminar el usuario seleccionado
-		$this->warehouses->delete($this->input->post('id'));
+		$this->components->delete($this->input->post('id'));
 	}
 }
