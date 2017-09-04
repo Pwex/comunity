@@ -145,3 +145,7 @@ $route['multimedia/videos/success-delete-images']	= 'Multimedia/files_videos';
 $route['multimedia/videos/error-select-images'] 	= 'Multimedia/files_videos';
 $route['multimedia/videos/delete-images']	 		= 'Multimedia/delete_videos';
 $route['multimedia/videos/add-file-manager-images'] = 'Multimedia/add_file_manager_videos';
+
+# eCommerce
+$route['shop-layout'] 			= 'ShopLayout/shop_layout_validate';
+$route['shop-layout/success'] 	= 'ShopLayout/shop_layout_validate';
