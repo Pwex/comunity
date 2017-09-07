@@ -40,6 +40,11 @@
             <link href="<?php echo base_url('assets/bower_components/fileuploader/src/jquery.fileuploader.css') ?>" media="all" rel="stylesheet">
             <link href="<?php echo base_url('assets/bower_components/fileuploader/examples/thumbnails/css/jquery.fileuploader-theme-thumbnails.css') ?>" media="all" rel="stylesheet">
         <?php endif ?>
+
+        <?php if ($this->uri->segment(1) == 'categories' and ($this->uri->segment(2) == 'add' or $this->uri->segment(2) == 'edit')): ?>
+            <link href="<?php echo base_url('assets/plugins/filterizr/css/index.css') ?>" media="all" rel="stylesheet">
+        <?php endif ?>
+
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
         <!-- Site wrapper -->
@@ -273,7 +278,7 @@
                     <ol class="breadcrumb">
                         <?php foreach ($option_nav_item as $key => $value): ?>
                             <li <?php if(!empty($value['class']) and $value['class'] == 'active'){ echo 'class="'.$value['class'].'"'; } ?> >
-                                <a <?php if(!empty($value['url'])){ echo 'href="'.$value['url'].'"'; } ?> > 
+                                <a <?php if(!empty($value['url'])){ echo 'href="'.base_url('/').$value['url'].'"'; } ?> > 
                                     <?php if (!empty($value['icon'])): ?>
                                         <i class="<?php echo $value['icon'] ?>"></i>
                                     <?php endif ?>

@@ -11,7 +11,7 @@ class CategoriesModel extends CI_Model {
     {
         return $this->db
         ->from('categories c')
-        ->select('c.id_category,c.name_category, c.id_father_category, (select name_category from categories p where p.id_category=c.id_father_category) AS name_father')
+        ->select('c.id_category,c.name_category, c.id_father_category, c.images, (select name_category from categories p where p.id_category=c.id_father_category) AS name_father')
         //->select('id_category, name_category,id_father_category')
         ->get()
         ->result_array();
@@ -26,12 +26,16 @@ class CategoriesModel extends CI_Model {
     # Almacenar la informacion
     public function save($data)
     {
+        unset($data['filtr-search']);
+        $data['images'] = implode(',', $data['images']);
         $this->db->insert('categories', $data);
     }
 
     # Editar la informacion
     public function edit($id, $data)
     {
+        unset($data['filtr-search']);
+        $data['images'] = implode(',', $data['images']);
         $this->db->where('id_category', $id)->update('categories', $data);
     }
 

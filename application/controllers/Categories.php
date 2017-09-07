@@ -28,7 +28,7 @@ class Categories extends CI_Controller {
 		);
 		$data['option_nav_item'] = array(
 			'categorias'	=> array(
-				'icon' 		=> 'fa fa-users',
+				'icon' 		=> 'fa fa-th-large',
 				'url' 		=> 'categories',
 				'class' 	=> NULL
 			), 
@@ -51,6 +51,7 @@ class Categories extends CI_Controller {
 		$this->load->helper('form');
 		$this->load->model('ActivitiesModel', 'activity', TRUE);
 		$this->load->model('CategoriesModel', 'category', TRUE);
+		$this->load->model('MultimediaModel', 'medios', TRUE);
 	
 		# Notificaciones
 		$data['number_of_pending_notifications'] = $this->activity->number_of_pending_notifications($this->session->userdata['user']['id_user']);
@@ -62,7 +63,7 @@ class Categories extends CI_Controller {
 		);
 		$data['option_nav_item'] = array(
 			'categorias'	=> array(
-				'icon' 		=> 'fa fa-users',
+				'icon' 		=> 'fa fa-th-large',
 				'url' 		=> 'categories',
 				'class' 	=> NULL
 			), 
@@ -74,6 +75,8 @@ class Categories extends CI_Controller {
 		);
 		# Listado de categorias
 		$data['category'] = $this->category->categories_listing();
+		# Listado completo de imagenes disponibles
+		$data['list_images'] = $this->medios->list_images();
 		# Renderizando la vista | plantilla
 		$this->load->view('template/header', $data);
 		$this->load->view('categories/add');
@@ -113,6 +116,7 @@ class Categories extends CI_Controller {
 		$this->load->model('ActivitiesModel', 'activity', TRUE);
 //		$this->load->model('CategoryModel', 'category', TRUE);
 		$this->load->model('CategoriesModel', 'categories', TRUE);
+		$this->load->model('MultimediaModel', 'medios', TRUE);
 		# Notificaciones
 		$data['number_of_pending_notifications'] = $this->activity->number_of_pending_notifications($this->session->userdata['user']['id_user']);
 		$data['notification_details']	 		 = $this->activity->notification_details($this->session->userdata['user']['id_user']);
@@ -123,7 +127,7 @@ class Categories extends CI_Controller {
 		);
 		$data['option_nav_item'] = array(
 				'categorias'	=> array(
-				'icon' 			=> 'fa fa-users',
+				'icon' 			=> 'fa fa-th-large',
 				'url' 			=> 'categories',
 				'class' 		=> NULL
 			), 
@@ -136,7 +140,9 @@ class Categories extends CI_Controller {
 		$data['information_category'] = $this->categories->information_category($id);
 		# Listado de categorias
 		$data['category'] = $this->categories->categories_listing();
-
+		$data['status']   = explode(',', $data['information_category'][0]['images']);
+		# Listado completo de imagenes disponibles
+		$data['list_images'] = $this->medios->list_images();
 		# Renderizando la vista | plantilla
 		$this->load->view('template/header', $data);
 		$this->load->view('categories/edit');
