@@ -32,7 +32,7 @@
         <!-- DataTables -->
         <!-- <?php //if ($this->uri->segment(1) == 'users'): ?> -->
         <?php 
-            if (($this->uri->segment(1) == 'users') || ($this->uri->segment(1) == 'categories') || ($this->uri->segment(1) == 'warehouses') || ($this->uri->segment(1) == 'countrys') || ($this->uri->segment(1) == 'benefits') || ($this->uri->segment(1) == 'typesinventory') || ($this->uri->segment(1) == 'components')): 
+            if (($this->uri->segment(1) == 'users') || ($this->uri->segment(1) == 'categories' and $this->uri->segment(2) != 'add') || ($this->uri->segment(1) == 'warehouses') || ($this->uri->segment(1) == 'countrys') || ($this->uri->segment(1) == 'benefits') || ($this->uri->segment(1) == 'typesinventory') || ($this->uri->segment(1) == 'components')): 
         ?>
             <script src="<?php echo base_url('assets/bower_components/datatables.net/js/jquery.dataTables.min.js') ?>"></script>
             <script src="<?php echo base_url('assets/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') ?>"></script>       
@@ -284,5 +284,18 @@
             </script>
         <?php endif ?>
         <!-- Manager Files Videos End -->
+
+        <?php if ($this->uri->segment(1) == 'categories' and ($this->uri->segment(2) == 'add' or $this->uri->segment(2) == 'edit')): ?>
+            <!-- Administrador de imagenes -->
+            <script src="<?php echo base_url('assets/plugins/filterizr/filterizr/jquery.filterizr.min.js') ?>" type="text/javascript"></script>
+            <script src="<?php echo base_url('assets/plugins/filterizr/js/controls.js') ?>" type="text/javascript"></script>
+            <script type="text/javascript">
+                $(function() {
+                    //Initialize filterizr with default options
+                    $('.filtr-container').filterizr();
+                });
+            </script>
+        <?php endif ?>
+
     </body>
 </html>
