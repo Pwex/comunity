@@ -15,7 +15,7 @@ class ActivitiesModel extends CI_Model {
     # Todas las notificaciones
     public function all_notification_details($user)
     {
-        return $this->db->select('notifications, type_of_notification, ip_error_access, date, status')->where('disable', 0)->order_by('notifications', 'DESC')->get('notifications')->result_array(); 
+        return $this->db->select('notifications, type_of_notification, ip_error_access, date, status')->where(array('user_notification' => $user, 'disable' => 0))->order_by('notifications', 'DESC')->get('notifications')->result_array(); 
     }
 
     # Detalles de las notificaciones
