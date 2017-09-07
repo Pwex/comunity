@@ -39,5 +39,13 @@ class ComponentsModel extends CI_Model {
     {
         $this->db->where('id_component', $id)->delete('components');
     }
-
+    # Lista de componentes
+    public function components_listing()
+    {
+        $components = array();
+        foreach ($this->db->select('id_component, name_component')->order_by('name_component', 'ASC')->get('components')->result_array() as $key => $value) {
+            $components[$value['id_component']] = $value['name_component'];
+        }
+        return $components;
+    }
 }

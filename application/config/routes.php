@@ -102,14 +102,29 @@ $route['components/success-edit'] 		= 'Components/full_listing';
 $route['components/delete'] 			= 'Components/delete';
 $route['components/success-delete'] 	= 'Components/full_listing';
 # tipos inventario
-$route['typesinventory'] 					= 'Typesinventory/full_listing';
-$route['typesinventory/success'] 			= 'Typesinventory/full_listing';
-$route['typesinventory/add'] 				= 'Typesinventory/add_validate';
-$route['typesinventory/edit/(:num)'] 		= 'Typesinventory/edit_validate/$1';
-$route['typesinventory/success-edit'] 		= 'Typesinventory/full_listing';
-$route['typesinventory/delete'] 			= 'Typesinventory/delete';
-$route['typesinventory/success-delete'] 	= 'Typesinventory/full_listing';
-
+$route['typesinventory'] 				= 'TypesInventory/full_listing';
+$route['typesinventory/success'] 		= 'TypesInventory/full_listing';
+$route['typesinventory/add'] 			= 'TypesInventory/add_validate';
+$route['typesinventory/edit/(:num)'] 	= 'TypesInventory/edit_validate/$1';
+$route['typesinventory/success-edit'] 	= 'TypesInventory/full_listing';
+$route['typesinventory/delete'] 		= 'TypesInventory/delete';
+$route['typesinventory/success-delete'] = 'TypesInventory/full_listing';
+# unidades medida
+$route['unitsmeasure'] 					= 'UnitsMeasure/full_listing';
+$route['unitsmeasure/success'] 			= 'UnitsMeasure/full_listing';
+$route['unitsmeasure/add'] 				= 'UnitsMeasure/add_validate';
+$route['unitsmeasure/edit/(:num)'] 		= 'UnitsMeasure/edit_validate/$1';
+$route['unitsmeasure/success-edit'] 	= 'UnitsMeasure/full_listing';
+$route['unitsmeasure/delete'] 			= 'UnitsMeasure/delete';
+$route['unitsmeasure/success-delete'] 	= 'UnitsMeasure/full_listing';
+# productos
+$route['products'] 					= 'Products/full_listing';
+$route['products/success'] 			= 'Products/full_listing';
+$route['products/add'] 				= 'Products/add_validate';
+$route['products/edit/(:num)'] 		= 'Products/edit_validate/$1';
+$route['products/success-edit'] 	= 'Products/full_listing';
+$route['products/delete'] 			= 'Products/delete';
+$route['products/success-delete'] 	= 'Products/full_listing';
 # Bodegas
 $route['warehouses'] 				= 'Warehouses/full_listing';
 $route['warehouses/success'] 		= 'Warehouses/full_listing';
@@ -126,8 +141,9 @@ $route['countrys/edit/(:num)'] 		= 'Countrys/edit_validate/$1';
 $route['countrys/success-edit'] 	= 'Countrys/full_listing';
 $route['countrys/delete'] 			= 'Countrys/delete';
 $route['countrys/success-delete'] 	= 'Countrys/full_listing';
-# Auth Users
 
+
+# Auth Users
 $route['404_override'] 			= '';
 $route['translate_uri_dashes'] 	= FALSE;
 
