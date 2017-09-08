@@ -3,9 +3,9 @@
     <div class="box">
         <div class="box-header">
             <blockquote style="margin-bottom: 0">
-                Listado de Productos
+                Listado de Precios
                 <span style="float: right;">
-                    <a href="<?php echo base_url('products/add') ?>" class="btn btn-primary" title="Agregar Producto">
+                    <a href="<?php echo base_url('list-price/add') ?>" class="btn btn-primary" title="Agregar Precios">
                         <i class="fa fa-plus-circle"></i>
                     </a>
                 </span>
@@ -54,32 +54,20 @@
         <div class="box-body">
             <table class="table table-responsive table-bordered" id="table-default">
                 <thead>
-                    <th>Código</th>
-                    <th>EAN 13</th>
+                    <th>Id</th>
                     <th>Nombre</th>
-                    <th>Categoria</th>  
-                    <th>Estatus</th>  
+                    <th>Descripción</th>
                     <th>Opciones</th>
                 </thead>
                 <tbody>
                     <?php foreach ($full_listing as $key => $value): ?>
                         <tr>
-                            <td><?php echo $value['id_product'] ?></td>
-                            <td><?php echo $value['ean13_product'] ?></td>
-                            <td><?php echo $value['name_product'] ?></td>
-                            <td><?php echo $value['name_category'] ?></td>
+                            <td><?php echo $value['id'] ?></td>
+                            <td><?php echo $value['name_list_price'] ?></td>
+                            <td><?php echo $value['description_list_price'] ?></td>
                             <td>
-                                <?php 
-                                    if ($value['enabled_product'] == 1) {
-                                        echo "Activo"; 
-                                    } else {
-                                        echo "Inactivo";
-                                    } 
-                                ?>
-                            </td>
-                            <td>
-                                <a href="<?php echo base_url('products/edit/').$value['id_product'] ?>" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
-                                <button type="button" class="btn btn-danger btn-delete" id="<?php echo $value['id_product'] ?>"><i class="fa fa-trash"></i></button>
+                                <a href="<?php echo base_url('list-price/edit/').$value['id'] ?>" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
+                                <button type="button" class="btn btn-danger btn-delete" id="<?php echo $value['id'] ?>"><i class="fa fa-trash"></i></button>
                             </td>
                         </tr>
                     <?php endforeach ?>

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Products extends CI_Controller {
+class ListPrice extends CI_Controller {
 
 	public function __construct()
     {
@@ -10,26 +10,26 @@ class Products extends CI_Controller {
         $this->managerauth->validate_session();
     }
 
-    # Listado completo de usuarios
+    # Listado completo de precios
 	public function full_listing()
 	{
 		# Carga del modelo de base de datos
-		$this->load->model('ProductsModel', 'products', TRUE);
+		$this->load->model('ListPriceModel', 'categories', TRUE);
 		$this->load->model('ActivitiesModel', 'activity', TRUE);
 		# Notificaciones
 		$data['number_of_pending_notifications'] = $this->activity->number_of_pending_notifications($this->session->userdata['user']['id_user']);
 		$data['notification_details']	 		 = $this->activity->notification_details($this->session->userdata['user']['id_user']);
 		# Envio de registros
-		$data['full_listing'] = $this->products->full_listing();
+		$data['full_listing'] = $this->categories->full_listing();
 		# Opciones items del menu principal del contenido
 		$data['option_nav'] = array(
-			'box_title' => 'Productos',
+			'box_title' => 'Precios',
 			'box_span' 	=> 'Listado'
 		);
 		$data['option_nav_item'] = array(
-			'productos'	=> array(
-				'icon' 		=> 'fa fa-cubes',
-				'url' 		=> 'products',
+			'precios'	=> array(
+				'icon' 		=> 'fa fa-th-large',
+				'url' 		=> 'list-price',
 				'class' 	=> NULL
 			), 
 			'listado'=> array(
@@ -40,30 +40,29 @@ class Products extends CI_Controller {
 		);
 		# Renderizando la vista | plantilla
 		$this->load->view('template/header', $data);
-		$this->load->view('products/list');
+		$this->load->view('list_price/list');
 		$this->load->view('template/footer');
 	}
 
-	# Formulario Principal para Agregar usuarios
+	# Formulario Principal para Agregar listo de precios
 	public function add()
 	{
 		# Librerias
 		$this->load->helper('form');
 		$this->load->model('ActivitiesModel', 'activity', TRUE);
-		$this->load->model('ProductsModel'  , 'products', TRUE);
-		$this->load->model('MultimediaModel', 'medios', TRUE);
+		$this->load->model('ListPriceModel' , 'list_price', TRUE);
 		# Notificaciones
 		$data['number_of_pending_notifications'] = $this->activity->number_of_pending_notifications($this->session->userdata['user']['id_user']);
 		$data['notification_details']	 		 = $this->activity->notification_details($this->session->userdata['user']['id_user']);
 		# Opciones items del menu principal del contenido
 		$data['option_nav'] = array(
-			'box_title' => 'Productos',
+			'box_title' => 'Precios',
 			'box_span' 	=> 'Agregar'
 		);
 		$data['option_nav_item'] = array(
-			'productos'	=> array(
-				'icon' 		=> 'fa fa-cubes',
-				'url' 		=> 'products',
+			'precios'		=> array(
+				'icon' 		=> 'fa fa-th-large',
+				'url' 		=> 'list-price',
 				'class' 	=> NULL
 			), 
 			'agregar' => array(
@@ -72,23 +71,9 @@ class Products extends CI_Controller {
 				'class' 	=> 'active'
 			)
 		);
-		# Listado de categorias
-		$data['category'] 		= $this->products->categories_listing();
-		# Listado de tipos de inventario
-		$data['typesinventory'] = $this->products->typesinv_listing();
-		# Listado de beneficios
-		$data['benefits'] 		= $this->products->benefits_listing();
-		# Listado de componentes
-		$data['components'] 	= $this->products->components_listing();
-		# Listado de sellos
-		$data['seals'] 			= $this->products->seals_listing();
-		# Listado de estatus
-		$data['status'] 		= array(1 => 'Activo', 0 => 'Inactivo');
-		# Listado completo de imagenes disponibles
-		$data['list_images'] = $this->medios->list_images();
 		# Renderizando la vista | plantilla
 		$this->load->view('template/header', $data);
-		$this->load->view('products/add');
+		$this->load->view('list_price/add');
 		$this->load->view('template/footer');
 	}
 
@@ -100,44 +85,43 @@ class Products extends CI_Controller {
 				$this->add();
 			break;
 			case TRUE:
-				$this->rules_insert_products();
+				$this->rules_list_price();
 				switch ($this->form_validation->run()) {
 					case FALSE:
 						$this->add();
 					break;
 					case TRUE:
 						# Cargar el modelo de base de datos
-						$this->load->model('ProductsModel', 'products', TRUE);
+						$this->load->model('ListPriceModel', 'list_price', TRUE);
 						# Insertar información en la base de datos
-						$this->products->save($this->input->post());
-						redirect('products/success'); 
+						$this->list_price->save($this->input->post());
+						redirect('list-price/success'); 
 					break;
 				}
 			break;
 		}
 	}
 
-	# Formulario Principal para Editar usuarios
+	# Formulario Principal para Editar listado de precios
 	public function edit($id = NULL)
 	{
 		# Librerias
 		$this->load->helper('form');
 		$this->load->model('ActivitiesModel', 'activity', TRUE);
-		//$this->load->model('CountryModel', 'country', TRUE);
-		$this->load->model('ProductsModel', 'products', TRUE);
+		$this->load->model('ListPriceModel' , 'list_price', TRUE);
 		# Notificaciones
 		$data['number_of_pending_notifications'] = $this->activity->number_of_pending_notifications($this->session->userdata['user']['id_user']);
 		$data['notification_details']	 		 = $this->activity->notification_details($this->session->userdata['user']['id_user']);
 		# Opciones items del menu principal del contenido
 		$data['option_nav'] = array(
-			'box_title' => 'Productos',
+			'box_title' => 'Precios',
 			'box_span' 	=> 'Editar'
 		);
 		$data['option_nav_item'] = array(
-			'productos'	=> array(
-				'icon' 		=> 'fa fa-cubes',
-				'url' 		=> 'products',
-				'class' 	=> NULL
+				'precios'		=> array(
+				'icon' 			=> 'fa fa-th-large',
+				'url' 			=> 'list-price',
+				'class' 		=> NULL
 			), 
 			'editar' => array(
 				'icon' 		=> '',
@@ -145,15 +129,10 @@ class Products extends CI_Controller {
 				'class' 	=> 'active'
 			)
 		);
-		# Listado de paises
-		//$data['country'] = $this->country->full_listing();
-		# Tipos de cuentas | Acceso
-		//$data['type_of_access'] = array('Administrador' => 'Administrador', 'Coach' => 'Coach', 'Proveedor' => 'Proveedor');
-		# Buscar informacion del usuario
-		$data['product'] = $this->products->information_product($id);
+		$data['information_list_price'] = $this->list_price->information_list_price($id);
 		# Renderizando la vista | plantilla
 		$this->load->view('template/header', $data);
-		$this->load->view('products/edit');
+		$this->load->view('list_price/edit');
 		$this->load->view('template/footer');
 	}
 
@@ -165,17 +144,17 @@ class Products extends CI_Controller {
 				$this->edit($id);
 			break;
 			case TRUE:
-				$this->rules_edit_products();
+				$this->rules_list_price();
 				switch ($this->form_validation->run()) {
 					case FALSE:
 						$this->edit($id);
 					break;
 					case TRUE:
 						# Cargar el modelo de base de datos
-						$this->load->model('ProductsModel', 'products', TRUE);
+						$this->load->model('ListPriceModel', 'list_price', TRUE);
 						# Insertar información en la base de datos
-						$this->products->edit($id, $this->input->post());
-						redirect('products/success-edit'); 
+						$this->list_price->edit($id, $this->input->post());
+						redirect('list-price/success-edit'); 
 					break;
 				}
 			break;
@@ -183,74 +162,27 @@ class Products extends CI_Controller {
 	}
 
 	# Reglas de validación al insertar
-	public function rules_insert_products()
+	public function rules_list_price()
 	{
 		$config = array(
 			array(
-				'field' => 'id_product',
-				'label' => 'código producto',
+				'field' => 'name_list_price',
+				'label' => 'nombre del listo de precio',
 				'rules' => 'required|max_length[60]|trim',
 				'errors' => array(
 								'required' 	=> 'Es necesario ingresar un %s',
-								'max_length'=> 'La longitud maxima a ingresar es de 80 caracteres'
+								'max_length'=> 'La longitud maxima a ingresar es de 60 caracteres'
 						   )
 			),
 			array(
-				'field' => 'name_product',
-				'label' => 'nombre producto',
-				'rules' => 'required|max_length[20]|trim',
-				'errors' => array(
-								'required' 	=> 'Es necesario ingresar un %s',
-								'max_length'=> 'La longitud maxima a ingresar es de 80 caracteres'
-						   )
-			)
-		);
-		$this->load->library('form_validation');
-		$this->form_validation->set_error_delimiters('<p class="text-danger msg-error">', '</p>');
-		$this->form_validation->set_rules($config);
-	}
-
-	# Reglas de validación al editar
-	public function rules_edit_products()
-	{
-		$config = array(
-			array(
-				'field' => 'name',
-				'label' => 'nombre',
-				'rules' => 'required|max_length[80]|trim',
-				'errors' => array(
-								'required' 	=> 'Es necesario ingresar un %s',
-								'max_length'=> 'La longitud maxima a ingresar es de 80 caracteres'
-						   )
-			),
-			array(
-				'field' => 'last_name',
-				'label' => 'apellido',
-				'rules' => 'required|max_length[80]|trim',
-				'errors' => array(
-								'required' 	=> 'Es necesario ingresar un %s',
-								'max_length'=> 'La longitud maxima a ingresar es de 80 caracteres'
-						   )
-			),
-			array(
-				'field' => 'password',
-				'label' => 'clave de seguridad',
+				'field' => 'description_list_price',
+				'label' => 'descripción',
 				'rules' => 'required|max_length[255]|trim',
 				'errors' => array(
 								'required' 	=> 'Es necesario ingresar una %s',
 								'max_length'=> 'La longitud maxima a ingresar es de 255 caracteres'
 						   )
 			),
-			array(
-				'field' => 'confirm_password',
-				'label' => 'confirmar clave de seguridad',
-				'rules' => 'required|max_length[255]|matches[password]|trim',
-				'errors' => array(
-								'required' 	=> 'Es necesario ingresar una %s',
-								'max_length'=> 'La longitud maxima a ingresar es de 255 caracteres',
-								'matches'	=> 'Las clave de seguridad son distintas'
-						   )
-			)
 		);
 		$this->load->library('form_validation');
 		$this->form_validation->set_error_delimiters('<p class="text-danger msg-error">', '</p>');
@@ -261,9 +193,9 @@ class Products extends CI_Controller {
 	public function delete()
 	{
 		# Carga del modelo de base de datos
-		$this->load->model('ProductsModel', 'products', TRUE);
+		$this->load->model('ListPriceModel', 'list_price', TRUE);
 		# Eliminar el usuario seleccionado
-		$this->products->delete($this->input->post('id'));
+		$this->list_price->delete($this->input->post('id'));
 	}
 
 }

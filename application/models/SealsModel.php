@@ -34,13 +34,13 @@ class SealsModel extends CI_Model {
         $this->db->where('id_seals', $id)->update('seals', $data);
     }
 
-    # Eliminar categoria
+    # Eliminar sellos
     public function delete($id)
     {
         $this->db->where('id_seals', $id)->delete('seals');
     }
 
-    # Lista de categorias
+    # Lista de sellos
     public function seals_listing()
     {
         $seals = array();

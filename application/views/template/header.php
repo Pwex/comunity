@@ -26,7 +26,7 @@
         <!-- Google Font -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
         <!-- estilo para el data tables encabezado y para el jquery ui para el borrado -->
-        <?php if ($this->uri->segment(1) == 'users' or $this->uri->segment(1) == 'categories' or $this->uri->segment(1) == 'warehouses' or $this->uri->segment(1) == 'countrys' or $this->uri->segment(1) == 'benefits' or $this->uri->segment(1) == 'typesinventory' or $this->uri->segment(1) == 'components' or $this->uri->segment(1) == 'unitsmeasure' or $this->uri->segment(1) == 'products' or $this->uri->segment(1) == 'partners' or $this->uri->segment(1) == 'document_types' or $this->uri->segment(1) == 'partner_types' or $this->uri->segment(1) == 'cities' or $this->uri->segment(1) == 'seals'): ?>
+        <?php if ($this->uri->segment(1) == 'users' or $this->uri->segment(1) == 'categories' or $this->uri->segment(1) == 'warehouses' or $this->uri->segment(1) == 'countrys' or $this->uri->segment(1) == 'benefits' or $this->uri->segment(1) == 'typesinventory' or $this->uri->segment(1) == 'components' or $this->uri->segment(1) == 'unitsmeasure' or $this->uri->segment(1) == 'products' or $this->uri->segment(1) == 'partners' or $this->uri->segment(1) == 'document_types' or $this->uri->segment(1) == 'partner_types' or $this->uri->segment(1) == 'cities' or $this->uri->segment(1) == 'seals' or $this->uri->segment(1) == 'list-price'): ?>
             <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
             <!-- DataTables -->
             <link rel="stylesheet" href="<?php echo base_url('assets/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css') ?>">
@@ -38,7 +38,7 @@
             <link href="<?php echo base_url('assets/bower_components/fileuploader/examples/thumbnails/css/jquery.fileuploader-theme-thumbnails.css') ?>" media="all" rel="stylesheet">
         <?php endif; ?>
 
-        <?php if (($this->uri->segment(1) == 'categories' and ($this->uri->segment(2) == 'add' or $this->uri->segment(2) == 'edit')) or ($this->uri->segment(1) == 'seals' and ($this->uri->segment(2) == 'add' or $this->uri->segment(2) == 'edit')) or ($this->uri->segment(1) == 'multimedia') ): ?>
+        <?php if (($this->uri->segment(1) == 'categories' and ($this->uri->segment(2) == 'add' or $this->uri->segment(2) == 'edit')) or ($this->uri->segment(1) == 'products' and ($this->uri->segment(2) == 'add' or $this->uri->segment(2) == 'edit')) or ($this->uri->segment(1) == 'seals' and ($this->uri->segment(2) == 'add' or $this->uri->segment(2) == 'edit')) or ($this->uri->segment(1) == 'multimedia') ): ?>
             <link href="<?php echo base_url('assets/plugins/filterizr/css/index.css') ?>" media="all" rel="stylesheet">
         <?php endif; ?>
 
@@ -46,6 +46,12 @@
             <link href="<?php echo base_url('assets/bower_components/select2/dist/css/select2.min.css') ?>" media="all" rel="stylesheet">
             <link href="<?php echo base_url('assets/bower_components/select2/dist/css/select2.min.css') ?>" media="all" rel="stylesheet">
         <?php endif; ?>
+
+        <?php if ($this->uri->segment(1) == 'products' and $this->uri->segment(2) == 'add'): ?>
+            <link href="<?php echo base_url('assets/plugins/chosen/chosen.min.css') ?>" media="all" rel="stylesheet">
+        <?php endif; ?>
+
+
         <link rel="stylesheet" href="<?php echo base_url('assets/dist/css/AdminLTE.min.css') ?>">
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
@@ -223,9 +229,19 @@
                                                 <i class="fa fa-circle-o"></i> Ciudades
                                             </a>
                                         </li>
-                                         <li>
+                                        <li>
                                             <a href="<?php echo base_url('warehouses') ?>">
                                                 <i class="fa fa-circle-o"></i> Bodegas
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="<?php echo base_url('list-price') ?>">
+                                                <i class="fa fa-circle-o"></i> Listado precios
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="<?php echo base_url('price-product') ?>">
+                                                <i class="fa fa-circle-o"></i> Precios productos
                                             </a>
                                         </li>
                                     </ul>   <!-- cierra lista global -->
