@@ -18,7 +18,7 @@
                     <div class="col-sm-3">
                         <div class="form-group">
                             <label for="id_partner">Número Documento</label>
-                            <input type="text" name="id_partner" id="id_document" class="form-control" placeholder="Ingresa número documento" value="<?php echo set_value('id_partner') ?>" required="" />
+                            <input type="text" name="id_partner" id="id_document" class="form-control" placeholder="Ingresa número documento" value="<?php echo set_value('id_partner', $partner[0]["id_partner"]) ?>" required="" />
                             <?php echo form_error('id_partner') ?>
                         </div>
                     </div>
