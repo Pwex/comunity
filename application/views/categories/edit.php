@@ -1,3 +1,17 @@
+<style type="text/css">
+    .img {
+        cursor: pointer;
+        height: 14.4em;
+        width: 14.4em;
+    }
+    .filtr-container {
+        margin-left: 3px;
+    }
+    .main-manager {
+        width: 100%;
+        margin-left: -1.15em;
+    }
+</style>
 <!-- Main content -->
 <section class="content">
     <div class="box box-warning">
@@ -52,17 +66,17 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row main-manager">
                     <!-- This is the set up of a basic gallery, your items must have the categories they belong to in a data-category
                         attribute, which starts from the value 1 and goes up from there -->
                     <div class="filtr-container" style="margin-left: 8px">
                         <?php foreach ($list_images as $key => $value): ?>
-                            <div class="col-xs-6 col-sm-4 col-md-3 filtr-item" data-category="1, 5" data-sort="<?php echo $value['name'] ?>">
+                            <div class="col-xs-6 col-sm-3 col-md-2 filtr-item" data-category="1, 5" data-sort="<?php echo $value['name'] ?>">
                                 <label>
                                     <?php echo form_checkbox('images[]', $value['file'], in_array($value['file'], $status)); ?> 
                                     <span style="display: block; margin-top: -22px; margin-left: 1.3em">Seleccionar</span>
                                 </label>
-                                <img class="img-responsive" src="<?php echo base_url('assets/dist/img/multimedia/images/').$value['file_name'] ?>" />
+                                <img class="img img-responsive center-block" src="<?php echo base_url('assets/dist/img/multimedia/images/').$value['file_name'] ?>" />
                                 <span class="item-desc"><?php echo $value['name'] ?></span>
                             </div>
                         <?php endforeach ?>

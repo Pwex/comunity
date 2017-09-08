@@ -30,9 +30,13 @@
             });
         </script>
         <!-- DataTables -->
+<<<<<<< HEAD
         <?php 
             if (($this->uri->segment(1) == 'users') || ($this->uri->segment(1) == 'categories') || ($this->uri->segment(1) == 'warehouses') || ($this->uri->segment(1) == 'countrys') || ($this->uri->segment(1) == 'benefits') || ($this->uri->segment(1) == 'typesinventory') || ($this->uri->segment(1) == 'components') || ($this->uri->segment(1) == 'unitsmeasure') || ($this->uri->segment(1) == 'products') || ($this->uri->segment(1) == 'partners') || ($this->uri->segment(1) == 'document_types') || ($this->uri->segment(1) == 'partner_types') || ($this->uri->segment(1) == 'cities')): 
         ?>
+=======
+        <?php if (($this->uri->segment(1) == 'users') || ($this->uri->segment(1) == 'categories') || ($this->uri->segment(1) == 'warehouses') || ($this->uri->segment(1) == 'countrys') || ($this->uri->segment(1) == 'benefits') || ($this->uri->segment(1) == 'typesinventory') || ($this->uri->segment(1) == 'components') || ($this->uri->segment(1) == 'unitsmeasure') || ($this->uri->segment(1) == 'products') || ($this->uri->segment(1) == 'partners') || ($this->uri->segment(1) == 'document_types') || ($this->uri->segment(1) == 'partner_types') || ($this->uri->segment(1) == 'seals') ): ?>
+>>>>>>> master
             <script src="<?php echo base_url('assets/bower_components/datatables.net/js/jquery.dataTables.min.js') ?>"></script>
             <script src="<?php echo base_url('assets/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') ?>"></script>       
             <script type="text/javascript">
@@ -117,9 +121,15 @@
                 {
                     $url = "partners";
                 }
+<<<<<<< HEAD
                 elseif ($this->uri->segment(1) == 'cities')
                 {
                     $url = "cities";
+=======
+                elseif ($this->uri->segment(1) == 'seals')
+                {
+                    $url = "seals";
+>>>>>>> master
                 }
             ?>
                 $(document).ready(function()
@@ -141,7 +151,7 @@
                                         data: { id : id },
                                         type: 'POST',
                                         success : function(response){
-                                            window.location = '<?php echo $url;?>/success-delete';
+                                            window.location = '<?php echo base_url($url);?>/success-delete';
                                         },
                                         error : function(){
                                             alert('Ha ocurrido un error...');
@@ -160,7 +170,7 @@
         <?php endif; ?>
         <!-- DataTables End -->
         <!-- Manager Files Images -->
-        <?php if ($this->uri->segment(1) == 'multimedia'): ?>
+        <?php if ($this->uri->segment(1) == 'multimedia' and $this->uri->segment(2) != 'videos'): ?>
             <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
             <!-- Manager File -->
             <script src="<?php echo base_url('assets/bower_components/fileuploader/src/jquery.fileuploader.min.js') ?>" type="text/javascript"></script>
@@ -198,7 +208,7 @@
                                             data: { id : id, name : name },
                                             type: 'POST',
                                             success : function(response){
-                                                window.location = 'multimedia/success-delete-images';
+                                                window.location = '<?php echo base_url('multimedia/success-delete-images') ?>';
                                             },
                                             error : function(){
                                                 alert('Ha ocurrido un error...');
@@ -238,13 +248,13 @@
             <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
             <!-- Manager File -->
             <script src="<?php echo base_url('assets/bower_components/fileuploader/src/jquery.fileuploader.min.js') ?>" type="text/javascript"></script>
-            <script src="<?php echo base_url('assets/bower_components/fileuploader/examples/thumbnails/js/custom.js') ?>" type="text/javascript"></script>
+            <script src="<?php echo base_url('assets/bower_components/fileuploader/examples/add-more/js/custom.js') ?>" type="text/javascript"></script>
             <script type="text/javascript">
             </script>
             <script type="text/javascript">
                 $(document).ready(function(){
                     // Accion para seleccionar imagene
-                    $('.img-main').on('click', function(){
+                    $('.videos-main').on('click', function(){
                         var id = $(this).attr('id');
                         var main = $(this);
                         if ($('.btn-action-img[id="' + id + '"]').css('display') == 'none') { 
@@ -268,11 +278,11 @@
                                     "Eliminar": function() {
                                         $( this ).dialog( "close" );
                                         $.ajax({
-                                            url : '<?php echo base_url("multimedia/delete-images") ?>',
+                                            url : '<?php echo base_url("multimedia/videos/delete") ?>',
                                             data: { id : id, name : name },
                                             type: 'POST',
                                             success : function(response){
-                                                window.location = 'multimedia/success-delete-images';
+                                                window.location = '<?php echo base_url('multimedia/videos/success-delete') ?>';
                                             },
                                             error : function(){
                                                 alert('Ha ocurrido un error...');
@@ -287,7 +297,7 @@
                     });
                     // Administrador de archivos
                     $('#btn-file-manager').on('click', function(){
-                        var manager = $('#file-manager');
+                        var manager = $('#file-manager-videos');
                         var button  = $('#btn-file-manager');
                         manager.toggle(); 
                         $('#main-manager').toggle();
@@ -307,14 +317,16 @@
             </script>
         <?php endif; ?>
         <!-- Manager Files Videos End -->
-        <?php if ($this->uri->segment(1) == 'categories' and ($this->uri->segment(2) == 'add' or $this->uri->segment(2) == 'edit')): ?>
+        <?php if (($this->uri->segment(1) == 'categories' and ($this->uri->segment(2) == 'add' or $this->uri->segment(2) == 'edit')) or ($this->uri->segment(1) == 'seals' and ($this->uri->segment(2) == 'add' or $this->uri->segment(2) == 'edit')) or ($this->uri->segment(1) == 'multimedia') ): ?>
             <!-- Administrador de imagenes -->
             <script src="<?php echo base_url('assets/plugins/filterizr/filterizr/jquery.filterizr.min.js') ?>" type="text/javascript"></script>
             <script src="<?php echo base_url('assets/plugins/filterizr/js/controls.js') ?>" type="text/javascript"></script>
             <script type="text/javascript">
                 $(function() {
                     //Initialize filterizr with default options
-                    $('.filtr-container').filterizr();
+                    $('.filtr-container').filterizr({
+                        layout: 'sameSize'
+                    });
                 });
             </script>
         <?php endif; ?>

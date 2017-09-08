@@ -17,27 +17,18 @@
     <div class="box box-warning">
         <div class="box-header">
             <blockquote style="margin-bottom: 0">
-                Agregar Categoría
+                Editar Sellos
             </blockquote>
         </div>
         <!-- /.box-header -->
         <div class="box-body">
-            <?php echo form_open('categories/add') ?>
+            <?php echo form_open('seals/edit/'.$this->uri->segment(3)) ?>
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label for="name_category">Nombre</label>
-                            <input type="text" name="name_category" id="name_category" class="form-control" value="<?php echo set_value('name_category') ?>" required="" />
-                            <?php echo form_error('name_category') ?>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-3">
-                        <div class="form-group">
-                            <label for="id_father_category">Categoría</label>
-                            <?php echo form_dropdown('id_father_category', $category, set_value('id_father_category'), 'class="form-control" required=""'); ?>
-                            <?php echo form_error('id_father_category') ?>
+                            <label for="name_seals">Sello</label>
+                            <input type="text" name="name_seals" id="name_seals" class="form-control" placeholder="Nombre de la categoría" value="<?php echo set_value('name_seals', $information_seals[0]["name_seals"]) ?>" required="" />
+                            <?php echo form_error('name_seals') ?>
                         </div>
                     </div>
                 </div>
@@ -72,7 +63,7 @@
                         <?php foreach ($list_images as $key => $value): ?>
                             <div class="col-xs-6 col-sm-3 col-md-2 filtr-item" data-category="1, 5" data-sort="<?php echo $value['name'] ?>">
                                 <label>
-                                    <?php echo form_checkbox('images[]', $value['file']); ?> 
+                                    <?php echo form_checkbox('images[]', $value['file'], in_array($value['file'], $status)); ?> 
                                     <span style="display: block; margin-top: -22px; margin-left: 1.3em">Seleccionar</span>
                                 </label>
                                 <img class="img img-responsive center-block" src="<?php echo base_url('assets/dist/img/multimedia/images/').$value['file_name'] ?>" />
