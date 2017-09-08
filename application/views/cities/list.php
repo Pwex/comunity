@@ -3,9 +3,9 @@
     <div class="box">
         <div class="box-header">
             <blockquote style="margin-bottom: 0">
-                Listado de Proveedores
+                Listado de Ciudades
                 <span style="float: right;">
-                    <a href="<?php echo base_url('partners/add') ?>" class="btn btn-primary" title="Agregar Proveedor">
+                    <a href="<?php echo base_url('cities/add') ?>" class="btn btn-primary" title="Agregar Ciudad">
                         <i class="fa fa-plus-circle"></i>
                     </a>
                 </span>
@@ -46,7 +46,7 @@
                             </h4>
                             El registro seleccionado ha sido actualizado correctamente.
                         </div>
-                    </dizv>
+                    </div>
                 </div>
             <?php endif ?>
         </div>
@@ -54,32 +54,36 @@
         <div class="box-body">
             <table class="table table-responsive table-bordered" id="table-default">
                 <thead>
-                    <th>Tipo Dcto</th>
-                    <th>Documento</th>
-                    <th>Nombre</th>
-                    <th>Pais</th>
+                    <th>Código</th>
+                    <th>Ciudad</th>
+                    <th>País</th>
+                    <th>Opciones</th>  
                 </thead>
                 <tbody>
                     <?php foreach ($full_listing as $key => $value): ?>
                         <tr>
-                            <td><?php echo $value['document_type'] ?></td>
-                            <td><?php echo $value['id_partner'] ?></td>
-                            <td><?php echo $value['name_partner'] ?></td>
+                            <td><?php echo $value['id_city'] ?></td>
+                            <td><?php echo $value['name_city'] ?></td>
                             <td><?php echo $value['name_country'] ?></td>
                             <td>
-                                <a href="<?php echo base_url('partners/edit/').$value['id_partner'] ?>" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
-                                <button type="button" class="btn btn-danger btn-delete" id="<?php echo $value['id_partner'] ?>"><i class="fa fa-trash"></i></button>
+                                <a href="<?php echo base_url('cities/edit/').$value['id_city'] ?>" class="btn btn-warning">
+                                    <i class="fa fa-pencil"></i>
+                                </a>
+                                <button type="button" class="btn btn-danger btn-delete" id="<?php echo $value['id_city'] ?>">
+                                    <i class="fa fa-trash"></i>
+                                </button>
                             </td>
                         </tr>
                     <?php endforeach ?>
                 </tbody>
             </table>
-    <div id="dialog-confirm" title="¿Desea eliminar el registro?" style="display: none;">
-        <p>
-            <span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>Estas seguro de seguir y ejecutar está acción, recuerda que no tienes ninguna opción para recuperar este registro
-        </p>
-    </div>
-
+            <div id="dialog-confirm" title="¿Desea eliminar el registro?" style="display: none;">
+                <p>
+                    <span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>
+                    Estas seguro de seguir y ejecutar está acción, recuerda que no tienes ninguna opción para recuperar este registro
+                </p>
+            </div>
+        </div>
     </div>
 </section>
 <!-- /.content -->   

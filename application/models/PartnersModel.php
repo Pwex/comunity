@@ -27,38 +27,20 @@ class PartnersModel extends CI_Model {
     # Almacenar la informacion
     public function save($data)
     {
-        $product = array(
-            'id_product' => $data['id_product'],
-            'name_product' => $data['name_product'],
-            'description_product' => $data['description_product'],
-            'id_typeinventory' => $data['id_typeinventory'],
-            'id_category' => $data['id_category']
-        );
-        $this->db->insert('products', $product);
- /*
-        $benefit = array(
-            'id_product' => $data['id_product'],
-            'id_benefit' => $data['id_benefit']
-        );
-        $this->db->insert('products_benefits', $benefit);
-        $component = array(
-            'id_product' => $data['id_product'],
-            'id_component' => $data['id_component']
-        );
-        $this->db->insert('products_benefits', $component);
-*/
+        print_r($data);
+        $this->db->insert('partners', $data);
     }
 
     # Editar la informacion
     public function edit($id, $data)
     {
-        $this->db->where('id_product', $id)->update('products', $data);
+        $this->db->where('id_partner', $id)->update('partners', $data);
     }
 
     # Eliminar usuario
     public function delete($id)
     {
-        $this->db->where('id_product', $id)->delete('products');
+        $this->db->where('id_partner', $id)->delete('partners');
     }
 
 }
