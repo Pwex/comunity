@@ -27,10 +27,17 @@ class UnitsMeasure extends CI_Controller {
 			'box_span' 	=> 'Listado'
 		);
 		$data['option_nav_item'] = array(
+<<<<<<< HEAD:application/controllers/UnitsMeasure.php
 				'unidades medida'	=> array(
 				'icon' 				=> 'fa fa-users',
 				'url' 				=> 'unitsmeasure',
 				'class' 			=> NULL
+=======
+			'categorias'	=> array(
+				'icon' 		=> 'fa fa-th-large',
+				'url' 		=> 'categories',
+				'class' 	=> NULL
+>>>>>>> Jose:application/controllers/Categories.php
 			), 
 			'listado'=> array(
 				'icon' 		=> '',
@@ -50,7 +57,12 @@ class UnitsMeasure extends CI_Controller {
 		# Librerias
 		$this->load->helper('form');
 		$this->load->model('ActivitiesModel', 'activity', TRUE);
+<<<<<<< HEAD:application/controllers/UnitsMeasure.php
 		$this->load->model('UnitsMeasureModel', 'units_measure', TRUE);
+=======
+		$this->load->model('CategoriesModel', 'category', TRUE);
+		$this->load->model('MultimediaModel', 'medios', TRUE);
+>>>>>>> Jose:application/controllers/Categories.php
 	
 		# Notificaciones
 		$data['number_of_pending_notifications'] = $this->activity->number_of_pending_notifications($this->session->userdata['user']['id_user']);
@@ -61,10 +73,17 @@ class UnitsMeasure extends CI_Controller {
 			'box_span' 	=> 'Agregar'
 		);
 		$data['option_nav_item'] = array(
+<<<<<<< HEAD:application/controllers/UnitsMeasure.php
 				'unidades medida'	=> array(
 				'icon' 				=> 'fa fa-users',
 				'url' 				=> 'unitsmeasure',
 				'class' 			=> NULL
+=======
+			'categorias'	=> array(
+				'icon' 		=> 'fa fa-th-large',
+				'url' 		=> 'categories',
+				'class' 	=> NULL
+>>>>>>> Jose:application/controllers/Categories.php
 			), 
 			'agregar' => array(
 				'icon' 		=> '',
@@ -72,6 +91,13 @@ class UnitsMeasure extends CI_Controller {
 				'class' 	=> 'active'
 			)
 		);
+<<<<<<< HEAD:application/controllers/UnitsMeasure.php
+=======
+		# Listado de categorias
+		$data['category'] = $this->category->categories_listing();
+		# Listado completo de imagenes disponibles
+		$data['list_images'] = $this->medios->list_images();
+>>>>>>> Jose:application/controllers/Categories.php
 		# Renderizando la vista | plantilla
 		$this->load->view('template/header', $data);
 		$this->load->view('unitsmeasure/add');
@@ -109,7 +135,13 @@ class UnitsMeasure extends CI_Controller {
 		# Librerias
 		$this->load->helper('form');
 		$this->load->model('ActivitiesModel', 'activity', TRUE);
+<<<<<<< HEAD:application/controllers/UnitsMeasure.php
 		$this->load->model('UnitsMeasureModel', 'units_measure', TRUE);
+=======
+//		$this->load->model('CategoryModel', 'category', TRUE);
+		$this->load->model('CategoriesModel', 'categories', TRUE);
+		$this->load->model('MultimediaModel', 'medios', TRUE);
+>>>>>>> Jose:application/controllers/Categories.php
 		# Notificaciones
 		$data['number_of_pending_notifications'] = $this->activity->number_of_pending_notifications($this->session->userdata['user']['id_user']);
 		$data['notification_details']	 		 = $this->activity->notification_details($this->session->userdata['user']['id_user']);
@@ -119,10 +151,17 @@ class UnitsMeasure extends CI_Controller {
 			'box_span' 	=> 'Editar'
 		);
 		$data['option_nav_item'] = array(
+<<<<<<< HEAD:application/controllers/UnitsMeasure.php
 				'unidades medida'	=> array(
 				'icon' 				=> 'fa fa-users',
 				'url' 				=> 'unitsmeasure',
 				'class' 			=> NULL
+=======
+				'categorias'	=> array(
+				'icon' 			=> 'fa fa-th-large',
+				'url' 			=> 'categories',
+				'class' 		=> NULL
+>>>>>>> Jose:application/controllers/Categories.php
 			), 
 			'editar' => array(
 				'icon' 		=> '',
@@ -130,7 +169,16 @@ class UnitsMeasure extends CI_Controller {
 				'class' 	=> 'active'
 			)
 		);
+<<<<<<< HEAD:application/controllers/UnitsMeasure.php
 		$data['information_units_measure'] = $this->units_measure->information_units_measure($id);
+=======
+		$data['information_category'] = $this->categories->information_category($id);
+		# Listado de categorias
+		$data['category'] = $this->categories->categories_listing();
+		$data['status']   = explode(',', $data['information_category'][0]['images']);
+		# Listado completo de imagenes disponibles
+		$data['list_images'] = $this->medios->list_images();
+>>>>>>> Jose:application/controllers/Categories.php
 		# Renderizando la vista | plantilla
 		$this->load->view('template/header', $data);
 		$this->load->view('unitsmeasure/edit');

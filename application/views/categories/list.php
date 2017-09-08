@@ -55,8 +55,9 @@
             <table class="table table-responsive table-bordered" id="table-default">
                 <thead>
                     <th>Código</th>
-                    <th>Categoria</th>
-                    <th>Categoria Padre</th>
+                    <th>Nombre</th>
+                    <th>Categoría</th>
+                    <th>Imagenes</th>
                     <th>Opciones</th>  
                 </thead>
                 <tbody>
@@ -65,6 +66,7 @@
                             <td><?php echo $value['id_category'] ?></td>
                             <td><?php echo $value['name_category'] ?></td>
                             <td><?php echo $value['name_father'] ?></td>
+                            <td><?php echo $value['images'] ?></td>
                             <td>
                                 <a href="<?php echo base_url('categories/edit/').$value['id_category'] ?>" class="btn btn-warning">
                                     <i class="fa fa-pencil"></i>
