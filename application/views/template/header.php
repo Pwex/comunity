@@ -26,39 +26,29 @@
         <!-- Google Font -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
         <!-- estilo para el data tables encabezado y para el jquery ui para el borrado -->
-        <?php 
-            if ($this->uri->segment(1) == 'users' or $this->uri->segment(1) == 'categories' or $this->uri->segment(1) == 'warehouses' or $this->uri->segment(1) == 'countrys' or $this->uri->segment(1) == 'benefits' or $this->uri->segment(1) == 'typesinventory' or $this->uri->segment(1) == 'components' or $this->uri->segment(1) == 'unitsmeasure' or $this->uri->segment(1) == 'products' or $this->uri->segment(1) == 'partners' or $this->uri->segment(1) == 'document_types' or $this->uri->segment(1) == 'partner_types'): 
-        ?>
+        <?php if ($this->uri->segment(1) == 'users' or $this->uri->segment(1) == 'categories' or $this->uri->segment(1) == 'warehouses' or $this->uri->segment(1) == 'countrys' or $this->uri->segment(1) == 'benefits' or $this->uri->segment(1) == 'typesinventory' or $this->uri->segment(1) == 'components' or $this->uri->segment(1) == 'unitsmeasure' or $this->uri->segment(1) == 'products' or $this->uri->segment(1) == 'partners' or $this->uri->segment(1) == 'document_types' or $this->uri->segment(1) == 'partner_types'): ?>
             <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
             <!-- DataTables -->
             <link rel="stylesheet" href="<?php echo base_url('assets/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css') ?>">
-        <?php endif ?>
+        <?php endif; ?>
         <?php if ($this->uri->segment(1) == 'multimedia'): ?>
             <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
             <!-- Manager file -->
             <link href="<?php echo base_url('assets/bower_components/fileuploader/src/jquery.fileuploader.css') ?>" media="all" rel="stylesheet">
             <link href="<?php echo base_url('assets/bower_components/fileuploader/examples/thumbnails/css/jquery.fileuploader-theme-thumbnails.css') ?>" media="all" rel="stylesheet">
-        <?php endif ?>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> Jose
+        <?php endif; ?>
 
         <?php if ($this->uri->segment(1) == 'categories' and ($this->uri->segment(2) == 'add' or $this->uri->segment(2) == 'edit')): ?>
             <link href="<?php echo base_url('assets/plugins/filterizr/css/index.css') ?>" media="all" rel="stylesheet">
-        <?php endif ?>
+        <?php endif; ?>
 
-<<<<<<< HEAD
-=======
         <?php if ($this->uri->segment(1) == 'products' and ($this->uri->segment(2) == 'add' or $this->uri->segment(2) == 'edit') ): ?>
             <link href="<?php echo base_url('assets/bower_components/select2/dist/css/select2.min.css') ?>" media="all" rel="stylesheet">
             <link href="<?php echo base_url('assets/bower_components/select2/dist/css/select2.min.css') ?>" media="all" rel="stylesheet">
            
-        <?php endif ?>
+        <?php endif; ?>
         <link rel="stylesheet" href="<?php echo base_url('assets/dist/css/AdminLTE.min.css') ?>">
->>>>>>> origin/Edward
-=======
->>>>>>> Jose
+
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
         <!-- Site wrapper -->
