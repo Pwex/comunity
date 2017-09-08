@@ -117,14 +117,6 @@ $route['unitsmeasure/edit/(:num)'] 		= 'UnitsMeasure/edit_validate/$1';
 $route['unitsmeasure/success-edit'] 	= 'UnitsMeasure/full_listing';
 $route['unitsmeasure/delete'] 			= 'UnitsMeasure/delete';
 $route['unitsmeasure/success-delete'] 	= 'UnitsMeasure/full_listing';
-# productos
-$route['products'] 					= 'Products/full_listing';
-$route['products/success'] 			= 'Products/full_listing';
-$route['products/add'] 				= 'Products/add_validate';
-$route['products/edit/(:num)'] 		= 'Products/edit_validate/$1';
-$route['products/success-edit'] 	= 'Products/full_listing';
-$route['products/delete'] 			= 'Products/delete';
-$route['products/success-delete'] 	= 'Products/full_listing';
 # Bodegas
 $route['warehouses'] 				= 'Warehouses/full_listing';
 $route['warehouses/success'] 		= 'Warehouses/full_listing';
@@ -133,6 +125,38 @@ $route['warehouses/edit/(:num)'] 	= 'Warehouses/edit_validate/$1';
 $route['warehouses/success-edit'] 	= 'Warehouses/full_listing';
 $route['warehouses/delete'] 		= 'Warehouses/delete';
 $route['warehouses/success-delete'] = 'Warehouses/full_listing';
+# productos
+$route['products'] 					= 'Products/full_listing';
+$route['products/success'] 			= 'Products/full_listing';
+$route['products/add'] 				= 'Products/add_validate';
+$route['products/edit/(:num)'] 		= 'Products/edit_validate/$1';
+$route['products/success-edit'] 	= 'Products/full_listing';
+$route['products/delete'] 			= 'Products/delete';
+$route['products/success-delete'] 	= 'Products/full_listing';
+# tipos de documento
+$route['document_types'] 				= 'Document_types/full_listing';
+$route['document_types/success'] 		= 'Document_types/full_listing';
+$route['document_types/add'] 			= 'Document_types/add_validate';
+$route['document_types/edit/(:num)'] 	= 'Document_types/edit_validate/$1';
+$route['document_types/success-edit'] 	= 'Document_types/full_listing';
+$route['document_types/delete'] 		= 'Document_types/delete';
+$route['document_types/success-delete'] = 'Document_types/full_listing';
+# tipos de proveedor
+$route['partner_types'] 				= 'Partner_types/full_listing';
+$route['partner_types/success'] 		= 'Partner_types/full_listing';
+$route['partner_types/add'] 			= 'Partner_types/add_validate';
+$route['partner_types/edit/(:num)'] 	= 'Partner_types/edit_validate/$1';
+$route['partner_types/success-edit'] 	= 'Partner_types/full_listing';
+$route['partner_types/delete'] 			= 'Partner_types/delete';
+$route['partner_types/success-delete'] 	= 'Partner_types/full_listing';
+# proveedores
+$route['partners'] 					= 'Partners/full_listing';
+$route['partners/success'] 			= 'Partners/full_listing';
+$route['partners/add'] 				= 'Partners/add_validate';
+$route['partners/edit/(:num)'] 		= 'Partners/edit_validate/$1';
+$route['partners/success-edit'] 	= 'Partners/full_listing';
+$route['partners/delete'] 			= 'Partners/delete';
+$route['partners/success-delete'] 	= 'Partners/full_listing';
 # paises
 $route['countrys'] 					= 'Countrys/full_listing';
 $route['countrys/success'] 			= 'Countrys/full_listing';

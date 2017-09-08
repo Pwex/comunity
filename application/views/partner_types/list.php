@@ -3,9 +3,9 @@
     <div class="box">
         <div class="box-header">
             <blockquote style="margin-bottom: 0">
-                Listado de Productos
+                Listado de Tipos de Proveedor
                 <span style="float: right;">
-                    <a href="<?php echo base_url('products/add') ?>" class="btn btn-primary" title="Agregar Producto">
+                    <a href="<?php echo base_url('partner_types/add') ?>" class="btn btn-primary" title="Agregar Tipo Proveedor">
                         <i class="fa fa-plus-circle"></i>
                     </a>
                 </span>
@@ -55,31 +55,33 @@
             <table class="table table-responsive table-bordered" id="table-default">
                 <thead>
                     <th>Código</th>
-                    <th>Nombre</th>
-                    <th>Categoria</th>
-                    <!-- <th>Cuenta</th>  
-                    <th>Opciones</th>  -->
+                    <th>Tipo Proveedor</th>
+                    <th>Opciones</th>  
                 </thead>
                 <tbody>
                     <?php foreach ($full_listing as $key => $value): ?>
                         <tr>
-                            <td><?php echo $value['id_product'] ?></td>
-                            <td><?php echo $value['name_product'] ?></td>
-                            <td><?php echo $value['name_category'] ?></td>
+                            <td><?php echo $value['id_partner_type'] ?></td>
+                            <td><?php echo $value['partner_type'] ?></td>
                             <td>
-                                <a href="<?php echo base_url('products/edit/').$value['id_product'] ?>" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
-                                <button type="button" class="btn btn-danger btn-delete" id="<?php echo $value['id_product'] ?>"><i class="fa fa-trash"></i></button>
+                                <a href="<?php echo base_url('partner_types/edit/').$value['id_partner_type'] ?>" class="btn btn-warning">
+                                    <i class="fa fa-pencil"></i>
+                                </a>
+                                <button type="button" class="btn btn-danger btn-delete" id="<?php echo $value['id_partner_type'] ?>">
+                                    <i class="fa fa-trash"></i>
+                                </button>
                             </td>
                         </tr>
                     <?php endforeach ?>
                 </tbody>
             </table>
-    <div id="dialog-confirm" title="¿Desea eliminar el registro?" style="display: none;">
-        <p>
-            <span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>Estas seguro de seguir y ejecutar está acción, recuerda que no tienes ninguna opción para recuperar este registro
-        </p>
-    </div>
-
+            <div id="dialog-confirm" title="¿Desea eliminar el registro?" style="display: none;">
+                <p>
+                    <span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>
+                    Estas seguro de seguir y ejecutar está acción, recuerda que no tienes ninguna opción para recuperar este registro
+                </p>
+            </div>
+        </div>
     </div>
 </section>
 <!-- /.content -->   

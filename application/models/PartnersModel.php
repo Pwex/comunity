@@ -1,5 +1,5 @@
 <?php 
-class ProductsModel extends CI_Model {
+class PartnersModel extends CI_Model {
 
     public function __construct()
     {
@@ -10,17 +10,18 @@ class ProductsModel extends CI_Model {
     public function full_listing()
     {
         return $this->db
-        ->from('products p')
-        ->select('p.id_product, p.name_product, p.description_product,c.name_category')
-        ->join('categories c', 'c.id_category = p.id_category', 'left')
+        ->from('partners p')
+        ->select('p.id_partner, p.name_partner, p.address_partner, p.phone_partner, p.web_partner, p.web_partner, p.email_partner, p.name_contact_partner,p.enabled_partner,p.loan_quota_partner, p.term_days_partner, d.document_type, c.name_country')
+        ->join('document_types d', 'd.id_document_type = p.id_document_type', 'left')
+        ->join('countrys c', 'c.id_country = p.id_country', 'left')
         ->get()
         ->result_array();
     }
 
     # Informacion del usuario
-    public function information_product($id)
+    public function information_partner($id)
     {
-        return $this->db->where('id_product', $id)->get('products')->result_array();
+        return $this->db->where('id_partner', $id)->get('partners')->result_array();
     }
 
     # Almacenar la informacion

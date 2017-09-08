@@ -8,16 +8,14 @@
         <div class="box-body">
             <?php echo form_open('products/add') ?>
                 <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-sm-3">
                         <div class="form-group">
                             <label for="id_product">Código</label>
                             <input type="text" name="id_product" id="id_product" class="form-control" placeholder="Ingresar código de producto" value="<?php echo set_value('id_product') ?>" required="" />
                             <?php echo form_error('id_product') ?>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-sm-9">
                         <div class="form-group">
                             <label for="name_product">Producto</label>
                             <input type="text" name="name_product" id="name_product" class="form-control" placeholder="Ingresar nombre de producto" value="<?php echo set_value('name_product') ?>" required="" />
@@ -35,7 +33,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-sm-3">
                         <div class="form-group">
                             <label for="ean13_product">EAN 13</label>
                             <input type="text" name="ean13_product" id="ean13_product" class="form-control" placeholder="Ingresar EAN13 de producto" value="<?php echo set_value('ean13_product') ?>" required="" />
@@ -51,8 +49,6 @@
                             <?php echo form_error('id_typeinventory') ?>
                         </div>
                     </div>
-                </div>
-                <div class="row">
                     <div class="col-sm-3">
                         <div class="form-group">
                             <label for="id_category">Categoría</label>
@@ -60,7 +56,7 @@
                             <?php echo form_error('id_category') ?>
                         </div>
                     </div>
-                </div>
+                 </div>
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group">
@@ -79,7 +75,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
+               <div class="row">
                     <div class="col-sm-4">
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary">Enviar</button>

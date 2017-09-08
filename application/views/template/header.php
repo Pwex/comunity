@@ -27,7 +27,7 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
         <!-- estilo para el data tables encabezado y para el jquery ui para el borrado -->
         <?php 
-            if ($this->uri->segment(1) == 'users' or $this->uri->segment(1) == 'categories' or $this->uri->segment(1) == 'warehouses' or $this->uri->segment(1) == 'countrys' or $this->uri->segment(1) == 'benefits' or $this->uri->segment(1) == 'typesinventory' or $this->uri->segment(1) == 'components' or $this->uri->segment(1) == 'unitsmeasure' or $this->uri->segment(1) == 'products'): 
+            if ($this->uri->segment(1) == 'users' or $this->uri->segment(1) == 'categories' or $this->uri->segment(1) == 'warehouses' or $this->uri->segment(1) == 'countrys' or $this->uri->segment(1) == 'benefits' or $this->uri->segment(1) == 'typesinventory' or $this->uri->segment(1) == 'components' or $this->uri->segment(1) == 'unitsmeasure' or $this->uri->segment(1) == 'products' or $this->uri->segment(1) == 'partners' or $this->uri->segment(1) == 'document_types' or $this->uri->segment(1) == 'partner_types'): 
         ?>
             <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
             <!-- DataTables -->
@@ -204,49 +204,91 @@
                                 </span>
                             </a>
                             <ul class="treeview-menu">
-                                <li>
-                                    <a href="<?php echo base_url('typesinventory') ?>">
-                                        <i class="fa fa-circle-o"></i> Tipos Inventario
+                                <li class="treeview">
+                                    <a href="#"><i class="fa fa-circle-o"></i> Global
+                                        <span class="pull-right-container">
+                                            <i class="fa fa-angle-left pull-right"></i>
+                                        </span>
                                     </a>
-                                </li>
-                                <li>
-                                    <a href="<?php echo base_url('categories') ?>">
-                                        <i class="fa fa-circle-o"></i> Categorias
+                                    <ul class="treeview-menu">
+                                        <li>
+                                            <a href="<?php echo base_url('countrys') ?>">
+                                                <i class="fa fa-circle-o"></i> Paises
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="<?php echo base_url('warehouses') ?>">
+                                                <i class="fa fa-circle-o"></i> Bodegas
+                                            </a>
+                                        </li>
+                                    </ul>   <!-- cierra lista global -->
+                                </li> 
+                                <li class="treeview">
+                                    <a href="#"><i class="fa fa-circle-o"></i> Productos
+                                        <span class="pull-right-container">
+                                            <i class="fa fa-angle-left pull-right"></i>
+                                        </span>
                                     </a>
-                                </li>
-                                <li>
-                                    <a href="<?php echo base_url('components') ?>">
-                                        <i class="fa fa-circle-o"></i> Componentes
+                                    <ul class="treeview-menu">
+                                        <li>
+                                            <a href="<?php echo base_url('typesinventory') ?>">
+                                                <i class="fa fa-circle-o"></i> Tipos Inventario
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="<?php echo base_url('categories') ?>">
+                                                <i class="fa fa-circle-o"></i> Categorias
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="<?php echo base_url('components') ?>">
+                                                <i class="fa fa-circle-o"></i> Componentes
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="<?php echo base_url('unitsmeasure') ?>">
+                                                <i class="fa fa-circle-o"></i> Unidades Medida
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="<?php echo base_url('benefits') ?>">
+                                                <i class="fa fa-circle-o"></i> Beneficios
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="<?php echo base_url('products') ?>">
+                                                <i class="fa fa-circle-o"></i> Productos
+                                            </a>
+                                        </li>
+                                    </ul>   <!-- cierra lista menu de productos -->
+                                </li> 
+                                <li class="treeview">
+                                    <a href="#"><i class="fa fa-circle-o"></i> Proveedores
+                                        <span class="pull-right-container">
+                                            <i class="fa fa-angle-left pull-right"></i>
+                                        </span>
                                     </a>
-                                </li>
-                                <li>
-                                    <a href="<?php echo base_url('unitsmeasure') ?>">
-                                        <i class="fa fa-circle-o"></i> Unidades Medida
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="<?php echo base_url('benefits') ?>">
-                                        <i class="fa fa-circle-o"></i> Beneficios
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="<?php echo base_url('warehouses') ?>">
-                                        <i class="fa fa-circle-o"></i> Bodegas
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="<?php echo base_url('countrys') ?>">
-                                        <i class="fa fa-circle-o"></i> Paises
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="<?php echo base_url('products') ?>">
-                                        <i class="fa fa-circle-o"></i> Productos
-                                    </a>
-                                </li>
+                                    <ul class="treeview-menu">
+                                        <li>
+                                            <a href="<?php echo base_url('document_types') ?>">
+                                                <i class="fa fa-circle-o"></i> Tipos Documento
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="<?php echo base_url('partner_types') ?>">
+                                                <i class="fa fa-circle-o"></i> Tipos Proveedor
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="<?php echo base_url('partners') ?>">
+                                                <i class="fa fa-circle-o"></i> Proveedores
+                                            </a>
+                                        </li>
+                                    </ul>   <!-- cierra lista menu proveedores -->
+                                </li> 
                             </ul>
                         </li>
+
                         <li class="treeview">
                             <a href="#">
                                 <i class="fa fa-shopping-cart"></i> <span>eCommerce</span>

@@ -39,5 +39,16 @@ class CountrysModel extends CI_Model {
     {
         $this->db->where('id_country', $id)->delete('countrys');
     }
+    # Listado
+    public function countrys_listing()
+    {
+        $countrys = array();
+        foreach ($this->db->select('id_country, name_country')->order_by('name_country', 'ASC')->get('countrys')->result_array() as $key => $value) {
+            $countrys[$value['id_country']] = $value['name_country'];
+        }
+        $countrys[0] = '';
+        asort($countrys);
+        return $countrys;
+    }
 
 }
