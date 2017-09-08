@@ -1,39 +1,25 @@
 <style type="text/css">
     .img {
         cursor: pointer;
-    }
-    .img-responsive {
-        height: 15.35em;
+        height: 14.4em;
+        width: 14.4em;
     }
     .btn-action-img {
         position: absolute;
         display: none;
     }
-        .img-main {
-            border: 3px solid #f1f1f1;
-            border-radius: 3px;
-            height: 15.8em;
+        .container-details:hover{
+            background-color: #f9f9f9;
         }
-        .container-details {
-            border: 3px solid #f1f1f1;
-            background-color: rgba(96, 125, 139, 0.09);
-            padding: 10px 8px;
-            margin-bottom: 0.7em;
-        }
-            .container-details:hover{
-                background-color: #f9f9f9;
-            }
     .btn-action-img button {
         border-radius: 0;
         border: 0;
     }
-    @media (max-width: 991px) {
-        .img-main {
-            height: 15.8em;
-        }
-        .img-responsive {
-            height: 15.35em;
-        }
+    .filtr-container {
+        margin-left: 3px;
+    }
+    .main-manager {
+        width: 99%;
     }
 </style>
 <!-- Main content -->
@@ -79,7 +65,12 @@
     <?php endif ?>
     <div class="box box-warning">
         <div class="box-header">
-            <h3 class="box-title"><button title="Agregar Archivos" class="btn btn-primary btn-md" id="btn-file-manager"><i class="fa fa-plus-circle" id="btn-icon"></i></button> | Vista previa de archivos</h3>
+            <blockquote style="margin-bottom: 0">
+                Archivos de Imagenes
+                <span style="float: right;">
+                    <button title="Agregar Archivos" class="btn btn-primary btn-md" id="btn-file-manager"><i class="fa fa-plus-circle" id="btn-icon"></i></button>
+                </span>
+            </blockquote>
         </div>
         <!-- /.box-header -->
         <div class="box-body">
@@ -97,20 +88,47 @@
                 </div>
             </div>
             <div id="main-manager">
-                <?php foreach ($list_images as $key => $value): ?>
-                    <div class="col-md-4 col-sm-6 col-xs-12">
-                        <div class="img-main text-center" id="<?php echo $value['file'] ?>">
-                            <div class="btn-action-img" id="<?php echo $value['file'] ?>" value="<?php echo $value['file_name'] ?>">
-                                <button type="button" class="btn btn-danger btn-delete-medios"><i class="fa fa-trash"></i></button>
-                            </div>
-                            <img src="<?php echo base_url('assets/dist/img/multimedia/images/').$value['file_name'] ?>" class="img img-responsive center-block" value="<?php echo $value['file'] ?>" />
+                <!-- Shuffle & Sort Controls -->
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <ul class="sortandshuffle" style="margin-left: -40px">
+                                <!-- Basic shuffle control -->
+                                <label for="filtr-search">Buscar</label>:<br />
+                                <input type="text" class="filtr-search" name="filtr-search" id="filtr-search" data-search>
+                                <select data-sortOrder class="filtr-search" style="padding: 0.4em; height: 34px">
+                                    <option value="domIndex">
+                                        Posición
+                                    </option>
+                                    <option value="sortData">
+                                        Descripción
+                                    </option>
+                                </select>
+                                <!-- Basic sort controls consisting of asc/desc button and a select -->
+                                <li style="text-align: center; padding: 6px 15px; background-color: #009688;" class="sort-btn active" data-sortAsc>Asc</li>
+                                <li style="text-align: center; padding: 6px 15px; background-color: #009688;" class="sort-btn" data-sortDesc>Desc</li>
+                                <li style="text-align: center; padding: 6px 15px; background-color: #009688;" class="shuffle-btn" data-shuffle>Aleatorio</li>
+                            </ul>
                         </div>
-                        <p class="container-details">
-                            <strong style="font-size: 1em;"><?php echo date('d-m-Y H:i:s', strtotime($value['date']))  ?></strong> <span style="float: right;" class="badge"><span><?php echo $value['size'] ?></span> | <?php echo $value['extension'] ?></span><br />
-                            <span style="font-size: 1.2em;"><?php echo ucwords($value['name'])  ?></span>
-                        </p>
-                    </div> 
-                <?php endforeach ?>
+                    </div>
+                </div>
+                <div class="row">
+                    <!-- This is the set up of a basic gallery, your items must have the categories they belong to in a data-category
+                        attribute, which starts from the value 1 and goes up from there -->
+                    <div class="filtr-container">
+                        <?php foreach ($list_images as $key => $value): ?>
+                            <div class="col-xs-6 col-sm-3 col-md-2 filtr-item" data-category="1, 5" data-sort="<?php echo $value['name'] ?>">
+                                <div class="btn-action-img" id="<?php echo $value['file'] ?>" value="<?php echo $value['file_name'] ?>">
+                                    <button type="button" class="btn btn-danger btn-delete-medios"><i class="fa fa-trash"></i></button>
+                                </div>
+                                <div class="img-main" id="<?php echo $value['file'] ?>">
+                                    <img class="img img-responsive center-block" src="<?php echo base_url('assets/dist/img/multimedia/images/').$value['file_name'] ?>" />
+                                    <span class="item-desc"><?php echo $value['name'] ?></span>
+                                </div>
+                            </div>
+                        <?php endforeach ?>
+                    </div>
+                </div>
             </div>
         </div>        
     </div>

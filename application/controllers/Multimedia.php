@@ -56,6 +56,16 @@ class Multimedia extends CI_Controller {
 		$this->delete_medio_imagen($this->input->post('name'));
 	}
 
+	# Eliminar medios de la base de datos y directorio
+	public function delete_videos(){
+		# Cargar modelo de base de datos
+		$this->load->model('MultimediaModel', 'medios', TRUE);
+		# Enviar peticion de eliminación
+		$this->medios->delete($this->input->post('id'));
+		# Buscar el archivo en el directorio y eliminarlos
+		$this->delete_medio_videos($this->input->post('name'));
+	}	
+
 	# Subir las imagenes
 	public function add_file_manager_images()
 	{
@@ -101,7 +111,7 @@ class Multimedia extends CI_Controller {
 
 		$fileList = $FileUploader->getFileList();
 		$this->medios->save($fileList);
-		redirect('multimedia/success');
+		redirect('multimedia/success-images');
 	}
 
 	# Funcion para eliminar medios
@@ -110,6 +120,60 @@ class Multimedia extends CI_Controller {
 	   	unlink($route_file);
 	}
 
+	# Funcion para eliminar medios
+	public function delete_medio_videos($file){
+		$route_file = 'assets/dist/img/multimedia/videos/'.$file;
+	   	unlink($route_file);
+	}
+
+
+	# Subir las imagenes
+	public function add_file_manager_videos()
+	{
+		if (empty($this->input->post('fileuploader-list-files'))) {
+			redirect('multimedia/videos/error-select');
+		}
+		# Cargar modelo de base de datos y Libreria
+		$this->load->model('MultimediaModel', 'medios', TRUE);
+		// initialize FileUploader
+	    $FileUploader = new FileUploader('files', array(
+	        'limit' => null,
+	        'maxSize' => null,
+			'fileMaxSize' => null,
+	        'extensions' => null,
+	        'required' => false,
+	        'uploadDir' => 'assets/dist/img/multimedia/videos/',
+	        'title' => 'name',
+			'replace' => false,
+	        'listInput' => true,
+	        'files' => null
+	    ));
+		
+		// call to upload the files
+	    $data = $FileUploader->upload();
+
+	    // if uploaded and success
+	    if($data['isSuccess'] && count($data['files']) > 0) {
+	        // get uploaded files
+	        $uploadedFiles = $data['files'];
+	    }
+	    // if warnings
+		if($data['hasWarnings']) {
+	        $warnings = $data['warnings'];
+	        
+	   		echo '<pre>';
+	        print_r($warnings);
+			echo '</pre>';
+	    }
+		
+		foreach($FileUploader->getRemovedFiles('file') as $key=>$value) {
+			unlink('../uploads/' . $value['name']);
+		}
+
+		$fileList = $FileUploader->getFileList();
+		$this->medios->save($fileList);
+		redirect('multimedia/videos/success');
+	}
 
   	# Manager files videos
 	public function files_videos()
@@ -129,7 +193,7 @@ class Multimedia extends CI_Controller {
 		$data['option_nav_item'] = array(
 			'multimedia'	=> array(
 				'icon' 		=> 'fa fa-film',
-				'url' 		=> 'multimedia',
+				'url' 		=> 'multimedia/videos',
 				'class' 	=> NULL
 			), 
 			'archivos' 		=> array(

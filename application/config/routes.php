@@ -77,6 +77,7 @@ $route['users/success-edit'] 	= 'Users/full_listing';
 
 $route['users/delete'] 			= 'Users/delete';
 $route['users/success-delete'] 	= 'Users/full_listing';
+
 # Categorias
 $route['categories'] 				= 'Categories/full_listing';
 $route['categories/success'] 		= 'Categories/full_listing';
@@ -85,6 +86,16 @@ $route['categories/edit/(:num)'] 	= 'Categories/edit_validate/$1';
 $route['categories/success-edit'] 	= 'Categories/full_listing';
 $route['categories/delete'] 		= 'Categories/delete';
 $route['categories/success-delete'] = 'Categories/full_listing';
+
+# Sellos
+$route['seals'] 				= 'seals/full_listing';
+$route['seals/success'] 		= 'seals/full_listing';
+$route['seals/add'] 			= 'seals/add_validate';
+$route['seals/edit/(:num)'] 	= 'seals/edit_validate/$1';
+$route['seals/success-edit'] 	= 'seals/full_listing';
+$route['seals/delete'] 			= 'seals/delete';
+$route['seals/success-delete'] 	= 'seals/full_listing';
+
 # beneficios
 $route['benefits'] 					= 'Benefits/full_listing';
 $route['benefits/success'] 			= 'Benefits/full_listing';
@@ -179,12 +190,12 @@ $route['multimedia/error-select-images'] 	 = 'Multimedia/files_images';
 $route['multimedia/delete-images']	 		 = 'Multimedia/delete_images';
 $route['multimedia/add-file-manager-images'] = 'Multimedia/add_file_manager_images';
 
-$route['multimedia/videos'] 				 		= 'Multimedia/files_videos';
-$route['multimedia/videos/success-images']   		= 'Multimedia/files_videos';
-$route['multimedia/videos/success-delete-images']	= 'Multimedia/files_videos';
-$route['multimedia/videos/error-select-images'] 	= 'Multimedia/files_videos';
-$route['multimedia/videos/delete-images']	 		= 'Multimedia/delete_videos';
-$route['multimedia/videos/add-file-manager-images'] = 'Multimedia/add_file_manager_videos';
+$route['multimedia/videos'] 				 = 'Multimedia/files_videos';
+$route['multimedia/videos/success']   		 = 'Multimedia/files_videos';
+$route['multimedia/videos/success-delete']	 = 'Multimedia/files_videos';
+$route['multimedia/videos/error-select'] 	 = 'Multimedia/files_videos';
+$route['multimedia/videos/delete']	 		 = 'Multimedia/delete_videos';
+$route['multimedia/videos/add-file-manager'] = 'Multimedia/add_file_manager_videos';
 
 # eCommerce
 $route['shop-layout'] 			= 'ShopLayout/shop_layout_validate';
