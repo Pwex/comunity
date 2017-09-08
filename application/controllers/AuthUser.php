@@ -142,7 +142,7 @@ class AuthUser extends CI_Controller {
 					$this->load->library(array('managerauth', 'session'));
 				# Validacion del acceso al sistema y carga de la sesion de usuario
 					# Creacion de la sesión de usuario
-					$this->session->set_userdata($this->managerauth->validation($this->input->post()));
+					$this->session->set_userdata($this->managerauth->validation($this->input->post(), $this->input->ip_address() ));
 					# Redireccionar a la pagina de dashboard
 					redirect('escritorio');
 			break;

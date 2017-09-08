@@ -54,9 +54,9 @@ class AuthUserModel extends CI_Model {
     }
 
     # Verificar si el usuario no ha iniciado sesion en otro dispositivo de forma simultanea
-    public function validate_session_other_device($user)
+    public function validate_session_other_device($user, $ip)
     {
-    	if ($this->db->from('users')->where(array('email' => $user, 'status' => 0, 'ip' => ''))->count_all_results() > 0) {
+    	if ($this->db->from('users')->where(array('email' => $user, 'status' => 0))->or_where(array('email' => $user, 'ip' => $ip, 'status' => 1))->count_all_results() > 0) {
     		return TRUE;
     	} else {
     		return FALSE;

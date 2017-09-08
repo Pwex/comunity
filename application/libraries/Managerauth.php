@@ -27,7 +27,7 @@ class Managerauth {
     }
 
     # Validacion de acceso de usuarios
-    public function validation($data)
+    public function validation($data, $ip)
     {
     	# Carga del modelo y librerias
     	$this->CI->load->model('AuthUserModel', 'auth', TRUE);
@@ -38,7 +38,7 @@ class Managerauth {
 				break;
 				case 1:
 					# Verificar si no existe una sesion abierta previamente Y si existe cancelamos el paso y se envia una notificacion al usuario
-			    	if ($this->CI->auth->validate_session_other_device($data['email']) == FALSE) {
+			    	if ($this->CI->auth->validate_session_other_device($data['email'], $ip) == FALSE) {
 			    		# Cargar Libreria Manager Auth | User Agent
 						$this->CI->load->library('session');
 						# Eliminar sesion
