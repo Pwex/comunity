@@ -32,7 +32,11 @@
         <!-- DataTables -->
         <!-- <?php //if ($this->uri->segment(1) == 'users'): ?> -->
         <?php 
+<<<<<<< HEAD
             if (($this->uri->segment(1) == 'users') || ($this->uri->segment(1) == 'categories' and $this->uri->segment(2) != 'add') || ($this->uri->segment(1) == 'warehouses') || ($this->uri->segment(1) == 'countrys') || ($this->uri->segment(1) == 'benefits') || ($this->uri->segment(1) == 'typesinventory') || ($this->uri->segment(1) == 'components')): 
+=======
+            if (($this->uri->segment(1) == 'users') || ($this->uri->segment(1) == 'categories') || ($this->uri->segment(1) == 'warehouses') || ($this->uri->segment(1) == 'countrys') || ($this->uri->segment(1) == 'benefits') || ($this->uri->segment(1) == 'typesinventory') || ($this->uri->segment(1) == 'components') || ($this->uri->segment(1) == 'unitsmeasure') || ($this->uri->segment(1) == 'products')): 
+>>>>>>> origin/Edward
         ?>
             <script src="<?php echo base_url('assets/bower_components/datatables.net/js/jquery.dataTables.min.js') ?>"></script>
             <script src="<?php echo base_url('assets/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') ?>"></script>       
@@ -93,10 +97,18 @@
                 {
                     $url = "components";
                 }
+                elseif ($this->uri->segment(1) == 'unitsmeasure')
+                {
+                    $url = "unitsmeasure";
+                }
 
                 elseif ($this->uri->segment(1) == 'typesinventory')
                 {
                     $url = "typesinventory";
+                }
+                elseif ($this->uri->segment(1) == 'products')
+                {
+                    $url = "products";
                 }
             ?>
                 $(document).ready(function()
@@ -284,6 +296,7 @@
             </script>
         <?php endif ?>
         <!-- Manager Files Videos End -->
+<<<<<<< HEAD
 
         <?php if ($this->uri->segment(1) == 'categories' and ($this->uri->segment(2) == 'add' or $this->uri->segment(2) == 'edit')): ?>
             <!-- Administrador de imagenes -->
@@ -296,6 +309,23 @@
                 });
             </script>
         <?php endif ?>
+=======
+        <!-- Insert products -->
+        <?php 
+            if ($this->uri->segment(1) == 'products' and ($this->uri->segment(2) == 'add' or $this->uri->segment(2) == 'edit') ): 
+        ?>
+            <script src="<?php echo base_url('assets/bower_components/select2/dist/js/select2.full.min.js') ?>"></script>
+            <script>
+                $(function () {
+                //Initialize Select2 Elements
+                $('.select2').select2()
+                })
+            </script>
+
+        <?php 
+            endif 
+        ?>
+>>>>>>> origin/Edward
 
     </body>
 </html>

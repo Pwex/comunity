@@ -39,5 +39,14 @@ class TypesInventoryModel extends CI_Model {
     {
         $this->db->where('id_typeinventory', $id)->delete('typesinventory');
     }
-
+    public function typesinv_listing()
+    {
+        $typesinventory = array();
+        foreach ($this->db->select('id_typeinventory, type_inventory')->order_by('type_inventory', 'ASC')->get('typesinventory')->result_array() as $key => $value) {
+            $typesinventory[$value['id_typeinventory']] = $value['type_inventory'];
+        }
+        $typesinventory[0] = '';
+        asort($typesinventory);
+        return $typesinventory;
+    }
 }

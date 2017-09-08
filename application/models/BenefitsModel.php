@@ -39,5 +39,13 @@ class BenefitsModel extends CI_Model {
     {
         $this->db->where('id_benefit', $id)->delete('benefits');
     }
-
+    # Lista de beneficios
+    public function benefits_listing()
+    {
+        $benefits = array();
+        foreach ($this->db->select('id_benefit, name_benefit')->order_by('name_benefit', 'ASC')->get('benefits')->result_array() as $key => $value) {
+            $benefits[$value['id_benefit']] = $value['name_benefit'];
+        }
+        return $benefits;
+    }
 }
