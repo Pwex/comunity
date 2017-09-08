@@ -128,8 +128,12 @@ class Partners extends CI_Controller {
 		# Librerias
 		$this->load->helper('form');
 		$this->load->model('ActivitiesModel', 'activity', TRUE);
-		//$this->load->model('CountryModel', 'country', TRUE);
 		$this->load->model('PartnersModel', 'partners', TRUE);
+		# tablas relacionadas
+		$this->load->model('DocumentTypesModel', 'document_types', TRUE);
+		$this->load->model('PartnerTypesModel', 'partner_types', TRUE);
+		$this->load->model('CountrysModel', 'countrys', TRUE);
+		$this->load->model('CitiesModel', 'cities', TRUE);
 		# Notificaciones
 		$data['number_of_pending_notifications'] = $this->activity->number_of_pending_notifications($this->session->userdata['user']['id_user']);
 		$data['notification_details']	 		 = $this->activity->notification_details($this->session->userdata['user']['id_user']);
@@ -155,7 +159,17 @@ class Partners extends CI_Controller {
 		# Tipos de cuentas | Acceso
 		//$data['type_of_access'] = array('Administrador' => 'Administrador', 'Coach' => 'Coach', 'Proveedor' => 'Proveedor');
 		# Buscar informacion del usuario
-		$data['product'] = $this->partners->information_product($id);
+		# Listado de tipos de documento
+		$data['document_types'] = $this->document_types->document_types_listing();
+		# Listado de tipos de proveedor
+		$data['partner_types'] = $this->partner_types->partner_type_listing();
+		# Listado de paises
+		$data['countrys'] = $this->countrys->countrys_listing();
+		# Listado de ciudades
+		$data['information_cities'] = $this->cities->information_cities($id);
+		$data['cities'] = $this->cities->cities_listing();
+
+		$data['partner'] = $this->partners->information_partner($id);
 		# Renderizando la vista | plantilla
 		$this->load->view('template/header', $data);
 		$this->load->view('partners/edit');
