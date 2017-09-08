@@ -33,10 +33,14 @@
         <!-- <?php //if ($this->uri->segment(1) == 'users'): ?> -->
         <?php 
 <<<<<<< HEAD
+<<<<<<< HEAD
             if (($this->uri->segment(1) == 'users') || ($this->uri->segment(1) == 'categories' and $this->uri->segment(2) != 'add') || ($this->uri->segment(1) == 'warehouses') || ($this->uri->segment(1) == 'countrys') || ($this->uri->segment(1) == 'benefits') || ($this->uri->segment(1) == 'typesinventory') || ($this->uri->segment(1) == 'components')): 
 =======
             if (($this->uri->segment(1) == 'users') || ($this->uri->segment(1) == 'categories') || ($this->uri->segment(1) == 'warehouses') || ($this->uri->segment(1) == 'countrys') || ($this->uri->segment(1) == 'benefits') || ($this->uri->segment(1) == 'typesinventory') || ($this->uri->segment(1) == 'components') || ($this->uri->segment(1) == 'unitsmeasure') || ($this->uri->segment(1) == 'products')): 
 >>>>>>> origin/Edward
+=======
+            if (($this->uri->segment(1) == 'users') || ($this->uri->segment(1) == 'categories' and $this->uri->segment(2) != 'add') || ($this->uri->segment(1) == 'warehouses') || ($this->uri->segment(1) == 'countrys') || ($this->uri->segment(1) == 'benefits') || ($this->uri->segment(1) == 'typesinventory') || ($this->uri->segment(1) == 'components')): 
+>>>>>>> Jose
         ?>
             <script src="<?php echo base_url('assets/bower_components/datatables.net/js/jquery.dataTables.min.js') ?>"></script>
             <script src="<?php echo base_url('assets/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') ?>"></script>       
@@ -297,6 +301,9 @@
         <?php endif ?>
         <!-- Manager Files Videos End -->
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Jose
 
         <?php if ($this->uri->segment(1) == 'categories' and ($this->uri->segment(2) == 'add' or $this->uri->segment(2) == 'edit')): ?>
             <!-- Administrador de imagenes -->
@@ -309,6 +316,7 @@
                 });
             </script>
         <?php endif ?>
+<<<<<<< HEAD
 =======
         <!-- Insert products -->
         <?php 
@@ -326,6 +334,8 @@
             endif 
         ?>
 >>>>>>> origin/Edward
+=======
+>>>>>>> Jose
 
     </body>
 </html>

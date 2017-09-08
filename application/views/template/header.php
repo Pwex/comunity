@@ -40,11 +40,15 @@
             <link href="<?php echo base_url('assets/bower_components/fileuploader/examples/thumbnails/css/jquery.fileuploader-theme-thumbnails.css') ?>" media="all" rel="stylesheet">
         <?php endif ?>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Jose
 
         <?php if ($this->uri->segment(1) == 'categories' and ($this->uri->segment(2) == 'add' or $this->uri->segment(2) == 'edit')): ?>
             <link href="<?php echo base_url('assets/plugins/filterizr/css/index.css') ?>" media="all" rel="stylesheet">
         <?php endif ?>
 
+<<<<<<< HEAD
 =======
         <?php if ($this->uri->segment(1) == 'products' and ($this->uri->segment(2) == 'add' or $this->uri->segment(2) == 'edit') ): ?>
             <link href="<?php echo base_url('assets/bower_components/select2/dist/css/select2.min.css') ?>" media="all" rel="stylesheet">
@@ -53,6 +57,8 @@
         <?php endif ?>
         <link rel="stylesheet" href="<?php echo base_url('assets/dist/css/AdminLTE.min.css') ?>">
 >>>>>>> origin/Edward
+=======
+>>>>>>> Jose
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
         <!-- Site wrapper -->
