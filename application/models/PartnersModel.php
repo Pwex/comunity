@@ -6,7 +6,7 @@ class PartnersModel extends CI_Model {
         parent::__construct();
     }
 
-    # Listado completo de usuarios
+    # Listado completo 
     public function full_listing()
     {
         return $this->db
