@@ -15,7 +15,14 @@
                             <?php echo form_error('id_document_type') ?>
                         </div>
                     </div>
-                    <div class="col-sm-9">
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label for="id_partner">Número Documento</label>
+                            <input type="text" name="id_partner" id="id_document" class="form-control" placeholder="Ingresa número documento" value="<?php echo set_value('id_partner') ?>" required="" />
+                            <?php echo form_error('id_partner') ?>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
                         <div class="form-group">
                             <label for="name_partner">Nombre Proveedor</label>
                             <input type="text" name="name_partner" id="name_partner" class="form-control" placeholder="Ingresa nombre de proveedor" value="<?php echo set_value('name_partner') ?>" required="" />
@@ -34,7 +41,7 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="phone_partner">Teléfono</label>
-                            <input type="text" name="phone_partner" id="phone_partner" class="form-control" placeholder="Ingresar Teléfono del proveedor" value="<?php echo set_value('phone_partner') ?>" />
+                            <input type="text" name="phone_partner" id="phone_partner" class="form-control" placeholder="Ingresa teléfono del proveedor" value="<?php echo set_value('phone_partner') ?>" />
                             <?php echo form_error('phone_partner') ?>
                         </div>
                     </div>
@@ -66,7 +73,7 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="position_contact">Cargo del Contacto</label>
-                            <input type="text" name="position_contact" id="position_contact" class="form-control" placeholder="Ingresa Cargo del Contacto" value="<?php echo set_value('position_contact') ?>" required="" />
+                            <input type="text" name="position_contact" id="position_contact" class="form-control" placeholder="Ingresa Cargo del Contacto" value="<?php echo set_value('position_contact') ?>" />
                             <?php echo form_error('position_contact') ?>
                         </div>
                     </div>
@@ -90,8 +97,8 @@
                     <div class="col-sm-3">
                         <div class="form-group">
                             <label for="id_country">Ciudad</label>
-                            <?php echo form_dropdown('id_country', $category, set_value('id_country'), 'class="form-control" required=""'); ?>
-                            <?php echo form_error('id_country') ?>
+                            <?php echo form_dropdown('id_city', $cities, set_value('id_city'), 'class="form-control" required=""'); ?>
+                            <?php echo form_error('id_city') ?>
                         </div>
                     </div>
 
@@ -110,8 +117,4 @@
         </div>
     </div>
 </section>
-
-
-
-
 <!-- /.content -->   

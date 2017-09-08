@@ -44,7 +44,7 @@ class Partners extends CI_Controller {
 		$this->load->view('template/footer');
 	}
 
-	# Formulario Principal para Agregar usuarios
+	# Formulario Principal 
 	public function add()
 	{
 		# Librerias
@@ -54,12 +54,7 @@ class Partners extends CI_Controller {
 		$this->load->model('DocumentTypesModel', 'document_types', TRUE);
 		$this->load->model('PartnerTypesModel', 'partner_types', TRUE);
 		$this->load->model('CountrysModel', 'countrys', TRUE);
-
-
-		$this->load->model('CategoriesModel', 'category', TRUE);
-		$this->load->model('TypesInventoryModel', 'typesinventory', TRUE);
-		$this->load->model('BenefitsModel', 'benefits', TRUE);
-		$this->load->model('ComponentsModel', 'components', TRUE);
+		$this->load->model('CitiesModel', 'cities', TRUE);
 		# Notificaciones
 		$data['number_of_pending_notifications'] = $this->activity->number_of_pending_notifications($this->session->userdata['user']['id_user']);
 		$data['notification_details']	 		 = $this->activity->notification_details($this->session->userdata['user']['id_user']);
@@ -86,18 +81,9 @@ class Partners extends CI_Controller {
 		$data['partner_types'] = $this->partner_types->partner_type_listing();
 		# Listado de paises
 		$data['countrys'] = $this->countrys->countrys_listing();
+		# Listado de ciudades
+		$data['cities'] = $this->cities->cities_listing();
 
-
-		# Listado de categorias
-		$data['category'] = $this->category->categories_listing();
-		# Listado de tipos de inventario
-		$data['typesinventory'] = $this->typesinventory->typesinv_listing();
-		# Listado de beneficios
-		$data['benefits'] = $this->benefits->benefits_listing();
-		# Listado de componentes
-		$data['components'] = $this->components->components_listing();
-		# Tipos de cuentas | Acceso
-		//$data['type_of_access'] = array('Administrador' => 'Administrador', 'Coach' => 'Coach', 'Proveedor' => 'Proveedor');
 		# Renderizando la vista | plantilla
 		$this->load->view('template/header', $data);
 		$this->load->view('partners/add');
@@ -113,7 +99,8 @@ class Partners extends CI_Controller {
 			break;
 			case TRUE:
 				$this->rules_insert_partners();
-				switch ($this->form_validation->run()) {
+				switch ($this->form_validation->run()) 
+				{
 					case FALSE:
 						$this->add();
 					break;
@@ -124,11 +111,9 @@ class Partners extends CI_Controller {
 						echo "</pre>";
 						exit;
 					*/	
-
 						# Cargar el modelo de base de datos
 						$this->load->model('PartnersModel', 'partners', TRUE);
 						# Insertar información en la base de datos
-
 						$this->partners->save($this->input->post());
 						redirect('partners/success'); 
 					break;
@@ -207,18 +192,18 @@ class Partners extends CI_Controller {
 	{
 		$config = array(
 			array(
-				'field' => 'id_product',
-				'label' => 'código producto',
-				'rules' => 'required|max_length[60]|trim',
+				'field' => 'id_partner',
+				'label' => 'código proveedor',
+				'rules' => 'required|max_length[40]|trim',
 				'errors' => array(
 								'required' 	=> 'Es necesario ingresar un %s',
 								'max_length'=> 'La longitud maxima a ingresar es de 80 caracteres'
 						   )
 			),
 			array(
-				'field' => 'name_product',
-				'label' => 'nombre producto',
-				'rules' => 'required|max_length[20]|trim',
+				'field' => 'name_partner',
+				'label' => 'nombre proveedor',
+				'rules' => 'required|max_length[60]|trim',
 				'errors' => array(
 								'required' 	=> 'Es necesario ingresar un %s',
 								'max_length'=> 'La longitud maxima a ingresar es de 80 caracteres'

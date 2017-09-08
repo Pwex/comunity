@@ -176,6 +176,14 @@ $route['countrys/edit/(:num)'] 		= 'Countrys/edit_validate/$1';
 $route['countrys/success-edit'] 	= 'Countrys/full_listing';
 $route['countrys/delete'] 			= 'Countrys/delete';
 $route['countrys/success-delete'] 	= 'Countrys/full_listing';
+# ciudades
+$route['cities'] 					= 'Cities/full_listing';
+$route['cities/success'] 			= 'Cities/full_listing';
+$route['cities/add'] 				= 'Cities/add_validate';
+$route['cities/edit/(:num)'] 		= 'Cities/edit_validate/$1';
+$route['cities/success-edit'] 		= 'Cities/full_listing';
+$route['cities/delete'] 			= 'Cities/delete';
+$route['cities/success-delete'] 	= 'Cities/full_listing';
 
 
 # Auth Users
