@@ -23,7 +23,7 @@
                     <div class="col-sm-3">
                         <div class="form-group">
                             <label for="id_country">País</label>
-                            <?php echo form_dropdown('id_country', $countrys, set_value('id_country',$information_country[0]["id_country"]), 'class="form-control" required=""'); ?>
+                            <?php echo form_dropdown('id_country', $countrys, set_value('id_country',$information_cities[0]["id_country"]), 'class="form-control" required=""'); ?>
                             <?php echo form_error('id_country') ?>
                         </div>
                     </div>
