@@ -96,6 +96,15 @@ $route['list-price/success-edit'] 	= 'ListPrice/full_listing';
 $route['list-price/delete'] 		= 'ListPrice/delete';
 $route['list-price/success-delete'] = 'ListPrice/full_listing';
 
+# Precios de productos
+$route['price-product'] 				= 'PriceProduct/full_listing';
+$route['price-product/success'] 		= 'PriceProduct/full_listing';
+$route['price-product/add'] 			= 'PriceProduct/add_validate';
+$route['price-product/edit/(:num)'] 	= 'PriceProduct/edit_validate/$1';
+$route['price-product/success-edit'] 	= 'PriceProduct/full_listing';
+$route['price-product/delete'] 			= 'PriceProduct/delete';
+$route['price-product/success-delete'] 	= 'PriceProduct/full_listing';
+
 # Sellos
 $route['seals'] 				= 'seals/full_listing';
 $route['seals/success'] 		= 'seals/full_listing';

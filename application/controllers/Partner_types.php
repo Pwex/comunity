@@ -28,7 +28,7 @@ class Partner_types extends CI_Controller {
 		);
 		$data['option_nav_item'] = array(
 				'Tipo proveedor'	=> array(
-				'icon' 		=> 'fa fa-users',
+				'icon' 		=> 'fa fa-ellipsis-v',
 				'url' 		=> 'partner_types',
 				'class' 	=> NULL
 			), 
@@ -62,7 +62,7 @@ class Partner_types extends CI_Controller {
 		);
 		$data['option_nav_item'] = array(
 				'tipos proveedor'	=> array(
-				'icon' 				=> 'fa fa-users',
+				'icon' 				=> 'fa fa-ellipsis-v',
 				'url' 				=> 'partner_types',
 				'class' 			=> NULL
 			), 
@@ -120,7 +120,7 @@ class Partner_types extends CI_Controller {
 		);
 		$data['option_nav_item'] = array(
 				'tipos proveedor'	=> array(
-				'icon' 			=> 'fa fa-users',
+				'icon' 			=> 'fa fa-ellipsis-v',
 				'url' 			=> 'partner_types',
 				'class' 		=> NULL
 			), 

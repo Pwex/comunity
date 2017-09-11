@@ -12,7 +12,7 @@ class UsersModel extends CI_Model {
         return $this->db
         ->from('users')
         ->select('id_user, name, last_name, type_of_access, email, name_country')
-        ->join('country', 'country.country = users.country', 'left')
+        ->join('countrys', 'countrys.id_country = users.country', 'left')
         ->get()
         ->result_array();
     }

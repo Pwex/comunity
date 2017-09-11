@@ -50,7 +50,7 @@ class Users extends CI_Controller {
 		# Librerias
 		$this->load->helper('form');
 		$this->load->model('ActivitiesModel', 'activity', TRUE);
-		$this->load->model('CountryModel', 'country', TRUE);
+		$this->load->model('CountrysModel', 'country', TRUE);
 		# Notificaciones
 		$data['number_of_pending_notifications'] = $this->activity->number_of_pending_notifications($this->session->userdata['user']['id_user']);
 		$data['notification_details']	 		 = $this->activity->notification_details($this->session->userdata['user']['id_user']);
@@ -72,7 +72,7 @@ class Users extends CI_Controller {
 			)
 		);
 		# Listado de paises
-		$data['country'] = $this->country->full_listing();
+		$data['country'] = $this->country->countrys_listing();
 		# Tipos de cuentas | Acceso
 		$data['type_of_access'] = array('Administrador' => 'Administrador', 'Coach' => 'Coach', 'Proveedor' => 'Proveedor');
 		# Renderizando la vista | plantilla
@@ -112,7 +112,7 @@ class Users extends CI_Controller {
 		# Librerias
 		$this->load->helper('form');
 		$this->load->model('ActivitiesModel', 'activity', TRUE);
-		$this->load->model('CountryModel', 'country', TRUE);
+		$this->load->model('CountrysModel', 'country', TRUE);
 		$this->load->model('UsersModel', 'users', TRUE);
 		# Notificaciones
 		$data['number_of_pending_notifications'] = $this->activity->number_of_pending_notifications($this->session->userdata['user']['id_user']);
@@ -135,7 +135,7 @@ class Users extends CI_Controller {
 			)
 		);
 		# Listado de paises
-		$data['country'] = $this->country->full_listing();
+		$data['country'] = $this->country->countrys_listing();
 		# Tipos de cuentas | Acceso
 		$data['type_of_access'] = array('Administrador' => 'Administrador', 'Coach' => 'Coach', 'Proveedor' => 'Proveedor');
 		# Buscar informacion del usuario

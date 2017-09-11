@@ -28,7 +28,7 @@ class Cities extends CI_Controller {
 		);
 		$data['option_nav_item'] = array(
 			'categorias'	=> array(
-				'icon' 		=> 'fa fa-th-large',
+				'icon' 		=> 'fa fa-ellipsis-v',
 				'url' 		=> 'cities',
 				'class' 	=> NULL
 			), 
@@ -62,7 +62,7 @@ class Cities extends CI_Controller {
 		);
 		$data['option_nav_item'] = array(
 			'categorias'	=> array(
-				'icon' 		=> 'fa fa-th-large',
+				'icon' 		=> 'fa fa-ellipsis-v',
 				'url' 		=> 'cities',
 				'class' 	=> NULL
 			), 
@@ -123,7 +123,7 @@ class Cities extends CI_Controller {
 		);
 		$data['option_nav_item'] = array(
 				'categorias'	=> array(
-				'icon' 			=> 'fa fa-th-large',
+				'icon' 			=> 'fa fa-ellipsis-v',
 				'url' 			=> 'cities',
 				'class' 		=> NULL
 			), 

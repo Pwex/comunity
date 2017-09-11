@@ -28,7 +28,7 @@ class Components extends CI_Controller {
 		);
 		$data['option_nav_item'] = array(
 				'Componentes'	=> array(
-				'icon' 		=> 'fa fa-users',
+				'icon' 		=> 'fa fa-ellipsis-v',
 				'url' 		=> 'components',
 				'class' 	=> NULL
 			), 
@@ -62,7 +62,7 @@ class Components extends CI_Controller {
 		);
 		$data['option_nav_item'] = array(
 			'Componentes'	=> array(
-				'icon' 		=> 'fa fa-users',
+				'icon' 		=> 'fa fa-ellipsis-v',
 				'url' 		=> 'components',
 				'class' 	=> NULL
 			), 
@@ -120,7 +120,7 @@ class Components extends CI_Controller {
 		);
 		$data['option_nav_item'] = array(
 				'Componentes'	=> array(
-				'icon' 			=> 'fa fa-users',
+				'icon' 			=> 'fa fa-ellipsis-v',
 				'url' 			=> 'components',
 				'class' 		=> NULL
 			), 

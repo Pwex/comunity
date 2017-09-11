@@ -28,7 +28,7 @@ class Categories extends CI_Controller {
 		);
 		$data['option_nav_item'] = array(
 			'categorias'	=> array(
-				'icon' 		=> 'fa fa-th-large',
+				'icon' 		=> 'fa fa-ellipsis-v',
 				'url' 		=> 'categories',
 				'class' 	=> NULL
 			), 
@@ -63,7 +63,7 @@ class Categories extends CI_Controller {
 		);
 		$data['option_nav_item'] = array(
 			'categorias'	=> array(
-				'icon' 		=> 'fa fa-th-large',
+				'icon' 		=> 'fa fa-ellipsis-v',
 				'url' 		=> 'categories',
 				'class' 	=> NULL
 			), 
@@ -127,7 +127,7 @@ class Categories extends CI_Controller {
 		);
 		$data['option_nav_item'] = array(
 				'categorias'	=> array(
-				'icon' 			=> 'fa fa-th-large',
+				'icon' 			=> 'fa fa-ellipsis-v',
 				'url' 			=> 'categories',
 				'class' 		=> NULL
 			), 
@@ -186,7 +186,7 @@ class Categories extends CI_Controller {
 								'required' 	=> 'Es necesario ingresar un %s',
 								'max_length'=> 'La longitud maxima a ingresar es de 50 caracteres'
 						   )
-			),
+			)
 		);
 		$this->load->library('form_validation');
 		$this->form_validation->set_error_delimiters('<p class="text-danger msg-error">', '</p>');
@@ -205,7 +205,7 @@ class Categories extends CI_Controller {
 								'required' 	=> 'Es necesario ingresar un %s',
 								'max_length'=> 'La longitud maxima a ingresar es de 50 caracteres'
 						   )
-			),
+			)
 		);
 		$this->load->library('form_validation');
 		$this->form_validation->set_error_delimiters('<p class="text-danger msg-error">', '</p>');

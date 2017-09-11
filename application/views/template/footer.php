@@ -30,12 +30,19 @@
             });
         </script>
         <!-- DataTables -->
+<<<<<<< HEAD
         <?php if (($this->uri->segment(1) == 'users') || ($this->uri->segment(1) == 'categories') || ($this->uri->segment(1) == 'warehouses') || ($this->uri->segment(1) == 'countrys') || ($this->uri->segment(1) == 'benefits') || ($this->uri->segment(1) == 'typesinventory') || ($this->uri->segment(1) == 'components') || ($this->uri->segment(1) == 'unitsmeasure') || ($this->uri->segment(1) == 'products') || ($this->uri->segment(1) == 'partners') || ($this->uri->segment(1) == 'document_types') || ($this->uri->segment(1) == 'partner_types') || ($this->uri->segment(1) == 'cities') || ($this->uri->segment(1) == 'seals') || ($this->uri->segment(1) == 'list-price') || ($this->uri->segment(1) == 'banks') ): ?>
+=======
+        <?php if (($this->uri->segment(1) == 'users') || ($this->uri->segment(1) == 'categories') || ($this->uri->segment(1) == 'warehouses') || ($this->uri->segment(1) == 'countrys') || ($this->uri->segment(1) == 'benefits') || ($this->uri->segment(1) == 'typesinventory') || ($this->uri->segment(1) == 'components') || ($this->uri->segment(1) == 'unitsmeasure') || ($this->uri->segment(1) == 'products') || ($this->uri->segment(1) == 'partners') || ($this->uri->segment(1) == 'document_types') || ($this->uri->segment(1) == 'partner_types') || ($this->uri->segment(1) == 'cities') || ($this->uri->segment(1) == 'seals') || ($this->uri->segment(1) == 'list-price') || ($this->uri->segment(1) == 'price-product' and ($this->uri->segment(2) !="add" or $this->uri->segment(2) !="edit")) ): ?>
+>>>>>>> Jose
             <script src="<?php echo base_url('assets/bower_components/datatables.net/js/jquery.dataTables.min.js') ?>"></script>
             <script src="<?php echo base_url('assets/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') ?>"></script>       
             <script type="text/javascript">
                 $(document).ready(function(){
                     $('#table-default').DataTable({
+                        <?php if ($this->uri->segment(1) == 'price-product'): ?>
+                            "order": [[ 1, "asc" ], [4, 'asc']],
+                        <?php endif; ?>
                         'language' : {
                             "sProcessing":     "Procesando...",
                             "sLengthMenu":     "Mostrar _MENU_ registros",
@@ -131,6 +138,10 @@
                 {
                     $url = "list-price";
                 }
+                elseif ($this->uri->segment(1) == 'price-product')
+                {
+                    $url = "price-product";
+                }
             ?>
                 $(document).ready(function()
                 {
@@ -169,6 +180,7 @@
               </script>
         <?php endif; ?>
         <!-- DataTables End -->
+
         <!-- Manager Files Images -->
         <?php if ($this->uri->segment(1) == 'multimedia' and $this->uri->segment(2) != 'videos'): ?>
             <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -332,11 +344,23 @@
         <?php endif; ?>
 
         <!-- Insert products -->
-        <?php if ($this->uri->segment(1) == 'products' and $this->uri->segment(2) == 'add'): ?>
+        <?php if ( $this->uri->segment(1) == 'products' and $this->uri->segment(2) == 'add' ): ?>
             <script src="<?php echo base_url('assets/plugins/chosen/chosen.jquery.js') ?>"></script>
             <script type="text/javascript">
                 $(".chosen-select").chosen();
             </script>
         <?php endif; ?>
+
+        <!-- Filtro select -->
+        <?php if ( $this->uri->segment(1) == 'price-product' and ($this->uri->segment(2) == 'add' or $this->uri->segment(2) == 'edit') ): ?>
+            <script src="<?php echo base_url('assets/bower_components/select2/dist/js/select2.full.min.js') ?>"></script>
+            <script type="text/javascript">
+            $(document).ready(function(){
+                //Initialize Select2 Elements
+                $('.select2').select2();
+            });
+            </script>
+        <?php endif; ?>
+
     </body>
 </html>
