@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class UnitsMeasure extends CI_Controller {
+class Banks extends CI_Controller {
 
 	public function __construct()
     {
@@ -9,28 +9,27 @@ class UnitsMeasure extends CI_Controller {
         $this->load->library(array('managerauth'));
         $this->managerauth->validate_session();
     }
-
     # Listado completo 
 	public function full_listing()
 	{
 		# Carga del modelo de base de datos
-		$this->load->model('UnitsMeasureModel', 'units_measure', TRUE);
+		$this->load->model('BanksModel', 'banks', TRUE);
 		$this->load->model('ActivitiesModel', 'activity', TRUE);
 		# Notificaciones
 		$data['number_of_pending_notifications'] = $this->activity->number_of_pending_notifications($this->session->userdata['user']['id_user']);
 		$data['notification_details']	 		 = $this->activity->notification_details($this->session->userdata['user']['id_user']);
 		# Envio de registros
-		$data['full_listing'] = $this->units_measure->full_listing();
+		$data['full_listing'] = $this->banks->full_listing();
 		# Opciones items del menu principal del contenido
 		$data['option_nav'] = array(
-			'box_title' => 'Unidades Medida',
+			'box_title' => 'Bancos',
 			'box_span' 	=> 'Listado'
 		);
 		$data['option_nav_item'] = array(
-				'unidades medida'	=> array(
-				'icon' 				=> 'fa fa-users',
-				'url' 				=> 'unitsmeasure',
-				'class' 			=> NULL
+				'Bancos'	=> array(
+				'icon' 		=> 'fa fa-bank',
+				'url' 		=> 'banks',
+				'class' 	=> NULL
 			), 
 			'listado'=> array(
 				'icon' 		=> '',
@@ -40,31 +39,31 @@ class UnitsMeasure extends CI_Controller {
 		);
 		# Renderizando la vista | plantilla
 		$this->load->view('template/header', $data);
-		$this->load->view('unitsmeasure/list');
+		$this->load->view('banks/list');
 		$this->load->view('template/footer');
 	}
 
-	# Formulario Principal para Agregar 
+	# Formulario Principal para Agregar Bancos
 	public function add()
 	{
 		# Librerias
 		$this->load->helper('form');
 		$this->load->model('ActivitiesModel', 'activity', TRUE);
-		$this->load->model('UnitsMeasureModel', 'units_measure', TRUE);
-	
+		$this->load->model('BanksModel', 'banks', TRUE);
+		$this->load->model('CountrysModel', 'countrys', TRUE);
 		# Notificaciones
 		$data['number_of_pending_notifications'] = $this->activity->number_of_pending_notifications($this->session->userdata['user']['id_user']);
 		$data['notification_details']	 		 = $this->activity->notification_details($this->session->userdata['user']['id_user']);
 		# Opciones items del menu principal del contenido
 		$data['option_nav'] = array(
-			'box_title' => 'unidades medida',
+			'box_title' => 'Bancos',
 			'box_span' 	=> 'Agregar'
 		);
 		$data['option_nav_item'] = array(
-				'unidades medida'	=> array(
-				'icon' 				=> 'fa fa-users',
-				'url' 				=> 'unitsmeasure',
-				'class' 			=> NULL
+				'Bancos'	=> array(
+				'icon' 		=> 'fa fa-bank',
+				'url' 		=> 'banks',
+				'class' 	=> NULL
 			), 
 			'agregar' => array(
 				'icon' 		=> '',
@@ -72,9 +71,11 @@ class UnitsMeasure extends CI_Controller {
 				'class' 	=> 'active'
 			)
 		);
+		# Listado de paises
+		$data['countrys'] = $this->countrys->countrys_listing();
 		# Renderizando la vista | plantilla
 		$this->load->view('template/header', $data);
-		$this->load->view('unitsmeasure/add');
+		$this->load->view('banks/add');
 		$this->load->view('template/footer');
 	}
 
@@ -86,17 +87,17 @@ class UnitsMeasure extends CI_Controller {
 				$this->add();
 			break;
 			case TRUE:
-				$this->rules_insert_units_measure();
+				$this->rules_insert_banks();
 				switch ($this->form_validation->run()) {
 					case FALSE:
 						$this->add();
 					break;
 					case TRUE:
 						# Cargar el modelo de base de datos
-						$this->load->model('UnitsMeasureModel', 'units_measure', TRUE);
+						$this->load->model('BanksModel', 'banks', TRUE);
 						# Insertar información en la base de datos
-						$this->units_measure->save($this->input->post());
-						redirect('unitsmeasure/success'); 
+						$this->banks->save($this->input->post());
+						redirect('banks/success'); 
 					break;
 				}
 			break;
@@ -109,20 +110,21 @@ class UnitsMeasure extends CI_Controller {
 		# Librerias
 		$this->load->helper('form');
 		$this->load->model('ActivitiesModel', 'activity', TRUE);
-		$this->load->model('UnitsMeasureModel', 'units_measure', TRUE);
+		$this->load->model('BanksModel', 'banks', TRUE);
+		$this->load->model('CountrysModel', 'countrys', TRUE);
 		# Notificaciones
 		$data['number_of_pending_notifications'] = $this->activity->number_of_pending_notifications($this->session->userdata['user']['id_user']);
 		$data['notification_details']	 		 = $this->activity->notification_details($this->session->userdata['user']['id_user']);
 		# Opciones items del menu principal del contenido
 		$data['option_nav'] = array(
-			'box_title' => 'Unidades medida',
+			'box_title' => 'Bancos',
 			'box_span' 	=> 'Editar'
 		);
 		$data['option_nav_item'] = array(
-				'unidades medida'	=> array(
-				'icon' 				=> 'fa fa-users',
-				'url' 				=> 'unitsmeasure',
-				'class' 			=> NULL
+				'Bancos'	=> array(
+				'icon' 			=> 'fa fa-bank',
+				'url' 			=> 'banks',
+				'class' 		=> NULL
 			), 
 			'editar' => array(
 				'icon' 		=> '',
@@ -130,10 +132,13 @@ class UnitsMeasure extends CI_Controller {
 				'class' 	=> 'active'
 			)
 		);
-		$data['information_units_measure'] = $this->units_measure->information_units_measure($id);
+		$data['information_banks'] = $this->banks->information_banks($id);
+		# Listado de paises
+		$data['information_country'] = $this->countrys->information_country($id);
+		$data['countrys'] = $this->countrys->countrys_listing();
 		# Renderizando la vista | plantilla
 		$this->load->view('template/header', $data);
-		$this->load->view('unitsmeasure/edit');
+		$this->load->view('banks/edit');
 		$this->load->view('template/footer');
 	}
 
@@ -145,30 +150,29 @@ class UnitsMeasure extends CI_Controller {
 				$this->edit($id);
 			break;
 			case TRUE:
-				$this->rules_edit_units_measure();
+				$this->rules_edit_banks();
 				switch ($this->form_validation->run()) {
 					case FALSE:
 						$this->edit($id);
 					break;
 					case TRUE:
 						# Cargar el modelo de base de datos
-						$this->load->model('UnitsMeasureModel', 'units_measure', TRUE);
+						$this->load->model('BanksModel', 'banks', TRUE);
 						# Insertar información en la base de datos
-						$this->units_measure->edit($id, $this->input->post());
-						redirect('unitsmeasure/success-edit'); 
+						$this->banks->edit($id, $this->input->post());
+						redirect('banks/success-edit'); 
 					break;
 				}
 			break;
 		}
 	}
-
 	# Reglas de validación al insertar
-	public function rules_insert_units_measure()
+	public function rules_insert_banks()
 	{
 		$config = array(
 			array(
-				'field' => 'unit_measure',
-				'label' => 'Unidad medida',
+				'field' => 'name_bank',
+				'label' => 'Nombre banco',
 				'rules' => 'required|max_length[50]|trim',
 				'errors' => array(
 								'required' 	=> 'Es necesario ingresar un %s',
@@ -182,12 +186,12 @@ class UnitsMeasure extends CI_Controller {
 	}
 
 	# Reglas de validación al editar
-	public function rules_edit_units_measure()
+	public function rules_edit_banks()
 	{
 		$config = array(
 			array(
-				'field' => 'unit_measure',
-				'label' => 'unidaad medida',
+				'field' => 'name_bank',
+				'label' => 'nombre banco',
 				'rules' => 'required|max_length[50]|trim',
 				'errors' => array(
 								'required' 	=> 'Es necesario ingresar un %s',
@@ -204,9 +208,8 @@ class UnitsMeasure extends CI_Controller {
 	public function delete()
 	{
 		# Carga del modelo de base de datos
-		$this->load->model('UnitsMeasureModel', 'units_measure', TRUE);
+		$this->load->model('BanksModel', 'banks', TRUE);
 		# Eliminar el usuario seleccionado
-		$this->units_measure->delete($this->input->post('id'));
+		$this->banks->delete($this->input->post('id'));
 	}
-
 }

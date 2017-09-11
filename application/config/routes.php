@@ -193,7 +193,14 @@ $route['cities/edit/(:num)'] 		= 'Cities/edit_validate/$1';
 $route['cities/success-edit'] 		= 'Cities/full_listing';
 $route['cities/delete'] 			= 'Cities/delete';
 $route['cities/success-delete'] 	= 'Cities/full_listing';
-
+# Bancos
+$route['banks'] 					= 'Banks/full_listing';
+$route['banks/success'] 			= 'Banks/full_listing';
+$route['banks/add'] 				= 'Banks/add_validate';
+$route['banks/edit/(:num)'] 		= 'Banks/edit_validate/$1';
+$route['banks/success-edit'] 		= 'Banks/full_listing';
+$route['banks/delete'] 				= 'Banks/delete';
+$route['banks/success-delete'] 		= 'Banks/full_listing';
 
 # Auth Users
 $route['404_override'] 			= '';

@@ -134,6 +134,7 @@ class Partners extends CI_Controller {
 		$this->load->model('PartnerTypesModel', 'partner_types', TRUE);
 		$this->load->model('CountrysModel', 'countrys', TRUE);
 		$this->load->model('CitiesModel', 'cities', TRUE);
+		$this->load->model('BanksModel', 'banks', TRUE);
 		# Notificaciones
 		$data['number_of_pending_notifications'] = $this->activity->number_of_pending_notifications($this->session->userdata['user']['id_user']);
 		$data['notification_details']	 		 = $this->activity->notification_details($this->session->userdata['user']['id_user']);
@@ -154,12 +155,6 @@ class Partners extends CI_Controller {
 				'class' 	=> 'active'
 			)
 		);
-		# Listado de paises
-		//$data['country'] = $this->country->full_listing();
-		# Tipos de cuentas | Acceso
-		//$data['type_of_access'] = array('Administrador' => 'Administrador', 'Coach' => 'Coach', 'Proveedor' => 'Proveedor');
-		# Buscar informacion del usuario
-		# Listado de tipos de documento
 		$data['document_types'] = $this->document_types->document_types_listing();
 		# Listado de tipos de proveedor
 		$data['partner_types'] = $this->partner_types->partner_type_listing();
@@ -168,6 +163,7 @@ class Partners extends CI_Controller {
 		# Listado de ciudades
 		$data['information_cities'] = $this->cities->information_cities($id);
 		$data['cities'] = $this->cities->cities_listing();
+		$data['banks'] = $this->banks->banks_listing();
 
 		$data['partner'] = $this->partners->information_partner($id);
 		# Renderizando la vista | plantilla
@@ -266,23 +262,24 @@ class Partners extends CI_Controller {
 	{
 		$config = array(
 			array(
-				'field' => 'name',
-				'label' => 'nombre',
-				'rules' => 'required|max_length[80]|trim',
+				'field' => 'id_partner',
+				'label' => 'código proveedor',
+				'rules' => 'required|max_length[20]|trim',
 				'errors' => array(
 								'required' 	=> 'Es necesario ingresar un %s',
 								'max_length'=> 'La longitud maxima a ingresar es de 80 caracteres'
 						   )
 			),
 			array(
-				'field' => 'last_name',
-				'label' => 'apellido',
-				'rules' => 'required|max_length[80]|trim',
+				'field' => 'name_partner',
+				'label' => 'nombre proveedor',
+				'rules' => 'required|max_length[60]|trim',
 				'errors' => array(
 								'required' 	=> 'Es necesario ingresar un %s',
 								'max_length'=> 'La longitud maxima a ingresar es de 80 caracteres'
 						   )
-			),
+			)
+/*
 			array(
 				'field' => 'password',
 				'label' => 'clave de seguridad',
@@ -302,6 +299,7 @@ class Partners extends CI_Controller {
 								'matches'	=> 'Las clave de seguridad son distintas'
 						   )
 			)
+*/
 		);
 		$this->load->library('form_validation');
 		$this->form_validation->set_error_delimiters('<p class="text-danger msg-error">', '</p>');

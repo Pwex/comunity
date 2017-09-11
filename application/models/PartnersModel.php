@@ -11,9 +11,10 @@ class PartnersModel extends CI_Model {
     {
         return $this->db
         ->from('partners p')
-        ->select('p.id_partner, p.name_partner, p.address_partner, p.phone_partner, p.web_partner, p.web_partner, p.email_partner, p.name_contact_partner,p.enabled_partner,p.loan_quota_partner, p.term_days_partner, d.document_type, c.name_country')
+        ->select('p.id_partner, p.name_partner, p.address_partner, p.phone_partner, p.web_partner, p.web_partner, p.email_partner, p.name_contact_partner,p.enabled_partner,p.loan_quota_partner, p.term_days_partner, d.document_type, c.name_country, ci.name_city')
         ->join('document_types d', 'd.id_document_type = p.id_document_type', 'left')
         ->join('countrys c', 'c.id_country = p.id_country', 'left')
+        ->join('cities ci', 'ci.id_city = p.id_city', 'left')
         ->get()
         ->result_array();
     }
