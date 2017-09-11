@@ -27,7 +27,7 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="name_seals">Sello</label>
-                            <input type="text" name="name_seals" id="name_seals" class="form-control" placeholder="Nombre de la categoría" value="<?php echo set_value('name_seals', $information_seals[0]["name_seals"]) ?>" required="" />
+                            <input type="text" name="name_seals" id="name_seals" class="form-control" value="<?php echo set_value('name_seals', $information_seals[0]["name_seals"]) ?>" required="" />
                             <?php echo form_error('name_seals') ?>
                         </div>
                     </div>

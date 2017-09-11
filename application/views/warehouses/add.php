@@ -11,7 +11,7 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="name_warehouse">Nombre Bodega</label>
-                            <input type="text" name="name_warehouse" id="name_warehouse" class="form-control" placeholder="Ingresa nombre de la bodega" value="<?php echo set_value('name_warehouse') ?>" required="" />
+                            <input type="text" name="name_warehouse" id="name_warehouse" class="form-control" value="<?php echo set_value('name_warehouse') ?>" required="" />
                             <?php echo form_error('name_warehouse') ?>
                         </div>
                     </div>

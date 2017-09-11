@@ -13,7 +13,7 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="name">Tipo Inventario</label>
-                            <input type="text" name="unit_measure" id="unit_measure" class="form-control" placeholder="Ingresa el tipo de inventario" value="<?php echo set_value('unit_measure', $information_units_measure[0]["unit_measure"]) ?>" required="" />
+                            <input type="text" name="unit_measure" id="unit_measure" class="form-control" value="<?php echo set_value('unit_measure', $information_units_measure[0]["unit_measure"]) ?>" required="" />
                             <?php echo form_error('name') ?>
                         </div>
                     </div>

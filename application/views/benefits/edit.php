@@ -13,7 +13,7 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="name">Beneficio</label>
-                            <input type="text" name="name_benefit" id="name_benefit" class="form-control" placeholder="Ingresa un nombre de beneficio" value="<?php echo set_value('name_benefit', $information_benefit[0]["name_benefit"]) ?>" required="" />
+                            <input type="text" name="name_benefit" id="name_benefit" class="form-control" value="<?php echo set_value('name_benefit', $information_benefit[0]["name_benefit"]) ?>" required="" />
                             <?php echo form_error('name') ?>
                         </div>
                     </div>

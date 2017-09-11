@@ -28,7 +28,7 @@ class UnitsMeasure extends CI_Controller {
 		);
 		$data['option_nav_item'] = array(
 				'unidades medida'	=> array(
-				'icon' 				=> 'fa fa-users',
+				'icon' 				=> 'fa fa-ellipsis-v',
 				'url' 				=> 'unitsmeasure',
 				'class' 			=> NULL
 			), 
@@ -62,7 +62,7 @@ class UnitsMeasure extends CI_Controller {
 		);
 		$data['option_nav_item'] = array(
 				'unidades medida'	=> array(
-				'icon' 				=> 'fa fa-users',
+				'icon' 				=> 'fa fa-ellipsis-v',
 				'url' 				=> 'unitsmeasure',
 				'class' 			=> NULL
 			), 
@@ -120,7 +120,7 @@ class UnitsMeasure extends CI_Controller {
 		);
 		$data['option_nav_item'] = array(
 				'unidades medida'	=> array(
-				'icon' 				=> 'fa fa-users',
+				'icon' 				=> 'fa fa-ellipsis-v',
 				'url' 				=> 'unitsmeasure',
 				'class' 			=> NULL
 			), 

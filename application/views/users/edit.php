@@ -11,7 +11,7 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="name">Nombres</label>
-                            <input type="text" name="name" id="name" class="form-control" placeholder="Ingresar un nombre" value="<?php echo set_value('name', $user[0]["name"]) ?>" required="" />
+                            <input type="text" name="name" id="name" class="form-control" value="<?php echo set_value('name', $user[0]["name"]) ?>" required="" />
                             <?php echo form_error('name') ?>
                         </div>
                     </div>
@@ -20,7 +20,7 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="last_name">Apellidos</label>
-                            <input type="text" name="last_name" id="last_name" class="form-control" placeholder="Ingresar un apellido" value="<?php echo set_value('last_name', $user[0]["last_name"]) ?>" required="" />
+                            <input type="text" name="last_name" id="last_name" class="form-control" value="<?php echo set_value('last_name', $user[0]["last_name"]) ?>" required="" />
                             <?php echo form_error('last_name') ?>
                         </div>
                     </div>
@@ -29,7 +29,7 @@
                     <div class="col-sm-12">
                         <div class="form-group">
                             <label for="email">Correo electrónico</label>
-                            <input type="email" name="email" id="email" class="form-control" placeholder="Ingresar un correo electrónico" value="<?php echo set_value('email', $user[0]["email"]) ?>" required="" disabled="" />
+                            <input type="email" name="email" id="email" class="form-control" value="<?php echo set_value('email', $user[0]["email"]) ?>" required="" disabled="" />
                             <?php echo form_error('email') ?>
                         </div>
                     </div>
@@ -56,7 +56,7 @@
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label for="password">Clave de seguridad</label>
-                            <input type="password" name="password" id="password" class="form-control" placeholder="Ingresar un correo electrónico" value="<?php echo set_value('password') ?>" required="" />
+                            <input type="password" name="password" id="password" class="form-control" value="<?php echo set_value('password') ?>" required="" />
                             <?php echo form_error('password') ?>
                         </div>
                     </div>
@@ -65,7 +65,7 @@
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label for="confirm_password">Confirmar clave de seguridad</label>
-                            <input type="password" name="confirm_password" id="confirm_password" class="form-control" placeholder="Ingresar un correo electrónico" value="<?php echo set_value('confirm_password') ?>" required="" />
+                            <input type="password" name="confirm_password" id="confirm_password" class="form-control" value="<?php echo set_value('confirm_password') ?>" required="" />
                             <?php echo form_error('confirm_password') ?>
                         </div>
                     </div>

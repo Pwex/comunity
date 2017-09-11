@@ -13,7 +13,7 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="document_type">Tipo Documento</label>
-                            <input type="text" name="document_type" id="document_type" class="form-control" placeholder="Ingresa Tipo de Documento" value="<?php echo set_value('document_type') ?>" required="" />
+                            <input type="text" name="document_type" id="document_type" class="form-control" value="<?php echo set_value('document_type') ?>" required="" />
                             <?php echo form_error('document_type') ?>
                         </div>
                     </div>

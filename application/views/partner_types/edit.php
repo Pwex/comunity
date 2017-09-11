@@ -13,7 +13,7 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="name">Tipo Proveedor</label>
-                            <input type="text" name="partner_type" id="partner_type" class="form-control" placeholder="Ingresa un Tipo de Proveedor" value="<?php echo set_value('partner_type', $information_partner_type[0]["partner_type"]) ?>" required="" />
+                            <input type="text" name="partner_type" id="partner_type" class="form-control" value="<?php echo set_value('partner_type', $information_partner_type[0]["partner_type"]) ?>" required="" />
                             <?php echo form_error('name') ?>
                         </div>
                     </div>

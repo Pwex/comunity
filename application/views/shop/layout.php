@@ -36,7 +36,7 @@
                     <div class="col-sm-3">
                         <div class="form-group">
                             <label for="shop">Nombre de la tienda</label>
-                            <input type="text" name="shop" id="shop" class="form-control" placeholder="Nombre de la tienda" value="<?php echo set_value('shop', $row[0]['shop']) ?>" required="" />
+                            <input type="text" name="shop" id="shop" class="form-control" value="<?php echo set_value('shop', $row[0]['shop']) ?>" required="" />
                             <?php echo form_error('shop') ?>
                         </div>
                     </div>
@@ -45,21 +45,21 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="email">Correo Electrónico</label>
-                            <input type="text" name="email" id="email" class="form-control" placeholder="Correo electrónico" value="<?php echo set_value('email', $row[0]['email']) ?>" required="" />
+                            <input type="text" name="email" id="email" class="form-control" value="<?php echo set_value('email', $row[0]['email']) ?>" required="" />
                             <?php echo form_error('email') ?>
                         </div>
                     </div>
                     <div class="col-sm-3">
                         <div class="form-group">
                             <label for="phone">Teléfono</label>
-                            <input type="text" name="phone" id="phone" class="form-control" placeholder="Número teléfono" value="<?php echo set_value('phone', $row[0]['phone']) ?>" required="" />
+                            <input type="text" name="phone" id="phone" class="form-control" value="<?php echo set_value('phone', $row[0]['phone']) ?>" required="" />
                             <?php echo form_error('phone') ?>
                         </div>
                     </div>
                     <div class="col-sm-3">
                         <div class="form-group">
                             <label for="movil">Celular</label>
-                            <input type="text" name="movil" id="movil" class="form-control" placeholder="Número movil" value="<?php echo set_value('movil', $row[0]['movil']) ?>" required="" />
+                            <input type="text" name="movil" id="movil" class="form-control" value="<?php echo set_value('movil', $row[0]['movil']) ?>" required="" />
                             <?php echo form_error('movil') ?>
                         </div>
                     </div>
@@ -68,7 +68,7 @@
                     <div class="col-sm-12">
                         <div class="form-group">
                             <label for="address">Ubicación</label>
-                            <input type="text" name="address" id="address" class="form-control" placeholder="Dirección física" value="<?php echo set_value('address', $row[0]['address']) ?>" required="" />
+                            <input type="text" name="address" id="address" class="form-control" value="<?php echo set_value('address', $row[0]['address']) ?>" required="" />
                             <?php echo form_error('address') ?>
                         </div>
                     </div>
@@ -82,21 +82,21 @@
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label for="facebook">Facebook</label>
-                            <input type="text" name="facebook" id="facebook" class="form-control" placeholder="https://www.facebook.com/" value="<?php echo set_value('facebook', $row[0]['facebook']) ?>"  />
+                            <input type="text" name="facebook" id="facebook" class="form-control" value="<?php echo set_value('facebook', $row[0]['facebook']) ?>"  />
                             <?php echo form_error('facebook') ?>
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label for="twitter">Twitter</label>
-                            <input type="text" name="twitter" id="twitter" class="form-control" placeholder="https://www.twitter.com/" value="<?php echo set_value('twitter', $row[0]['twitter']) ?>"  />
+                            <input type="text" name="twitter" id="twitter" class="form-control" value="<?php echo set_value('twitter', $row[0]['twitter']) ?>"  />
                             <?php echo form_error('twitter') ?>
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label for="linkedin">Linkedin</label>
-                            <input type="text" name="linkedin" id="linkedin" class="form-control" placeholder="https://www.linkedin.com/" value="<?php echo set_value('linkedin', $row[0]['linkedin']) ?>"  />
+                            <input type="text" name="linkedin" id="linkedin" class="form-control" value="<?php echo set_value('linkedin', $row[0]['linkedin']) ?>"  />
                             <?php echo form_error('linkedin') ?>
                         </div>
                     </div>
@@ -110,7 +110,7 @@
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label for="copyright">Copyright</label>
-                            <input type="text" name="copyright" id="copyright" class="form-control" placeholder="" value="<?php echo set_value('copyright', $row[0]['copyright']) ?>" required="" />
+                            <input type="text" name="copyright" id="copyright" class="form-control" value="<?php echo set_value('copyright', $row[0]['copyright']) ?>" required="" />
                             <?php echo form_error('copyright') ?>
                         </div>
                     </div>

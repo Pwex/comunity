@@ -11,7 +11,7 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="name">Pais</label>
-                            <input type="text" name="name_country" id="name_country" class="form-control" placeholder="Ingresa el nombre del pais" value="<?php echo set_value('name_country', $information_country[0]["name_country"]) ?>" required="" />
+                            <input type="text" name="name_country" id="name_country" class="form-control" value="<?php echo set_value('name_country', $information_country[0]["name_country"]) ?>" required="" />
                             <?php echo form_error('name') ?>
                         </div>
                     </div>

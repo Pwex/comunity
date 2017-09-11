@@ -13,7 +13,7 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="name">Componete</label>
-                            <input type="text" name="name_component" id="name_component" class="form-control" placeholder="Ingresa un nombre de componente" value="<?php echo set_value('name_component', $information_component[0]["name_component"]) ?>" required="" />
+                            <input type="text" name="name_component" id="name_component" class="form-control" value="<?php echo set_value('name_component', $information_component[0]["name_component"]) ?>" required="" />
                             <?php echo form_error('name') ?>
                         </div>
                     </div>

@@ -8,7 +8,6 @@ class PriceProduct extends CI_Controller {
         parent::__construct();
         $this->load->library(array('managerauth'));
         $this->managerauth->validate_session();
-        $this->output->enable_profiler(TRUE);
     }
 
     # Listado completo de precio de productos

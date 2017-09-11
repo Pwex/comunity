@@ -13,7 +13,7 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="unit_measure">Unidad medida</label>
-                            <input type="text" name="unit_measure" id="unit_measure" class="form-control" placeholder="Ingresa la unidad de medida" value="<?php echo set_value('unit_measure') ?>" required="" />
+                            <input type="text" name="unit_measure" id="unit_measure" class="form-control" value="<?php echo set_value('unit_measure') ?>" required="" />
                             <?php echo form_error('unit_measure') ?>
                         </div>
                     </div>
