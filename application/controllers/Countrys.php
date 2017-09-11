@@ -28,7 +28,7 @@ class Countrys extends CI_Controller {
 		);
 		$data['option_nav_item'] = array(
 				'paises'	=> array(
-				'icon' 		=> 'fa fa-flag',
+				'icon' 		=> 'fa fa-ellipsis-v',
 				'url' 		=> 'countrys',
 				'class' 	=> NULL
 			), 
@@ -62,7 +62,7 @@ class Countrys extends CI_Controller {
 		);
 		$data['option_nav_item'] = array(
 				'paises'	=> array(
-				'icon' 		=> 'fa fa-flag',
+				'icon' 		=> 'fa fa-ellipsis-v',
 				'url' 		=> 'countrys',
 				'class' 	=> NULL
 			), 
@@ -120,7 +120,7 @@ class Countrys extends CI_Controller {
 		);
 		$data['option_nav_item'] = array(
 				'pais'			=> array(
-				'icon' 			=> 'fa fa-flag',
+				'icon' 			=> 'fa fa-ellipsis-v',
 				'url' 			=> 'countrys',
 				'class' 		=> NULL
 			), 
@@ -175,6 +175,15 @@ class Countrys extends CI_Controller {
 								'max_length'=> 'La longitud maxima a ingresar es de 50 caracteres'
 						   )
 			),
+			array(
+				'field' => 'coin',
+				'label' => 'moneda',
+				'rules' => 'required|max_length[10]|trim',
+				'errors' => array(
+								'required' 	=> 'Es necesario ingresar una %s',
+								'max_length'=> 'La longitud maxima a ingresar es de 10 caracteres'
+						   )
+			),
 		);
 		$this->load->library('form_validation');
 		$this->form_validation->set_error_delimiters('<p class="text-danger msg-error">', '</p>');
@@ -192,6 +201,15 @@ class Countrys extends CI_Controller {
 				'errors' => array(
 								'required' 	=> 'Es necesario ingresar un %s',
 								'max_length'=> 'La longitud maxima a ingresar es de 50 caracteres'
+						   )
+			),
+			array(
+				'field' => 'coin',
+				'label' => 'moneda',
+				'rules' => 'required|max_length[10]|trim',
+				'errors' => array(
+								'required' 	=> 'Es necesario ingresar una %s',
+								'max_length'=> 'La longitud maxima a ingresar es de 10 caracteres'
 						   )
 			),
 		);

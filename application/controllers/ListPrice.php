@@ -28,7 +28,7 @@ class ListPrice extends CI_Controller {
 		);
 		$data['option_nav_item'] = array(
 			'precios'	=> array(
-				'icon' 		=> 'fa fa-th-large',
+				'icon' 		=> 'fa fa-ellipsis-v',
 				'url' 		=> 'list-price',
 				'class' 	=> NULL
 			), 
@@ -61,7 +61,7 @@ class ListPrice extends CI_Controller {
 		);
 		$data['option_nav_item'] = array(
 			'precios'		=> array(
-				'icon' 		=> 'fa fa-th-large',
+				'icon' 		=> 'fa fa-ellipsis-v',
 				'url' 		=> 'list-price',
 				'class' 	=> NULL
 			), 
@@ -119,7 +119,7 @@ class ListPrice extends CI_Controller {
 		);
 		$data['option_nav_item'] = array(
 				'precios'		=> array(
-				'icon' 			=> 'fa fa-th-large',
+				'icon' 			=> 'fa fa-ellipsis-v',
 				'url' 			=> 'list-price',
 				'class' 		=> NULL
 			), 

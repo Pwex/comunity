@@ -11,7 +11,7 @@ class CountrysModel extends CI_Model {
     {
         return $this->db
         ->from('countrys')
-        ->select('id_country, name_country')
+        ->select('id_country, name_country, coin')
         ->get()
         ->result_array();
     }
@@ -46,7 +46,6 @@ class CountrysModel extends CI_Model {
         foreach ($this->db->select('id_country, name_country')->order_by('name_country', 'ASC')->get('countrys')->result_array() as $key => $value) {
             $countrys[$value['id_country']] = $value['name_country'];
         }
-        $countrys[0] = '';
         asort($countrys);
         return $countrys;
     }

@@ -26,7 +26,7 @@ class Seals extends CI_Controller {
 		);
 		$data['option_nav_item'] = array(
 			'sellos'	=> array(
-				'icon' 		=> 'fa fa-barcode',
+				'icon' 		=> 'fa fa-ellipsis-v',
 				'url' 		=> 'sellos',
 				'class' 	=> NULL
 			), 
@@ -63,7 +63,7 @@ class Seals extends CI_Controller {
 		);
 		$data['option_nav_item'] = array(
 			'sellos'	=> array(
-				'icon' 		=> 'fa fa-barcode',
+				'icon' 		=> 'fa fa-ellipsis-v',
 				'url' 		=> 'seals',
 				'class' 	=> NULL
 			), 
@@ -125,7 +125,7 @@ class Seals extends CI_Controller {
 		);
 		$data['option_nav_item'] = array(
 			'sellos'	=> array(
-				'icon' 		=> 'fa fa-barcode',
+				'icon' 		=> 'fa fa-ellipsis-v',
 				'url' 		=> 'seals',
 				'class' 	=> NULL
 			), 

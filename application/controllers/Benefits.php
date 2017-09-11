@@ -28,7 +28,7 @@ class Benefits extends CI_Controller {
 		);
 		$data['option_nav_item'] = array(
 				'beneficios'	=> array(
-				'icon' 		=> 'fa fa-users',
+				'icon' 		=> 'fa fa-ellipsis-v',
 				'url' 		=> 'benefits',
 				'class' 	=> NULL
 			), 
@@ -62,7 +62,7 @@ class Benefits extends CI_Controller {
 		);
 		$data['option_nav_item'] = array(
 			'beneficios'	=> array(
-				'icon' 		=> 'fa fa-users',
+				'icon' 		=> 'fa fa-ellipsis-v',
 				'url' 		=> 'benefits',
 				'class' 	=> NULL
 			), 
@@ -120,7 +120,7 @@ class Benefits extends CI_Controller {
 		);
 		$data['option_nav_item'] = array(
 				'beneficios'	=> array(
-				'icon' 			=> 'fa fa-users',
+				'icon' 			=> 'fa fa-ellipsis-v',
 				'url' 			=> 'benefits',
 				'class' 		=> NULL
 			), 

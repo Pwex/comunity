@@ -41,7 +41,14 @@
     <?php endif ?>
     <div class="box box-warning">
         <div class="box-header">
-            <h3 class="box-title"><a href="<?php echo base_url('users/add') ?>" class="btn btn-primary btn-sm" title="Agregar Usuarios"><i class="fa fa-plus-circle"></i></a> | Listado completo de usuarios</h3>
+            <blockquote style="margin-bottom: 0">
+                Listado completo de usuarios
+                <span style="float: right;">
+                    <a href="<?php echo base_url('users/add') ?>" class="btn btn-primary btn-sm" title="Agregar Usuarios">
+                        <i class="fa fa-plus-circle"></i>
+                    </a>
+                </span>
+            </blockquote>
         </div>
         <!-- /.box-header -->
         <div class="box-body">

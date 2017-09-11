@@ -28,7 +28,7 @@ class Warehouses extends CI_Controller {
 		);
 		$data['option_nav_item'] = array(
 				'bodegas'	=> array(
-				'icon' 		=> 'fa fa-cubes',
+				'icon' 		=> 'fa fa-ellipsis-v',
 				'url' 		=> 'warehouses',
 				'class' 	=> NULL
 			), 
@@ -62,7 +62,7 @@ class Warehouses extends CI_Controller {
 		);
 		$data['option_nav_item'] = array(
 				'bodegas'		=> array(
-				'icon' 			=> 'fa fa-cubes',
+				'icon' 			=> 'fa fa-ellipsis-v',
 				'url' 			=> 'warehouses',
 				'class' 		=> NULL
 			), 
@@ -119,7 +119,7 @@ class Warehouses extends CI_Controller {
 		);
 		$data['option_nav_item'] = array(
 				'bodegas'	=> array(
-				'icon' 			=> 'fa fa-cubes',
+				'icon' 			=> 'fa fa-ellipsis-v',
 				'url' 			=> 'warehouses',
 				'class' 		=> NULL
 			), 

@@ -28,7 +28,7 @@ class Document_Types extends CI_Controller {
 		);
 		$data['option_nav_item'] = array(
 				'tipos documento'	=> array(
-				'icon' 		=> 'fa fa-users',
+				'icon' 		=> 'fa fa-ellipsis-v',
 				'url' 		=> 'document_types',
 				'class' 	=> NULL
 			), 
@@ -62,7 +62,7 @@ class Document_Types extends CI_Controller {
 		);
 		$data['option_nav_item'] = array(
 				'tipos documento'	=> array(
-				'icon' 		=> 'fa fa-users',
+				'icon' 		=> 'fa fa-ellipsis-v',
 				'url' 		=> 'document_types',
 				'class' 	=> NULL
 			), 
@@ -120,7 +120,7 @@ class Document_Types extends CI_Controller {
 		);
 		$data['option_nav_item'] = array(
 				'tipos documento'	=> array(
-				'icon' 			=> 'fa fa-users',
+				'icon' 			=> 'fa fa-ellipsis-v',
 				'url' 			=> 'document_types',
 				'class' 		=> NULL
 			), 

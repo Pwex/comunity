@@ -11,8 +11,17 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="name_country">Pais</label>
-                            <input type="text" name="name_country" id="name_country" class="form-control" placeholder="Ingresa nombre del pais" value="<?php echo set_value('name_country') ?>" required="" />
+                            <input type="text" name="name_country" id="name_country" class="form-control" value="<?php echo set_value('name_country') ?>" required="" />
                             <?php echo form_error('name_country') ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2">
+                        <div class="form-group">
+                            <label for="coin">Moneda</label>
+                            <input type="text" name="coin" id="coin" class="form-control" value="<?php echo set_value('coin') ?>" required="" />
+                            <?php echo form_error('coin') ?>
                         </div>
                     </div>
                 </div>
