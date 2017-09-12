@@ -53,7 +53,7 @@
             <link href="<?php echo base_url('assets/plugins/chosen/chosen.min.css') ?>" media="all" rel="stylesheet">
         <?php endif; ?>
 
-        <?php if ( $this->uri->segment(1) == 'price-product' and ($this->uri->segment(2) == 'add' or $this->uri->segment(2) == 'edit') ): ?>
+        <?php if ( ($this->uri->segment(1) == 'price-product' and ($this->uri->segment(2) == 'add' or $this->uri->segment(2) == 'edit')) or ($this->uri->segment(1) == 'products' and ($this->uri->segment(2) == 'add' or $this->uri->segment(2) == 'edit')) ): ?>
             <link href="<?php echo base_url('assets/bower_components/select2/dist/css/select2.min.css') ?>" media="all" rel="stylesheet">
         <?php endif; ?>
 
@@ -69,7 +69,7 @@
                     <!-- mini logo for sidebar mini 50x50 pixels -->
                     <span class="logo-mini"><b>PWX</b></span>
                     <!-- logo for regular state and mobile devices -->
-                    <span class="logo-lg"><img src="<?php echo base_url('assets/dist/img/pwex.png') ?>" width="80"></span>
+                    <span class="logo-lg"><img src="<?php echo base_url('assets/dist/img/logo-pwex-white.png') ?>" width="80"></span>
                 </a>
                 <!-- Header Navbar: style can be found in header.less -->
                 <nav class="navbar navbar-static-top">
@@ -205,11 +205,6 @@
                                 </li>
                             </ul>
                         </li>
-                        <li>
-                            <a href="<?php echo base_url('users') ?>">
-                                <i class="fa fa-users"></i> <span>Usuarios</span>
-                            </a>
-                        </li>
                         <li class="treeview">
                             <a href="#">
                                 <i class="fa fa-cogs"></i> <span>Configuración</span>
@@ -327,7 +322,6 @@
                                 </li> 
                             </ul>
                         </li>
-
                         <li class="treeview">
                             <a href="#">
                                 <i class="fa fa-shopping-cart"></i> <span>eCommerce</span>
@@ -342,6 +336,11 @@
                                     </a>
                                 </li>
                             </ul>
+                        </li>
+                        <li>
+                            <a href="<?php echo base_url('users') ?>">
+                                <i class="fa fa-users"></i> <span>Usuarios</span>
+                            </a>
                         </li>
                         <li>
                             <a href="<?php echo base_url('exit') ?>">

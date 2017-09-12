@@ -184,6 +184,14 @@ class Countrys extends CI_Controller {
 								'max_length'=> 'La longitud maxima a ingresar es de 10 caracteres'
 						   )
 			),
+			array(
+				'field' => 'tax_iva',
+				'label' => 'iva',
+				'rules' => 'required|trim',
+				'errors' => array(
+								'required' 	=> 'Es necesario ingresar un %s'
+						   )
+			),
 		);
 		$this->load->library('form_validation');
 		$this->form_validation->set_error_delimiters('<p class="text-danger msg-error">', '</p>');
@@ -210,6 +218,14 @@ class Countrys extends CI_Controller {
 				'errors' => array(
 								'required' 	=> 'Es necesario ingresar una %s',
 								'max_length'=> 'La longitud maxima a ingresar es de 10 caracteres'
+						   )
+			),
+			array(
+				'field' => 'tax_iva',
+				'label' => 'iva',
+				'rules' => 'required|trim',
+				'errors' => array(
+								'required' 	=> 'Es necesario ingresar un %s'
 						   )
 			),
 		);

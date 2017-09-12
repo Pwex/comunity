@@ -27,7 +27,6 @@ class ProductsModel extends CI_Model {
     public function save($data)
     {
         unset($data['filtr-search']);
-        #echo "<pre>"; print_r($data)."</pre>"; exit();
         $data['id_benefits']    = implode(',', $data['id_benefits']);
         $data['id_component']   = implode(',', $data['id_component']);
         $data['id_seals']       = implode(',', $data['id_seals']);
@@ -38,6 +37,11 @@ class ProductsModel extends CI_Model {
     # Editar la informacion
     public function edit($id, $data)
     {
+        unset($data['filtr-search']);
+        $data['id_benefits']    = implode(',', $data['id_benefits']);
+        $data['id_component']   = implode(',', $data['id_component']);
+        $data['id_seals']       = implode(',', $data['id_seals']);
+        $data['images']         = implode(',', $data['images']);
         $this->db->where('id_product', $id)->update('products', $data);
     }
 
@@ -54,7 +58,6 @@ class ProductsModel extends CI_Model {
         foreach ($this->db->select('id_category, name_category')->order_by('name_category', 'ASC')->get('categories')->result_array() as $key => $value) {
             $category[$value['id_category']] = $value['name_category'];
         }
-        $category[0] = '';
         asort($category);
         return $category;
     }
@@ -65,9 +68,7 @@ class ProductsModel extends CI_Model {
         $typesinventory = array();
         foreach ($this->db->select('id_typeinventory, type_inventory')->order_by('type_inventory', 'ASC')->get('typesinventory')->result_array() as $key => $value) {
             $typesinventory[$value['id_typeinventory']] = $value['type_inventory'];
-        }
-        $typesinventory[0] = '';
-        asort($typesinventory);
+        }asort($typesinventory);
         return $typesinventory;
     }
 

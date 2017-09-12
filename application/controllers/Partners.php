@@ -55,6 +55,7 @@ class Partners extends CI_Controller {
 		$this->load->model('PartnerTypesModel', 'partner_types', TRUE);
 		$this->load->model('CountrysModel', 'countrys', TRUE);
 		$this->load->model('CitiesModel', 'cities', TRUE);
+		$this->load->model('BanksModel', 'bank', TRUE);
 		# Notificaciones
 		$data['number_of_pending_notifications'] = $this->activity->number_of_pending_notifications($this->session->userdata['user']['id_user']);
 		$data['notification_details']	 		 = $this->activity->notification_details($this->session->userdata['user']['id_user']);
@@ -80,10 +81,11 @@ class Partners extends CI_Controller {
 		# Listado de tipos de proveedor
 		$data['partner_types'] = $this->partner_types->partner_type_listing();
 		# Listado de paises
-		$data['countrys'] = $this->countrys->countrys_listing();
+		$data['countrys'] 	= $this->countrys->countrys_listing();
 		# Listado de ciudades
-		$data['cities'] = $this->cities->cities_listing();
-
+		$data['cities'] 	= $this->cities->cities_listing();
+		# Listado de bancos
+		$data['bank'] 		= $this->bank->banks_listing();
 		# Renderizando la vista | plantilla
 		$this->load->view('template/header', $data);
 		$this->load->view('partners/add');
@@ -219,38 +221,6 @@ class Partners extends CI_Controller {
 								'max_length'=> 'La longitud maxima a ingresar es de 80 caracteres'
 						   )
 			)
-/*
-			array(
-				'field' => 'email',
-				'label' => 'correo electrónico',
-				'rules' => 'required|max_length[120]|valid_email|is_unique[partners.email]|trim',
-				'errors' => array(
-								'required' 	 => 'Es necesario ingresar un %s',
-								'max_length' => 'La longitud maxima a ingresar es de 120 caracteres',
-								'valid_email'=> 'Ingrese un correo electrónico valido',
-								'is_unique'  => 'El correo electrónico no esta disponible, intente ingresar uno nuevo',
-						   )
-			),
-			array(
-				'field' => 'password',
-				'label' => 'clave de seguridad',
-				'rules' => 'required|max_length[255]|trim',
-				'errors' => array(
-								'required' 	=> 'Es necesario ingresar una %s',
-								'max_length'=> 'La longitud maxima a ingresar es de 255 caracteres'
-						   )
-			),
-			array(
-				'field' => 'confirm_password',
-				'label' => 'confirmar clave de seguridad',
-				'rules' => 'required|max_length[255]|matches[password]|trim',
-				'errors' => array(
-								'required' 	=> 'Es necesario ingresar una %s',
-								'max_length'=> 'La longitud maxima a ingresar es de 255 caracteres',
-								'matches'	=> 'Las clave de seguridad son distintas'
-						   )
-			)
-*/
 		);
 		$this->load->library('form_validation');
 		$this->form_validation->set_error_delimiters('<p class="text-danger msg-error">', '</p>');
@@ -264,7 +234,7 @@ class Partners extends CI_Controller {
 			array(
 				'field' => 'id_partner',
 				'label' => 'código proveedor',
-				'rules' => 'required|max_length[20]|trim',
+				'rules' => 'max_length[20]|trim',
 				'errors' => array(
 								'required' 	=> 'Es necesario ingresar un %s',
 								'max_length'=> 'La longitud maxima a ingresar es de 80 caracteres'

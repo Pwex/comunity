@@ -117,7 +117,7 @@
                     <div class="col-sm-3">
                         <div class="form-group">
                             <label for="id_bank">Banco</label>
-                            <?php echo form_dropdown('id_bank', $cities, set_value('id_bank'), 'class="form-control" required=""'); ?>
+                            <?php echo form_dropdown('id_bank', $bank, set_value('id_bank'), 'class="form-control" required=""'); ?>
                             <?php echo form_error('id_bank') ?>
                         </div>
                     </div>

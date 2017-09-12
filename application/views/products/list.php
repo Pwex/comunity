@@ -46,7 +46,7 @@
                             </h4>
                             El registro seleccionado ha sido actualizado correctamente.
                         </div>
-                    </dizv>
+                    </div>
                 </div>
             <?php endif ?>
         </div>

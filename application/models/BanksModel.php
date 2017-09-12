@@ -48,7 +48,6 @@ class BanksModel extends CI_Model {
         foreach ($this->db->select('id_bank, name_bank')->order_by('name_bank', 'ASC')->get('banks')->result_array() as $key => $value) {
             $bank[$value['id_bank']] = $value['name_bank'];
         }
-        $bank[0] = '';
         asort($bank);
         return $bank;
     }

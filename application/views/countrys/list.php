@@ -57,6 +57,7 @@
                     <th>Código</th>
                     <th>Pais</th>
                     <th>Moneda</th>
+                    <th>Iva</th>
                     <th>Opciones</th>  
                 </thead>
                 <tbody>
@@ -65,6 +66,7 @@
                             <td><?php echo $value['id_country'] ?></td>
                             <td><?php echo $value['name_country'] ?></td>
                             <td><?php echo $value['coin'] ?></td>
+                            <td><?php echo $value['tax_iva'] ?>%</td>
                             <td>
                                 <a href="<?php echo base_url('countrys/edit/').$value['id_country'] ?>" class="btn btn-warning">
                                     <i class="fa fa-pencil"></i>

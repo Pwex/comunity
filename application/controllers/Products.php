@@ -84,6 +84,8 @@ class Products extends CI_Controller {
 		$data['seals'] 			= $this->products->seals_listing();
 		# Listado de estatus
 		$data['status'] 		= array(1 => 'Activo', 0 => 'Inactivo');
+		# Donde se visualizara
+		$data['availability'] 	= array(1 => 'En todas partes', 2 => 'eCommerce', 3 => 'Centros de bienestar', 4 => 'Coach');
 		# Listado completo de imagenes disponibles
 		$data['list_images'] = $this->medios->list_images();
 		# Renderizando la vista | plantilla
@@ -123,8 +125,8 @@ class Products extends CI_Controller {
 		# Librerias
 		$this->load->helper('form');
 		$this->load->model('ActivitiesModel', 'activity', TRUE);
-		//$this->load->model('CountryModel', 'country', TRUE);
-		$this->load->model('ProductsModel', 'products', TRUE);
+		$this->load->model('ProductsModel'  , 'products', TRUE);
+		$this->load->model('MultimediaModel', 'medios', TRUE);
 		# Notificaciones
 		$data['number_of_pending_notifications'] = $this->activity->number_of_pending_notifications($this->session->userdata['user']['id_user']);
 		$data['notification_details']	 		 = $this->activity->notification_details($this->session->userdata['user']['id_user']);
@@ -145,12 +147,32 @@ class Products extends CI_Controller {
 				'class' 	=> 'active'
 			)
 		);
-		# Listado de paises
-		//$data['country'] = $this->country->full_listing();
-		# Tipos de cuentas | Acceso
-		//$data['type_of_access'] = array('Administrador' => 'Administrador', 'Coach' => 'Coach', 'Proveedor' => 'Proveedor');
+		
 		# Buscar informacion del usuario
-		$data['product'] = $this->products->information_product($id);
+		$data['information_product'] = $this->products->information_product($id);
+		# Conversiones a array
+		$data['array_benefits'] 	= explode(',', $data['information_product'][0]['id_benefits']);
+		$data['array_component'] 	= explode(',', $data['information_product'][0]['id_component']);
+		$data['array_seals'] 		= explode(',', $data['information_product'][0]['id_seals']);
+		$data['array_images'] 		= explode(',', $data['information_product'][0]['images']);
+
+
+		# Listado de categorias
+		$data['category'] 		= $this->products->categories_listing();
+		# Listado de tipos de inventario
+		$data['typesinventory'] = $this->products->typesinv_listing();
+		# Listado de beneficios
+		$data['benefits'] 		= $this->products->benefits_listing();
+		# Listado de componentes
+		$data['components'] 	= $this->products->components_listing();
+		# Listado de sellos
+		$data['seals'] 			= $this->products->seals_listing();
+		# Listado de estatus
+		$data['status'] 		= array(1 => 'Activo', 0 => 'Inactivo');
+		# Donde se visualizara
+		$data['availability'] 	= array(1 => 'En todas partes', 2 => 'eCommerce', 3 => 'Centros de bienestar', 4 => 'Coach');
+		# Listado completo de imagenes disponibles
+		$data['list_images'] = $this->medios->list_images();
 		# Renderizando la vista | plantilla
 		$this->load->view('template/header', $data);
 		$this->load->view('products/edit');
@@ -215,40 +237,21 @@ class Products extends CI_Controller {
 	{
 		$config = array(
 			array(
-				'field' => 'name',
-				'label' => 'nombre',
-				'rules' => 'required|max_length[80]|trim',
+				'field' => 'id_product',
+				'label' => 'código producto',
+				'rules' => 'required|max_length[60]|trim',
 				'errors' => array(
 								'required' 	=> 'Es necesario ingresar un %s',
 								'max_length'=> 'La longitud maxima a ingresar es de 80 caracteres'
 						   )
 			),
 			array(
-				'field' => 'last_name',
-				'label' => 'apellido',
-				'rules' => 'required|max_length[80]|trim',
+				'field' => 'name_product',
+				'label' => 'nombre producto',
+				'rules' => 'required|max_length[20]|trim',
 				'errors' => array(
 								'required' 	=> 'Es necesario ingresar un %s',
 								'max_length'=> 'La longitud maxima a ingresar es de 80 caracteres'
-						   )
-			),
-			array(
-				'field' => 'password',
-				'label' => 'clave de seguridad',
-				'rules' => 'required|max_length[255]|trim',
-				'errors' => array(
-								'required' 	=> 'Es necesario ingresar una %s',
-								'max_length'=> 'La longitud maxima a ingresar es de 255 caracteres'
-						   )
-			),
-			array(
-				'field' => 'confirm_password',
-				'label' => 'confirmar clave de seguridad',
-				'rules' => 'required|max_length[255]|matches[password]|trim',
-				'errors' => array(
-								'required' 	=> 'Es necesario ingresar una %s',
-								'max_length'=> 'La longitud maxima a ingresar es de 255 caracteres',
-								'matches'	=> 'Las clave de seguridad son distintas'
 						   )
 			)
 		);

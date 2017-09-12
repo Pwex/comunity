@@ -48,7 +48,6 @@ class CitiesModel extends CI_Model {
         foreach ($this->db->select('id_city, name_city')->order_by('name_city', 'ASC')->get('cities')->result_array() as $key => $value) {
             $city[$value['id_city']] = $value['name_city'];
         }
-        $city[0] = '';
         asort($city);
         return $city;
     }
