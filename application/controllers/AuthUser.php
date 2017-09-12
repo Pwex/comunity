@@ -6,6 +6,7 @@ class AuthUser extends CI_Controller {
 	public function __construct()
     {
         parent::__construct();
+        $this->output->enable_profiler(TRUE);
     }
     
     # Formulario de unicio de sesion
@@ -132,7 +133,7 @@ class AuthUser extends CI_Controller {
 
 	}
 
-	# Validar el acceso de los usuarios a la comunidad de desarrollo
+	# Validar el acceso de los usuarios
 	public function validate_access()
 	{
 		switch ($this->input->post()) {
