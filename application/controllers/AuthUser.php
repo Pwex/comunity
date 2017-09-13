@@ -132,7 +132,7 @@ class AuthUser extends CI_Controller {
 
 	}
 
-	# Validar el acceso de los usuarios a la comunidad de desarrollo
+	# Validar el acceso de los usuarios
 	public function validate_access()
 	{
 		switch ($this->input->post()) {
