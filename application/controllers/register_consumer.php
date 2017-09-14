@@ -95,6 +95,7 @@ class Register_consumer extends CI_Controller {
 				$this->add();
 			break;
 			case TRUE:
+				$this->load->database();
 				$this->rules_insert_consumers();
 				switch ($this->form_validation->run()) {
 					case FALSE:
