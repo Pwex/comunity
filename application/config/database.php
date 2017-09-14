@@ -74,19 +74,20 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 $db['default'] = array(
+/*
 	'dsn'	=> '',
 	'hostname' => 'localhost',
 	'username' => 'root',
 	'password' => '',
 	'database' => 'comunidadtwex',
+*/
 
-/*
 
 	'hostname' => 'mysql1409.ixwebhosting.com',
 	'username' => 'C350257_admin',
 	'password' => 'ticWA2011',
 	'database' => 'C350257_comunidadtwex',
-*/
+
 
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
