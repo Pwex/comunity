@@ -58,8 +58,5 @@
         </div>
         <!-- ./col -->
     </div>
-    <div class="row">
-        <?php echo "<pre>"; print_r($this->session->userdata())."</pre>"; ?>
-    </div>
 </section>
 <!-- /.content -->
