@@ -180,6 +180,14 @@ class register_consumer extends CI_Controller {
 		);
 		# Listado de paises
 		$data['country'] = $this->country->countrys_listing();
+		# frecuencia semanal
+		$data['frecuency_week'] = array('0'=>'Nunca','1'=>'1 vez','2'=>'2 veces','3'=>'3 veces','4'=>'4 veces','5'=>'5 veces','6'=>'6 veces','7'=>'7 veces');
+		$data['frecuency_weight'] = array('frecuentemente'=>'Frecuentemente','a veces'=>'A veces','casi nunca'=>'Casi nunca','nunca'=>'Nunca');
+		$data['frecuency_bath'] = array('1'=>'1 vez al día','2-3'=>'2-3 veces al día','mas de 3'=>'Más de 3 veces al día','no todos'=>'No todos los días','cada 5'=>'Cada 5  día');
+		$data['frecuency_sport'] = array('no hace'=>'No hace actividad física','1'=>'1 vez a la semana','2-3'=>'Entre 2-3 veces a la semana','4 mas'=>'Más de 4 veces a la semana');
+		$data['frecuency_pain'] = array('mas 1'=>'Más de una vez a la semana','1'=>'1 vez a la semana','1-2'=>'1-2 veces a la semana','nuncas'=>'Nunca');
+
+
 		# Buscar informacion del usuario
 //		$data['consumers'] = $this->ec_client->information_consumers($id);
 		# Renderizando la vista | plantilla
