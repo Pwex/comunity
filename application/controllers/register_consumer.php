@@ -14,13 +14,13 @@ class register_consumer extends CI_Controller {
 	public function full_listing()
 	{
 		# Carga del modelo de base de datos
-		$this->load->model('ConsumersModel', 'consumers', TRUE);
+		$this->load->model('ConsumersModel', 'ec_client', TRUE);
 		$this->load->model('ActivitiesModel', 'activity', TRUE);
 		# Notificaciones
 		$data['number_of_pending_notifications'] = $this->activity->number_of_pending_notifications($this->session->userdata['user']['id_user']);
 		$data['notification_details']	 		 = $this->activity->notification_details($this->session->userdata['user']['id_user']);
 		# Envio de registros
-		$data['full_listing'] = $this->consumers->full_listing();
+		$data['full_listing'] = $this->ec_client->full_listing();
 		# Opciones items del menu principal del contenido
 		$data['option_nav'] = array(
 			'box_title' => 'Consumidores',
@@ -28,7 +28,7 @@ class register_consumer extends CI_Controller {
 		);
 		$data['option_nav_item'] = array(
 				'Consumidores'	=> array(
-				'icon' 		=> 'fa fa-user',
+				'icon' 		=> 'fa fa-heartbeat',
 				'url' 		=> 'register_consumer',
 				'class' 	=> NULL
 			), 
@@ -53,7 +53,6 @@ class register_consumer extends CI_Controller {
 		$this->load->model('DocumentTypesModel', 'document_types', TRUE);
 		$this->load->model('CountrysModel', 'countrys', TRUE);
 		$this->load->model('CitiesModel', 'cities', TRUE);
-
 		# Notificaciones
 		$data['number_of_pending_notifications'] = $this->activity->number_of_pending_notifications($this->session->userdata['user']['id_user']);
 		$data['notification_details']	 		 = $this->activity->notification_details($this->session->userdata['user']['id_user']);
@@ -64,11 +63,11 @@ class register_consumer extends CI_Controller {
 		);
 		$data['option_nav_item'] = array(
 			'Consumidores'	=> array(
-				'icon' 		=> 'fa fa-user',
+				'icon' 		=> 'fa fa-heartbeat',
 				'url' 		=> 'register_consumer',
 				'class' 	=> NULL
 			), 
-			'agregar' => array(
+				'agregar' => array(
 				'icon' 		=> '',
 				'url' 		=> '',
 				'class' 	=> 'active'
@@ -80,6 +79,8 @@ class register_consumer extends CI_Controller {
 		$data['countrys'] = $this->countrys->countrys_listing();
 		# Listado de ciudades
 		$data['cities'] = $this->cities->cities_listing();
+		# arreglo para el sexo
+		$data['sex'] = array('Masculino' => 'masculino', 'Femenino' => 'femenino');
 		# Renderizando la vista | plantilla
 		$this->load->view('template/header', $data);
 		$this->load->view('register_consumer/add');
@@ -101,10 +102,10 @@ class register_consumer extends CI_Controller {
 					break;
 					case TRUE:
 						# Cargar el modelo de base de datos
-						$this->load->model('ConsumersModel', 'consumers', TRUE);
+						$this->load->model('ConsumersModel', 'ec_client', TRUE);
 						# Insertar información en la base de datos
-						$this->consumers->save($this->input->post());
-						redirect('consumers/success'); 
+						$this->ec_client->save($this->input->post());
+						redirect('register_consumer/success'); 
 					break;
 				}
 			break;
@@ -118,7 +119,7 @@ class register_consumer extends CI_Controller {
 		$this->load->helper('form');
 		$this->load->model('ActivitiesModel', 'activity', TRUE);
 		$this->load->model('CountrysModel', 'country', TRUE);
-		$this->load->model('ConsumersModel', 'consumers', TRUE);
+		$this->load->model('ConsumersModel', 'ec_client', TRUE);
 		# Notificaciones
 		$data['number_of_pending_notifications'] = $this->activity->number_of_pending_notifications($this->session->userdata['user']['id_user']);
 		$data['notification_details']	 		 = $this->activity->notification_details($this->session->userdata['user']['id_user']);
@@ -129,7 +130,7 @@ class register_consumer extends CI_Controller {
 		);
 		$data['option_nav_item'] = array(
 			'Consumidores'	=> array(
-				'icon' 		=> 'fa fa-cuseer',
+				'icon' 		=> 'fa fa-heartbeat',
 				'url' 		=> 'registeer_consumer',
 				'class' 	=> NULL
 			), 
@@ -141,15 +142,52 @@ class register_consumer extends CI_Controller {
 		);
 		# Listado de paises
 		$data['country'] = $this->country->countrys_listing();
-		# Tipos de cuentas | Acceso
-		$data['type_of_access'] = array('Administrador' => 'Administrador', 'Coach' => 'Coach', 'Proveedor' => 'Proveedor');
 		# Buscar informacion del usuario
-		$data['user'] = $this->consumers->information_user($id);
+		$data['consumers'] = $this->ec_client->information_consumers($id);
 		# Renderizando la vista | plantilla
 		$this->load->view('template/header', $data);
 		$this->load->view('register_consumer/edit');
 		$this->load->view('template/footer');
 	}
+
+	# Formulario Principal para Editar Consumidores
+	public function add_poll($id = NULL)
+	{
+		# Librerias
+		$this->load->helper('form');
+		$this->load->model('ActivitiesModel', 'activity', TRUE);
+		$this->load->model('CountrysModel', 'country', TRUE);
+		$this->load->model('ConsumersModel', 'ec_client', TRUE);
+		# Notificaciones
+		$data['number_of_pending_notifications'] = $this->activity->number_of_pending_notifications($this->session->userdata['user']['id_user']);
+		$data['notification_details']	 		 = $this->activity->notification_details($this->session->userdata['user']['id_user']);
+		# Opciones items del menu principal del contenido
+		$data['option_nav'] = array(
+			'box_title' => 'Consumidores',
+			'box_span' 	=> 'Encuesta'
+		);
+		$data['option_nav_item'] = array(
+			'Consumidores'	=> array(
+				'icon' 		=> 'fa fa-heartbeat',
+				'url' 		=> 'registeer_consumer',
+				'class' 	=> NULL
+			), 
+			'editar' => array(
+				'icon' 		=> '',
+				'url' 		=> '',
+				'class' 	=> 'active'
+			)
+		);
+		# Listado de paises
+		$data['country'] = $this->country->countrys_listing();
+		# Buscar informacion del usuario
+//		$data['consumers'] = $this->ec_client->information_consumers($id);
+		# Renderizando la vista | plantilla
+		$this->load->view('template/header', $data);
+		$this->load->view('register_consumer/poll');
+		$this->load->view('template/footer');
+	}
+
 
 	# Recibir el Formulario de Editar y Validar las Reglas
 	public function edit_validate($id = NULL)
@@ -166,9 +204,9 @@ class register_consumer extends CI_Controller {
 					break;
 					case TRUE:
 						# Cargar el modelo de base de datos
-						$this->load->model('ConsumersModel', 'consumers', TRUE);
+						$this->load->model('ConsumersModel', 'ec_client', TRUE);
 						# Insertar información en la base de datos
-						$this->consumers->edit($id, $this->input->post());
+						$this->ec_client->edit($id, $this->input->post());
 						redirect('consumers/success-edit'); 
 					break;
 				}
@@ -201,31 +239,12 @@ class register_consumer extends CI_Controller {
 			array(
 				'field' => 'email',
 				'label' => 'correo electrónico',
-				'rules' => 'required|max_length[120]|valid_email|is_unique[consumers.email]|trim',
+				'rules' => 'required|max_length[120]|valid_email|is_unique[ec_client.email]|trim',
 				'errors' => array(
 								'required' 	 => 'Es necesario ingresar un %s',
 								'max_length' => 'La longitud maxima a ingresar es de 120 caracteres',
 								'valid_email'=> 'Ingrese un correo electrónico valido',
 								'is_unique'  => 'El correo electrónico no esta disponible, intente ingresar uno nuevo',
-						   )
-			),
-			array(
-				'field' => 'password',
-				'label' => 'clave de seguridad',
-				'rules' => 'required|max_length[255]|trim',
-				'errors' => array(
-								'required' 	=> 'Es necesario ingresar una %s',
-								'max_length'=> 'La longitud maxima a ingresar es de 255 caracteres'
-						   )
-			),
-			array(
-				'field' => 'confirm_password',
-				'label' => 'confirmar clave de seguridad',
-				'rules' => 'required|max_length[255]|matches[password]|trim',
-				'errors' => array(
-								'required' 	=> 'Es necesario ingresar una %s',
-								'max_length'=> 'La longitud maxima a ingresar es de 255 caracteres',
-								'matches'	=> 'Las clave de seguridad son distintas'
 						   )
 			)
 		);
@@ -285,8 +304,8 @@ class register_consumer extends CI_Controller {
 	public function delete()
 	{
 		# Carga del modelo de base de datos
-		$this->load->model('ConsumersModel', 'consumers', TRUE);
+		$this->load->model('ConsumersModel', 'ec_client', TRUE);
 		# Eliminar el usuario seleccionado
-		$this->consumers->delete($this->input->post('id'));
+		$this->ec_client->delete($this->input->post('id'));
 	}
 }

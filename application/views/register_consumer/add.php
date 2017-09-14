@@ -35,59 +35,64 @@
                 <div class="row">
                     <div class="col-sm-3">
                         <div class="form-group">
-                            <label for="id_document_type">Tipo Documento</label>
-                            <?php echo form_dropdown('id_document_type', $document_types, set_value('id_document_type'), 'class="form-control" required=""'); ?>
-                            <?php echo form_error('id_document_type') ?>
+                            <label for="document_type">Tipo Documento</label>
+                            <?php echo form_dropdown('document_type', $document_types, set_value('document_type'), 'class="form-control" required=""'); ?>
+                            <?php echo form_error('document_type') ?>
                         </div>
                     </div>
                     <div class="col-sm-3">
                         <div class="form-group">
-                            <label for="id_partner">Número Documento</label>
-                            <input type="text" name="id_partner" id="id_document" class="form-control" value="<?php echo set_value('id_partner') ?>" required="" />
-                            <?php echo form_error('id_partner') ?>
+                            <label for="document">Número Documento</label>
+                            <input type="text" name="document" id="id_document" class="form-control" value="<?php echo set_value('document') ?>" required="" />
+                            <?php echo form_error('document') ?>
                         </div>
                     </div>
                     <div class="col-sm-3">
                         <div class="form-group">
-                            <label for="id_country">País</label>
-                            <?php echo form_dropdown('id_country', $countrys, set_value('id_country'), 'class="form-control" required=""'); ?>
-                            <?php echo form_error('id_country') ?>
+                            <label for="country">País</label>
+                            <?php echo form_dropdown('country', $countrys, set_value('country'), 'class="form-control" required=""'); ?>
+                            <?php echo form_error('country') ?>
                         </div>
                     </div>
                     <div class="col-sm-3">
                         <div class="form-group">
-                            <label for="id_country">Ciudad</label>
-                            <?php echo form_dropdown('id_city', $cities, set_value('id_city'), 'class="form-control" required=""'); ?>
-                            <?php echo form_error('id_city') ?>
+                            <label for="cities">Ciudad</label>
+                            <?php echo form_dropdown('cities', $cities, set_value('cities'), 'class="form-control" required=""'); ?>
+                            <?php echo form_error('cities') ?>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-3">
                         <div class="form-group">
-                            <label for="id_document_type">Sexo </label>
-                            <?php echo form_dropdown('id_document_type', $document_types, set_value('id_document_type'), 'class="form-control" required=""'); ?>
-                            <?php echo form_error('id_document_type') ?>
+                            <label for="sex">Sexo </label>
+                            <?php echo form_dropdown('sex', $sex, set_value('sex'), 'class="form-control" required=""'); ?>
+                            <?php echo form_error('sex') ?>
                         </div>
                     </div>
                     <div class="col-sm-3">
                         <div class="form-group">
-                            <label for="id_partner">Fecha Nacimiento </label>
-                            <input type="text" name="id_partner" id="id_document" class="form-control" value="<?php echo set_value('id_partner') ?>" required="" />
-                            <?php echo form_error('id_partner') ?>
+                            <label for="birth_date">Fecha Nacimiento </label>
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-calendar"></i>
+                                </div>
+                                <input type="text" name="birth_date" id="datemask" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask value="<?php echo set_value('birth_date') ?>">
+                                <?php echo form_error('birth_date') ?>
+                            </div>
                         </div>
                     </div>
                     <div class="col-sm-3">
                         <div class="form-group">
-                            <label for="id_country">Estatura </label>
-                            <input type="text" name="id_partner" id="id_document" class="form-control" value="<?php echo set_value('id_partner') ?>" required="" />
-                            <?php echo form_error('id_country') ?>
+                            <label for="height">Estatura </label>
+                            <input type="text" name="height" id="height" class="form-control" value="<?php echo set_value('height') ?>" />
+                            <?php echo form_error('height') ?>
                         </div>
                     </div>
                     <div class="col-sm-3">
                         <div class="form-group">
-                            <label for="id_country">Peso </label>
-                            <input type="text" name="id_partner" id="id_document" class="form-control" value="<?php echo set_value('id_partner') ?>" required="" />
+                            <label for="weight">Peso </label>
+                            <input type="text" name="weight" id="weight" class="form-control" value="<?php echo set_value('weight') ?>" />
                         </div>
                     </div>
                 </div>

@@ -342,7 +342,6 @@
                 });
             </script>
         <?php endif; ?>
-
         <!-- Filtro select -->
         <?php if ( ($this->uri->segment(1) == 'price-product' and ($this->uri->segment(2) == 'add' or $this->uri->segment(2) == 'edit')) or ($this->uri->segment(1) == 'products' and ($this->uri->segment(2) == 'add' or $this->uri->segment(2) == 'edit')) ): ?>
             <script src="<?php echo base_url('assets/bower_components/select2/dist/js/select2.full.min.js') ?>"></script>
@@ -351,6 +350,19 @@
                 //Initialize Select2 Elements
                 $('.select2').select2();
                 $('span.select2-container').css('width','100%');
+            });
+            </script>
+        <?php endif; ?>
+        <!-- mascaras campos formularios -->
+        <?php if ( ($this->uri->segment(1) == 'register_consumer' and $this->uri->segment(2) == 'add') ): ?>
+            <script src="<?php echo base_url('assets/plugins/input-mask/jquery.inputmask.js') ?>"></script>
+            <script src="<?php echo base_url('assets/plugins/input-mask/jquery.inputmask.date.extensions.js') ?>"></script>
+            <script src="<?php echo base_url('assets/plugins/input-mask/jquery.inputmask.extensions.js') ?>"></script>
+            <script type="text/javascript">
+            $(document).ready(function()
+            {
+                //Datemask dd/mm/yyyy
+                $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
             });
             </script>
         <?php endif; ?>

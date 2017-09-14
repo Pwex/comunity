@@ -44,7 +44,7 @@
             <blockquote style="margin-bottom: 0">
                 Listado completo de consumidores
                 <span style="float: right;">
-                    <a href="<?php echo base_url('register_consumer/add') ?>" class="btn btn-primary btn-sm" title="Agregar Usuarios">
+                    <a href="<?php echo base_url('register_consumer/add') ?>" class="btn btn-primary btn-sm" title="Agregar consumidor">
                         <i class="fa fa-plus-circle"></i>
                     </a>
                 </span>
@@ -57,7 +57,7 @@
                     <th>Nombres</th>
                     <th>Email</th>
                     <th>Pais</th>
-                    <th>Cuenta</th>  
+                    <th>Ciudad</th>  
                     <th>Opciones</th>  
                 </thead>
                 <tbody>
@@ -66,10 +66,13 @@
                             <td><?php echo $value['name'].' '.$value['last_name'] ?></td>
                             <td><?php echo $value['email'] ?></td>
                             <td><?php echo $value['name_country'] ?></td>
-                            <td><?php echo $value['type_of_access'] ?></td>
+                            <td><?php echo $value['name_city'] ?></td>
                             <td>
-                                <a href="<?php echo base_url('users/edit/').$value['id_user'] ?>" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
-                                <button type="button" class="btn btn-danger btn-delete" id="<?php echo $value['id_user'] ?>"><i class="fa fa-trash"></i></button>
+                                <a href="<?php echo base_url('register_consumer/edit/').$value['id_client'] ?>" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
+
+                                <a href="<?php echo base_url('register_consumer/poll/').$value['id_client'] ?>" class="btn btn-info"><i class="fa fa-book"></i></a>
+
+                                <button type="button" class="btn btn-danger btn-delete" id="<?php echo $value['id_client'] ?>"><i class="fa fa-trash"></i></button>
                             </td>
                         </tr>
                     <?php endforeach ?>

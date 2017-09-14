@@ -221,6 +221,11 @@
                                     </a>
                                     <ul class="treeview-menu">
                                         <li>
+                                            <a href="<?php echo base_url('document_types') ?>">
+                                                <i class="fa fa-circle-o"></i> Tipos Documento
+                                            </a>
+                                        </li>
+                                        <li>
                                             <a href="<?php echo base_url('countrys') ?>">
                                                 <i class="fa fa-circle-o"></i> Paises
                                             </a>
@@ -299,11 +304,6 @@
                                     </a>
                                     <ul class="treeview-menu">
                                         <li>
-                                            <a href="<?php echo base_url('document_types') ?>">
-                                                <i class="fa fa-circle-o"></i> Tipos Documento
-                                            </a>
-                                        </li>
-                                        <li>
                                             <a href="<?php echo base_url('partner_types') ?>">
                                                 <i class="fa fa-circle-o"></i> Tipos Proveedor
                                             </a>
@@ -339,7 +339,7 @@
                         </li>
                         <li class="treeview">
                             <a href="#">
-                                <i class="fa fa-user"></i>
+                                <i class="fa fa-street-view"></i>
                                 <span>Consumidor</span>
                                 <span class="pull-right-container">
                                     <i class="fa fa-angle-left pull-right"></i>
@@ -348,17 +348,33 @@
                             <ul class="treeview-menu" style="display: none;">
                                 <li>
                                     <a href="<?php echo base_url('register_consumer') ?>">
+                                        <i class="fa fa-edit"></i> Registro
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-heartbeat"></i>
+                                <span>Coach</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu" style="display: none;">
+                                <li>
+                                    <a href="">
                                         <i class="fa fa-edit"></i> Registro inicial
                                     </a>
                                 </li>
                             </ul>
                         </li>
-
                         <li>
                             <a href="<?php echo base_url('users') ?>">
                                 <i class="fa fa-users"></i> <span>Usuarios</span>
                             </a>
                         </li>
+
                         <li>
                             <a href="<?php echo base_url('exit') ?>">
                                 <i class="fa fa-power-off"></i> <span>Cerrar sesión</span>
