@@ -10,7 +10,7 @@
         <div class="box-body">
             <?php echo form_open('price-product/add') ?>
                 <div class="row">
-                    <div class="col-sm-3">
+                    <div class="col-sm-2">
                         <div class="form-group">
                             <label for="id_list_price">Tipo de cuenta</label>
                             <?php echo form_dropdown('id_list_price', $list_price, set_value('id_list_price'), 'class="form-control select2" required=""'); ?>
@@ -37,7 +37,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-3">
+                    <div class="col-sm-2">
                         <div class="form-group">
                             <label for="price">Precio</label>
                             <input type="number" name="price" id="price" class="form-control" value="<?php echo set_value('price') ?>" required="" />

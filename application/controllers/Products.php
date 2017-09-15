@@ -220,10 +220,10 @@ class Products extends CI_Controller {
 			array(
 				'field' => 'name_product',
 				'label' => 'nombre producto',
-				'rules' => 'required|max_length[20]|trim',
+				'rules' => 'required|max_length[50]|trim',
 				'errors' => array(
 								'required' 	=> 'Es necesario ingresar un %s',
-								'max_length'=> 'La longitud maxima a ingresar es de 80 caracteres'
+								'max_length'=> 'La longitud maxima a ingresar es de 50 caracteres'
 						   )
 			)
 		);
@@ -248,10 +248,10 @@ class Products extends CI_Controller {
 			array(
 				'field' => 'name_product',
 				'label' => 'nombre producto',
-				'rules' => 'required|max_length[20]|trim',
+				'rules' => 'required|max_length[50]|trim',
 				'errors' => array(
 								'required' 	=> 'Es necesario ingresar un %s',
-								'max_length'=> 'La longitud maxima a ingresar es de 80 caracteres'
+								'max_length'=> 'La longitud maxima a ingresar es de 50 caracteres'
 						   )
 			)
 		);
