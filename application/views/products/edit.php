@@ -63,7 +63,7 @@
                                             <div class="col-sm-6">
                                                 <div class="form-group">
                                                     <label for="name_product">Producto</label>
-                                                    <input type="text" name="name_product" id="name_product" class="form-control" value="<?php echo set_value('name_product', $information_product[0]['name_product']) ?>" required="" />
+                                                    <input type="text" name="name_product" id="name_product" class="form-control" value="<?php echo set_value('name_product', $information_product[0]['name_product']) ?>" required="" maxlength="40" />
                                                     <?php echo form_error('name_product') ?>
                                                 </div>
                                             </div>
