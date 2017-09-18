@@ -1,5 +1,7 @@
 <style type="text/css">
     .img {
+        border-radius: 5px;
+        border: 2px solid rgb(236, 236, 236);
         cursor: pointer;
         height: 14.4em;
         width: 14.4em;
@@ -20,6 +22,14 @@
     }
     .main-manager {
         width: 99%;
+    }
+    .categories-container {
+        background: rgb(251, 249, 249);
+        border-radius: 5px;
+        border: 1px solid #eee;
+        margin-left: 1em;
+        margin-right: 1em;
+        padding: 0.6em 0.5em;
     }
 </style>
 <!-- Main content -->
@@ -68,27 +78,42 @@
             <blockquote style="margin-bottom: 0">
                 Archivos de Imagenes
                 <span style="float: right;">
-                    <button title="Agregar Archivos" class="btn btn-primary btn-md" id="btn-file-manager"><i class="fa fa-plus-circle" id="btn-icon"></i></button>
+                    <button title="Agregar Archivos" class="btn btn-primary btn-md" id="btn-file-manager" style="width: 10em"><i class="fa fa-plus-circle" id="btn-icon"></i></button>
                 </span>
             </blockquote>
         </div>
         <!-- /.box-header -->
         <div class="box-body">
             <div class="row" style="display: none;" id="file-manager">
-                <div class="col-xs-12">
-                    <?php echo form_open_multipart('multimedia/add-file-manager-images') ?>
+                <?php echo form_open_multipart('multimedia/add-file-manager-images') ?>
+                    <div class="col-sm-3">
                         <div class="form-group">
-                            <label>Seleccione los recursos</label>
-                            <input type="file" name="files">
+                            <label>Categoría</label>
+                            <?php echo form_dropdown('id_category', $list_categories, null, 'class="form-control"') ?>
                         </div>
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-primary">Enviar</button>
-                        </div>
-                    </form>
-                </div>
+                    </div>
+                    <div class="col-xs-12">
+                            <div class="form-group">
+                                <label>Seleccione los recursos</label>
+                                <input type="file" name="files">
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary" style="width: 10em;">Enviar</button>
+                            </div>
+                    </div>
+                </form>
             </div>
             <div id="main-manager">
                 <!-- Shuffle & Sort Controls -->
+                <div class="row">
+                    <label style="padding-left: 1em;">Búsqueda por categorías</label>
+                    <ul class="simplefilter categories-container">
+                        <li class="active" data-filter="all" style="text-align: center;padding: 6px 15px;background-color: #f7f8f9;color: #444444;border: 1px solid #eae7e7;">TODAS</li>
+                        <?php foreach ($categories_images as $key => $value): ?>
+                            <li data-filter="<?php echo $value['id_category'] ?>" style="text-align: center;padding: 6px 15px;background-color: #f7f8f9;color: #444444;border: 1px solid #eae7e7;"><?php echo $value['name_category'] ?></li>
+                        <?php endforeach ?>
+                    </ul>
+                </div>
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="form-group">
@@ -117,9 +142,11 @@
                         attribute, which starts from the value 1 and goes up from there -->
                     <div class="filtr-container">
                         <?php foreach ($list_images as $key => $value): ?>
-                            <div class="col-xs-6 col-sm-3 col-md-2 filtr-item" data-category="1, 5" data-sort="<?php echo $value['name'] ?>">
+                            <div class="col-xs-6 col-sm-3 col-md-2 filtr-item" data-category="<?php echo $value['id_category'] ?>" data-sort="<?php echo $value['name'] ?>">
                                 <div class="btn-action-img" id="<?php echo $value['file'] ?>" value="<?php echo $value['file_name'] ?>">
-                                    <button type="button" class="btn btn-danger btn-delete-medios"><i class="fa fa-trash"></i></button>
+                                    <button type="button" class="btn btn-danger btn-delete-medios" style="width: 13.8em; background-color: rgba(255, 0, 0, 0.84); border-top-right-radius: 5px; border-top-left-radius: 5px;">
+                                        <strong><i class="fa fa-trash"></i></strong>
+                                    </button>
                                 </div>
                                 <div class="img-main" id="<?php echo $value['file'] ?>">
                                     <img class="img img-responsive center-block" src="<?php echo base_url('assets/dist/img/multimedia/images/').$value['file_name'] ?>" />

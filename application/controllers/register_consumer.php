@@ -19,7 +19,7 @@ class Register_consumer extends CI_Controller {
 		# Notificaciones
 		$data['number_of_pending_notifications'] = $this->activity->number_of_pending_notifications($this->session->userdata['user']['id_user']);
 		$data['notification_details']	 		 = $this->activity->notification_details($this->session->userdata['user']['id_user']);
-		# Envio de registros
+		# Envio de registros 
 		$data['full_listing'] = $this->ec_client->full_listing();
 		# Opciones items del menu principal del contenido
 		$data['option_nav'] = array(

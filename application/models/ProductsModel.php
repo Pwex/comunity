@@ -104,4 +104,16 @@ class ProductsModel extends CI_Model {
         return $seals;
     }
 
+    # Lista de sellos
+    public function unitsmeasure_listing()
+    {
+        $unitsmeasure = array();
+        foreach ($this->db->select('id_unit_measure, unit_measure')->order_by('unit_measure', 'ASC')->get('units_measure')->result_array() as $key => $value) {
+            $unitsmeasure[$value['id_unit_measure']] = $value['unit_measure'];
+        }
+        $unitsmeasure[0] = '';
+        asort($unitsmeasure);
+        return $unitsmeasure;
+    }
+
 }

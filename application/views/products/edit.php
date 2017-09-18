@@ -1,5 +1,7 @@
 <style type="text/css">
     .img {
+        border-radius: 5px;
+        border: 2px solid rgb(236, 236, 236);
         cursor: pointer;
         height: 14.4em;
         width: 14.4em;
@@ -10,6 +12,14 @@
     .main-manager {
         width: 100%;
         margin-left: -1.15em;
+    }
+    .categories-container {
+        background: rgb(251, 249, 249);
+        border-radius: 5px;
+        border: 1px solid #eee;
+        margin-left: 1em;
+        margin-right: 1em;
+        padding: 0.6em 0.5em;
     }
 </style>
 <!-- Main content -->
@@ -39,7 +49,7 @@
                                     <a href="#tab_2" data-toggle="tab" aria-expanded="false">Características</a>
                                 </li>
                                 <li class="active">
-                                    <a href="#tab_1" data-toggle="tab" aria-expanded="true">Ajustes básicos</a>
+                                    <a href="#tab_1" data-toggle="tab" aria-expanded="true">básicos</a>
                                 </li>
                                 <li class="pull-left header">
                                     <i class="fa fa-cubes"></i> Productos
@@ -121,7 +131,7 @@
                                         <div class="row">
                                             <div class="col-sm-12">
                                                 <div class="form-group">
-                                                    <label for="id_component">Componentes</label><br />
+                                                    <label for="id_component">Activos</label><br />
                                                     <select name="id_component[]" class="form-control select2" multiple="">
                                                         <?php foreach ($components as $key => $value): ?>
                                                             <option value="<?php echo $key ?>" <?php if (in_array($key, $array_component)) { echo 'selected'; } ?>><?php echo $value ?></option>
@@ -163,6 +173,15 @@
                                 <div class="tab-pane" id="tab_3">
                                     <!-- Shuffle & Sort Controls -->
                                         <div class="row">
+                                            <label style="padding-left: 1em;">Búsqueda por categorías</label>
+                                            <ul class="simplefilter categories-container">
+                                                <li class="active" data-filter="all" style="text-align: center;padding: 6px 15px;background-color: #f7f8f9;color: #444444;border: 1px solid #eae7e7;">TODAS</li>
+                                                <?php foreach ($categories_images as $key => $value): ?>
+                                                    <li data-filter="<?php echo $value['id_category'] ?>" style="text-align: center;padding: 6px 15px;background-color: #f7f8f9;color: #444444;border: 1px solid #eae7e7;"><?php echo $value['name_category'] ?></li>
+                                                <?php endforeach ?>
+                                            </ul>
+                                        </div>
+                                        <div class="row">
                                             <div class="col-sm-12">
                                                 <div class="form-group">
                                                     <h4>Seleccionar Imágenes</h4>
@@ -181,7 +200,7 @@
                                                         <!-- Basic sort controls consisting of asc/desc button and a select -->
                                                         <li style="text-align: center;padding: 6px 15px;background-color: #f7f8f9;color: #444444;border: 1px solid #eee;" class="sort-btn active" data-sortAsc>Asc</li>
                                                         <li style="text-align: center;padding: 6px 15px;background-color: #f7f8f9;color: #444444;border: 1px solid #eee;" class="sort-btn" data-sortDesc>Desc</li>
-                                                        <li style="text-align: center;padding: 6px 15px;background-color: #f7f8f9;color: #444444;border: 1px solid #eee;" class="shuffle-btn" data-shuffle>Mostrar todas las imagenes</li>
+                                                        <li style="text-align: center;padding: 6px 15px;background-color: #f7f8f9;color: #444444;border: 1px solid #eee;" class="shuffle-btn" data-shuffle>ALEATORIO</li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -191,7 +210,7 @@
                                                 attribute, which starts from the value 1 and goes up from there -->
                                             <div class="filtr-container" style="margin-left: 8px; padding: 0px; position: relative; height: 246.594px;">
                                                 <?php foreach ($list_images as $key => $value): ?>
-                                                    <div class="col-xs-6 col-sm-3 col-md-2 filtr-item" data-category="1, 5" data-sort="<?php echo $value['name'] ?>" style="position: absolute;">
+                                                    <div class="col-xs-6 col-sm-3 col-md-2 filtr-item" data-category="<?php echo $value['id_category'] ?>" data-sort="<?php echo $value['name'] ?>" style="position: absolute;">
                                                         <label>
                                                             <?php echo form_checkbox('images[]', $value['file'], in_array($value['file'], $array_images)); ?> 
                                                             <span style="display: block; margin-top: -22px; margin-left: 1.3em">Seleccionar</span>

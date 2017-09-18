@@ -3,7 +3,7 @@
     <div class="box box-warning">
         <div class="box-header">
             <blockquote style="margin-bottom: 0">
-                Agregar Componente
+                Agregar Activo
             </blockquote>
         </div>
         <!-- /.box-header -->
@@ -12,7 +12,7 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label for="name_component">Componente</label>
+                            <label for="name_component">Activo</label>
                             <input type="text" name="name_component" id="name_component" class="form-control" value="<?php echo set_value('name_component') ?>" required="" />
                             <?php echo form_error('name_component') ?>
                         </div>

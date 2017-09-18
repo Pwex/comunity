@@ -4,7 +4,7 @@
         <div class="box-header">
             <blockquote style="margin-bottom: 0">
                 Listado de Productos
-                <span style="float: right;">
+                <span style="float: right; margin-top: -4px;">
                     <a href="<?php echo base_url('products/add') ?>" class="btn btn-primary" title="Agregar Producto">
                         <i class="fa fa-plus-circle"></i>
                     </a>
@@ -51,8 +51,8 @@
             <?php endif ?>
         </div>
         <!-- /.box-header -->
-        <div class="box-body">
-            <table class="table table-responsive table-bordered" id="table-default">
+        <div class="box-body table-responsive" id="container-box-datatable">
+            <table class="table table-responsive table-bordered table-hover" id="table-default">
                 <thead>
                     <th>Código</th>
                     <th>EAN 13</th>
@@ -61,6 +61,14 @@
                     <th>Estatus</th>  
                     <th>Opciones</th>
                 </thead>
+                <tfoot>
+                    <th>Código</th>
+                    <th>EAN 13</th>
+                    <th>Nombre</th>
+                    <th>Categoria</th>  
+                    <th>Estatus</th>  
+                    <th>Opciones</th>
+                </tfoot>
                 <tbody>
                     <?php foreach ($full_listing as $key => $value): ?>
                         <tr>
@@ -78,8 +86,8 @@
                                 ?>
                             </td>
                             <td>
-                                <a href="<?php echo base_url('products/edit/').$value['id_product'] ?>" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
-                                <button type="button" class="btn btn-danger btn-delete" id="<?php echo $value['id_product'] ?>"><i class="fa fa-trash"></i></button>
+                                <a href="<?php echo base_url('products/edit/').$value['id_product'] ?>" class="btn btn-warning btn-sm"><i class="fa fa-pencil"></i></a>
+                                <button type="button" class="btn btn-danger btn-delete btn-sm" id="<?php echo $value['id_product'] ?>"><i class="fa fa-trash"></i></button>
                             </td>
                         </tr>
                     <?php endforeach ?>

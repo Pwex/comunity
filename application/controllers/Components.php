@@ -23,11 +23,11 @@ class Components extends CI_Controller {
 		$data['full_listing'] = $this->components->full_listing();
 		# Opciones items del menu principal del contenido
 		$data['option_nav'] = array(
-			'box_title' => 'Componentes',
+			'box_title' => 'Activos',
 			'box_span' 	=> 'Listado'
 		);
 		$data['option_nav_item'] = array(
-				'Componentes'	=> array(
+				'Activos'	=> array(
 				'icon' 		=> 'fa fa-ellipsis-v',
 				'url' 		=> 'components',
 				'class' 	=> NULL
@@ -57,11 +57,11 @@ class Components extends CI_Controller {
 		$data['notification_details']	 		 = $this->activity->notification_details($this->session->userdata['user']['id_user']);
 		# Opciones items del menu principal del contenido
 		$data['option_nav'] = array(
-			'box_title' => 'Componentes',
+			'box_title' => 'Activos',
 			'box_span' 	=> 'Agregar'
 		);
 		$data['option_nav_item'] = array(
-			'Componentes'	=> array(
+			'Activos'	=> array(
 				'icon' 		=> 'fa fa-ellipsis-v',
 				'url' 		=> 'components',
 				'class' 	=> NULL
@@ -115,11 +115,11 @@ class Components extends CI_Controller {
 		$data['notification_details']	 		 = $this->activity->notification_details($this->session->userdata['user']['id_user']);
 		# Opciones items del menu principal del contenido
 		$data['option_nav'] = array(
-			'box_title' => 'Componentes',
+			'box_title' => 'Activos',
 			'box_span' 	=> 'Editar'
 		);
 		$data['option_nav_item'] = array(
-				'Componentes'	=> array(
+				'Activos'	=> array(
 				'icon' 			=> 'fa fa-ellipsis-v',
 				'url' 			=> 'components',
 				'class' 		=> NULL

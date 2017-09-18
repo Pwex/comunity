@@ -82,12 +82,16 @@ class Products extends CI_Controller {
 		$data['components'] 	= $this->products->components_listing();
 		# Listado de sellos
 		$data['seals'] 			= $this->products->seals_listing();
+		# Listado de unidades de medidas
+		$data['unitsmeasure'] 	= $this->products->unitsmeasure_listing();
 		# Listado de estatus
 		$data['status'] 		= array(1 => 'Activo', 0 => 'Inactivo');
 		# Donde se visualizara
 		$data['availability'] 	= array(1 => 'En todas partes', 2 => 'eCommerce', 3 => 'Centros de bienestar', 4 => 'Coach');
 		# Listado completo de imagenes disponibles
 		$data['list_images'] = $this->medios->list_images();
+		# Listado de categorias asociado a las imagenes
+		$data['categories_images'] = $this->medios->categories_images();
 		# Renderizando la vista | plantilla
 		$this->load->view('template/header', $data);
 		$this->load->view('products/add');
@@ -155,8 +159,6 @@ class Products extends CI_Controller {
 		$data['array_component'] 	= explode(',', $data['information_product'][0]['id_component']);
 		$data['array_seals'] 		= explode(',', $data['information_product'][0]['id_seals']);
 		$data['array_images'] 		= explode(',', $data['information_product'][0]['images']);
-
-
 		# Listado de categorias
 		$data['category'] 		= $this->products->categories_listing();
 		# Listado de tipos de inventario
@@ -173,6 +175,8 @@ class Products extends CI_Controller {
 		$data['availability'] 	= array(1 => 'En todas partes', 2 => 'eCommerce', 3 => 'Centros de bienestar', 4 => 'Coach');
 		# Listado completo de imagenes disponibles
 		$data['list_images'] = $this->medios->list_images();
+		# Listado de categorias asociado a las imagenes
+		$data['categories_images'] = $this->medios->categories_images();
 		# Renderizando la vista | plantilla
 		$this->load->view('template/header', $data);
 		$this->load->view('products/edit');

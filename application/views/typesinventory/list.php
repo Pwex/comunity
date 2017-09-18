@@ -4,7 +4,7 @@
         <div class="box-header">
             <blockquote style="margin-bottom: 0">
                 Listado de Tipos Inventario
-                <span style="float: right;">
+                <span style="float: right; margin-top: -4px;">
                     <a href="<?php echo base_url('typesinventory/add') ?>" class="btn btn-primary" title="Agregar Tipo Inventario">
                         <i class="fa fa-plus-circle"></i>
                     </a>
@@ -51,23 +51,28 @@
             <?php endif ?>
         </div>
         <!-- /.box-header -->
-        <div class="box-body">
-            <table class="table table-responsive table-bordered" id="table-default">
+        <div class="box-body table-responsive" id="container-box-datatable">
+            <table class="table table-responsive table-bordered table-hover" id="table-default">
                 <thead>
                     <th>Código</th>
                     <th>Tipo Inventario</th>
                     <th>Opciones</th>  
                 </thead>
+                <tfoot>
+                    <th>Código</th>
+                    <th>Tipo Inventario</th>
+                    <th>Opciones</th>  
+                </tfoot>
                 <tbody>
                     <?php foreach ($full_listing as $key => $value): ?>
                         <tr>
                             <td><?php echo $value['id_typeinventory'] ?></td>
                             <td><?php echo $value['type_inventory'] ?></td>
                             <td>
-                                <a href="<?php echo base_url('typesinventory/edit/').$value['id_typeinventory'] ?>" class="btn btn-warning">
+                                <a href="<?php echo base_url('typesinventory/edit/').$value['id_typeinventory'] ?>" class="btn btn-warning btn-sm">
                                     <i class="fa fa-pencil"></i>
                                 </a>
-                                <button type="button" class="btn btn-danger btn-delete" id="<?php echo $value['id_typeinventory'] ?>">
+                                <button type="button" class="btn btn-danger btn-delete btn-sm" id="<?php echo $value['id_typeinventory'] ?>">
                                     <i class="fa fa-trash"></i>
                                 </button>
                             </td>

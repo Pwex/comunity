@@ -4,7 +4,7 @@
         <div class="box-header">
             <blockquote style="margin-bottom: 0">
                 Listado de Sellos
-                <span style="float: right;">
+                <span style="float: right; margin-top: -4px;">
                     <a href="<?php echo base_url('seals/add') ?>" class="btn btn-primary" title="Agregar Sellos">
                         <i class="fa fa-plus-circle"></i>
                     </a>
@@ -51,23 +51,28 @@
             <?php endif ?>
         </div>
         <!-- /.box-header -->
-        <div class="box-body">
-            <table class="table table-responsive table-bordered" id="table-default">
+        <div class="box-body table-responsive" id="container-box-datatable">
+            <table class="table table-responsive table-bordered table-hover" id="table-default">
                 <thead>
-                    <th>Id</th>
+                    <th>Código</th>
                     <th>Sellos</th>
                     <th>Opciones</th>  
                 </thead>
+                <tfoot>
+                    <th>Código</th>
+                    <th>Sellos</th>
+                    <th>Opciones</th>  
+                </tfoot>
                 <tbody>
                     <?php foreach ($full_listing as $key => $value): ?>
                         <tr>
                             <td><?php echo $value['id_seals'] ?></td>
                             <td><?php echo $value['name_seals'] ?></td>
                             <td>
-                                <a href="<?php echo base_url('seals/edit/').$value['id_seals'] ?>" class="btn btn-warning">
+                                <a href="<?php echo base_url('seals/edit/').$value['id_seals'] ?>" class="btn btn-warning btn-sm">
                                     <i class="fa fa-pencil"></i>
                                 </a>
-                                <button type="button" class="btn btn-danger btn-delete" id="<?php echo $value['id_seals'] ?>">
+                                <button type="button" class="btn btn-danger btn-delete btn-sm" id="<?php echo $value['id_seals'] ?>">
                                     <i class="fa fa-trash"></i>
                                 </button>
                             </td>

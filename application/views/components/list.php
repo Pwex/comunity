@@ -3,8 +3,8 @@
     <div class="box box-warning">
         <div class="box-header">
             <blockquote style="margin-bottom: 0">
-                Listado de Componentes
-                <span style="float: right;">
+                Listado de Activos
+                <span style="float: right; margin-top: -4px;">
                     <a href="<?php echo base_url('components/add') ?>" class="btn btn-primary" title="Agregar Componente">
                         <i class="fa fa-plus-circle"></i>
                     </a>
@@ -51,23 +51,28 @@
             <?php endif ?>
         </div>
         <!-- /.box-header -->
-        <div class="box-body">
-            <table class="table table-responsive table-bordered" id="table-default">
+        <div class="box-body table-responsive" id="container-box-datatable">
+            <table class="table table-responsive table-bordered table-hover" id="table-default">
                 <thead>
                     <th>Código</th>
-                    <th>Componente</th>
+                    <th>Activo</th>
                     <th>Opciones</th>  
                 </thead>
+                <tfoot>
+                    <th>Código</th>
+                    <th>Activo</th>
+                    <th>Opciones</th>  
+                </tfoot>
                 <tbody>
                     <?php foreach ($full_listing as $key => $value): ?>
                         <tr>
                             <td><?php echo $value['id_component'] ?></td>
                             <td><?php echo $value['name_component'] ?></td>
                             <td>
-                                <a href="<?php echo base_url('components/edit/').$value['id_component'] ?>" class="btn btn-warning">
+                                <a href="<?php echo base_url('components/edit/').$value['id_component'] ?>" class="btn btn-warning btn-sm">
                                     <i class="fa fa-pencil"></i>
                                 </a>
-                                <button type="button" class="btn btn-danger btn-delete" id="<?php echo $value['id_component'] ?>">
+                                <button type="button" class="btn btn-danger btn-delete btn-sm" id="<?php echo $value['id_component'] ?>">
                                     <i class="fa fa-trash"></i>
                                 </button>
                             </td>

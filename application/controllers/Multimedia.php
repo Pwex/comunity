@@ -39,7 +39,11 @@ class Multimedia extends CI_Controller {
 			)
 		);
 		# Listado completo de imagenes disponibles
-		$data['list_images'] = $this->medios->list_images();
+		$data['list_images'] 	 = $this->medios->list_images();
+		# Listado de categorias
+		$data['list_categories'] = $this->medios->list_categories();
+		# Listado de categorias asociado a las imagenes
+		$data['categories_images'] = $this->medios->categories_images();
 		# Renderizando la vista | plantilla
 		$this->load->view('template/header', $data);
 		$this->load->view('multimedia/files.php');
@@ -110,7 +114,7 @@ class Multimedia extends CI_Controller {
 		}
 
 		$fileList = $FileUploader->getFileList();
-		$this->medios->save($fileList);
+		$this->medios->save($fileList, $this->input->post('id_category'));
 		redirect('multimedia/success-images');
 	}
 
@@ -171,7 +175,7 @@ class Multimedia extends CI_Controller {
 		}
 
 		$fileList = $FileUploader->getFileList();
-		$this->medios->save($fileList);
+		$this->medios->save($fileList, $this->input->post('id_category'));
 		redirect('multimedia/videos/success');
 	}
 

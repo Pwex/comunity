@@ -43,7 +43,7 @@
         <div class="box-header">
             <blockquote style="margin-bottom: 0">
                 Listado completo de consumidores
-                <span style="float: right;">
+                <span style="float: right; margin-top: -4px;">
                     <a href="<?php echo base_url('register_consumer/add') ?>" class="btn btn-primary btn-sm" title="Agregar consumidor">
                         <i class="fa fa-plus-circle"></i>
                     </a>
@@ -51,8 +51,8 @@
             </blockquote>
         </div>
         <!-- /.box-header -->
-        <div class="box-body">
-            <table class="table table-responsive table-bordered" id="table-default">
+        <div class="box-body table-responsive" id="container-box-datatable">
+            <table class="table table-responsive table-bordered table-hover" id="table-default">
                 <thead>
                     <th>Nombres</th>
                     <th>Email</th>
@@ -60,6 +60,13 @@
                     <th>Ciudad</th>  
                     <th>Opciones</th>  
                 </thead>
+                <tfoot>
+                    <th>Nombres</th>
+                    <th>Email</th>
+                    <th>Pais</th>
+                    <th>Ciudad</th>  
+                    <th>Opciones</th>  
+                </tfoot>
                 <tbody>
                     <?php foreach ($full_listing as $key => $value): ?>
                         <tr>
@@ -68,11 +75,9 @@
                             <td><?php echo $value['name_country'] ?></td>
                             <td><?php echo $value['name_city'] ?></td>
                             <td>
-                                <a href="<?php echo base_url('register_consumer/edit/').$value['id_client'] ?>" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
-
-                                <a href="<?php echo base_url('register_consumer/poll/').$value['id_client'] ?>" class="btn btn-info"><i class="fa fa-book"></i></a>
-
-                                <button type="button" class="btn btn-danger btn-delete" id="<?php echo $value['id_client'] ?>"><i class="fa fa-trash"></i></button>
+                                <a href="<?php echo base_url('register_consumer/poll/').$value['id_client'] ?>" class="btn btn-info btn-sm"><i class="fa fa-book"></i></a>
+                                <a href="<?php echo base_url('register_consumer/edit/').$value['id_client'] ?>" class="btn btn-warning btn-sm"><i class="fa fa-pencil"></i></a>
+                                <button type="button" class="btn btn-danger btn-delete btn-sm" id="<?php echo $value['id_client'] ?>"><i class="fa fa-trash"></i></button>
                             </td>
                         </tr>
                     <?php endforeach ?>

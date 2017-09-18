@@ -75,6 +75,8 @@ class Seals extends CI_Controller {
 		);
 		# Listado completo de imagenes disponibles
 		$data['list_images'] = $this->medios->list_images();
+		# Listado de categorias asociado a las imagenes
+		$data['categories_images'] = $this->medios->categories_images();
 		# Renderizando la vista | plantilla
 		$this->load->view('template/header', $data);
 		$this->load->view('seals/add');
@@ -139,6 +141,8 @@ class Seals extends CI_Controller {
 		$data['status']   = explode(',', $data['information_seals'][0]['images']);
 		# Listado completo de imagenes disponibles
 		$data['list_images'] = $this->medios->list_images();
+		# Listado de categorias asociado a las imagenes
+		$data['categories_images'] = $this->medios->categories_images();
 		# Renderizando la vista | plantilla
 		$this->load->view('template/header', $data);
 		$this->load->view('seals/edit');

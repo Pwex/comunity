@@ -31,14 +31,26 @@
         </script>
         <!-- DataTables -->
         <?php if (($this->uri->segment(1) == 'users') || ($this->uri->segment(1) == 'categories') || ($this->uri->segment(1) == 'warehouses') || ($this->uri->segment(1) == 'countrys') || ($this->uri->segment(1) == 'benefits') || ($this->uri->segment(1) == 'typesinventory') || ($this->uri->segment(1) == 'components') || ($this->uri->segment(1) == 'unitsmeasure') || ($this->uri->segment(1) == 'products') || ($this->uri->segment(1) == 'partners') || ($this->uri->segment(1) == 'document_types') || ($this->uri->segment(1) == 'partner_types') || ($this->uri->segment(1) == 'cities') || ($this->uri->segment(1) == 'seals') || ($this->uri->segment(1) == 'list-price') || ($this->uri->segment(1) == 'banks') || ($this->uri->segment(1) == 'register_consumer') || ($this->uri->segment(1) == 'price-product' and ($this->uri->segment(2) !="add" or $this->uri->segment(2) !="edit")) ): ?>
+            <!-- script para agregar clase no-padding para resoluciones moviles -->
+            <script type="text/javascript">
+                if (screen.width <= 425) {
+                    $('#container-box-datatable').addClass('no-padding');
+                }
+            </script>
             <script src="<?php echo base_url('assets/bower_components/datatables.net/js/jquery.dataTables.min.js') ?>"></script>
-            <script src="<?php echo base_url('assets/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') ?>"></script>       
+            <script src="<?php echo base_url('assets/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') ?>"></script>              
+            <script src="<?php echo base_url('assets/bower_components/datatables.net-bs/js/dataTables.colReorder.min.js') ?>"></script>              
             <script type="text/javascript">
                 $(document).ready(function(){
-                    $('#table-default').DataTable({
+                    $('#table-default tfoot th').each( function () {
+                        var title = $('#table-default thead th').eq( $(this).index() ).text();
+                        $(this).html( '<input type="text" class="form-control input-sm" placeholder="'+title+'" style="font-weight: 600; width: 100%" />' );
+                    } );
+                    var table = $('#table-default').DataTable({
                         <?php if ($this->uri->segment(1) == 'price-product'): ?>
                             "order": [[ 1, "asc" ], [4, 'asc']],
                         <?php endif; ?>
+                        colReorder: true,
                         'language' : {
                             "sProcessing":     "Procesando...",
                             "sLengthMenu":     "Mostrar _MENU_ registros",
@@ -64,6 +76,12 @@
                             }
                         }
                     });
+                     $("#table-default tfoot input").on( 'keyup change', function () {
+                        table
+                            .column( $(this).parent().index()+':visible' )
+                            .search( this.value )
+                            .draw();
+                    } );
                 });
             </script>
             <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -366,6 +384,5 @@
             });
             </script>
         <?php endif; ?>
-
     </body>
 </html>
