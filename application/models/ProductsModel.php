@@ -99,7 +99,6 @@ class ProductsModel extends CI_Model {
         foreach ($this->db->select('id_seals, name_seals')->order_by('name_seals', 'ASC')->get('seals')->result_array() as $key => $value) {
             $seals[$value['id_seals']] = $value['name_seals'];
         }
-        $seals[0] = '';
         asort($seals);
         return $seals;
     }
@@ -111,7 +110,6 @@ class ProductsModel extends CI_Model {
         foreach ($this->db->select('id_unit_measure, unit_measure')->order_by('unit_measure', 'ASC')->get('units_measure')->result_array() as $key => $value) {
             $unitsmeasure[$value['id_unit_measure']] = $value['unit_measure'];
         }
-        $unitsmeasure[0] = '';
         asort($unitsmeasure);
         return $unitsmeasure;
     }

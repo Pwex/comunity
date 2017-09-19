@@ -12,7 +12,6 @@ class CategoriesModel extends CI_Model {
         return $this->db
         ->from('categories c')
         ->select('c.id_category,c.name_category, c.id_father_category, c.images, (select name_category from categories p where p.id_category=c.id_father_category) AS name_father')
-        //->select('id_category, name_category,id_father_category')
         ->get()
         ->result_array();
     }

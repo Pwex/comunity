@@ -86,6 +86,7 @@ class UnitsMeasure extends CI_Controller {
 				$this->add();
 			break;
 			case TRUE:
+				$this->load->database();
 				$this->rules_insert_units_measure();
 				switch ($this->form_validation->run()) {
 					case FALSE:
@@ -145,6 +146,7 @@ class UnitsMeasure extends CI_Controller {
 				$this->edit($id);
 			break;
 			case TRUE:
+				$this->load->database();
 				$this->rules_edit_units_measure();
 				switch ($this->form_validation->run()) {
 					case FALSE:
@@ -173,6 +175,15 @@ class UnitsMeasure extends CI_Controller {
 				'errors' => array(
 								'required' 	=> 'Es necesario ingresar un %s',
 								'max_length'=> 'La longitud maxima a ingresar es de 50 caracteres'
+						   )
+			),
+			array(
+				'field' => 'abbreviation',
+				'label' => 'abreviatura',
+				'rules' => 'required|max_length[5]|is_unique[units_measure.abbreviation]|trim',
+				'errors' => array(
+								'required' 	=> 'Es necesario ingresar un %s',
+								'max_length'=> 'La longitud maxima a ingresar es de 5 caracteres'
 						   )
 			),
 		);
