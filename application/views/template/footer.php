@@ -355,7 +355,7 @@
                 $(function() {
                     //Initialize filterizr with default options
                     var filterizd = $('.filtr-container').filterizr({
-                        layout: 'packed'
+                        layout: 'sameSize'
                     });
                 });
             </script>
@@ -384,5 +384,50 @@
             });
             </script>
         <?php endif; ?>
+        <?php if ($this->uri->segment(1) == 'products' and ($this->uri->segment(2) == 'add' or $this->uri->segment(2) == 'edit')): ?>
+            <script type="text/javascript" src="<?php echo base_url('assets/bower_components/ckeditor/ckeditor.js') ?>"></script>
+            <script type="text/javascript">
+                $(function () {
+                    CKEDITOR.replace('labeled');
+                    CKEDITOR.replace('nutritional');
+                  })
+            </script>
+            <script type="text/javascript">
+                (function($){
+                    $.fn.extend({
+                        jFriendly : function ( inputUri , notEditable ){
+                            inputUri = $(inputUri);
+                            $(this).keyup(function(){
+                                inputUri.val( uriSanitize($(this).val()) );
+                            });
+                            if (notEditable){
+                                inputUri.css({display:"inline",background:"transparent",overflow:"visible"}).attr("disabled","disabled");
+                                $("form").submit(function(){if($(this).find(inputUri)) inputUri.removeAttr("disabled");});
+                            }
+                            return inputUri;
+                        }
+                    });
+                })(jQuery);  
+                uriSanitize = function(uri) { 
+                    return String(uri)
+                    .toLowerCase()
+                    .split(/[абвгде]/).join("a")
+                    .split(/ж/).join("ae")
+                    .split(/з/).join("c")
+                    .split(/[ийкл]/).join("e")
+                    .split(/[мноп]/).join("i")
+                    .split(/с/).join("n")
+                    .split(/[туфхц]/).join("o")
+                    .split(/њ/).join("oe")
+                    .split(/[щъыь]/).join("u")
+                    .split(/[эя]/).join("y")
+                    .split(/[\W_]+/).join("-")
+                    .split(/-+/).join("-");
+                }
+                $(document).ready(function(){
+                    $("#name_product").jFriendly("#url",true);
+                });
+            </script>
+        <?php endif ?>
     </body>
 </html>

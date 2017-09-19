@@ -10,11 +10,20 @@
         <div class="box-body">
             <?php echo form_open('unitsmeasure/add') ?>
                 <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-sm-4">
                         <div class="form-group">
                             <label for="unit_measure">Unidad medida</label>
                             <input type="text" name="unit_measure" id="unit_measure" class="form-control" value="<?php echo set_value('unit_measure') ?>" required="" />
                             <?php echo form_error('unit_measure') ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label for="abbreviation">Abreviatura</label>
+                            <input type="text" name="abbreviation" id="abbreviation" class="form-control" value="<?php echo set_value('abbreviation') ?>" required="" />
+                            <?php echo form_error('abbreviation') ?>
                         </div>
                     </div>
                 </div>

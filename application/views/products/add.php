@@ -24,7 +24,7 @@
 </style>
 <!-- Main content -->
 <section class="content">
-    <div class="box box-warning">
+    <div class="box box-danger">
         <div class="box-header">
             <h3 class="box-title">Agregar Producto</h3>
         </div>
@@ -70,20 +70,20 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-sm-6">
+                                            <div class="col-sm-3">
                                                 <div class="form-group">
-                                                    <label for="name_product">Producto</label>
-                                                    <input type="text" name="name_product" id="name_product" class="form-control" value="<?php echo set_value('name_product') ?>" required="" maxlength="40" />
-                                                    <?php echo form_error('name_product') ?>
+                                                    <label for="short_name">Nombre corto (máximo 20 caracteres)</label>
+                                                    <input type="text" name="short_name" id="short_name" class="form-control" value="<?php echo set_value('short_name') ?>" required="" maxlength="20" />
+                                                    <?php echo form_error('short_name') ?>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-sm-12">
+                                            <div class="col-sm-6">
                                                 <div class="form-group">
-                                                    <label for="description_product">Descripción</label>
-                                                    <?php echo form_textarea('description_product', set_value('description_product'), 'id="description_product" class="form-control"') ?>
-                                                    <?php echo form_error('description_product') ?>
+                                                    <label for="name_product">Producto (máximo 80 caracteres)</label>
+                                                    <input type="text" name="name_product" id="name_product" class="form-control" value="<?php echo set_value('name_product') ?>" required="" maxlength="80" />
+                                                    <?php echo form_error('name_product') ?>
                                                 </div>
                                             </div>
                                         </div>
@@ -110,12 +110,53 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div class="form-group">
+                                                    <label for="description_product">Descripción</label>
+                                                    <textarea name="description_product" id="description_product" rows="2" class="form-control"><?php echo set_value('description_product'); ?></textarea>
+                                                    <?php echo form_error('description_product') ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                <div class="form-group">
+                                                    <label for="enabled_product">Estatus</label>
+                                                    <?php echo form_dropdown('enabled_product', $status, set_value('enabled_product'), 'class="form-control"'); ?>
+                                                    <?php echo form_error('enabled_product') ?>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="availability">Visualización</label>
+                                                    <?php echo form_dropdown('availability', $availability, set_value('availability'), 'class="form-control"'); ?>
+                                                    <?php echo form_error('availability') ?>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="tab-pane" id="tab_2">
                                     <strong>Características</strong>
                                     <p>Por favor seleccione las descripciones físicas que tiene el producto.</p>
                                     <div class="container">
+                                        <div class="row">
+                                            <div class="col-sm-2">
+                                                <div class="form-group">
+                                                    <label for="id_unitsmeasure">Unidad de medidas</label>
+                                                    <?php echo form_dropdown('id_unitsmeasure[]', $unitsmeasure, set_value('id_unitsmeasure'), 'data-placeholder="Seleccionar..." class="form-control"'); ?>
+                                                    <?php echo form_error('id_unitsmeasure') ?>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <div class="form-group">
+                                                    <label for="grammage">Cantidad</label>
+                                                    <input type="number" name="grammage" id="grammage" class="form-control" value="<?php echo set_value('grammage') ?>" required="" />
+                                                    <?php echo form_error('grammage') ?>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="row">
                                             <div class="col-sm-12">
                                                 <div class="form-group">
@@ -146,32 +187,152 @@
                                         <div class="row">
                                             <div class="col-sm-3">
                                                 <div class="form-group">
-                                                    <label for="id_unitsmeasure">Unidad de medidas</label>
-                                                    <?php echo form_dropdown('id_unitsmeasure[]', $unitsmeasure, set_value('id_unitsmeasure'), 'data-placeholder="Seleccionar..." multiple="" class="form-control select2"'); ?>
-                                                    <?php echo form_error('id_unitsmeasure') ?>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-3">
-                                                <div class="form-group">
-                                                    <label for="grammage">Gramaje</label>
-                                                    <input type="number" name="grammage" id="grammage" class="form-control" value="<?php echo set_value('grammage') ?>" required="" />
-                                                    <?php echo form_error('grammage') ?>
+                                                    <label for="sanitary_registration">Registro sanitario</label>
+                                                    <input type="text" name="sanitary_registration" id="sanitary_registration" class="form-control" value="<?php echo set_value('sanitary_registration') ?>" required="" maxlength="20" />
+                                                    <?php echo form_error('sanitary_registration') ?>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-sm-2">
+                                            <div class="col-sm-12">
                                                 <div class="form-group">
-                                                    <label for="enabled_product">Estatus</label>
-                                                    <?php echo form_dropdown('enabled_product', $status, set_value('enabled_product'), 'class="form-control"'); ?>
-                                                    <?php echo form_error('enabled_product') ?>
+                                                    <label for="labeled">Rotulado</label>
+                                                    <textarea name="labeled" id="labeled" rows="2" class="form-control"><?php echo set_value('labeled'); ?></textarea>
+                                                    <?php echo form_error('labeled') ?>
                                                 </div>
                                             </div>
-                                            <div class="col-sm-4">
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-12">
                                                 <div class="form-group">
-                                                    <label for="availability">Donde se visualizará</label>
-                                                    <?php echo form_dropdown('availability', $availability, set_value('availability'), 'class="form-control"'); ?>
-                                                    <?php echo form_error('availability') ?>
+                                                    <label for="indications">Indicaciones</label>
+                                                    <textarea name="indications" id="indications" rows="2" class="form-control"><?php echo set_value('indications'); ?></textarea>
+                                                    <?php echo form_error('indications') ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="contraindications">Contraindicaciones</label>
+                                                    <textarea name="contraindications" id="contraindications" rows="3" class="form-control"><?php echo set_value('contraindications'); ?></textarea>
+                                                    <?php echo form_error('contraindications') ?>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="precautions">Precauciones</label>
+                                                    <textarea name="precautions" id="precautions" rows="3" class="form-control"><?php echo set_value('precautions'); ?></textarea>
+                                                    <?php echo form_error('precautions') ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div class="form-group">
+                                                    <label for="nutritional">Tabla Nutricional</label>
+                                                    <textarea name="nutritional" id="nutritional" rows="2" class="form-control">
+                                                        <?php if(!empty(set_value('nutritional'))) { echo set_value('nutritional'); } else { ?>
+                                                            <h2 style="text-align: center;">Informaci&oacute;n nutrucional</h2>
+                                                            <p><strong>Tama&ntilde;o por porci&oacute;n:&nbsp;2 Cucharadas (25g)</strong></p>
+                                                            <p>Porciones por envase: 12</p>
+                                                            <hr />
+                                                            <p><strong>Cantidad por porci&oacute;n</strong></p>
+                                                            <hr />
+                                                            <p><strong>Calor&iacute;as 90</strong> Kcal &nbsp; &nbsp; &nbsp; &nbsp; Calor&iacute;as de grasa 40</p>
+                                                            <hr />
+                                                            <table style="height:237px; width:100%">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td style="width:347px">&nbsp;</td>
+                                                                        <td style="text-align:center; width:348px"><strong>Valor Diario%*</strong></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td style="width:347px"><strong>Grasa Total 4 g</strong></td>
+                                                                        <td style="text-align:center; width:348px"><strong>6%</strong></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td style="width:347px">&nbsp; Grasa Saturada 0 g</td>
+                                                                        <td style="text-align:center; width:348px">0%</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td style="width:347px">&nbsp; Grasa Trans &nbsp; &nbsp; &nbsp;0 g</td>
+                                                                        <td style="width:348px">&nbsp;</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td style="width:347px"><strong>Colesterol 0 mg</strong></td>
+                                                                        <td style="text-align:center; width:348px"><strong>0%</strong></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td style="width:347px"><strong>Sodio 1 mg</strong></td>
+                                                                        <td style="text-align:center; width:348px"><strong>0%</strong></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td style="width:347px"><strong>Carbohidrato Total 15 g</strong></td>
+                                                                        <td style="text-align:center; width:348px"><strong>5%</strong></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td style="width:347px">&nbsp; Fibra Dietaria &nbsp; &nbsp;1 g</td>
+                                                                        <td style="text-align:center; width:348px">4%</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td style="width:347px">&nbsp; Az&uacute;cares &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 0 g</td>
+                                                                        <td style="width:348px">&nbsp;</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td style="width:347px"><strong>Prote&iacute;na 4 g</strong></td>
+                                                                        <td style="text-align:center; width:348px"><strong>8%</strong></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td colspan="2" style="text-align:center; width:347px">Vitamina A 0% &nbsp; &nbsp;Vitamina C 2%</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td colspan="2" style="text-align:center; width:347px">Calcio 2%&nbsp; &nbsp; Hierro 12%</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td colspan="2" style="text-align:center; width:347px">Los porcentajes de valores diarios est&aacute;n basados en una dieta de 2000 calor&iacute;as. Sus valores diarios pueden ser mayores o menores dependiendo de sus necesidades calor&iacute;cas.</td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        <?php } ?>
+                                                    </textarea>
+                                                    <?php echo form_error('nutritional') ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                <div class="form-group">
+                                                    <label for="model">Modelo</label>
+                                                    <input type="text" name="model" id="model" class="form-control" value="<?php echo set_value('model') ?>" required="" maxlength="20" />
+                                                    <?php echo form_error('model') ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div class="form-group">
+                                                    <label for="certificates">Certificados</label>
+                                                    <input type="text" name="certificates" id="certificates" class="form-control" value="<?php echo set_value('certificates') ?>" required="" maxlength="20" />
+                                                    <?php echo form_error('certificates') ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div class="form-group">
+                                                    <label for="contains">Contiene</label>
+                                                    <textarea name="contains" id="contains" rows="2" class="form-control"><?php echo set_value('contains'); ?></textarea>
+                                                    <?php echo form_error('contains') ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div class="form-group">
+                                                    <label for="mode_of_use">Modo de uso</label>
+                                                    <textarea name="mode_of_use" id="mode_of_use" rows="2" class="form-control"><?php echo set_value('mode_of_use'); ?></textarea>
+                                                    <?php echo form_error('mode_of_use') ?>
                                                 </div>
                                             </div>
                                         </div>
@@ -291,7 +452,7 @@
                                             <div class="col-sm-12">
                                                 <div class="form-group">
                                                     <label for="meta_description">Meta Descripción</label>
-                                                    <?php echo form_textarea('meta_description', set_value('meta_description'), 'id="meta_description" class="form-control"') ?>
+                                                    <textarea name="meta_description" id="meta_description" rows="2" class="form-control"><?php echo set_value('meta_description'); ?></textarea>
                                                     <?php echo form_error('meta_description') ?>
                                                 </div>
                                             </div>

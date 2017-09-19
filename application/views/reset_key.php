@@ -19,7 +19,7 @@
         <!-- style default -->
         <style type="text/css">
             .login-box-body, .register-box-body, .login-page, .register-page  {
-                background: #f9f9f9;
+                background: #ffffff;
             }
             .img-logo {
                 width: 5em;

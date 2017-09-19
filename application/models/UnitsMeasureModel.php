@@ -11,7 +11,7 @@ class UnitsMeasureModel extends CI_Model {
     {
         return $this->db
         ->from('units_measure')
-        ->select('id_unit_measure, unit_measure')
+        ->select('id_unit_measure, unit_measure, abbreviation')
         ->get()
         ->result_array();
     }
