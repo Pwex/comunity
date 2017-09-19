@@ -16,9 +16,13 @@
     .btn-danger {
         background-color: #e74c3c;
     }
+    .btn span.glyphicon {               
+    opacity: 0;             
+    }
+    .btn.active span.glyphicon {                
+    opacity: 1;             
+    }  
 
-
-    .btn.active span.glyphicon{opacity:1;}
 </style>
 <!-- Main content -->
 <section class="content">
