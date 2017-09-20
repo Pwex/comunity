@@ -46,7 +46,7 @@
         </div>
         <!-- /.box-header -->
         <div class="box-body">
-            <?php echo form_open('register_consumer/poll') ?>
+            <?php echo form_open('register_consumer/add_poll') ?>
             <div class="row">
                 <label>Cuál de los siguientes aspectos es actualmente más importante para mejorar su bienestar?</label>
             </div>
@@ -57,35 +57,35 @@
                     <div class="col-md-12 no-padding">
                         <div class="btn-group add-check" data-toggle="buttons">
                             <label class="btn btn-default btn-check-main">Salud física
-                                <input type="checkbox" name="grasas" value="0" id="grasas1" autocomplete="off" checked>
+                                <input type="checkbox" name="health" id="health" autocomplete="off" checked>
                                 <span class="glyphicon glyphicon-ok"></span>
                             </label>
                             <label class="btn btn-default btn-check-main">Belleza
-                                <input type="checkbox" name="grasas" value="0" id="grasas2" autocomplete="off">
+                                <input type="checkbox" name="beauty" id="beauty" autocomplete="off">
                                 <span class="glyphicon glyphicon-ok"></span>
                             </label>
                             <label class="btn btn-default btn-check-main">Cuidado cuerpo
-                                <input type="checkbox" name="grasas" value="0" id="grasas2" autocomplete="off">
+                                <input type="checkbox" name="body" id="body" autocomplete="off">
                                 <span class="glyphicon glyphicon-ok"></span>
                             </label>
                             <label class="btn btn-default btn-check-main">Cuidado facial
-                                <input type="checkbox" name="grasas" value="0" id="grasas2" autocomplete="off">
+                                <input type="checkbox" name="facial" id="facial" autocomplete="off">
                                 <span class="glyphicon glyphicon-ok"></span>
                             </label>
                             <label class="btn btn-default btn-check-main">Cuidado capilar
-                                <input type="checkbox" name="grasas" value="0" id="grasas2" autocomplete="off">
+                                <input type="checkbox" name="capillary" id="capillary" autocomplete="off">
                                 <span class="glyphicon glyphicon-ok"></span>
                             </label>
                             <label class="btn btn-default btn-check-main">Nutrición
-                                <input type="checkbox" name="grasas" value="0" id="grasas2" autocomplete="off">
+                                <input type="checkbox" name="nutrition" id="nutrition" autocomplete="off">
                                 <span class="glyphicon glyphicon-ok"></span>
                             </label>
                             <label class="btn btn-default btn-check-main">Salud sexual
-                                <input type="checkbox" name="grasas" value="0" id="grasas2" autocomplete="off">
+                                <input type="checkbox" name="sexuality" id="sexuality" autocomplete="off">
                                 <span class="glyphicon glyphicon-ok"></span>
                             </label>
                             <label class="btn btn-default btn-check-main">Todos
-                                <input type="checkbox" name="grasas" value="0" id="grasas2" autocomplete="off">
+                                <input type="checkbox" name="all" id="all" autocomplete="off">
                                 <span class="glyphicon glyphicon-ok"></span>
                             </label>
                         </div>

@@ -158,7 +158,6 @@ class Register_consumer extends CI_Controller {
 		# Librerias
 		$this->load->helper('form');
 		$this->load->model('ActivitiesModel', 'activity', TRUE);
-		$this->load->model('CountrysModel', 'country', TRUE);
 		$this->load->model('ConsumersModel', 'ec_client', TRUE);
 		# Notificaciones
 		$data['number_of_pending_notifications'] = $this->activity->number_of_pending_notifications($this->session->userdata['user']['id_user']);
