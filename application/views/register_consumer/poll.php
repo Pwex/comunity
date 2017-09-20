@@ -22,7 +22,6 @@
     .btn.active span.glyphicon {                
     opacity: 1;             
     }  
-
 </style>
 <!-- Main content -->
 <section class="content">
