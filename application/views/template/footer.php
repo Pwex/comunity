@@ -166,6 +166,7 @@
                     $('button.btn.btn-danger.btn-delete').on('click', function()
                     {
                         var id = $(this).attr('id');
+                        alert(id); return false;
                         $( "#dialog-confirm" ).dialog({
                             resizable: false,
                             height: "auto",
