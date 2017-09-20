@@ -208,6 +208,7 @@ $route['register_consumer/success'] 		= 'Register_consumer/full_listing';
 $route['register_consumer/add'] 			= 'Register_consumer/add_validate';
 $route['register_consumer/edit/(:num)'] 	= 'Register_consumer/edit_validate/$1';
 $route['register_consumer/poll/(:num)'] 	= 'Register_consumer/add_poll/$1';
+$route['register_consumer/measuring/(:num)'] 	= 'Register_consumer/add_measuring/$1';
 $route['register_consumer/success-edit'] 	= 'Register_consumer/full_listing';
 $route['register_consumer/delete'] 			= 'Register_consumer/delete';
 $route['register_consumer/success-delete'] 	= 'Register_consumer/full_listing';

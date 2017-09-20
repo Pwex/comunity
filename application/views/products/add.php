@@ -26,7 +26,7 @@
 <section class="content">
     <div class="box box-danger">
         <div class="box-header">
-            <h3 class="box-title">Agregar Producto</h3>
+            <h3 class="box-title">Crear Producto</h3>
         </div>
         <!-- /.box-header -->
         <div class="box-body">

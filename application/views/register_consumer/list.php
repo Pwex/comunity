@@ -39,7 +39,7 @@
             </div>
         </div>
     <?php endif ?>
-    <div class="box box-warning">
+    <div class="box box-danger">
         <div class="box-header">
             <blockquote style="margin-bottom: 0">
                 Listado completo de consumidores
@@ -57,14 +57,12 @@
                     <th>Nombres</th>
                     <th>Email</th>
                     <th>Pais</th>
-                    <th>Ciudad</th>  
                     <th>Opciones</th>  
                 </thead>
                 <tfoot>
                     <th>Nombres</th>
                     <th>Email</th>
                     <th>Pais</th>
-                    <th>Ciudad</th>  
                     <th>Opciones</th>  
                 </tfoot>
                 <tbody>
@@ -73,11 +71,19 @@
                             <td><?php echo $value['name'].' '.$value['last_name'] ?></td>
                             <td><?php echo $value['email'] ?></td>
                             <td><?php echo $value['name_country'] ?></td>
-                            <td><?php echo $value['name_city'] ?></td>
                             <td>
-                                <a href="<?php echo base_url('register_consumer/poll/').$value['id_client'] ?>" class="btn btn-info btn-sm"><i class="fa fa-book"></i></a>
-                                <a href="<?php echo base_url('register_consumer/edit/').$value['id_client'] ?>" class="btn btn-warning btn-sm"><i class="fa fa-pencil"></i></a>
-                                <button type="button" class="btn btn-danger btn-delete btn-sm" id="<?php echo $value['id_client'] ?>"><i class="fa fa-trash"></i></button>
+                                <a href="<?php echo base_url('register_consumer/poll/').$value['id_client'] ?>" class="btn btn-info btn-sm">
+                                    <i class="fa fa-book"></i>
+                                </a>
+                                <a href="<?php echo base_url('register_consumer/measuring/').$value['id_client'] ?>" class="btn btn-info btn-sm">
+                                    <i class="fa fa-heartbeat"></i>
+                                </a>
+                                <a href="<?php echo base_url('register_consumer/edit/').$value['id_client'] ?>" class="btn btn-warning btn-sm">
+                                    <i class="fa fa-pencil"></i>
+                                </a>
+                                <button type="button" class="btn btn-danger btn-delete btn-sm" id="<?php echo $value['id_client'] ?>">
+                                    <i class="fa fa-trash"></i>
+                                </button>
                             </td>
                         </tr>
                     <?php endforeach ?>

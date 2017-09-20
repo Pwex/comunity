@@ -59,7 +59,7 @@ class Register_consumer extends CI_Controller {
 		# Opciones items del menu principal del contenido
 		$data['option_nav'] = array(
 			'box_title' => 'Consumidores',
-			'box_span' 	=> 'Agregar'
+			'box_span' 	=> 'Crear'
 		);
 		$data['option_nav_item'] = array(
 			'Consumidores'	=> array(
@@ -151,7 +151,8 @@ class Register_consumer extends CI_Controller {
 		$this->load->view('template/footer');
 	}
 
-	# Formulario Principal para Editar Consumidores
+	# Formulario Principal para Realizar encuesta
+
 	public function add_poll($id = NULL)
 	{
 		# Librerias
@@ -194,6 +195,42 @@ class Register_consumer extends CI_Controller {
 		# Renderizando la vista | plantilla
 		$this->load->view('template/header', $data);
 		$this->load->view('register_consumer/poll');
+		$this->load->view('template/footer');
+	}
+
+
+	public function add_measuring($id = NULL)
+	{
+		# Librerias
+		$this->load->helper('form');
+		$this->load->model('ActivitiesModel', 'activity', TRUE);
+		$this->load->model('CountrysModel', 'country', TRUE);
+		$this->load->model('ConsumersModel', 'ec_client', TRUE);
+		# Notificaciones
+		$data['number_of_pending_notifications'] = $this->activity->number_of_pending_notifications($this->session->userdata['user']['id_user']);
+		$data['notification_details']	 		 = $this->activity->notification_details($this->session->userdata['user']['id_user']);
+		# Opciones items del menu principal del contenido
+		$data['option_nav'] = array(
+			'box_title' => 'Consumidores',
+			'box_span' 	=> 'Encuesta'
+		);
+		$data['option_nav_item'] = array(
+			'Consumidores'	=> array(
+				'icon' 		=> 'fa fa-heartbeat',
+				'url' 		=> 'registeer_consumer',
+				'class' 	=> NULL
+			), 
+			'editar' => array(
+				'icon' 		=> '',
+				'url' 		=> '',
+				'class' 	=> 'active'
+			)
+		);
+		# Listado de paises
+		$data['country'] = $this->country->countrys_listing();
+		# Renderizando la vista | plantilla
+		$this->load->view('template/header', $data);
+		$this->load->view('register_consumer/measuring');
 		$this->load->view('template/footer');
 	}
 

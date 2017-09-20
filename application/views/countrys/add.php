@@ -1,8 +1,8 @@
 <!-- Main content -->
 <section class="content">
-    <div class="box box-warning">
+    <div class="box box-danger">
         <div class="box-header">
-            <h3 class="box-title">Agregar Pais</h3>
+            <h3 class="box-title">Crear Pais</h3>
         </div>
         <!-- /.box-header -->
         <div class="box-body">

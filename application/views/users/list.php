@@ -39,7 +39,7 @@
             </div>
         </div>
     <?php endif ?>
-    <div class="box box-warning">
+    <div class="box box-danger">
         <div class="box-header">
             <blockquote style="margin-bottom: 0">
                 Listado completo de usuarios
