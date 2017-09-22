@@ -2,8 +2,9 @@
 .icheckbox_minimal-red,
 .iradio_minimal-red {
     display: inline-block;
-    *display: inline;
-    vertical-align: middle;
+    *
+    display: inline;
+    vertical-align: text-bottom;
     margin: 0;
     padding: 0;
     width: 18px;

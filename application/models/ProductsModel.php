@@ -51,6 +51,17 @@ class ProductsModel extends CI_Model {
         $this->db->where('id_product', $id)->delete('products');
     }
 
+    # Lista de linea de productos
+    public function catalogue_listing()
+    {
+        $catalogue = array();
+        foreach ($this->db->select('id, name_catalogue')->order_by('name_catalogue', 'ASC')->get('catalogue')->result_array() as $key => $value) {
+            $catalogue[$value['id']] = $value['name_catalogue'];
+        }
+        asort($catalogue);
+        return $catalogue;
+    }
+
     # Lista de categorias
     public function categories_listing()
     {
@@ -103,7 +114,7 @@ class ProductsModel extends CI_Model {
         return $seals;
     }
 
-    # Lista de sellos
+    # Lista de unidades de medida
     public function unitsmeasure_listing()
     {
         $unitsmeasure = array();
@@ -112,6 +123,17 @@ class ProductsModel extends CI_Model {
         }
         asort($unitsmeasure);
         return $unitsmeasure;
+    }
+
+    # Lista de certificados
+    public function certifications_listing()
+    {
+        $certifications = array();
+        foreach ($this->db->select('id_certifications, name_certifications')->order_by('name_certifications', 'ASC')->get('certifications')->result_array() as $key => $value) {
+            $certifications[$value['id_certifications']] = $value['name_certifications'];
+        }
+        asort($certifications);
+        return $certifications;
     }
 
 }

@@ -27,24 +27,24 @@
     <div class="box box-danger">
         <div class="box-header">
             <blockquote style="margin-bottom: 0">
-                Editar Sellos
+                Agregar Catálogo
             </blockquote>
         </div>
         <!-- /.box-header -->
         <div class="box-body">
-            <?php echo form_open('seals/edit/'.$this->uri->segment(3)) ?>
+            <?php echo form_open('catalogue/add') ?>
                 <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-sm-3">
                         <div class="form-group">
-                            <label for="name_seals">Sello</label>
-                            <input type="text" name="name_seals" id="name_seals" class="form-control" value="<?php echo set_value('name_seals', $information_seals[0]["name_seals"]) ?>" required="" />
-                            <?php echo form_error('name_seals') ?>
+                            <label for="name_catalogue">Línea de Producto</label>
+                            <input type="text" name="name_catalogue" id="name_catalogue" class="form-control" value="<?php echo set_value('name_catalogue') ?>" required="" />
+                            <?php echo form_error('name_catalogue') ?>
                         </div>
                     </div>
                 </div>
                 <!-- Shuffle & Sort Controls -->
                 <div class="row">
-                    <label style="padding-left: 1em;">Búsqueda por categorías</label>
+                    <label style="padding-left: 1em;">Búsqueda y filtros</label>
                     <ul class="simplefilter categories-container">
                         <li class="active" data-filter="all" style="text-align: center;padding: 6px 15px;background-color: #f7f8f9;color: #444444;border: 1px solid #eae7e7;">TODAS</li>
                         <?php foreach ($categories_images as $key => $value): ?>
@@ -82,7 +82,7 @@
                         <?php foreach ($list_images as $key => $value): ?>
                             <div class="col-xs-6 col-sm-3 col-md-2 filtr-item" data-category="<?php echo $value['id_category'] ?>" data-sort="<?php echo $value['name'] ?>">
                                 <label>
-                                    <?php echo form_checkbox('images[]', $value['file'], in_array($value['file'], $status)); ?> 
+                                    <?php echo form_checkbox('images[]', $value['file']); ?> 
                                     <span style="display: block; margin-top: -22px; margin-left: 1.3em">Seleccionar</span>
                                 </label>
                                 <img class="img img-responsive center-block" src="<?php echo base_url('assets/dist/img/multimedia/images/').$value['file_name'] ?>" />
@@ -95,8 +95,8 @@
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary" style="width: 10em">Enviar</button>
-                            <button type="reset"  class="btn btn-default" style="width: 10em">Cancelar</button>
+                            <button type="submit" class="btn btn-primary" style="width: 10em;">Enviar</button>
+                            <button type="reset"  class="btn btn-default" style="width: 10em;">Cancelar</button>
                         </div>
                     </div>
                 </div>

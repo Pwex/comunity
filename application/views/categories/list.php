@@ -1,15 +1,7 @@
 <!-- Main content -->
 <section class="content">
-    <div class="box box-warning">
+    <div class="box box-danger">
         <div class="box-header">
-            <blockquote style="margin-bottom: 0">
-                Listado de Categorias
-                <span style="float: right; margin-top: -4px;">
-                    <a href="<?php echo base_url('categories/add') ?>" class="btn btn-primary" title="Agregar Categoria">
-                        <i class="fa fa-plus-circle"></i>
-                    </a>
-                </span>
-            </blockquote>
             <?php if ($this->uri->segment(2) == 'success'): ?>
                 <div class="row" style="margin-top: 0.8em">
                     <div class="col-sm-12" style="margin-bottom: -1.5em">
@@ -22,6 +14,7 @@
                         </div>
                     </div>
                 </div>
+                <p></p>
             <?php endif ?>
             <?php if ($this->uri->segment(2) == 'success-delete'): ?>
                 <div class="row" style="margin-top: 0.8em">
@@ -35,6 +28,7 @@
                         </div>
                     </div>
                 </div>
+                <p></p>
             <?php endif ?>
             <?php if ($this->uri->segment(2) == 'success-edit'): ?>
                 <div class="row" style="margin-top: 0.8em">
@@ -48,7 +42,16 @@
                         </div>
                     </div>
                 </div>
+                <p></p>
             <?php endif ?>
+            <blockquote style="margin-bottom: 0">
+                Listado de Categorias
+                <span style="float: right; margin-top: -4px;">
+                    <a href="<?php echo base_url('categories/add') ?>" class="btn btn-primary" title="Agregar Categoria">
+                        <i class="fa fa-plus-circle"></i>
+                    </a>
+                </span>
+            </blockquote>
         </div>
         <!-- /.box-header -->
         <div class="box-body table-responsive" id="container-box-datatable">
@@ -56,30 +59,32 @@
                 <thead>
                     <th>Código</th>
                     <th>Nombre</th>
-                    <th>Categoría</th>
+                    <th>Categoría de Procedencia</th>
                     <th>Opciones</th>  
                 </thead>
                 <tfoot>
                     <th>Código</th>
                     <th>Nombre</th>
-                    <th>Categoría</th>  
+                    <th>Categoría de Procedencia</th>  
                     <th>Opciones</th>
                 </foot>
                 <tbody>
                     <?php foreach ($full_listing as $key => $value): ?>
-                        <tr>
-                            <td><?php echo $value['id_category'] ?></td>
-                            <td><?php echo $value['name_category'] ?></td>
-                            <td><?php echo $value['name_father'] ?></td>
-                            <td>
-                                <a href="<?php echo base_url('categories/edit/').$value['id_category'] ?>" class="btn btn-warning btn-sm">
-                                    <i class="fa fa-pencil"></i>
-                                </a>
-                                <button type="button" class="btn btn-danger btn-delete btn-sm" id="<?php echo $value['id_category'] ?>">
-                                    <i class="fa fa-trash"></i>
-                                </button>
-                            </td>
-                        </tr>
+                        <?php if ($value['name_category'] != 'CONFIGURACION' AND $value['name_category'] != 'SELLOS'): ?>
+                            <tr>
+                                <td><?php echo $value['id_category'] ?></td>
+                                <td><?php echo $value['name_category'] ?></td>
+                                <td><?php echo $value['name_father'] ?></td>
+                                <td>
+                                    <a href="<?php echo base_url('categories/edit/').$value['id_category'] ?>" class="btn btn-warning btn-sm">
+                                        <i class="fa fa-pencil"></i>
+                                    </a>
+                                    <button type="button" class="btn btn-danger btn-delete btn-sm" id="<?php echo $value['id_category'] ?>">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        <?php endif ?>
                     <?php endforeach ?>
                 </tbody>
             </table>

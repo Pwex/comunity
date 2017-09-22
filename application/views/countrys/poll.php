@@ -1,6 +1,6 @@
 <!-- Main content -->
 <section class="content">
-    <div class="box box-warning">
+    <div class="box box-danger">
         <div class="box-header">
             <h3 class="box-title">Registrar Encuesta</h3>
         </div>

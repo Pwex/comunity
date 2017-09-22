@@ -27,18 +27,18 @@
     <div class="box box-danger">
         <div class="box-header">
             <blockquote style="margin-bottom: 0">
-                Editar Sellos
+                Editar Catálogo
             </blockquote>
         </div>
         <!-- /.box-header -->
         <div class="box-body">
-            <?php echo form_open('seals/edit/'.$this->uri->segment(3)) ?>
+            <?php echo form_open('catalogue/edit/'.$this->uri->segment(3)) ?>
                 <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-sm-3">
                         <div class="form-group">
-                            <label for="name_seals">Sello</label>
-                            <input type="text" name="name_seals" id="name_seals" class="form-control" value="<?php echo set_value('name_seals', $information_seals[0]["name_seals"]) ?>" required="" />
-                            <?php echo form_error('name_seals') ?>
+                            <label for="name_catalogue">Línea de Producto</label>
+                            <input type="text" name="name_catalogue" id="name_catalogue" class="form-control" placeholder="Nombre de la categoría" value="<?php echo set_value('name_catalogue', $information_catalogue[0]["name_catalogue"]) ?>" required="" />
+                            <?php echo form_error('name_catalogue') ?>
                         </div>
                     </div>
                 </div>

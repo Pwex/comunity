@@ -1,6 +1,6 @@
 <!-- Main content -->
 <section class="content">
-    <div class="box box-warning">
+    <div class="box box-danger">
         <?php echo form_open('shop-layout') ?>
         <div class="box-header">
             <blockquote style="margin-bottom: 0">

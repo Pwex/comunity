@@ -1,15 +1,7 @@
 <!-- Main content -->
 <section class="content">
-    <div class="box box-warning">
+    <div class="box box-danger">
         <div class="box-header">
-            <blockquote style="margin-bottom: 0">
-                Listado de Tipos Inventario
-                <span style="float: right; margin-top: -4px;">
-                    <a href="<?php echo base_url('typesinventory/add') ?>" class="btn btn-primary" title="Agregar Tipo Inventario">
-                        <i class="fa fa-plus-circle"></i>
-                    </a>
-                </span>
-            </blockquote>
             <?php if ($this->uri->segment(2) == 'success'): ?>
                 <div class="row" style="margin-top: 0.8em">
                     <div class="col-sm-12" style="margin-bottom: -1.5em">
@@ -22,6 +14,7 @@
                         </div>
                     </div>
                 </div>
+                <p></p>
             <?php endif ?>
             <?php if ($this->uri->segment(2) == 'success-delete'): ?>
                 <div class="row" style="margin-top: 0.8em">
@@ -35,6 +28,7 @@
                         </div>
                     </div>
                 </div>
+                <p></p>
             <?php endif ?>
             <?php if ($this->uri->segment(2) == 'success-edit'): ?>
                 <div class="row" style="margin-top: 0.8em">
@@ -48,7 +42,16 @@
                         </div>
                     </div>
                 </div>
+                <p></p>
             <?php endif ?>
+            <blockquote style="margin-bottom: 0">
+                Listado de Tipos Inventario
+                <span style="float: right; margin-top: -4px;">
+                    <a href="<?php echo base_url('typesinventory/add') ?>" class="btn btn-primary" title="Agregar Tipo Inventario">
+                        <i class="fa fa-plus-circle"></i>
+                    </a>
+                </span>
+            </blockquote>
         </div>
         <!-- /.box-header -->
         <div class="box-body table-responsive" id="container-box-datatable">

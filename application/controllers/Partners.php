@@ -27,7 +27,7 @@ class Partners extends CI_Controller {
 			'box_span' 	=> 'Listado'
 		);
 		$data['option_nav_item'] = array(
-			'usuarios'	=> array(
+			'proveedor'	=> array(
 				'icon' 		=> 'fa fa-ellipsis-v',
 				'url' 		=> 'partners',
 				'class' 	=> NULL
@@ -65,7 +65,7 @@ class Partners extends CI_Controller {
 			'box_span' 	=> 'Agregar'
 		);
 		$data['option_nav_item'] = array(
-			'usuarios'	=> array(
+			'proveedor'	=> array(
 				'icon' 		=> 'fa fa-ellipsis-v',
 				'url' 		=> 'partners',
 				'class' 	=> NULL
@@ -146,7 +146,7 @@ class Partners extends CI_Controller {
 			'box_span' 	=> 'Editar'
 		);
 		$data['option_nav_item'] = array(
-			'usuarios'	=> array(
+			'proveedor'	=> array(
 				'icon' 		=> 'fa fa-ellipsis-v',
 				'url' 		=> 'partners',
 				'class' 	=> NULL
