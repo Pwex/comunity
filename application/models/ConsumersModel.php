@@ -35,4 +35,10 @@ class ConsumersModel extends CI_Model {
     {
         $this->db->where('id_client', $id)->delete('ec_client');
     }
+    # Almacenar la informacion de la encuesta
+    public function save_poll($data, $id)
+    {
+       $data['id_consumer'] = $id;
+        $this->db->insert('polls', $data);
+    }
 }

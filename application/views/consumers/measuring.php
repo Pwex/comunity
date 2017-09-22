@@ -6,8 +6,8 @@
         </div>
         <!-- /.box-header -->
         <div class="box-body">
-            <?php echo form_open('register_consumer/measuring') ?>
- 
+            <?php //echo form_open('consumers/measuring') ?>
+            <?php echo form_open('consumers/measuring/'.$this->uri->segment(3)) ?>
                 <div class="row">
                     <div class="col-sm-2">
                         <div class="form-group">

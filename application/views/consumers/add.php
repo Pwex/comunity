@@ -6,7 +6,7 @@
         </div>
         <!-- /.box-header -->
         <div class="box-body">
-            <?php echo form_open('register_consumer/add') ?>
+            <?php echo form_open('consumers/add') ?>
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="input-group">

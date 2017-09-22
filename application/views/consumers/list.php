@@ -44,7 +44,7 @@
             <blockquote style="margin-bottom: 0">
                 Listado completo de consumidores
                 <span style="float: right; margin-top: -4px;">
-                    <a href="<?php echo base_url('register_consumer/add') ?>" class="btn btn-primary btn-sm" title="Agregar consumidor">
+                    <a href="<?php echo base_url('consumers/add') ?>" class="btn btn-primary btn-sm" title="Crear consumidor">
                         <i class="fa fa-plus-circle"></i>
                     </a>
                 </span>
@@ -72,13 +72,13 @@
                             <td><?php echo $value['email'] ?></td>
                             <td><?php echo $value['name_country'] ?></td>
                             <td>
-                                <a href="<?php echo base_url('register_consumer/poll/').$value['id_client'] ?>" class="btn btn-info btn-sm">
+                                <a href="<?php echo base_url('consumers/poll/').$value['id_client'] ?>" class="btn btn-info btn-sm">
                                     <i class="fa fa-book"></i>
                                 </a>
-                                <a href="<?php echo base_url('register_consumer/measuring/').$value['id_client'] ?>" class="btn btn-info btn-sm">
+                                <a href="<?php echo base_url('consumers/measuring/').$value['id_client'] ?>" class="btn btn-info btn-sm">
                                     <i class="fa fa-heartbeat"></i>
                                 </a>
-                                <a href="<?php echo base_url('register_consumer/edit/').$value['id_client'] ?>" class="btn btn-warning btn-sm">
+                                <a href="<?php echo base_url('consumers/edit/').$value['id_client'] ?>" class="btn btn-warning btn-sm">
                                     <i class="fa fa-pencil"></i>
                                 </a>
                                 <button type="button" class="btn btn-danger btn-delete btn-sm" id="<?php echo $value['id_client'] ?>">
