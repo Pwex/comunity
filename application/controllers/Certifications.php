@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Categories extends CI_Controller {
+class Certifications extends CI_Controller {
 
 	public function __construct()
     {
@@ -10,27 +10,27 @@ class Categories extends CI_Controller {
         $this->managerauth->validate_session();
     }
 
-    # Listado completo de categorias
+    # Listado completo de certificados
 	public function full_listing()
 	{
 		# Carga del modelo de base de datos
-		$this->load->model('CategoriesModel', 'categories', TRUE);
+		$this->load->model('CertificationsModel', 'certifications', TRUE);
 		$this->load->model('ActivitiesModel', 'activity', TRUE);
 		# Notificaciones
 		$data['number_of_pending_notifications'] = $this->activity->number_of_pending_notifications($this->session->userdata['user']['id_user']);
 		$data['notification_details']	 		 = $this->activity->notification_details($this->session->userdata['user']['id_user']);
 		# Envio de registros
-		$data['full_listing'] = $this->categories->full_listing();
+		$data['full_listing'] = $this->certifications->full_listing();
 		# Opciones items del menu principal del contenido
 		$data['option_nav'] = array(
-			'box_title' => 'Categorias',
+			'box_title' => 'Certificados',
 			'box_span' 	=> 'Listado'
 		);
 		$data['option_nav_item'] = array(
-			'categorias'	=> array(
-				'icon' 		=> 'fa fa-ellipsis-v',
-				'url' 		=> 'categories',
-				'class' 	=> NULL
+				'certificados' => array(
+				'icon' 		   => 'fa fa-ellipsis-v',
+				'url' 		   => 'certifications',
+				'class' 	   => NULL
 			), 
 			'listado'=> array(
 				'icon' 		=> '',
@@ -40,39 +40,29 @@ class Categories extends CI_Controller {
 		);
 		# Renderizando la vista | plantilla
 		$this->load->view('template/header', $data);
-		$this->load->view('categories/list');
+		$this->load->view('certifications/list');
 		$this->load->view('template/footer');
 	}
 
-	# Filtro de categorias
-	public function filter()
-	{ 
-		$this->load->helper('form');
-		$this->load->model('CategoriesModel', 'category', TRUE);
-		$data['category']  = $this->category->categories_listing();
-		$data['catalogue_group'] = $this->category->catalogue_group_filter($this->input->post('id'));
-		return $this->load->view('categories/filter', $data);
-	}
-
-	# Formulario Principal para Agregar categorias
+	# Formulario principal para agregar certificados
 	public function add()
 	{
 		# Librerias
 		$this->load->helper('form');
 		$this->load->model('ActivitiesModel', 'activity', TRUE);
-		$this->load->model('CategoriesModel', 'category', TRUE);
+		$this->load->model('CertificationsModel', 'certifications', TRUE);
 		# Notificaciones
 		$data['number_of_pending_notifications'] = $this->activity->number_of_pending_notifications($this->session->userdata['user']['id_user']);
 		$data['notification_details']	 		 = $this->activity->notification_details($this->session->userdata['user']['id_user']);
 		# Opciones items del menu principal del contenido
 		$data['option_nav'] = array(
-			'box_title' => 'Categorias',
+			'box_title' => 'Certificados',
 			'box_span' 	=> 'Agregar'
 		);
 		$data['option_nav_item'] = array(
-			'categorias'	=> array(
+			'certificados'	=> array(
 				'icon' 		=> 'fa fa-ellipsis-v',
-				'url' 		=> 'categories',
+				'url' 		=> 'certifications',
 				'class' 	=> NULL
 			), 
 			'agregar' => array(
@@ -81,18 +71,13 @@ class Categories extends CI_Controller {
 				'class' 	=> 'active'
 			)
 		);
-		# Listado de categorias
-		$data['category']  = $this->category->categories_listing();
-		$data['catalogue'] = $this->category->catalogue_listing();
-		$data['catalogue_group'] = $this->category->catalogue_group();
-		$data['category_filter'] = $this->category->category_filter();
 		# Renderizando la vista | plantilla
 		$this->load->view('template/header', $data);
-		$this->load->view('categories/add');
+		$this->load->view('certifications/add');
 		$this->load->view('template/footer');
 	}
 
-	# Recibir el Formulario y Validar las Reglas
+	# Recibir el formulario y validar las reglas
 	public function add_validate()
 	{
 		switch ($this->input->post()) {
@@ -100,42 +85,43 @@ class Categories extends CI_Controller {
 				$this->add();
 			break;
 			case TRUE:
-				$this->rules_insert_categories();
+				$this->load->database();
+				$this->rules_insert_certifications();
 				switch ($this->form_validation->run()) {
 					case FALSE:
 						$this->add();
 					break;
 					case TRUE:
 						# Cargar el modelo de base de datos
-						$this->load->model('CategoriesModel', 'categories', TRUE);
+						$this->load->model('CertificationsModel', 'certifications', TRUE);
 						# Insertar información en la base de datos
-						$this->categories->save($this->input->post());
-						redirect('categories/success'); 
+						$this->certifications->save($this->input->post());
+						redirect('certifications/success'); 
 					break;
 				}
 			break;
 		}
 	}
 
-	# Formulario Principal para Editar categorias
+	# Formulario principal para editar los certificados
 	public function edit($id = NULL)
 	{
 		# Librerias
 		$this->load->helper('form');
 		$this->load->model('ActivitiesModel', 'activity', TRUE);
-		$this->load->model('CategoriesModel', 'category', TRUE);
+		$this->load->model('CertificationsModel', 'certifications', TRUE);
 		# Notificaciones
 		$data['number_of_pending_notifications'] = $this->activity->number_of_pending_notifications($this->session->userdata['user']['id_user']);
 		$data['notification_details']	 		 = $this->activity->notification_details($this->session->userdata['user']['id_user']);
 		# Opciones items del menu principal del contenido
 		$data['option_nav'] = array(
-			'box_title' => 'Categorias',
+			'box_title' => 'Certificados',
 			'box_span' 	=> 'Editar'
 		);
 		$data['option_nav_item'] = array(
-				'categorias'	=> array(
+				'certificados'	=> array(
 				'icon' 			=> 'fa fa-ellipsis-v',
-				'url' 			=> 'categories',
+				'url' 			=> 'certifications',
 				'class' 		=> NULL
 			), 
 			'editar' => array(
@@ -144,21 +130,14 @@ class Categories extends CI_Controller {
 				'class' 	=> 'active'
 			)
 		);
-		$data['information_category'] = $this->category->information_category($id);
-		# Listado de categorias
-		$data['category']  = $this->category->categories_listing();
-		$data['catalogue'] = $this->category->catalogue_listing();
-		$data['catalogue_group'] = $this->category->catalogue_group();
-		$data['category_filter'] = $this->category->category_filter();
-		$data['information_category'][0]['filter'] = explode(',', $data['information_category'][0]['filter']);
-		// echo "<pre>"; print_r($data['information_category'])."</pre>"; exit();
+		$data['information_certifications'] = $this->certifications->information_certifications($id);
 		# Renderizando la vista | plantilla
 		$this->load->view('template/header', $data);
-		$this->load->view('categories/edit');
+		$this->load->view('certifications/edit');
 		$this->load->view('template/footer');
 	}
 
-	# Recibir el Formulario de Editar y Validar las Reglas
+	# Recibir el formulario de editar y validar las reglas
 	public function edit_validate($id = NULL)
 	{
 		switch ($this->input->post()) {
@@ -166,17 +145,18 @@ class Categories extends CI_Controller {
 				$this->edit($id);
 			break;
 			case TRUE:
-				$this->rules_edit_categories();
+				$this->load->database();
+				$this->rules_edit_certifications();
 				switch ($this->form_validation->run()) {
 					case FALSE:
 						$this->edit($id);
 					break;
 					case TRUE:
 						# Cargar el modelo de base de datos
-						$this->load->model('CategoriesModel', 'categories', TRUE);
+						$this->load->model('CertificationsModel', 'certifications', TRUE);
 						# Insertar información en la base de datos
-						$this->categories->edit($id, $this->input->post());
-						redirect('categories/success-edit'); 
+						$this->certifications->edit($id, $this->input->post());
+						redirect('certifications/success-edit'); 
 					break;
 				}
 			break;
@@ -184,18 +164,18 @@ class Categories extends CI_Controller {
 	}
 
 	# Reglas de validación al insertar
-	public function rules_insert_categories()
+	public function rules_insert_certifications()
 	{
 		$config = array(
 			array(
-				'field' => 'name_category',
-				'label' => 'Categoria',
-				'rules' => 'required|max_length[50]|trim',
+				'field' => 'name_certifications',
+				'label' => 'certificados',
+				'rules' => 'required|max_length[60]|is_unique[certifications.name_certifications]|trim',
 				'errors' => array(
 								'required' 	=> 'Es necesario ingresar un %s',
-								'max_length'=> 'La longitud maxima a ingresar es de 50 caracteres'
+								'max_length'=> 'La longitud maxima a ingresar es de 60 caracteres'
 						   )
-			)
+			),
 		);
 		$this->load->library('form_validation');
 		$this->form_validation->set_error_delimiters('<p class="text-danger msg-error">', '</p>');
@@ -203,31 +183,31 @@ class Categories extends CI_Controller {
 	}
 
 	# Reglas de validación al editar
-	public function rules_edit_categories()
+	public function rules_edit_certifications()
 	{
 		$config = array(
 			array(
-				'field' => 'name_category',
-				'label' => 'nombre categoria',
-				'rules' => 'required|max_length[50]|trim',
+				'field' => 'name_certifications',
+				'label' => 'certificados',
+				'rules' => 'required|max_length[60]|trim',
 				'errors' => array(
 								'required' 	=> 'Es necesario ingresar un %s',
-								'max_length'=> 'La longitud maxima a ingresar es de 50 caracteres'
+								'max_length'=> 'La longitud maxima a ingresar es de 60 caracteres'
 						   )
-			)
+			),
 		);
 		$this->load->library('form_validation');
 		$this->form_validation->set_error_delimiters('<p class="text-danger msg-error">', '</p>');
 		$this->form_validation->set_rules($config);
 	}
 
-	# Eliminar usuario
+	# Eliminar certificaciones
 	public function delete()
 	{
 		# Carga del modelo de base de datos
-		$this->load->model('CategoriesModel', 'categories', TRUE);
+		$this->load->model('CertificationsModel', 'certifications', TRUE);
 		# Eliminar el usuario seleccionado
-		$this->categories->delete($this->input->post('id'));
+		$this->certifications->delete($this->input->post('id'));
 	}
 
 }

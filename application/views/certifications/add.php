@@ -3,18 +3,18 @@
     <div class="box box-danger">
         <div class="box-header">
             <blockquote style="margin-bottom: 0">
-                Crear Activo
+                Crear Certificados
             </blockquote>
         </div>
         <!-- /.box-header -->
         <div class="box-body">
-            <?php echo form_open('components/add') ?>
+            <?php echo form_open('certifications/add') ?>
                 <div class="row">
                     <div class="col-sm-3">
                         <div class="form-group">
-                            <label for="name_component">Activo</label>
-                            <input type="text" name="name_component" id="name_component" class="form-control" value="<?php echo set_value('name_component') ?>" required="" />
-                            <?php echo form_error('name_component') ?>
+                            <label for="name_certifications">Certificado</label>
+                            <input type="text" name="name_certifications" id="name_certifications" class="form-control" value="<?php echo set_value('name_certifications') ?>" required="" />
+                            <?php echo form_error('name_certifications') ?>
                         </div>
                     </div>
                 </div>

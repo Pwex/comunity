@@ -10,7 +10,7 @@
         <div class="box-body">
             <?php echo form_open('document_types/edit/'.$this->uri->segment(3)) ?>
                 <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-sm-3">
                         <div class="form-group">
                             <label for="name">Tipo Documento</label>
                             <input type="text" name="document_type" id="document_type" class="form-control" value="<?php echo set_value('document_type', $information_document_type[0]["document_type"]) ?>" required="" />

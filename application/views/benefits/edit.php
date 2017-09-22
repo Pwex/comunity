@@ -10,7 +10,7 @@
         <div class="box-body">
             <?php echo form_open('benefits/edit/'.$this->uri->segment(3)) ?>
                 <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-sm-3">
                         <div class="form-group">
                             <label for="name">Beneficio</label>
                             <input type="text" name="name_benefit" id="name_benefit" class="form-control" value="<?php echo set_value('name_benefit', $information_benefit[0]["name_benefit"]) ?>" required="" />

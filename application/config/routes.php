@@ -86,6 +86,25 @@ $route['categories/edit/(:num)'] 	= 'Categories/edit_validate/$1';
 $route['categories/success-edit'] 	= 'Categories/full_listing';
 $route['categories/delete'] 		= 'Categories/delete';
 $route['categories/success-delete'] = 'Categories/full_listing';
+$route['categories/filter'] 		= 'Categories/filter';
+
+# Catálogo
+$route['catalogue'] 				= 'Catalogue/full_listing';
+$route['catalogue/success'] 		= 'Catalogue/full_listing';
+$route['catalogue/add'] 			= 'Catalogue/add_validate';
+$route['catalogue/edit/(:num)'] 	= 'Catalogue/edit_validate/$1';
+$route['catalogue/success-edit'] 	= 'Catalogue/full_listing';
+$route['catalogue/delete'] 			= 'Catalogue/delete';
+$route['catalogue/success-delete'] 	= 'Catalogue/full_listing';
+
+# Certificados
+$route['certifications'] 				= 'Certifications/full_listing';
+$route['certifications/success'] 		= 'Certifications/full_listing';
+$route['certifications/add'] 			= 'Certifications/add_validate';
+$route['certifications/edit/(:num)'] 	= 'Certifications/edit_validate/$1';
+$route['certifications/success-edit'] 	= 'Certifications/full_listing';
+$route['certifications/delete'] 		= 'Certifications/delete';
+$route['certifications/success-delete'] = 'Certifications/full_listing';
 
 # Lista de precios
 $route['list-price'] 				= 'ListPrice/full_listing';
@@ -122,6 +141,7 @@ $route['benefits/edit/(:num)'] 		= 'Benefits/edit_validate/$1';
 $route['benefits/success-edit'] 	= 'Benefits/full_listing';
 $route['benefits/delete'] 			= 'Benefits/delete';
 $route['benefits/success-delete'] 	= 'Benefits/full_listing';
+
 # componentes
 $route['components'] 					= 'Components/full_listing';
 $route['components/success'] 			= 'Components/full_listing';

@@ -17,7 +17,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-2">
+                    <div class="col-sm-1">
                         <div class="form-group">
                             <label for="coin">Moneda</label>
                             <input type="text" name="coin" id="coin" class="form-control" value="<?php echo set_value('coin') ?>" required="" />

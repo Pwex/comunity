@@ -1,5 +1,6 @@
 <!-- Main content -->
 <section class="content">
+<<<<<<< HEAD
     <?php if ($this->uri->segment(2) == 'success'): ?>
         <div class="row">
             <div class="col-sm-12">
@@ -39,8 +40,52 @@
             </div>
         </div>
     <?php endif ?>
+=======
+>>>>>>> Jose
     <div class="box box-danger">
         <div class="box-header">
+            <?php if ($this->uri->segment(2) == 'success'): ?>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="alert alert-success alert-dismissible">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                <h4>
+                                    <i class="icon fa fa-check"></i> Exitoso
+                                </h4>
+                            El registro ingresado se ha almacenado correctamente.
+                      </div>
+                    </div>
+                </div>
+                <p></p>
+            <?php endif ?>
+            <?php if ($this->uri->segment(2) == 'success-delete'): ?>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="alert alert-danger alert-dismissible">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                <h4>
+                                    <i class="icon fa fa-trash"></i> Exitoso
+                                </h4>
+                            El registro seleccionado ha sido eliminado correctamente.
+                      </div>
+                    </div>
+                </div>
+                <p></p>
+            <?php endif ?>
+            <?php if ($this->uri->segment(2) == 'success-edit'): ?>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="alert alert-info alert-dismissible">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                <h4>
+                                    <i class="icon fa fa-pencil"></i> Exitoso
+                                </h4>
+                            El registro seleccionado ha sido actualizado correctamente.
+                      </div>
+                    </div>
+                </div>
+                <p></p>
+            <?php endif ?>
             <blockquote style="margin-bottom: 0">
                 Listado completo de usuarios
                 <span style="float: right; margin-top: -4px;">

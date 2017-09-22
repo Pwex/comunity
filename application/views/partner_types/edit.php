@@ -10,7 +10,7 @@
         <div class="box-body">
             <?php echo form_open('partner_types/edit/'.$this->uri->segment(3)) ?>
                 <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-sm-3">
                         <div class="form-group">
                             <label for="name">Tipo Proveedor</label>
                             <input type="text" name="partner_type" id="partner_type" class="form-control" value="<?php echo set_value('partner_type', $information_partner_type[0]["partner_type"]) ?>" required="" />

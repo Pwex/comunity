@@ -30,7 +30,11 @@
             });
         </script>
         <!-- DataTables -->
+<<<<<<< HEAD
         <?php if (($this->uri->segment(1) == 'users') || ($this->uri->segment(1) == 'categories') || ($this->uri->segment(1) == 'warehouses') || ($this->uri->segment(1) == 'countrys') || ($this->uri->segment(1) == 'benefits') || ($this->uri->segment(1) == 'typesinventory') || ($this->uri->segment(1) == 'components') || ($this->uri->segment(1) == 'unitsmeasure') || ($this->uri->segment(1) == 'products') || ($this->uri->segment(1) == 'partners') || ($this->uri->segment(1) == 'document_types') || ($this->uri->segment(1) == 'partner_types') || ($this->uri->segment(1) == 'cities') || ($this->uri->segment(1) == 'seals') || ($this->uri->segment(1) == 'list-price') || ($this->uri->segment(1) == 'banks') || ($this->uri->segment(1) == 'consumers') || ($this->uri->segment(1) == 'price-product' and ($this->uri->segment(2) !="add" or $this->uri->segment(2) !="edit")) ): ?>
+=======
+        <?php if (($this->uri->segment(1) == 'users') || ($this->uri->segment(1) == 'categories') || ($this->uri->segment(1) == 'warehouses') || ($this->uri->segment(1) == 'countrys') || ($this->uri->segment(1) == 'benefits') || ($this->uri->segment(1) == 'typesinventory') || ($this->uri->segment(1) == 'components') || ($this->uri->segment(1) == 'unitsmeasure') || ($this->uri->segment(1) == 'products') || ($this->uri->segment(1) == 'partners') || ($this->uri->segment(1) == 'document_types') || ($this->uri->segment(1) == 'partner_types') || ($this->uri->segment(1) == 'cities') || ($this->uri->segment(1) == 'seals') || ($this->uri->segment(1) == 'list-price') || ($this->uri->segment(1) == 'banks') || ($this->uri->segment(1) == 'register_consumer') || ($this->uri->segment(1) == 'price-product' and ($this->uri->segment(2) !="add" or $this->uri->segment(2) !="edit")) || ($this->uri->segment(1) == 'catalogue' and ($this->uri->segment(2) !="add" or $this->uri->segment(2) !="edit")) || ($this->uri->segment(1) == 'certifications' and ($this->uri->segment(2) !="add" or $this->uri->segment(2) !="edit")) ): ?>
+>>>>>>> Jose
             <!-- script para agregar clase no-padding para resoluciones moviles -->
             <script type="text/javascript">
                 if (screen.width <= 425) {
@@ -160,13 +164,20 @@
                 {
                     $url = "consumers";
                 }
+                elseif ($this->uri->segment(1) == 'catalogue')
+                {
+                    $url = "catalogue";
+                }
+                elseif ($this->uri->segment(1) == 'certifications')
+                {
+                    $url = "certifications";
+                }
             ?>
                 $(document).ready(function()
                 {
                     $('button.btn.btn-danger.btn-delete').on('click', function()
                     {
                         var id = $(this).attr('id');
-                        alert(id); return false;
                         $( "#dialog-confirm" ).dialog({
                             resizable: false,
                             height: "auto",
@@ -348,11 +359,21 @@
             </script>
         <?php endif; ?>
         <!-- Manager Files Videos End -->
-        <?php if (($this->uri->segment(1) == 'categories' and ($this->uri->segment(2) == 'add' or $this->uri->segment(2) == 'edit')) or ($this->uri->segment(1) == 'products' and ($this->uri->segment(2) == 'add' or $this->uri->segment(2) == 'edit')) or ($this->uri->segment(1) == 'seals' and ($this->uri->segment(2) == 'add' or $this->uri->segment(2) == 'edit')) or ($this->uri->segment(1) == 'multimedia') ): ?>
+        <?php if (($this->uri->segment(1) == 'products' and ($this->uri->segment(2) == 'add' or $this->uri->segment(2) == 'edit')) or ($this->uri->segment(1) == 'seals' and ($this->uri->segment(2) == 'add' or $this->uri->segment(2) == 'edit')) or ($this->uri->segment(1) == 'catalogue' and ($this->uri->segment(2) == 'add' or $this->uri->segment(2) == 'edit')) or ($this->uri->segment(1) == 'multimedia') ): ?>
             <!-- Administrador de imagenes -->
             <script src="<?php echo base_url('assets/plugins/filterizr/filterizr/jquery.filterizr.min.js') ?>" type="text/javascript"></script>
             <script src="<?php echo base_url('assets/plugins/filterizr/js/controls.js') ?>" type="text/javascript"></script>
+            <script src="<?php echo base_url('assets/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') ?>" type="text/javascript"></script>
             <script type="text/javascript">
+                $(document).ready(function(){
+                    $('#date_expiration_sanitary_registration').datepicker({
+                      autoclose: true
+                    });
+                    $('li.shuffle-btn').on('click', function(){
+                        $(this).text('MOSTRAR ALEATORIAMENTE');
+                        $('.filtr-container').show();
+                    });
+                });
                 $(function() {
                     //Initialize filterizr with default options
                     var filterizd = $('.filtr-container').filterizr({
@@ -362,7 +383,7 @@
             </script>
         <?php endif; ?>
         <!-- Filtro select -->
-        <?php if ( ($this->uri->segment(1) == 'price-product' and ($this->uri->segment(2) == 'add' or $this->uri->segment(2) == 'edit')) or ($this->uri->segment(1) == 'products' and ($this->uri->segment(2) == 'add' or $this->uri->segment(2) == 'edit')) ): ?>
+        <?php if ( ($this->uri->segment(1) == 'price-product' and ($this->uri->segment(2) == 'add' or $this->uri->segment(2) == 'edit')) or ($this->uri->segment(1) == 'products' and ($this->uri->segment(2) == 'add' or $this->uri->segment(2) == 'edit')) or ($this->uri->segment(1) == 'categories' and ($this->uri->segment(2) == 'add' or $this->uri->segment(2) == 'edit')) ): ?>
             <script src="<?php echo base_url('assets/bower_components/select2/dist/js/select2.full.min.js') ?>"></script>
             <script type="text/javascript">
             $(document).ready(function(){
@@ -387,11 +408,32 @@
         <?php endif; ?>
         <?php if ($this->uri->segment(1) == 'products' and ($this->uri->segment(2) == 'add' or $this->uri->segment(2) == 'edit')): ?>
             <script type="text/javascript" src="<?php echo base_url('assets/bower_components/ckeditor/ckeditor.js') ?>"></script>
+            <script type="text/javascript" src="<?php echo base_url('assets/plugins/iCheck/icheck.min.js') ?>"></script>
+            <script type="text/javascript">
+                $(document).ready(function(){
+                    $('#id_catalogue').change('click', function(){
+                        var id = $('#id_catalogue option:selected').html();
+                        if (id == 'APARATOLOGIA') {
+                            $('div.section-aparatologia').show();
+                            $('#tab3_nav').hide();
+                        } else if(id == 'BELLEZA' || id == 'NUTRICIÓN' || id == 'SALUD' || id == 'SUPLEMENTOS DIETARIOS') {
+                            $('div.section-aparatologia').hide();
+                            $('#tab3_nav').show();
+                        }
+                    });
+                });
+            </script>
             <script type="text/javascript">
                 $(function () {
                     CKEDITOR.replace('labeled');
                     CKEDITOR.replace('nutritional');
                   })
+                $(document).ready(function(){
+                    $('input[type="checkbox"].minimal-red, input[type="radio"].minimal-red').iCheck({
+                        checkboxClass: 'icheckbox_minimal-red',
+                        radioClass   : 'iradio_minimal-red'
+                    });
+                });
             </script>
             <script type="text/javascript">
                 (function($){
@@ -430,5 +472,37 @@
                 });
             </script>
         <?php endif ?>
+
+        <?php if ($this->uri->segment(1) == 'categories' and ($this->uri->segment(2) == 'add' or $this->uri->segment(2) == 'edit')): ?>
+            <!-- Filtro de select de categorias -->
+            <script type="text/javascript">
+                $(document).ready(function(){
+                    $('#id_catalogue').change('click', function(){
+                        $("#id_father_category").prop('disabled', false);
+                        $("#filter").prop('disabled', false);
+                        var id = $(this).val();
+                        $.ajax({
+                            url  : '<?php echo base_url('categories/filter') ?>',
+                            data : { id: id },
+                            type : 'POST',
+                            success : function(response){
+                                $('#id_father_category optgroup').remove();
+                                $('#id_father_category').append(response);
+                                $("#id_father_category").removeAttr('disabled');
+
+                                $('#filter optgroup').remove();
+                                $('#filter').append(response);
+                                $("#filter").removeAttr('disabled');
+
+                            },
+                            error : function(){
+                                alert('Ha ocurrido un error...');
+                            }
+                        });
+                    });
+                });
+            </script>
+        <?php endif ?>
+
     </body>
 </html>

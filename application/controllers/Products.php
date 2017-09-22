@@ -72,6 +72,8 @@ class Products extends CI_Controller {
 				'class' 	=> 'active'
 			)
 		);
+		# Listado de linea de productos
+		$data['catalogue'] 		= $this->products->catalogue_listing();
 		# Listado de categorias
 		$data['category'] 		= $this->products->categories_listing();
 		# Listado de tipos de inventario
@@ -84,10 +86,10 @@ class Products extends CI_Controller {
 		$data['seals'] 			= $this->products->seals_listing();
 		# Listado de unidades de medidas
 		$data['unitsmeasure'] 	= $this->products->unitsmeasure_listing();
+		# Listado de certificados
+		$data['certifications'] = $this->products->certifications_listing();
 		# Listado de estatus
 		$data['status'] 		= array(1 => 'Activo', 0 => 'Inactivo');
-		# Donde se visualizara
-		$data['availability'] 	= array(1 => 'En todas partes', 2 => 'eCommerce', 3 => 'Centros de bienestar', 4 => 'Coach');
 		# Listado completo de imagenes disponibles
 		$data['list_images'] = $this->medios->list_images();
 		# Listado de categorias asociado a las imagenes
@@ -112,6 +114,7 @@ class Products extends CI_Controller {
 						$this->add();
 					break;
 					case TRUE:
+						echo "<pre>"; print_r($this->input->post()); exit();
 						# Cargar el modelo de base de datos
 						$this->load->model('ProductsModel', 'products', TRUE);
 						# Insertar información en la base de datos

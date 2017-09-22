@@ -10,7 +10,7 @@
         <div class="box-body">
             <?php echo form_open('partner_types/add') ?>
                 <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-sm-3">
                         <div class="form-group">
                             <label for="partner_type">Tipo Proveedor</label>
                             <input type="text" name="partner_type" id="partner_type" class="form-control" value="<?php echo set_value('partner_type') ?>" required="" />
