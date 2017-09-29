@@ -45,7 +45,7 @@
                 <p></p>
             <?php endif ?>
             <blockquote style="margin-bottom: 0">
-                Listado de Línea de Productos
+                Listado de Categorías Principales
                 <span style="float: right; margin-top: -4px;">
                     <a href="<?php echo base_url('catalogue/add') ?>" class="btn btn-primary" title="Crear Catálogo">
                         <i class="fa fa-plus-circle"></i>
@@ -58,12 +58,12 @@
             <table class="table table-responsive table-bordered table-hover" id="table-default">
                 <thead>
                     <th>Código</th>
-                    <th>Línea</th>
+                    <th>Categoriá Principal</th>
                     <th>Opciones</th>  
                 </thead>
                 <tfoot>
                     <th>Código</th>
-                    <th>Línea</th>
+                    <th>Categoriá Principal</th>
                     <th>Opciones</th>
                 </foot>
                 <tbody>

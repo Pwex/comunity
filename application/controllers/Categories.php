@@ -85,7 +85,6 @@ class Categories extends CI_Controller {
 		$data['category']  = $this->category->categories_listing();
 		$data['catalogue'] = $this->category->catalogue_listing();
 		$data['catalogue_group'] = $this->category->catalogue_group();
-		$data['category_filter'] = $this->category->category_filter();
 		# Renderizando la vista | plantilla
 		$this->load->view('template/header', $data);
 		$this->load->view('categories/add');
@@ -149,9 +148,6 @@ class Categories extends CI_Controller {
 		$data['category']  = $this->category->categories_listing();
 		$data['catalogue'] = $this->category->catalogue_listing();
 		$data['catalogue_group'] = $this->category->catalogue_group();
-		$data['category_filter'] = $this->category->category_filter();
-		$data['information_category'][0]['filter'] = explode(',', $data['information_category'][0]['filter']);
-		// echo "<pre>"; print_r($data['information_category'])."</pre>"; exit();
 		# Renderizando la vista | plantilla
 		$this->load->view('template/header', $data);
 		$this->load->view('categories/edit');

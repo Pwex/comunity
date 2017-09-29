@@ -59,21 +59,24 @@
                 <thead>
                     <th>Código</th>
                     <th>Nombre</th>
-                    <th>Categoría de Procedencia</th>
+                    <th>Categoría Principal</th>
+                    <th>Categoría Padre</th>
                     <th>Opciones</th>  
                 </thead>
                 <tfoot>
                     <th>Código</th>
                     <th>Nombre</th>
-                    <th>Categoría de Procedencia</th>  
+                    <th>Categoría Principal</th>
+                    <th>Categoría Padre</th>  
                     <th>Opciones</th>
                 </foot>
                 <tbody>
                     <?php foreach ($full_listing as $key => $value): ?>
-                        <?php if ($value['name_category'] != 'CONFIGURACION' AND $value['name_category'] != 'SELLOS'): ?>
+                        <?php if ($value['name_category'] != 'CONFIGURACION' AND $value['name_category'] != 'SELLOS' AND $value['name_category'] != 'PAISES'): ?>
                             <tr>
                                 <td><?php echo $value['id_category'] ?></td>
                                 <td><?php echo $value['name_category'] ?></td>
+                                <td><?php echo $value['name_catalogue'] ?></td>
                                 <td><?php echo $value['name_father'] ?></td>
                                 <td>
                                     <a href="<?php echo base_url('categories/edit/').$value['id_category'] ?>" class="btn btn-warning btn-sm">

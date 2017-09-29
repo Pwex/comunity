@@ -30,7 +30,7 @@
             });
         </script>
         <!-- DataTables -->
-        <?php if (($this->uri->segment(1) == 'users') || ($this->uri->segment(1) == 'categories') || ($this->uri->segment(1) == 'warehouses') || ($this->uri->segment(1) == 'countrys') || ($this->uri->segment(1) == 'benefits') || ($this->uri->segment(1) == 'typesinventory') || ($this->uri->segment(1) == 'components') || ($this->uri->segment(1) == 'unitsmeasure') || ($this->uri->segment(1) == 'products') || ($this->uri->segment(1) == 'partners') || ($this->uri->segment(1) == 'document_types') || ($this->uri->segment(1) == 'partner_types') || ($this->uri->segment(1) == 'cities') || ($this->uri->segment(1) == 'seals') || ($this->uri->segment(1) == 'list-price') || ($this->uri->segment(1) == 'banks') || ($this->uri->segment(1) == 'consumers') || ($this->uri->segment(1) == 'price-product' and ($this->uri->segment(2) !="add" or $this->uri->segment(2) !="edit")) || ($this->uri->segment(1) == 'catalogue' and ($this->uri->segment(2) !="add" or $this->uri->segment(2) !="edit")) || ($this->uri->segment(1) == 'certifications' and ($this->uri->segment(2) !="add" or $this->uri->segment(2) !="edit")) ): ?>
+        <?php if (($this->uri->segment(1) == 'users') || ($this->uri->segment(1) == 'categories') || ($this->uri->segment(1) == 'warehouses') || ($this->uri->segment(1) == 'countrys') || ($this->uri->segment(1) == 'benefits') || ($this->uri->segment(1) == 'typesinventory') || ($this->uri->segment(1) == 'components') || ($this->uri->segment(1) == 'unitsmeasure') || ($this->uri->segment(1) == 'products') || ($this->uri->segment(1) == 'partners') || ($this->uri->segment(1) == 'document_types') || ($this->uri->segment(1) == 'partner_types') || ($this->uri->segment(1) == 'cities') || ($this->uri->segment(1) == 'seals') || ($this->uri->segment(1) == 'list-price') || ($this->uri->segment(1) == 'banks') || ($this->uri->segment(1) == 'consumers') || ($this->uri->segment(1) == 'price-product' and ($this->uri->segment(2) !="add" or $this->uri->segment(2) !="edit")) || ($this->uri->segment(1) == 'catalogue' and ($this->uri->segment(2) !="add" or $this->uri->segment(2) !="edit")) || ($this->uri->segment(1) == 'certifications' and ($this->uri->segment(2) !="add" or $this->uri->segment(2) !="edit")) || ($this->uri->segment(1) == 'shop-layout-navbar' and ($this->uri->segment(2) !="add" or $this->uri->segment(2) !="edit")) || ($this->uri->segment(1) == 'shop-layout-filter' and ($this->uri->segment(2) !="add" or $this->uri->segment(2) !="edit")) || ($this->uri->segment(1) == 'shop-layout-filter-item' and ($this->uri->segment(2) !="add" or $this->uri->segment(2) !="edit")) ): ?>
             <!-- script para agregar clase no-padding para resoluciones moviles -->
             <script type="text/javascript">
                 if (screen.width <= 425) {
@@ -167,6 +167,18 @@
                 elseif ($this->uri->segment(1) == 'certifications')
                 {
                     $url = "certifications";
+                }
+                elseif ($this->uri->segment(1) == 'shop-layout-navbar')
+                {
+                    $url = "shop-layout-navbar";
+                }
+                elseif ($this->uri->segment(1) == 'shop-layout-filter')
+                {
+                    $url = "shop-layout-filter";
+                }
+                elseif ($this->uri->segment(1) == 'shop-layout-filter-item')
+                {
+                    $url = "shop-layout-filter-item";
                 }
             ?>
                 $(document).ready(function()
@@ -355,7 +367,7 @@
             </script>
         <?php endif; ?>
         <!-- Manager Files Videos End -->
-        <?php if (($this->uri->segment(1) == 'products' and ($this->uri->segment(2) == 'add' or $this->uri->segment(2) == 'edit')) or ($this->uri->segment(1) == 'seals' and ($this->uri->segment(2) == 'add' or $this->uri->segment(2) == 'edit')) or ($this->uri->segment(1) == 'catalogue' and ($this->uri->segment(2) == 'add' or $this->uri->segment(2) == 'edit')) or ($this->uri->segment(1) == 'multimedia') ): ?>
+        <?php if (($this->uri->segment(1) == 'products' and ($this->uri->segment(2) == 'add' or $this->uri->segment(2) == 'edit')) or ($this->uri->segment(1) == 'seals' and ($this->uri->segment(2) == 'add' or $this->uri->segment(2) == 'edit')) or ($this->uri->segment(1) == 'catalogue' and ($this->uri->segment(2) == 'add' or $this->uri->segment(2) == 'edit')) or ($this->uri->segment(1) == 'countrys' and ($this->uri->segment(2) == 'add' or $this->uri->segment(2) == 'edit')) or ($this->uri->segment(1) == 'multimedia') ): ?>
             <!-- Administrador de imagenes -->
             <script src="<?php echo base_url('assets/plugins/filterizr/filterizr/jquery.filterizr.min.js') ?>" type="text/javascript"></script>
             <script src="<?php echo base_url('assets/plugins/filterizr/js/controls.js') ?>" type="text/javascript"></script>
@@ -417,12 +429,38 @@
                             $('#tab3_nav').show();
                         }
                     });
+                    $('#status_filter_products').change('click', function(){
+                        var id = $('#status_filter_products option:selected').val();
+                        if (id != 0) {
+                            $('#container_status_filter_products').show(1000);
+                            $('#status_filter_products_label').empty();
+                            $('#status_filter_products_label').append('Seleccione los parámetros de búsqueda');
+                            $.ajax({
+                                url  : '<?php echo base_url('products/filter-settings') ?>',
+                                data : { id : id },
+                                type : 'POST',
+                                success : function(response){
+                                    $('#filter_product option').remove();
+                                    $('#filter_product').append(response);
+                                }, 
+                                complete: function(){
+                                    $('#filter_product').attr('disabled', false);
+                                },
+                                error: function(){
+                                    alert('Ha ocurrido un error al conectar con el servidor');
+                                }
+                            });
+                        } else {
+                            $('#container_status_filter_products').hide(1000);
+                        }
+                    });
                 });
             </script>
             <script type="text/javascript">
                 $(function () {
                     CKEDITOR.replace('labeled');
                     CKEDITOR.replace('nutritional');
+                    CKEDITOR.config.pasteFromWord_heuristicsEdgeList = false;
                   })
                 $(document).ready(function(){
                     $('input[type="checkbox"].minimal-red, input[type="radio"].minimal-red').iCheck({

@@ -93,11 +93,24 @@ class Products extends CI_Controller {
 		# Listado completo de imagenes disponibles
 		$data['list_images'] = $this->medios->list_images();
 		# Listado de categorias asociado a las imagenes
-		$data['categories_images'] = $this->medios->categories_images();
+		$data['categories_images'] 	= $this->medios->categories_images();
+		# Select de categorias
+		$data['category']  			= $this->medios->categories_listing();
+		$data['catalogue_group'] 	= $this->medios->catalogue_group();
+		# Si aplica algun filtro de busqueda
+		$data['status_filter_products'] = $this->products->status_filter_products();
 		# Renderizando la vista | plantilla
 		$this->load->view('template/header', $data);
 		$this->load->view('products/add');
 		$this->load->view('template/footer');
+	}
+
+	# Cargar el contenido de select de parametros de busqueda
+	public function filter_settings()
+	{
+		$this->load->model('ProductsModel'  , 'products', TRUE);
+		$data['filter_settings'] = $this->products->filter_settings($this->input->post('id'));
+		$this->load->view('products/filter_settings', $data);
 	}
 
 	# Recibir el Formulario y Validar las Reglas
@@ -114,7 +127,6 @@ class Products extends CI_Controller {
 						$this->add();
 					break;
 					case TRUE:
-						echo "<pre>"; print_r($this->input->post()); exit();
 						# Cargar el modelo de base de datos
 						$this->load->model('ProductsModel', 'products', TRUE);
 						# Insertar información en la base de datos
@@ -227,10 +239,10 @@ class Products extends CI_Controller {
 			array(
 				'field' => 'name_product',
 				'label' => 'nombre producto',
-				'rules' => 'required|max_length[50]|trim',
+				'rules' => 'required|max_length[80]|trim',
 				'errors' => array(
 								'required' 	=> 'Es necesario ingresar un %s',
-								'max_length'=> 'La longitud maxima a ingresar es de 50 caracteres'
+								'max_length'=> 'La longitud maxima a ingresar es de 80 caracteres'
 						   )
 			)
 		);

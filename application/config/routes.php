@@ -182,6 +182,8 @@ $route['products/edit/(:num)'] 		= 'Products/edit_validate/$1';
 $route['products/success-edit'] 	= 'Products/full_listing';
 $route['products/delete'] 			= 'Products/delete';
 $route['products/success-delete'] 	= 'Products/full_listing';
+$route['products/filter-settings']	= 'Products/filter_settings';
+
 # tipos de documento
 $route['document_types'] 				= 'Document_types/full_listing';
 $route['document_types/success'] 		= 'Document_types/full_listing';
@@ -232,6 +234,7 @@ $route['consumers/measuring/(:num)'] 	= 'Consumers/add_measuring/$1';
 $route['consumers/success-edit'] 	= 'Consumers/full_listing';
 $route['consumers/delete'] 			= 'Consumers/delete';
 $route['consumers/success-delete'] 	= 'Consumers/full_listing';
+
 # Bancos
 $route['banks'] 					= 'Banks/full_listing';
 $route['banks/success'] 			= 'Banks/full_listing';
@@ -263,3 +266,33 @@ $route['multimedia/videos/add-file-manager'] = 'Multimedia/add_file_manager_vide
 # eCommerce
 $route['shop-layout'] 			= 'ShopLayout/shop_layout_validate';
 $route['shop-layout/success'] 	= 'ShopLayout/shop_layout_validate';
+
+# Creador de menus eCommerce
+$route['shop-layout-navbar'] 						= 'ShopLayout/navbar_full_listing';
+$route['shop-layout-navbar/success'] 				= 'ShopLayout/navbar_full_listing';
+$route['shop-layout-navbar/add'] 					= 'ShopLayout/navbar_add_validate';
+$route['shop-layout-navbar/edit/(:num)'] 			= 'ShopLayout/navbar_edit_validate/$1';
+$route['shop-layout-navbar/success-edit'] 			= 'ShopLayout/navbar_full_listing';
+$route['shop-layout-navbar/delete'] 				= 'ShopLayout/navbar_delete';
+$route['shop-layout-navbar/success-delete'] 		= 'ShopLayout/navbar_full_listing';
+$route['shop-layout-navbar/organize'] 				= 'ShopLayout/organize';
+$route['shop-layout-navbar/organize-container-item-navbar'] = 'ShopLayout/organize_container_item_navbar';
+$route['shop-layout-navbar/organize-save-item-navbar'] 		= 'ShopLayout/organize_save_item_navbar';
+
+# Creador de Filtros eCommerce
+$route['shop-layout-filter'] 						= 'ShopLayout/filter_full_listing';
+$route['shop-layout-filter/success'] 				= 'ShopLayout/filter_full_listing';
+$route['shop-layout-filter/add'] 					= 'ShopLayout/filter_add_validate';
+$route['shop-layout-filter/edit/(:num)'] 			= 'ShopLayout/filter_edit_validate/$1';
+$route['shop-layout-filter/success-edit'] 			= 'ShopLayout/filter_full_listing';
+$route['shop-layout-filter/delete'] 				= 'ShopLayout/filter_delete';
+$route['shop-layout-filter/success-delete'] 		= 'ShopLayout/filter_full_listing';
+
+# Parametros de busqueda eCommerce
+$route['shop-layout-filter-item'] 						= 'ShopLayout/filter_item_full_listing';
+$route['shop-layout-filter-item/success'] 				= 'ShopLayout/filter_item_full_listing';
+$route['shop-layout-filter-item/add'] 					= 'ShopLayout/filter_item_add_validate';
+$route['shop-layout-filter-item/edit/(:num)'] 			= 'ShopLayout/filter_item_edit_validate/$1';
+$route['shop-layout-filter-item/success-edit'] 			= 'ShopLayout/filter_item_full_listing';
+$route['shop-layout-filter-item/delete'] 				= 'ShopLayout/filter_item_delete';
+$route['shop-layout-filter-item/success-delete'] 		= 'ShopLayout/filter_item_full_listing';
