@@ -67,7 +67,7 @@ class Categories extends CI_Controller {
 		# Opciones items del menu principal del contenido
 		$data['option_nav'] = array(
 			'box_title' => 'Categorias',
-			'box_span' 	=> 'Agregar'
+			'box_span' 	=> 'Crear'
 		);
 		$data['option_nav_item'] = array(
 			'categorias'	=> array(
@@ -75,7 +75,7 @@ class Categories extends CI_Controller {
 				'url' 		=> 'categories',
 				'class' 	=> NULL
 			), 
-			'agregar' => array(
+				'crear' 	=> array(
 				'icon' 		=> '',
 				'url' 		=> '',
 				'class' 	=> 'active'

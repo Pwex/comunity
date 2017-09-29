@@ -67,7 +67,7 @@ class Register_consumer extends CI_Controller {
 				'url' 		=> 'register_consumer',
 				'class' 	=> NULL
 			), 
-				'agregar' => array(
+				'crear' 	=> array(
 				'icon' 		=> '',
 				'url' 		=> '',
 				'class' 	=> 'active'

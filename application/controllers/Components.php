@@ -58,7 +58,7 @@ class Components extends CI_Controller {
 		# Opciones items del menu principal del contenido
 		$data['option_nav'] = array(
 			'box_title' => 'Activos',
-			'box_span' 	=> 'Agregar'
+			'box_span' 	=> 'Crear'
 		);
 		$data['option_nav_item'] = array(
 			'Activos'	=> array(
@@ -66,7 +66,7 @@ class Components extends CI_Controller {
 				'url' 		=> 'components',
 				'class' 	=> NULL
 			), 
-			'agregar' => array(
+				'crear' 	=> array(
 				'icon' 		=> '',
 				'url' 		=> '',
 				'class' 	=> 'active'

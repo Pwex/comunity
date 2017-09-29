@@ -8,7 +8,7 @@
         <div class="box-body">
             <?php echo form_open('consumers/add') ?>
                 <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-sm-12">
                         <div class="input-group">
                             <!-- <label for="email">Correo electrónico</label> -->
                             <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
@@ -19,7 +19,7 @@
                 </div>
                 <br>
                 <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-sm-12">
                         <div class="form-group">
                             <!-- <label for="name">Nombres</label> -->
                             <input type="text" name="name" id="name" placeholder="Nombres" class="form-control" value="<?php echo set_value('name') ?>" required="" />
@@ -28,7 +28,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-sm-12">
                         <div class="form-group">
                             <!-- <label for="last_name">Apellidos</label> -->
                             <input type="text" name="last_name" id="last_name" placeholder="Apellidos" class="form-control" value="<?php echo set_value('last_name') ?>" required="" />
@@ -37,7 +37,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-3">
+                    <div class="col-sm-12">
                         <div class="input-group">
                             <!-- <label for="document_type">Tipo Documento</label> -->
                             <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
@@ -45,7 +45,10 @@
                             <?php echo form_error('document_type') ?>
                         </div>
                     </div>
-                    <div class="col-sm-3">
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-sm-12">
                         <div class="input-group">
                             <!-- <label for="document">Número Documento</label> -->
                             <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
@@ -56,7 +59,7 @@
                 </div>
                 <br>
                 <div class="row">
-                    <div class="col-sm-3">
+                    <div class="col-sm-12">
                         <div class="input-group">
                             <!-- <label for="country">País</label> -->
                             <span class="input-group-addon"><i class="fa fa-flag"></i></span>
@@ -64,7 +67,10 @@
                             <?php echo form_error('country') ?>
                         </div>
                     </div>
-                    <div class="col-sm-3">
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-sm-12">
                         <div class="input-group">
                             <!-- <label for="cities">Ciudad</label> -->
                             <span class="input-group-addon"><i class="fa fa-map"></i></span>
@@ -75,7 +81,7 @@
                 </div>
                 <br>
                 <div class="row">
-                    <div class="col-sm-3">
+                    <div class="col-sm-12">
                         <div class="input-group">
                             <!-- <label for="sex">Sexo </label> -->
                             <span class="input-group-addon"><i class="fa fa-venus-mars"></i></span>
@@ -83,7 +89,10 @@
                             <?php echo form_error('sex') ?>
                         </div>
                     </div>
-                    <div class="col-sm-3">
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-sm-12">
                         <div class="form-group">
                             <!-- <label for="birth_date">Fecha Nacimiento </label> -->
                             <div class="input-group">
@@ -96,8 +105,9 @@
                         </div>
                     </div>
                 </div>
+                <br>
                 <div class="row">
-                    <div class="col-sm-3">
+                    <div class="col-sm-12">
                         <div class="input-group">
                             <!-- <label for="height">Estatura </label> -->
                             <span class="input-group-addon"><i class="fa fa-child"></i></span>
@@ -105,7 +115,10 @@
                             <?php echo form_error('height') ?>
                         </div>
                     </div>
-                    <div class="col-sm-3">
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-sm-12">
                         <div class="input-group">
                             <!-- <label for="weight">Peso </label> -->
                             <span class="input-group-addon"><i class="fa fa-balance-scale"></i></span>
@@ -115,7 +128,7 @@
                 </div>
                 <br>
                 <div class="row">
-                    <div class="col-sm-4">
+                    <div class="col-sm-12">
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary">Enviar</button>
                             <button type="submit" class="btn btn-info">Enviar y Encuestar</button>

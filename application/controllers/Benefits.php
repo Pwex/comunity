@@ -58,7 +58,7 @@ class Benefits extends CI_Controller {
 		# Opciones items del menu principal del contenido
 		$data['option_nav'] = array(
 			'box_title' => 'beneficios',
-			'box_span' 	=> 'Agregar'
+			'box_span' 	=> 'Crear'
 		);
 		$data['option_nav_item'] = array(
 			'beneficios'	=> array(
@@ -66,7 +66,7 @@ class Benefits extends CI_Controller {
 				'url' 		=> 'benefits',
 				'class' 	=> NULL
 			), 
-			'agregar' => array(
+				'crear' 	=> array(
 				'icon' 		=> '',
 				'url' 		=> '',
 				'class' 	=> 'active'

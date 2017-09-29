@@ -57,7 +57,7 @@ class ListPrice extends CI_Controller {
 		# Opciones items del menu principal del contenido
 		$data['option_nav'] = array(
 			'box_title' => 'Precios',
-			'box_span' 	=> 'Agregar'
+			'box_span' 	=> 'Crear'
 		);
 		$data['option_nav_item'] = array(
 			'precios'		=> array(
@@ -65,7 +65,7 @@ class ListPrice extends CI_Controller {
 				'url' 		=> 'list-price',
 				'class' 	=> NULL
 			), 
-			'agregar' => array(
+				'crear' 	=> array(
 				'icon' 		=> '',
 				'url' 		=> '',
 				'class' 	=> 'active'

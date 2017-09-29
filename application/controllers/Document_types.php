@@ -58,7 +58,7 @@ class Document_Types extends CI_Controller {
 		# Opciones items del menu principal del contenido
 		$data['option_nav'] = array(
 			'box_title' => 'Tipos Documento',
-			'box_span' 	=> 'Agregar'
+			'box_span' 	=> 'Crear'
 		);
 		$data['option_nav_item'] = array(
 				'tipos documento'	=> array(
@@ -66,7 +66,7 @@ class Document_Types extends CI_Controller {
 				'url' 		=> 'document_types',
 				'class' 	=> NULL
 			), 
-			'agregar' => array(
+				'crear' 	=> array(
 				'icon' 		=> '',
 				'url' 		=> '',
 				'class' 	=> 'active'

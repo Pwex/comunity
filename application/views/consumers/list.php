@@ -1,6 +1,5 @@
 <!-- Main content -->
 <section class="content">
-<<<<<<< HEAD:application/views/consumers/list.php
     <?php if ($this->uri->segment(2) == 'success'): ?>
         <div class="row">
             <div class="col-sm-12">
@@ -40,8 +39,6 @@
             </div>
         </div>
     <?php endif ?>
-=======
->>>>>>> Jose:application/views/register_consumer/list.php
     <div class="box box-danger">
         <div class="box-header">
             <?php if ($this->uri->segment(2) == 'success'): ?>
@@ -101,13 +98,11 @@
                 <thead>
                     <th>Nombres</th>
                     <th>Email</th>
-                    <th>Pais</th>
                     <th>Opciones</th>  
                 </thead>
                 <tfoot>
                     <th>Nombres</th>
                     <th>Email</th>
-                    <th>Pais</th>
                     <th>Opciones</th>  
                 </tfoot>
                 <tbody>
@@ -115,7 +110,6 @@
                         <tr>
                             <td><?php echo $value['name'].' '.$value['last_name'] ?></td>
                             <td><?php echo $value['email'] ?></td>
-                            <td><?php echo $value['name_country'] ?></td>
                             <td>
                                 <a href="<?php echo base_url('consumers/poll/').$value['id_client'] ?>" class="btn btn-info btn-sm">
                                     <i class="fa fa-book"></i>

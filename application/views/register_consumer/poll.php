@@ -31,7 +31,7 @@
         </div>
         <!-- /.box-header -->
         <div class="box-body">
-            <?php echo form_open('register_consumer/poll') ?>
+            <?php echo form_open('consumers/poll') ?>
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="form-group">

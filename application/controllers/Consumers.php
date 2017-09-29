@@ -67,7 +67,7 @@ class Consumers extends CI_Controller {
 				'url' 		=> 'consumers',
 				'class' 	=> NULL
 			), 
-				'agregar' => array(
+				'crear' 	=> array(
 				'icon' 		=> '',
 				'url' 		=> '',
 				'class' 	=> 'active'
