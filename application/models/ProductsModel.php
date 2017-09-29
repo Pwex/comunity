@@ -11,10 +11,28 @@ class ProductsModel extends CI_Model {
     {
         return $this->db
         ->from('products p')
-        ->select('p.id_product, p.name_product, p.description_product, p.ean13_product, p.enabled_product, c.name_category')
+        ->select('p.id_product, p.name_product, p.description_product, p.ean13_product, p.enabled_product, c.name_category, catalogue.name_catalogue')
         ->join('categories c', 'c.id_category = p.id_category', 'left')
+        ->join('catalogue', 'catalogue.id = p.id_catalogue', 'left')
         ->get()
         ->result_array();
+    }
+
+    # Filtros de busqueda
+    public function status_filter_products()
+    {
+        $filter = array();
+        $filter[0] = 'NO APLICA NINGUNO';
+        foreach ($this->db->select('id, name_filter')->order_by('name_filter', 'ASC')->get('ec_filter_categories')->result_array() as $key => $value) {
+            $filter[$value['id']] = $value['name_filter'];
+        }
+        return $filter;
+    }
+
+    # Llenar select para filtro de parametros
+    public function filter_settings($id)
+    {
+        return $this->db->select('id, settings')->where('id_filter_categories', $id)->order_by('settings', 'ASC')->get('ec_settings_filter_categories')->result_array();
     }
 
     # Informacion del productos
@@ -27,10 +45,17 @@ class ProductsModel extends CI_Model {
     public function save($data)
     {
         unset($data['filtr-search']);
-        $data['id_benefits']    = implode(',', $data['id_benefits']);
-        $data['id_component']   = implode(',', $data['id_component']);
-        $data['id_seals']       = implode(',', $data['id_seals']);
-        $data['images']         = implode(',', $data['images']);
+        $data['id_benefits']        = implode(',', $data['id_benefits']);
+        $data['id_component']       = implode(',', $data['id_component']);
+        $data['id_seals']           = implode(',', $data['id_seals']);
+        $data['images']             = implode(',', $data['images']);
+        $data['availability']       = implode(',', $data['availability']);
+        $data['filter_product']     = implode(',', $data['filter_product']);
+        if (!empty($data['id_certifications'])) {
+            $data['id_certifications']  = implode(',', $data['id_certifications']);
+        } else {
+            $data['id_certifications'] = '';
+        }
         $this->db->insert('products', $data);
     }
 
@@ -38,10 +63,17 @@ class ProductsModel extends CI_Model {
     public function edit($id, $data)
     {
         unset($data['filtr-search']);
-        $data['id_benefits']    = implode(',', $data['id_benefits']);
-        $data['id_component']   = implode(',', $data['id_component']);
-        $data['id_seals']       = implode(',', $data['id_seals']);
-        $data['images']         = implode(',', $data['images']);
+        $data['id_benefits']    = explode(',', $data['id_benefits']);
+        $data['id_component']   = explode(',', $data['id_component']);
+        $data['id_seals']       = explode(',', $data['id_seals']);
+        $data['images']         = explode(',', $data['images']);
+        $data['filter_product'] = explode(',', $data['filter_product']);
+        $data['availability']   = explode(',', $data['availability']);
+        if (!empty($data['id_certifications'])) {
+            $data['id_certifications']  = explode(',', $data['id_certifications']);
+        } else {
+            $data['id_certifications'] = '';
+        }
         $this->db->where('id_product', $id)->update('products', $data);
     }
 

@@ -51,7 +51,7 @@ class Countrys extends CI_Controller {
 		$this->load->helper('form');
 		$this->load->model('ActivitiesModel', 'activity', TRUE);
 		$this->load->model('CountrysModel', 'countrys', TRUE);
-	
+		$this->load->model('MultimediaModel', 'medios', TRUE);
 		# Notificaciones
 		$data['number_of_pending_notifications'] = $this->activity->number_of_pending_notifications($this->session->userdata['user']['id_user']);
 		$data['notification_details']	 		 = $this->activity->notification_details($this->session->userdata['user']['id_user']);
@@ -72,6 +72,10 @@ class Countrys extends CI_Controller {
 				'class' 	=> 'active'
 			)
 		);
+		# Listado completo de imagenes disponibles
+		$data['list_images'] = $this->medios->list_images();
+		# Listado de categorias asociado a las imagenes
+		$data['categories_images'] = $this->medios->categories_images();
 		# Renderizando la vista | plantilla
 		$this->load->view('template/header', $data);
 		$this->load->view('countrys/add');
@@ -110,6 +114,7 @@ class Countrys extends CI_Controller {
 		$this->load->helper('form');
 		$this->load->model('ActivitiesModel', 'activity', TRUE);
 		$this->load->model('CountrysModel', 'countrys', TRUE);
+		$this->load->model('MultimediaModel', 'medios', TRUE);
 		# Notificaciones
 		$data['number_of_pending_notifications'] = $this->activity->number_of_pending_notifications($this->session->userdata['user']['id_user']);
 		$data['notification_details']	 		 = $this->activity->notification_details($this->session->userdata['user']['id_user']);
@@ -131,6 +136,11 @@ class Countrys extends CI_Controller {
 			)
 		);
 		$data['information_country'] = $this->countrys->information_country($id);
+		$data['status']   = explode(',', $data['information_country'][0]['images']);
+		# Listado completo de imagenes disponibles
+		$data['list_images'] = $this->medios->list_images();
+		# Listado de categorias asociado a las imagenes
+		$data['categories_images'] = $this->medios->categories_images();
 		# Renderizando la vista | plantilla
 		$this->load->view('template/header', $data);
 		$this->load->view('countrys/edit');

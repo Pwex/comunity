@@ -39,11 +39,15 @@ class Multimedia extends CI_Controller {
 			)
 		);
 		# Listado completo de imagenes disponibles
-		$data['list_images'] 	 = $this->medios->list_images();
+		$data['list_images'] 	 	= $this->medios->list_images();
 		# Listado de categorias
-		$data['list_categories'] = $this->medios->list_categories();
+		$data['list_categories'] 	= $this->medios->list_categories();
 		# Listado de categorias asociado a las imagenes
-		$data['categories_images'] = $this->medios->categories_images();
+		$data['categories_images'] 	= $this->medios->categories_images();
+		$data['category']  			= $this->medios->categories_listing();
+		$data['catalogue_group'] 	= $this->medios->catalogue_group();
+		# Renderizando solo la lista de opciones de las categorias que pertenecen al sistema
+		$data['option_system'] 		= $this->medios->option_system();
 		# Renderizando la vista | plantilla
 		$this->load->view('template/header', $data);
 		$this->load->view('multimedia/files.php');

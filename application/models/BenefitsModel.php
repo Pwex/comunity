@@ -39,6 +39,7 @@ class BenefitsModel extends CI_Model {
     {
         $this->db->where('id_benefit', $id)->delete('benefits');
     }
+    
     # Lista de beneficios
     public function benefits_listing()
     {

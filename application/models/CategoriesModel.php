@@ -10,8 +10,9 @@ class CategoriesModel extends CI_Model {
     public function full_listing()
     {
         return $this->db
-        ->from('categories c')
-        ->select('c.id_category,c.name_category, c.id_father_category, (select name_category from categories p where p.id_category=c.id_father_category) AS name_father')
+        ->from('categories')
+        ->select('categories.id_category, categories.name_category, catalogue.name_catalogue, (select name_category from categories p where p.id_category = categories.id_father_category) as name_father')
+        ->join('catalogue', 'catalogue.id = categories.id_catalogue')
         ->get()
         ->result_array();
     }
@@ -25,14 +26,12 @@ class CategoriesModel extends CI_Model {
     # Almacenar la informacion
     public function save($data)
     {
-        $data['filter'] = implode(',', $data['filter']);
         $this->db->insert('categories', $data);
     }
 
     # Editar la informacion
     public function edit($id, $data)
     {
-        $data['filter'] = implode(',', $data['filter']);
         $this->db->where('id_category', $id)->update('categories', $data);
     }
 

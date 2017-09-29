@@ -27,7 +27,7 @@
     <div class="box box-danger">
         <div class="box-header">
             <blockquote style="margin-bottom: 0">
-                Agregar Catálogo
+                Agregar Categoría Principal
             </blockquote>
         </div>
         <!-- /.box-header -->
@@ -36,7 +36,7 @@
                 <div class="row">
                     <div class="col-sm-3">
                         <div class="form-group">
-                            <label for="name_catalogue">Línea de Producto</label>
+                            <label for="name_catalogue">Categoría Principal</label>
                             <input type="text" name="name_catalogue" id="name_catalogue" class="form-control" value="<?php echo set_value('name_catalogue') ?>" required="" />
                             <?php echo form_error('name_catalogue') ?>
                         </div>

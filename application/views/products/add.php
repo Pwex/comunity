@@ -126,7 +126,7 @@
                                             </div>
                                             <div class="col-sm-3">
                                                 <div class="form-group">
-                                                    <label for="id_catalogue">Línea de Prodcutos</label>
+                                                    <label for="id_catalogue">Categoría Principal</label>
                                                     <?php echo form_dropdown('id_catalogue', $catalogue, set_value('id_catalogue'), 'class="form-control" id="id_catalogue" required=""'); ?>
                                                     <?php echo form_error('id_catalogue') ?>
                                                 </div>
@@ -168,7 +168,66 @@
                                     <p>Por favor seleccione las descripciones físicas que tiene el producto.</p>
                                     <div class="container">
                                         <div class="row">
-                                            <div class="col-sm-6">
+                                            <div class="col-sm-3">
+                                                <div class="form-group">
+                                                    <label for="id_category">Categoría Padre</label>
+                                                    <select name="id_category" id="id_category" class="form-control select2">
+                                                        <option value="0">NO APLICA NINGUNA</option>
+                                                        <?php foreach($catalogue_group as $id => $value_catalogue): ?>
+                                                            <optgroup label="<?php echo $value_catalogue['name_catalogue'] ?>" value="<?php echo $value_catalogue['id'] ?>">  
+                                                                <?php foreach ($category as $key => $value): ?>
+                                                                    <?php if ($value_catalogue['id'] == $value['id'] and $value['id_father_category'] == 0): ?>
+                                                                        <option value="<?php echo $value['id_category'] ?>">&nbsp&nbsp<?php echo $value['name_category'] ?></option>
+                                                                        
+                                                                        <?php foreach ($category as $key_item1 => $item1): ?>
+                                                                            <?php if ($item1['id_father_category'] == $value['id_category']): ?>
+                                                                                <option value="<?php echo $item1['id_category'] ?>">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<?php echo $item1['name_category'] ?></option>
+                                                                                
+                                                                                <?php foreach ($category as $key_item2 => $item2): ?>
+                                                                                    <?php if ($item2['id_father_category'] == $item1['id_category']): ?>
+                                                                                        <option value="<?php echo $item2['id_category'] ?>">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<?php echo $item2['name_category'] ?></option>
+                                                                                        
+                                                                                        <!-- Generador de item de categorías -->
+
+                                                                                        <?php foreach ($category as $key_item3 => $item3): ?>
+                                                                                            <?php if ($item3['id_father_category'] == $item2['id_category']): ?>
+                                                                                                <option value="<?php echo $item3['id_category'] ?>">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<?php echo $item3['name_category'] ?></option>
+                                                                                            <?php endif ?>
+                                                                                        <?php endforeach ?>
+
+                                                                                    <?php endif ?>
+                                                                                <?php endforeach ?>
+
+                                                                            <?php endif ?>
+                                                                        <?php endforeach ?>
+
+                                                                    <?php endif ?>
+                                                                <?php endforeach ?>
+                                                            </optgroup>
+                                                        <?php endforeach; ?>
+                                                    </select>
+                                                    <?php echo form_error('id_father_category') ?>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <div class="form-group">
+                                                    <label for="status_filter_products">Filtro de Búsqueda</label>
+                                                    <?php echo form_dropdown('status_filter_products', $status_filter_products, set_value('status_filter_products'), 'class="form-control" id="status_filter_products" required=""'); ?>
+                                                    <?php echo form_error('status_filter_products') ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row" style="display: none;" id="container_status_filter_products">
+                                            <div class="col-md-12">
+                                                <div class="form-group"> 
+                                                    <label for="filter_product" id="status_filter_products_label"></label>
+                                                    <select name="filter_product[]" id="filter_product" class="form-control select2" data-placeholder="Seleccionar..." multiple="" disabled=""></select>
+                                                    <?php echo form_error('filter_product') ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-12">
                                                 <div class="form-group">
                                                     <label for="id_seals">Sellos</label>
                                                     <?php echo form_dropdown('id_seals[]', $seals, set_value('id_seals'), 'data-placeholder="Seleccionar..." multiple="" class="form-control select2"'); ?>
@@ -177,7 +236,7 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-sm-6">
+                                            <div class="col-sm-12">
                                                 <div class="form-group">
                                                     <label for="id_component">Activos</label><br />
                                                     <?php echo form_dropdown('id_component[]', $components, set_value('id_component'), 'data-placeholder="Seleccionar..." multiple="" class="form-control select2"'); ?>
@@ -199,7 +258,7 @@
                                                 <div class="col-sm-3">
                                                     <div class="form-group">
                                                         <label for="model">Modelo</label>
-                                                        <input type="text" name="model" id="model" class="form-control" value="<?php echo set_value('model') ?>" required="" maxlength="20" />
+                                                        <input type="text" name="model" id="model" class="form-control" value="<?php echo set_value('model') ?>" maxlength="20" />
                                                         <?php echo form_error('model') ?>
                                                     </div>
                                                 </div>
@@ -207,9 +266,9 @@
                                             <div class="row">
                                                 <div class="col-sm-12">
                                                     <div class="form-group">
-                                                        <label for="certifications">Certificados</label>
-                                                        <?php echo form_dropdown('id_certifications[]', $certifications, set_value('id_certifications'), 'data-placeholder="Seleccionar..." multiple="" class="form-control select2"'); ?>
-                                                        <?php echo form_error('certifications') ?>
+                                                        <label for="id_certifications">Certificados</label>
+                                                        <?php echo form_dropdown('id_certifications[]', $certifications, set_value('id_id_certifications'), 'data-placeholder="Seleccionar..." multiple="" class="form-control select2"'); ?>
+                                                        <?php echo form_error('id_certifications') ?>
                                                     </div>
                                                 </div>
                                             </div>
@@ -241,14 +300,14 @@
                                             <div class="col-sm-3">
                                                 <div class="form-group">
                                                     <label for="sanitary_registration">Registro sanitario</label>
-                                                    <input type="text" name="sanitary_registration" id="sanitary_registration" class="form-control" value="<?php echo set_value('sanitary_registration') ?>" required="" maxlength="20" />
+                                                    <input type="text" name="sanitary_registration" id="sanitary_registration" class="form-control" value="<?php echo set_value('sanitary_registration') ?>" maxlength="20" />
                                                     <?php echo form_error('sanitary_registration') ?>
                                                 </div>
                                             </div>
                                             <div class="col-sm-3">
                                                 <div class="form-group">
                                                     <label for="date_expiration_sanitary_registration">Fecha de Vencimiento</label>
-                                                    <input type="text" name="date_expiration_sanitary_registration" id="date_expiration_sanitary_registration" class="form-control" value="<?php echo set_value('date_expiration_sanitary_registration') ?>" required="" maxlength="20" />
+                                                    <input type="text" name="date_expiration_sanitary_registration" id="date_expiration_sanitary_registration" class="form-control" value="<?php echo set_value('date_expiration_sanitary_registration') ?>"  maxlength="20" />
                                                     <?php echo form_error('date_expiration_sanitary_registration') ?>
                                                 </div>
                                             </div>
@@ -291,7 +350,7 @@
                                             <div class="col-sm-12">
                                                 <div class="form-group">
                                                     <label for="nutritional">Tabla Nutricional</label>
-                                                    <textarea name="nutritional" id="nutritional" rows="2" class="form-control">
+                                                    <textarea name="nutritional" id="nutritional" rows="2" class="form-control" onpaste="return false">
                                                         <?php if(!empty(set_value('nutritional'))) { echo set_value('nutritional'); } else { ?>
                                                             <h2 style="text-align: center;">Informaci&oacute;n nutricional</h2>
                                                             <p><strong>Tama&ntilde;o por porci&oacute;n:&nbsp;2 Cucharadas (25g)</strong></p>
@@ -424,14 +483,14 @@
                                             <div class="col-sm-2">
                                                 <div class="form-group">
                                                     <label for="id_unitsmeasure">Unidad</label>
-                                                    <?php echo form_dropdown('id_unitsmeasure[]', $unitsmeasure, set_value('id_unitsmeasure'), 'data-placeholder="Seleccionar..." class="form-control"'); ?>
+                                                    <?php echo form_dropdown('id_unitsmeasure', $unitsmeasure, set_value('id_unitsmeasure'), 'data-placeholder="Seleccionar..." class="form-control"'); ?>
                                                     <?php echo form_error('id_unitsmeasure') ?>
                                                 </div>
                                             </div>
                                             <div class="col-sm-2">
                                                 <div class="form-group">
                                                     <label for="grammage">Cantidad</label>
-                                                    <input type="number" name="grammage" id="grammage" class="form-control" value="<?php echo set_value('grammage') ?>" required="" />
+                                                    <input type="number" name="grammage" id="grammage" class="form-control" value="<?php echo set_value('grammage') ?>" />
                                                     <?php echo form_error('grammage') ?>
                                                 </div>
                                             </div>
@@ -447,7 +506,7 @@
                                             <div class="col-sm-2">
                                                 <div class="form-group">
                                                     <label for="high">Altura</label>
-                                                    <input type="number" name="high" id="high" class="form-control" value="<?php echo set_value('high') ?>" required="" />
+                                                    <input type="number" name="high" id="high" class="form-control" value="<?php echo set_value('high') ?>" />
                                                     <?php echo form_error('high') ?>
                                                 </div>
                                             </div>
@@ -456,14 +515,14 @@
                                             <div class="col-sm-4">
                                                 <div class="form-group">
                                                     <label for="depth">Profundidad</label>
-                                                    <input type="number" name="depth" id="depth" class="form-control" value="<?php echo set_value('depth') ?>" required="" />
+                                                    <input type="number" name="depth" id="depth" class="form-control" value="<?php echo set_value('depth') ?>" />
                                                     <?php echo form_error('depth') ?>
                                                 </div>
                                             </div>
                                             <div class="col-sm-4">
                                                 <div class="form-group">
                                                     <label for="weight">Peso</label>
-                                                    <input type="number" name="weight" id="weight" class="form-control" value="<?php echo set_value('weight') ?>" required="" />
+                                                    <input type="number" name="weight" id="weight" class="form-control" value="<?php echo set_value('weight') ?>" />
                                                     <?php echo form_error('weight') ?>
                                                 </div>
                                             </div>
@@ -479,7 +538,7 @@
                                             <div class="col-sm-6">
                                                 <div class="form-group">
                                                     <label for="url">Url amigable</label>
-                                                    <input type="text" name="url" id="url" class="form-control" value="<?php echo set_value('url') ?>" required="" />
+                                                    <input type="text" name="url" id="url" class="form-control" value="<?php echo set_value('url') ?>"  />
                                                     <?php echo form_error('url') ?>
                                                 </div>
                                             </div>
@@ -488,7 +547,7 @@
                                             <div class="col-sm-12">
                                                 <div class="form-group">
                                                     <label for="meta_title">Meta Título</label>
-                                                    <input type="text" name="meta_title" id="meta_title" class="form-control" value="<?php echo set_value('meta_title') ?>" required="" />
+                                                    <input type="text" name="meta_title" id="meta_title" class="form-control" value="<?php echo set_value('meta_title') ?>"  />
                                                     <?php echo form_error('meta_title') ?>
                                                 </div>
                                             </div>

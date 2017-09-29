@@ -25,12 +25,16 @@ class CountrysModel extends CI_Model {
     # Almacenar la informacion
     public function save($data)
     {
+        unset($data['filtr-search']);
+        $data['images'] = implode(',', $data['images']);
         $this->db->insert('countrys', $data);
     }
 
     # Editar la informacion
     public function edit($id, $data)
     {
+        unset($data['filtr-search']);
+        $data['images'] = implode(',', $data['images']);
         $this->db->where('id_country', $id)->update('countrys', $data);
     }
 
