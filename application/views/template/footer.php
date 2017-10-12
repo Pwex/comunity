@@ -30,7 +30,7 @@
             });
         </script>
         <!-- DataTables -->
-        <?php if (($this->uri->segment(1) == 'users') || ($this->uri->segment(1) == 'categories') || ($this->uri->segment(1) == 'warehouses') || ($this->uri->segment(1) == 'countrys') || ($this->uri->segment(1) == 'benefits') || ($this->uri->segment(1) == 'typesinventory') || ($this->uri->segment(1) == 'components') || ($this->uri->segment(1) == 'unitsmeasure') || ($this->uri->segment(1) == 'products') || ($this->uri->segment(1) == 'partners') || ($this->uri->segment(1) == 'document_types') || ($this->uri->segment(1) == 'partner_types') || ($this->uri->segment(1) == 'cities') || ($this->uri->segment(1) == 'seals') || ($this->uri->segment(1) == 'list-price') || ($this->uri->segment(1) == 'banks') || ($this->uri->segment(1) == 'consumers') || ($this->uri->segment(1) == 'price-product' and ($this->uri->segment(2) !="add" or $this->uri->segment(2) !="edit")) || ($this->uri->segment(1) == 'catalogue' and ($this->uri->segment(2) !="add" or $this->uri->segment(2) !="edit")) || ($this->uri->segment(1) == 'certifications' and ($this->uri->segment(2) !="add" or $this->uri->segment(2) !="edit")) || ($this->uri->segment(1) == 'shop-layout-navbar' and ($this->uri->segment(2) !="add" or $this->uri->segment(2) !="edit")) || ($this->uri->segment(1) == 'shop-layout-filter' and ($this->uri->segment(2) !="add" or $this->uri->segment(2) !="edit")) || ($this->uri->segment(1) == 'shop-layout-filter-item' and ($this->uri->segment(2) !="add" or $this->uri->segment(2) !="edit")) ): ?>
+        <?php if (($this->uri->segment(1) == 'users') || ($this->uri->segment(1) == 'modules') || ($this->uri->segment(1) == 'movement_types') || ($this->uri->segment(1) == 'categories') || ($this->uri->segment(1) == 'warehouses') || ($this->uri->segment(1) == 'countrys') || ($this->uri->segment(1) == 'benefits') || ($this->uri->segment(1) == 'typesinventory') || ($this->uri->segment(1) == 'components') || ($this->uri->segment(1) == 'unitsmeasure') || ($this->uri->segment(1) == 'products') || ($this->uri->segment(1) == 'partners') || ($this->uri->segment(1) == 'document_types') || ($this->uri->segment(1) == 'partner_types') || ($this->uri->segment(1) == 'cities') || ($this->uri->segment(1) == 'seals') || ($this->uri->segment(1) == 'list-price') || ($this->uri->segment(1) == 'banks') || ($this->uri->segment(1) == 'consumers') || ($this->uri->segment(1) == 'price-product' and ($this->uri->segment(2) !="add" or $this->uri->segment(2) !="edit")) || ($this->uri->segment(1) == 'catalogue' and ($this->uri->segment(2) !="add" or $this->uri->segment(2) !="edit")) || ($this->uri->segment(1) == 'certifications' and ($this->uri->segment(2) !="add" or $this->uri->segment(2) !="edit")) || ($this->uri->segment(1) == 'shop-layout-navbar' and ($this->uri->segment(2) !="add" or $this->uri->segment(2) !="edit")) || ($this->uri->segment(1) == 'shop-layout-filter' and ($this->uri->segment(2) !="add" or $this->uri->segment(2) !="edit")) || ($this->uri->segment(1) == 'shop-layout-filter-item' and ($this->uri->segment(2) !="add" or $this->uri->segment(2) !="edit")) ): ?>
             <!-- script para agregar clase no-padding para resoluciones moviles -->
             <script type="text/javascript">
                 if (screen.width <= 425) {
@@ -90,6 +90,14 @@
                 if ($this->uri->segment(1) == 'users')
                 {
                     $url = "users";
+                }
+                elseif ($this->uri->segment(1) == 'modules')
+                {
+                    $url = "modules";
+                }
+                elseif ($this->uri->segment(1) == 'movement_types')
+                {
+                    $url = "movement_types";
                 }
                 elseif ($this->uri->segment(1) == 'categories')
                 {
@@ -414,6 +422,20 @@
             });
             </script>
         <?php endif; ?>
+
+        <?php if ($this->uri->segment(1) == 'movement_types' and ($this->uri->segment(2) == 'add' or $this->uri->segment(2) == 'edit')): ?>
+            <script src="<?php echo base_url('assets/plugins/icheck/icheck.min.js') ?>"></script>
+            <script type="text/javascript">
+                $(document).ready(function(){
+                    $('input[type="checkbox"].minimal-red, input[type="radio"].minimal-red').iCheck({
+                        checkboxClass: 'icheckbox_minimal-red',
+                        radioClass   : 'iradio_minimal-red'
+                    });
+                });
+            </script>
+        <?php endif ?>
+
+        ?>
         <?php if ($this->uri->segment(1) == 'products' and ($this->uri->segment(2) == 'add' or $this->uri->segment(2) == 'edit')): ?>
             <script type="text/javascript" src="<?php echo base_url('assets/bower_components/ckeditor/ckeditor.js') ?>"></script>
             <script type="text/javascript" src="<?php echo base_url('assets/plugins/iCheck/icheck.min.js') ?>"></script>

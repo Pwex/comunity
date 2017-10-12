@@ -67,6 +67,7 @@ $route['all_notification_details'] 		= 'Activities/all_notification_details';
 $route['accept_notifications/(:num)'] 	= 'Activities/accept_notifications/$1';
 $route['delete_notifications/(:num)'] 	= 'Activities/delete_notifications/$1';
 
+
 # Usuarios
 $route['users'] 		= 'Users/full_listing';
 $route['users/success'] = 'Users/full_listing';
@@ -77,6 +78,24 @@ $route['users/success-edit'] 	= 'Users/full_listing';
 
 $route['users/delete'] 			= 'Users/delete';
 $route['users/success-delete'] 	= 'Users/full_listing';
+
+# modulos
+$route['modules'] 					= 'Modules/full_listing';
+$route['modules/success'] 			= 'Modules/full_listing';
+$route['modules/add'] 				= 'Modules/add_validate';
+$route['modules/edit/(:any)'] 		= 'Modules/edit_validate/$1';
+$route['modules/success-edit'] 		= 'Modules/full_listing';
+$route['modules/delete'] 			= 'Modules/delete';
+$route['modules/success-delete'] 	= 'Modules/full_listing';
+
+# tipos de movimiento
+$route['movement_types'] 					= 'Movement_types/full_listing';
+$route['movement_types/success'] 			= 'Movement_types/full_listing';
+$route['movement_types/add'] 				= 'Movement_types/add_validate';
+$route['movement_types/edit/(:any)'] 		= 'Movement_types/edit_validate/$1';
+$route['movement_types/success-edit'] 		= 'Movement_types/full_listing';
+$route['movement_types/delete'] 			= 'Movement_types/delete';
+$route['movement_types/success-delete'] 	= 'Movement_types/full_listing';
 
 # Categorias
 $route['categories'] 				= 'Categories/full_listing';
@@ -212,6 +231,12 @@ $route['partners/edit/(:num)'] 		= 'Partners/edit_validate/$1';
 $route['partners/success-edit'] 	= 'Partners/full_listing';
 $route['partners/delete'] 			= 'Partners/delete';
 $route['partners/success-delete'] 	= 'Partners/full_listing';
+
+# Formulario requerimientos proveedor
+$route['partners/requirements'] 	= 'Partners/add_requirements_validate';
+
+
+
 # paises
 $route['countrys'] 					= 'Countrys/full_listing';
 $route['countrys/success'] 			= 'Countrys/full_listing';
