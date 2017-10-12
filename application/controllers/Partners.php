@@ -285,4 +285,40 @@ class Partners extends CI_Controller {
 		$this->partners->delete($this->input->post('id'));
 	}
 
+	# Formulario Principal para Realizar encuesta
+	public function add_requirements()
+	{
+		# Librerias
+		$this->load->helper('form');
+		$this->load->view('partners/requirements');
+	}
+
+	# Recibir el Formulario y Validar las Reglas
+	public function add_requirements_validate()
+	{
+		switch ($this->input->post()) 
+		{
+			case FALSE:
+				$this->add_requirements();
+			break;
+			case TRUE:
+				$this->load->database();
+				$this->rules_insert_requirements();
+				switch ($this->form_validation->run()) 
+				{
+					case FALSE:
+						$this->add_requirements();
+					break;
+					case TRUE:
+						# Cargar el modelo de base de datos
+						$this->load->model('SuppliersModel', 'suppliers', TRUE);
+						# Insertar información en la base de datos
+						$this->suppliers->save_requirements($this->input->post(), $id);
+						redirect('requirements/success'); 
+					break;
+				}
+			break;
+		}
+	}
+
 }

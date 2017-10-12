@@ -1,7 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Consumers extends CI_Controller {
+class Consumers extends CI_Controller 
+{
 
 	public function __construct()
     {
@@ -318,72 +319,8 @@ class Consumers extends CI_Controller {
 	{
 		$config = array(
 			array(
-				'field' => 'fats',
-				'label' => 'opción',
-				'rules' => 'required',
-				'errors' => array(
-								'required' 	=> 'Es necesario ingresar una %s'
-						   )
-			),
-			array(
-				'field' => 'sweet',
-				'label' => 'opción',
-				'rules' => 'required',
-				'errors' => array(
-								'required' 	=> 'Es necesario ingresar una %s'
-						   )
-			),
-			array(
-				'field' => 'alcohol',
-				'label' => 'opción',
-				'rules' => 'required',
-				'errors' => array(
-								'required' 	=> 'Es necesario ingresar una %s'
-						   )
-			),
-			array(
-				'field' => 'meats',
-				'label' => 'opción',
-				'rules' => 'required',
-				'errors' => array(
-								'required' 	=> 'Es necesario ingresar una %s'
-						   )
-			),
-			array(
-				'field' => 'fruits',
-				'label' => 'opción',
-				'rules' => 'required',
-				'errors' => array(
-								'required' 	=> 'Es necesario ingresar una %s'
-						   )
-			),
-			array(
-				'field' => 'grain',
-				'label' => 'opción',
-				'rules' => 'required',
-				'errors' => array(
-								'required' 	=> 'Es necesario ingresar una %s'
-						   )
-			),
-			array(
-				'field' => 'vegetables',
-				'label' => 'opción',
-				'rules' => 'required',
-				'errors' => array(
-								'required' 	=> 'Es necesario ingresar una %s'
-						   )
-			),
-			array(
-				'field' => 'not_eat',
-				'label' => 'opción',
-				'rules' => 'required',
-				'errors' => array(
-								'required' 	=> 'Es necesario ingresar una %s'
-						   )
-			),
-			array(
-				'field' => 'low_carbohy',
-				'label' => 'opción',
+				'field' => 'foods',
+				'label' => 'Comidas',
 				'rules' => 'required',
 				'errors' => array(
 								'required' 	=> 'Es necesario ingresar una %s'
@@ -414,7 +351,7 @@ class Consumers extends CI_Controller {
 						   )
 			),
 			array(
-				'field' => 'pain',
+				'field' => 'sleep',
 				'label' => 'opción',
 				'rules' => 'required',
 				'errors' => array(
@@ -422,7 +359,7 @@ class Consumers extends CI_Controller {
 						   )
 			),
 			array(
-				'field' => 'sleep',
+				'field' => 'wake',
 				'label' => 'opción',
 				'rules' => 'required',
 				'errors' => array(
