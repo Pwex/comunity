@@ -47,6 +47,9 @@
             <blockquote style="margin-bottom: 0">
                 Listado de Categorías Principales
                 <span style="float: right; margin-top: -4px;">
+                    <a href="<?php echo base_url('catalogue/organize-categories-principal') ?>" class="btn btn-default" title="Organizar Categoriás">
+                        <i class="fa fa-bars"></i>
+                    </a>
                     <a href="<?php echo base_url('catalogue/add') ?>" class="btn btn-primary" title="Crear Catálogo">
                         <i class="fa fa-plus-circle"></i>
                     </a>

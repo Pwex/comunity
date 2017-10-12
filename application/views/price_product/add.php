@@ -39,7 +39,7 @@
                 <div class="row">
                     <div class="col-sm-2">
                         <div class="form-group">
-                            <label for="price">Precio</label>
+                            <label for="price">PVP</label>
                             <input type="number" name="price" id="price" class="form-control" value="<?php echo set_value('price') ?>" required="" />
                             <?php echo form_error('price') ?>
                         </div>

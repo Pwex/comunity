@@ -60,7 +60,7 @@
                     <th>Código</th>
                     <th>Productos</th>
                     <th>Cuenta</th>
-                    <th>Precio</th>
+                    <th>PVP</th>
                     <th>País</th>
                     <th>Opciones</th>  
                 </thead>
@@ -68,7 +68,7 @@
                     <th>Código</th>
                     <th>Productos</th>
                     <th>Cuenta</th>
-                    <th>Precio</th>
+                    <th>PVP</th>
                     <th>País</th>
                     <th>Opciones</th>  
                 </tfoot>

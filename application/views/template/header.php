@@ -191,31 +191,14 @@
                         </li>
                         <li class="treeview">
                             <a href="#">
-                                <i class="fa fa-film"></i>
-                                <span>Multimedia</span>
-                                <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </span>
-                            </a>
-                            <ul class="treeview-menu" style="display: none;">
-                                <li>
-                                    <a href="<?php echo base_url('multimedia') ?>"><i class="fa fa-image"></i> Imágenes</a>
-                                </li>
-                                <li>
-                                    <a href="<?php echo base_url('multimedia/videos') ?>"><i class="fa fa-video-camera"></i> Vídeos</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-cogs"></i> <span>Configuración</span>
+                                <i class="fa fa-th-large"></i> <span>Gerencia y Gestión</span>
                                 <span class="pull-right-container">
                                     <i class="fa fa-angle-left pull-right"></i>
                                 </span>
                             </a>
                             <ul class="treeview-menu">
                                 <li class="treeview">
-                                    <a href="#"><i class="fa fa-circle-o"></i> Global
+                                    <a href="#"><i class="fa fa-angle-right"></i> Parámetros Globales
                                         <span class="pull-right-container">
                                             <i class="fa fa-angle-left pull-right"></i>
                                         </span>
@@ -223,92 +206,92 @@
                                     <ul class="treeview-menu">
                                         <li>
                                             <a href="<?php echo base_url('document_types') ?>">
-                                                <i class="fa fa-circle-o"></i> Tipos Documento
+                                                <i class="fa fa-angle-right"></i> Tipos Documento
                                             </a>
                                         </li>
                                         <li>
                                             <a href="<?php echo base_url('countrys') ?>">
-                                                <i class="fa fa-circle-o"></i> Paises
+                                                <i class="fa fa-angle-right"></i> Paises
                                             </a>
                                         </li>
                                         <li>
                                             <a href="<?php echo base_url('cities') ?>">
-                                                <i class="fa fa-circle-o"></i> Ciudades
+                                                <i class="fa fa-angle-right"></i> Ciudades
                                             </a>
                                         </li>
                                         <li>
                                             <a href="<?php echo base_url('warehouses') ?>">
-                                                <i class="fa fa-circle-o"></i> Bodegas
+                                                <i class="fa fa-angle-right"></i> Bodegas
                                             </a>
                                         </li>
                                         <li>
                                             <a href="<?php echo base_url('list-price') ?>">
-                                                <i class="fa fa-circle-o"></i> Listado precios
+                                                <i class="fa fa-angle-right"></i> Listado precios
                                             </a>
                                         </li>
                                         <li>
                                             <a href="<?php echo base_url('price-product') ?>">
-                                                <i class="fa fa-circle-o"></i> Precios productos
+                                                <i class="fa fa-angle-right"></i> Precios productos
                                             </a>
                                         </li>
                                     </ul>   <!-- cierra lista global -->
                                 </li> 
                                 <li class="treeview">
-                                    <a href="#"><i class="fa fa-circle-o"></i> Productos
+                                    <a href="#"><i class="fa fa-angle-right"></i> Productos
                                         <span class="pull-right-container">
                                             <i class="fa fa-angle-left pull-right"></i>
                                         </span>
                                     </a>
                                     <ul class="treeview-menu">
                                         <li>
-                                            <a href="<?php echo base_url('typesinventory') ?>">
-                                                <i class="fa fa-circle-o"></i> Tipos Inventario
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="<?php echo base_url('catalogue') ?>">
-                                                <i class="fa fa-circle-o"></i> Categoría Principal
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="<?php echo base_url('categories') ?>">
-                                                <i class="fa fa-circle-o"></i> Categorias
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="<?php echo base_url('certifications') ?>">
-                                                <i class="fa fa-circle-o"></i> Certificaciones
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="<?php echo base_url('seals') ?>">
-                                                <i class="fa fa-circle-o"></i> Sellos
-                                            </a>
-                                        </li>
-                                        <li>
                                             <a href="<?php echo base_url('components') ?>">
-                                                <i class="fa fa-circle-o"></i> Activos
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="<?php echo base_url('unitsmeasure') ?>">
-                                                <i class="fa fa-circle-o"></i> Unidades Medida
+                                                <i class="fa fa-angle-right"></i> Activos
                                             </a>
                                         </li>
                                         <li>
                                             <a href="<?php echo base_url('benefits') ?>">
-                                                <i class="fa fa-circle-o"></i> Beneficios
+                                                <i class="fa fa-angle-right"></i> Beneficios
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="<?php echo base_url('certifications') ?>">
+                                                <i class="fa fa-angle-right"></i> Certificaciones
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="<?php echo base_url('seals') ?>">
+                                                <i class="fa fa-angle-right"></i> Sellos
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="<?php echo base_url('catalogue') ?>">
+                                                <i class="fa fa-angle-right"></i> Categoría Principal
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="<?php echo base_url('categories') ?>">
+                                                <i class="fa fa-angle-right"></i> Categorias
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="<?php echo base_url('typesinventory') ?>">
+                                                <i class="fa fa-angle-right"></i> Tipos Inventario
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="<?php echo base_url('unitsmeasure') ?>">
+                                                <i class="fa fa-angle-right"></i> Unidades Medida
                                             </a>
                                         </li>
                                         <li>
                                             <a href="<?php echo base_url('products') ?>">
-                                                <i class="fa fa-circle-o"></i> Productos
+                                                <i class="fa fa-angle-right"></i> Productos
                                             </a>
                                         </li>
                                     </ul>   <!-- cierra lista menu de productos -->
                                 </li> 
                                 <li class="treeview">
-                                    <a href="#"><i class="fa fa-circle-o"></i> Proveedores
+                                    <a href="#"><i class="fa fa-angle-right"></i> Proveedores
                                         <span class="pull-right-container">
                                             <i class="fa fa-angle-left pull-right"></i>
                                         </span>
@@ -316,17 +299,17 @@
                                     <ul class="treeview-menu">
                                         <li>
                                             <a href="<?php echo base_url('partner_types') ?>">
-                                                <i class="fa fa-circle-o"></i> Tipos Proveedor
+                                                <i class="fa fa-angle-right"></i> Tipos Proveedor
                                             </a>
                                         </li>
                                         <li>
                                             <a href="<?php echo base_url('banks') ?>">
-                                                <i class="fa fa-circle-o"></i> Bancos
+                                                <i class="fa fa-angle-right"></i> Bancos
                                             </a>
                                         </li>
                                         <li>
                                             <a href="<?php echo base_url('partners') ?>">
-                                                <i class="fa fa-circle-o"></i> Proveedores
+                                                <i class="fa fa-angle-right"></i> Proveedores
                                             </a>
                                         </li>
                                     </ul>   <!-- cierra lista menu proveedores -->
@@ -335,7 +318,7 @@
                         </li>
                         <li class="treeview">
                             <a href="#">
-                                <i class="fa fa-shopping-cart"></i> <span>eCommerce</span>
+                                <i class="fa fa-shopping-basket"></i> <span>eCommerce</span>
                                 <span class="pull-right-container">
                                     <i class="fa fa-angle-left pull-right"></i>
                                 </span>
@@ -353,20 +336,52 @@
                                 </li>
                                 <li>
                                     <a href="<?php echo base_url('shop-layout-filter') ?>">
-                                        <i class="fa fa-angle-right"></i> Filtros
+                                        <i class="fa fa-angle-right"></i> Administrador de Filtros
                                     </a>
                                 </li>
                                 <li>
                                     <a href="<?php echo base_url('shop-layout-filter-item') ?>">
-                                        <i class="fa fa-angle-right"></i> Parámetros de Búsqueda
+                                        <i class="fa fa-angle-right"></i> Parámetros de Filtro
                                     </a>
+                                </li>
+                                <li class="treeview">
+                                    <a href="#">
+                                        <i class="fa fa-angle-right"></i> <span>Marketing Digital</span>
+                                        <span class="pull-right-container">
+                                            <i class="fa fa-angle-left pull-right"></i>
+                                        </span>
+                                    </a>
+                                    <ul class="treeview-menu">
+                                        <li>
+                                            <a href="<?php echo base_url('shop-layout-google-analytics') ?>">
+                                                <i class="fa fa-angle-right"></i> Google Analytics
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </li>
                             </ul>
                         </li>
                         <li class="treeview">
                             <a href="#">
-                                <i class="fa fa-street-view"></i>
-                                <span>Consumidor</span>
+                                <i class="fa fa-film"></i>
+                                <span>Multimedia</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu" style="display: none;">
+                                <li>
+                                    <a href="<?php echo base_url('multimedia') ?>"><i class="fa fa-image"></i> Imágenes</a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo base_url('multimedia/videos') ?>"><i class="fa fa-video-camera"></i> Vídeos</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-user-circle"></i>
+                                <span>Clientes</span>
                                 <span class="pull-right-container">
                                     <i class="fa fa-angle-left pull-right"></i>
                                 </span>
@@ -381,8 +396,8 @@
                         </li>
                         <li class="treeview">
                             <a href="#">
-                                <i class="fa fa-heartbeat"></i>
-                                <span>Coach</span>
+                                <i class="fa fa-user-md"></i>
+                                <span>Lider Coach</span>
                                 <span class="pull-right-container">
                                     <i class="fa fa-angle-left pull-right"></i>
                                 </span>
@@ -400,7 +415,6 @@
                                 <i class="fa fa-users"></i> <span>Usuarios</span>
                             </a>
                         </li>
-
                         <li>
                             <a href="<?php echo base_url('exit') ?>">
                                 <i class="fa fa-power-off"></i> <span>Cerrar sesión</span>

@@ -99,6 +99,8 @@ class Products extends CI_Controller {
 		$data['catalogue_group'] 	= $this->medios->catalogue_group();
 		# Si aplica algun filtro de busqueda
 		$data['status_filter_products'] = $this->products->status_filter_products();
+		# Listado de proveedores
+		$data['provider'] = $this->products->provider_listing();
 		# Renderizando la vista | plantilla
 		$this->load->view('template/header', $data);
 		$this->load->view('products/add');
@@ -127,11 +129,36 @@ class Products extends CI_Controller {
 						$this->add();
 					break;
 					case TRUE:
-						# Cargar el modelo de base de datos
-						$this->load->model('ProductsModel', 'products', TRUE);
-						# Insertar información en la base de datos
-						$this->products->save($this->input->post());
-						redirect('products/success'); 
+						if (!empty($this->input->post('nutritional'))) {
+							$config['upload_path']          = './assets/dist/img/multimedia/images/';
+			                $config['allowed_types']        = 'gif|jpg|png';
+			                $config['max_size']             = 100;
+			                $config['max_width']            = 1024;
+			                $config['max_height']           = 768;
+			                $this->load->library('upload', $config);
+			                if ( ! $this->upload->do_upload('nutritional'))
+			                {
+		                        echo "Ha ocurrido un error al subir la imagen de la tabla nutricional<br>";
+		                        $error = array('error' => $this->upload->display_errors());
+		                        echo "<pre>"; print_r($error)."</pre>";
+		                        exit();
+			                }
+			                else
+			                {
+		                       	$data = array('upload_data' => $this->upload->data());
+		                        # Cargar el modelo de base de datos
+								$this->load->model('ProductsModel', 'products', TRUE);
+								# Insertar información en la base de datos
+								$this->products->save($this->input->post(), $data);
+								redirect('products/success'); 
+			                }
+						} else {
+							# Cargar el modelo de base de datos
+							$this->load->model('ProductsModel', 'products', TRUE);
+							# Insertar información en la base de datos
+							$this->products->save($this->input->post(), null);
+							redirect('products/success'); 
+						}
 					break;
 				}
 			break;
@@ -286,6 +313,12 @@ class Products extends CI_Controller {
 		$this->load->model('ProductsModel', 'products', TRUE);
 		# Eliminar el usuario seleccionado
 		$this->products->delete($this->input->post('id'));
+	}
+
+	# Crear url amigable
+	public function friendly_url()
+	{
+		echo url_title($this->input->post('url'));
 	}
 
 }

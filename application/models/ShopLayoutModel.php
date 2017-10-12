@@ -12,10 +12,42 @@ class ShopLayoutModel extends CI_Model {
         return $this->db->where('id', 1)->get('ec_shop_layout')->result_array();
     }
 
+    # Información almacenada en la base de datos
+    public function information_google_analytics()
+    {
+        return $this->db->where('id_google_analytics', 1)->get('ec_google_analytics')->result_array();
+    }
+
+    # Listado de tipo de movientos
+    public function list_movement_type()
+    {
+        $movement_type = array();
+        foreach ($this->db->select('id_movement_type, movement_type')->order_by('movement_type', 'ASC')->get('movement_type')->result_array() as $key => $value) {
+            $movement_type[$value['id_movement_type']] = $value['movement_type'];
+        }
+        return $movement_type;
+    }
+
+    # Listado de bodegas
+    public function list_warehouses()
+    {
+        $warehouses = array();
+        foreach ($this->db->select('id_warehouse, name_warehouse')->order_by('name_warehouse', 'ASC')->get('warehouses')->result_array() as $key => $value) {
+            $warehouses[$value['id_warehouse']] = $value['name_warehouse'];
+        }
+        return $warehouses;
+    }    
+
     # Almacenar información en la base de datos
     public function save($data)
     {
         $this->db->where('id', 1)->update('ec_shop_layout', $data);
+    }
+
+    # Almacenar información en la base de datos de google analytics
+    public function save_google_analytics($data)
+    {
+        $this->db->where('id_google_analytics', 1)->update('ec_google_analytics', $data);
     }
 
     public function navbar_full_listing()

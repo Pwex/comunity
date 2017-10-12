@@ -29,7 +29,7 @@
         <div class="box-body">
                 <div class="row">
                     <div class="col-sm-12">
-                        <h4 style="margin-top: 0;">Información General</h4>
+                        <h4 style="margin-top: 0.5em; font-size: 24px; margin-bottom: 0.8em;">Información General</h4>
                     </div>
                 </div>
                 <div class="row">
@@ -115,6 +115,29 @@
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h4 style="margin-top: 0.5em; font-size: 24px; margin-bottom: 0.8em;">Procesos</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="id_movement_type">Tipo de movimiento</label>
+                            <?php echo form_dropdown('id_movement_type', $movement_type, set_value('id_movement_type', $row[0]['id_movement_type']), 'class="form-control" id="id_movement_type"') ?>
+                            <?php echo form_error('id_movement_type') ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="id_warehouses">Bodega</label>
+                            <?php echo form_dropdown('id_warehouses', $list_warehouses, set_value('id_warehouses', $row[0]['id_warehouses']), 'class="form-control" id="id_warehouses"') ?>
+                            <?php echo form_error('id_warehouses') ?>
+                        </div>
+                    </div>
+                </div><br />
             <?php echo form_close() ?>
         </div>
     </div>

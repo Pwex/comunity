@@ -57,13 +57,8 @@ class Catalogue extends CI_Controller {
 		$data['notification_details']	 		 = $this->activity->notification_details($this->session->userdata['user']['id_user']);
 		# Opciones items del menu principal del contenido
 		$data['option_nav'] = array(
-<<<<<<< HEAD
-			'box_title' => 'Catálogo',
-			'box_span' 	=> 'Crear'
-=======
 			'box_title' => 'Categoría Principal',
 			'box_span' 	=> 'Agregar'
->>>>>>> Jose
 		);
 		$data['option_nav_item'] = array(
 			'categorías principal'		=> array(
@@ -224,6 +219,47 @@ class Catalogue extends CI_Controller {
 		$this->load->model('CatalogueModel', 'catalogue', TRUE);
 		# Eliminar el item seleccionado
 		$this->catalogue->delete($this->input->post('id'));
+	}
+
+	# Contenido de los item de categorias principales
+	public function organize_item_categories_principal()
+	{
+		# Librerias
+		$this->load->model('CatalogueModel' , 'catalogue', TRUE);
+		$this->load->model('ActivitiesModel', 'activity', TRUE);
+		# Notificaciones
+		$data['number_of_pending_notifications'] = $this->activity->number_of_pending_notifications($this->session->userdata['user']['id_user']);
+		$data['notification_details']	 		 = $this->activity->notification_details($this->session->userdata['user']['id_user']);
+		# Opciones items del menu principal del contenido
+		$data['option_nav'] = array(
+			'box_title' => 'Categoría Principal',
+			'box_span' 	=> 'Organizar Categorías Principales'
+		);
+		$data['option_nav_item'] = array(
+				'categorías principal'		=> array(
+				'icon' 			=> 'fa fa-ellipsis-v',
+				'url' 			=> 'catalogue',
+				'class' 		=> NULL
+			), 
+			'Organizar' => array(
+				'icon' 		=> '',
+				'url' 		=> '',
+				'class' 	=> 'active'
+			)
+		);
+		# Renderizando la vista | plantilla
+		$data['item_categories_principal'] = $this->catalogue->item_categories_principal();
+		$this->load->view('template/header', $data);
+		$this->load->view('catalogue/organize');
+		$this->load->view('template/footer');
+		
+	}
+
+	# Almacenar la organizacion de los item de la lista de categoria principales
+	public function organize_save_item_categories_principal()
+	{
+		$this->load->model('CatalogueModel' , 'catalogue', TRUE);
+		$data['organize_save_item_categories_principal'] = $this->catalogue->organize_save_item_categories_principal(json_decode($this->input->post('positions'), TRUE));
 	}
 
 }

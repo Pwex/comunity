@@ -96,6 +96,9 @@ $route['catalogue/edit/(:num)'] 	= 'Catalogue/edit_validate/$1';
 $route['catalogue/success-edit'] 	= 'Catalogue/full_listing';
 $route['catalogue/delete'] 			= 'Catalogue/delete';
 $route['catalogue/success-delete'] 	= 'Catalogue/full_listing';
+$route['catalogue/organize'] 		= 'Catalogue/organize';
+$route['catalogue/organize-categories-principal'] 			= 'Catalogue/organize_item_categories_principal';
+$route['catalogue/organize-save-item-categories-principal'] = 'Catalogue/organize_save_item_categories_principal';
 
 # Certificados
 $route['certifications'] 				= 'Certifications/full_listing';
@@ -183,6 +186,7 @@ $route['products/success-edit'] 	= 'Products/full_listing';
 $route['products/delete'] 			= 'Products/delete';
 $route['products/success-delete'] 	= 'Products/full_listing';
 $route['products/filter-settings']	= 'Products/filter_settings';
+$route['products/friendly-url'] 	= 'Products/friendly_url';
 
 # tipos de documento
 $route['document_types'] 				= 'Document_types/full_listing';
@@ -264,8 +268,12 @@ $route['multimedia/videos/delete']	 		 = 'Multimedia/delete_videos';
 $route['multimedia/videos/add-file-manager'] = 'Multimedia/add_file_manager_videos';
 
 # eCommerce
-$route['shop-layout'] 			= 'ShopLayout/shop_layout_validate';
-$route['shop-layout/success'] 	= 'ShopLayout/shop_layout_validate';
+$route['shop-layout'] 				= 'ShopLayout/shop_layout_validate';
+$route['shop-layout/success'] 		= 'ShopLayout/shop_layout_validate';
+
+# eCommerce google analytics
+$route['shop-layout-google-analytics'] 			= 'ShopLayout/shop_layout_validate_google_analytics';
+$route['shop-layout-google-analytics/success']  = 'ShopLayout/shop_layout_validate_google_analytics';
 
 # Creador de menus eCommerce
 $route['shop-layout-navbar'] 						= 'ShopLayout/navbar_full_listing';

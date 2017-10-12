@@ -419,14 +419,41 @@
             <script type="text/javascript" src="<?php echo base_url('assets/plugins/iCheck/icheck.min.js') ?>"></script>
             <script type="text/javascript">
                 $(document).ready(function(){
+                    var normalize = (function() {
+                    var from = " ", 
+                        to   = "-",
+                        mapping = {};
+                  for(var i = 0, j = from.length; i < j; i++ )
+                      mapping[ from.charAt( i ) ] = to.charAt( i );
+                  return function( str ) {
+                      var ret = [];
+                      for( var i = 0, j = str.length; i < j; i++ ) {
+                          var c = str.charAt( i );
+                          if( mapping.hasOwnProperty( str.charAt( i ) ) )
+                              ret.push( mapping[ c ] );
+                          else
+                              ret.push( c );
+                      }      
+                      return ret.join( '' );
+                  }
+                 
+                })();
                     $('#id_catalogue').change('click', function(){
                         var id = $('#id_catalogue option:selected').html();
-                        if (id == 'APARATOLOGIA') {
+                        id = normalize(id.trim());
+                        if (id == 'APARATOLOGIA-ESTETICA') {
                             $('div.section-aparatologia').show();
                             $('#tab3_nav').hide();
-                        } else if(id == 'BELLEZA' || id == 'NUTRICIÓN' || id == 'SALUD' || id == 'SUPLEMENTOS DIETARIOS') {
+                            $('#container_sellos').hide();
+                        } else if(id == 'BELLEZA' || id == 'NUTRICION' || id == 'SALUD' || id == 'SUPLEMENTOS-DIETARIOS') {
                             $('div.section-aparatologia').hide();
                             $('#tab3_nav').show();
+                            $('#container_sellos').show();
+                        }
+                        if (id == 'APARATOLOGIA-ESTETICA' || id == 'BELLEZA') {
+                            $('#container_nutritional').hide();
+                        } else {
+                            $('#container_nutritional').show();
                         }
                     });
                     $('#status_filter_products').change('click', function(){
@@ -434,7 +461,7 @@
                         if (id != 0) {
                             $('#container_status_filter_products').show(1000);
                             $('#status_filter_products_label').empty();
-                            $('#status_filter_products_label').append('Seleccione los parámetros de búsqueda');
+                            $('#status_filter_products_label').append('Seleccione los parámetros del filtro');
                             $.ajax({
                                 url  : '<?php echo base_url('products/filter-settings') ?>',
                                 data : { id : id },
@@ -459,7 +486,6 @@
             <script type="text/javascript">
                 $(function () {
                     CKEDITOR.replace('labeled');
-                    CKEDITOR.replace('nutritional');
                     CKEDITOR.config.pasteFromWord_heuristicsEdgeList = false;
                   })
                 $(document).ready(function(){
@@ -470,39 +496,20 @@
                 });
             </script>
             <script type="text/javascript">
-                (function($){
-                    $.fn.extend({
-                        jFriendly : function ( inputUri , notEditable ){
-                            inputUri = $(inputUri);
-                            $(this).keyup(function(){
-                                inputUri.val( uriSanitize($(this).val()) );
-                            });
-                            if (notEditable){
-                                inputUri.css({display:"inline",background:"transparent",overflow:"visible"}).attr("disabled","disabled");
-                                $("form").submit(function(){if($(this).find(inputUri)) inputUri.removeAttr("disabled");});
-                            }
-                            return inputUri;
-                        }
-                    });
-                })(jQuery);  
-                uriSanitize = function(uri) { 
-                    return String(uri)
-                    .toLowerCase()
-                    .split(/[абвгде]/).join("a")
-                    .split(/ж/).join("ae")
-                    .split(/з/).join("c")
-                    .split(/[ийкл]/).join("e")
-                    .split(/[мноп]/).join("i")
-                    .split(/с/).join("n")
-                    .split(/[туфхц]/).join("o")
-                    .split(/њ/).join("oe")
-                    .split(/[щъыь]/).join("u")
-                    .split(/[эя]/).join("y")
-                    .split(/[\W_]+/).join("-")
-                    .split(/-+/).join("-");
-                }
                 $(document).ready(function(){
-                    $("#name_product").jFriendly("#url",true);
+                    $('#name_product').keyup(function(){
+                        $.ajax({
+                            url  : '<?php echo base_url('products/friendly-url') ?>',
+                            data : { url : $('#name_product').val() },
+                            type : 'POST',
+                            success: function(response){
+                                $('#url').val(response);
+                            },
+                            error: function(){
+                                alert('Ha ocurrido un error al conectar con el servidor');
+                            }
+                        });
+                    });
                 });
             </script>
         <?php endif ?>
@@ -537,6 +544,18 @@
                 });
             </script>
         <?php endif ?>
-
+        <?php if ($this->uri->segment(1) == 'shop-layout-google-analytics'): ?>
+            <!-- script para el editor de codigo de google analytics -->
+            <link rel="stylesheet" href="<?php echo base_url('assets/plugins/codemirror/lib/codemirror.css') ?>">
+            <script src="<?php echo base_url('assets/plugins/codemirror/lib/codemirror.js') ?>"></script>
+            <script src="<?php echo base_url('assets/plugins/codemirror/mode/javascript/javascript.js') ?>"></script>
+            <script>
+              var editor = CodeMirror.fromTextArea(footer, {
+                lineNumbers: true,
+                value: "function myScript(){return 100;}\n",
+                mode:  "javascript"
+              });
+            </script>
+        <?php endif ?>
     </body>
 </html>

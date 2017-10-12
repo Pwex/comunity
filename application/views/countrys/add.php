@@ -58,6 +58,15 @@
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="input-group" style="width: 100%">
+                            <label for="status_country">Estatus</label>
+                            <?php echo form_dropdown('status_country', $status_country, set_value('status_country'), 'class="form-control" id="status_country"') ?>
+                            <?php echo form_error('tax_iva') ?>
+                        </div>
+                    </div>
+                </div>
                 <p></p>
                 <!-- Shuffle & Sort Controls -->
                 <div class="row">

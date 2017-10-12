@@ -44,7 +44,7 @@
         </div>
         <!-- /.box-header -->
         <div class="box-body">
-            <?php echo form_open('products/add', 'autocomplete="off"') ?>
+            <?php echo form_open_multipart('products/add', 'autocomplete="off"') ?>
                 <div class="row">
                     <div class="col-md-12">
                         <!-- Custom Tabs (Pulled to the right) -->
@@ -78,11 +78,18 @@
                                     <p>Ingresar toda la información general del producto, esta sera utilizada para la publicación del mismo.</p>
                                     <div class="container">
                                         <div class="row">
-                                            <div class="col-sm-2">
+                                            <div class="col-sm-3">
                                                 <div class="form-group">
                                                     <label for="id_product">Código</label>
                                                     <input type="text" name="id_product" id="id_product" class="form-control" value="<?php echo set_value('id_product') ?>" required="" />
                                                     <?php echo form_error('id_product') ?>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label for="id_provider">Proveedor</label>
+                                                    <?php echo form_dropdown('id_provider', $provider, set_value('id_provider'), 'class="form-control select2" id="id_provider"') ?>
+                                                    <?php echo form_error('id_provider') ?>
                                                 </div>
                                             </div>
                                         </div>
@@ -96,7 +103,7 @@
                                             </div>
                                             <div class="col-sm-9">
                                                 <div class="form-group">
-                                                    <label for="name_product">Producto (máximo 80 caracteres)</label>
+                                                    <label for="name_product">Nombre largo (máximo 80 caracteres)</label>
                                                     <input type="text" name="name_product" id="name_product" class="form-control" value="<?php echo set_value('name_product') ?>" required="" maxlength="80" />
                                                     <?php echo form_error('name_product') ?>
                                                 </div>
@@ -226,7 +233,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row">
+                                        <div class="row" id="container_sellos" style="display: none;">
                                             <div class="col-sm-12">
                                                 <div class="form-group">
                                                     <label for="id_seals">Sellos</label>
@@ -275,6 +282,22 @@
                                             <div class="row">
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
+                                                        <label for="aparatology_precautions">Precauciones</label>
+                                                        <textarea name="aparatology_precautions" id="aparatology_precautions" rows="2" class="form-control"><?php echo set_value('aparatology_precautions'); ?></textarea>
+                                                        <?php echo form_error('aparatology_precautions') ?>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label for="contraindications_aparatologia">Contraindicaciones</label>
+                                                        <textarea name="contraindications_aparatologia" id="contraindications_aparatologia" rows="2" class="form-control"><?php echo set_value('contraindications_aparatologia'); ?></textarea>
+                                                        <?php echo form_error('contraindications_aparatologia') ?>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
                                                         <label for="contains">Contiene</label>
                                                         <textarea name="contains" id="contains" rows="2" class="form-control"><?php echo set_value('contains'); ?></textarea>
                                                         <?php echo form_error('contains') ?>
@@ -315,7 +338,7 @@
                                         <div class="row">
                                             <div class="col-sm-12">
                                                 <div class="form-group">
-                                                    <label for="indications">Indicaciones</label>
+                                                    <label for="indications">Indicaciones de uso</label>
                                                     <textarea name="indications" id="indications" rows="2" class="form-control"><?php echo set_value('indications'); ?></textarea>
                                                     <?php echo form_error('indications') ?>
                                                 </div>
@@ -331,7 +354,7 @@
                                             </div>
                                             <div class="col-sm-6">
                                                 <div class="form-group">
-                                                    <label for="precautions">Precauciones</label>
+                                                    <label for="precautions">Precauciones y Almacenamiento</label>
                                                     <textarea name="precautions" id="precautions" rows="3" class="form-control"><?php echo set_value('precautions'); ?></textarea>
                                                     <?php echo form_error('precautions') ?>
                                                 </div>
@@ -346,75 +369,11 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row">
+                                        <div class="row" id="container_nutritional" style="display: none;">
                                             <div class="col-sm-12">
                                                 <div class="form-group">
                                                     <label for="nutritional">Tabla Nutricional</label>
-                                                    <textarea name="nutritional" id="nutritional" rows="2" class="form-control" onpaste="return false">
-                                                        <?php if(!empty(set_value('nutritional'))) { echo set_value('nutritional'); } else { ?>
-                                                            <h2 style="text-align: center;">Informaci&oacute;n nutricional</h2>
-                                                            <p><strong>Tama&ntilde;o por porci&oacute;n:&nbsp;2 Cucharadas (25g)</strong></p>
-                                                            <p>Porciones por envase: 12</p>
-                                                            <hr />
-                                                            <p><strong>Cantidad por porci&oacute;n</strong></p>
-                                                            <hr />
-                                                            <p><strong>Calor&iacute;as 90</strong> Kcal &nbsp; &nbsp; &nbsp; &nbsp; Calor&iacute;as de grasa 40</p>
-                                                            <hr />
-                                                            <table style="height:237px; width:100%">
-                                                                <tbody>
-                                                                    <tr>
-                                                                        <td style="width:347px">&nbsp;</td>
-                                                                        <td style="text-align:center; width:348px"><strong>Valor Diario%*</strong></td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td style="width:347px"><strong>Grasa Total 4 g</strong></td>
-                                                                        <td style="text-align:center; width:348px"><strong>6%</strong></td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td style="width:347px">&nbsp; Grasa Saturada 0 g</td>
-                                                                        <td style="text-align:center; width:348px">0%</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td style="width:347px">&nbsp; Grasa Trans &nbsp; &nbsp; &nbsp;0 g</td>
-                                                                        <td style="width:348px">&nbsp;</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td style="width:347px"><strong>Colesterol 0 mg</strong></td>
-                                                                        <td style="text-align:center; width:348px"><strong>0%</strong></td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td style="width:347px"><strong>Sodio 1 mg</strong></td>
-                                                                        <td style="text-align:center; width:348px"><strong>0%</strong></td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td style="width:347px"><strong>Carbohidrato Total 15 g</strong></td>
-                                                                        <td style="text-align:center; width:348px"><strong>5%</strong></td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td style="width:347px">&nbsp; Fibra Dietaria &nbsp; &nbsp;1 g</td>
-                                                                        <td style="text-align:center; width:348px">4%</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td style="width:347px">&nbsp; Az&uacute;cares &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 0 g</td>
-                                                                        <td style="width:348px">&nbsp;</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td style="width:347px"><strong>Prote&iacute;na 4 g</strong></td>
-                                                                        <td style="text-align:center; width:348px"><strong>8%</strong></td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td colspan="2" style="text-align:center; width:347px">Vitamina A 0% &nbsp; &nbsp;Vitamina C 2%</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td colspan="2" style="text-align:center; width:347px">Calcio 2%&nbsp; &nbsp; Hierro 12%</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td colspan="2" style="text-align:center; width:347px">Los porcentajes de valores diarios est&aacute;n basados en una dieta de 2000 calor&iacute;as. Sus valores diarios pueden ser mayores o menores dependiendo de sus necesidades calor&iacute;cas.</td>
-                                                                    </tr>
-                                                                </tbody>
-                                                            </table>
-                                                        <?php } ?>
-                                                    </textarea>
+                                                    <input type="file" name="nutritional" class="form-control" />
                                                     <?php echo form_error('nutritional') ?>
                                                 </div>
                                             </div>
@@ -480,30 +439,30 @@
                                     <p>Proporciona los datos necesarios para calcular el costo de la logistica del producto.</p>
                                     <div class="container">
                                         <div class="row">
-                                            <div class="col-sm-2">
+                                            <div class="col-sm-4">
                                                 <div class="form-group">
-                                                    <label for="id_unitsmeasure">Unidad</label>
-                                                    <?php echo form_dropdown('id_unitsmeasure', $unitsmeasure, set_value('id_unitsmeasure'), 'data-placeholder="Seleccionar..." class="form-control"'); ?>
-                                                    <?php echo form_error('id_unitsmeasure') ?>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-2">
-                                                <div class="form-group">
-                                                    <label for="grammage">Cantidad</label>
+                                                    <label for="grammage">Contenido neto</label>
                                                     <input type="number" name="grammage" id="grammage" class="form-control" value="<?php echo set_value('grammage') ?>" />
                                                     <?php echo form_error('grammage') ?>
                                                 </div>
                                             </div>
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label for="id_unitsmeasure">Unidad de medida</label>
+                                                    <?php echo form_dropdown('id_unitsmeasure', $unitsmeasure, set_value('id_unitsmeasure'), 'data-placeholder="Seleccionar..." class="form-control"'); ?>
+                                                    <?php echo form_error('id_unitsmeasure') ?>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-sm-2">
+                                            <div class="col-sm-4">
                                                 <div class="form-group">
                                                     <label for="width">Ancho</label>
                                                     <input type="number" name="width" id="width" class="form-control" value="<?php echo set_value('width') ?>" required="" />
                                                     <?php echo form_error('width') ?>
                                                 </div>
                                             </div>
-                                            <div class="col-sm-2">
+                                            <div class="col-sm-4">
                                                 <div class="form-group">
                                                     <label for="high">Altura</label>
                                                     <input type="number" name="high" id="high" class="form-control" value="<?php echo set_value('high') ?>" />
@@ -521,7 +480,7 @@
                                             </div>
                                             <div class="col-sm-4">
                                                 <div class="form-group">
-                                                    <label for="weight">Peso</label>
+                                                    <label for="weight">Peso Total (Contenido neto más envase)</label>
                                                     <input type="number" name="weight" id="weight" class="form-control" value="<?php echo set_value('weight') ?>" />
                                                     <?php echo form_error('weight') ?>
                                                 </div>
