@@ -110,6 +110,17 @@ class ProductsModel extends CI_Model {
         return $catalogue;
     }
 
+    # Lista de tipo de presentaciones de productos
+    public function presentation_listing()
+    {
+        $presentation = array();
+        foreach ($this->db->select('id_presentation, name_presentation')->order_by('name_presentation', 'ASC')->get('presentation')->result_array() as $key => $value) {
+            $presentation[$value['id_presentation']] = $value['name_presentation'];
+        }
+        asort($presentation);
+        return $presentation;
+    }
+
     # Lista de categorias
     public function categories_listing()
     {

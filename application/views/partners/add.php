@@ -2,7 +2,7 @@
 <section class="content">
     <div class="box box-danger">
         <div class="box-header">
-            <h3 class="box-title">Crear Proveedor</h3>
+            <h3 class="box-title">Crear Proveedor <?php echo $this->uri->segment(2) ?></h3>
         </div>
         <!-- /.box-header -->
         <div class="box-body">

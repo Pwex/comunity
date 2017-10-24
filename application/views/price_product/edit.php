@@ -10,20 +10,11 @@
         <div class="box-body">
             <?php echo form_open('price-product/edit/'.$this->uri->segment(3)) ?>
                 <div class="row">
-                    <div class="col-sm-2">
+                    <div class="col-sm-6">
                         <div class="form-group">
-                            <label for="id_list_price">Tipo de cuenta</label>
+                            <label for="id_list_price">Lista de Precios</label>
                             <?php echo form_dropdown('id_list_price', $list_price, set_value('id_list_price', $information_price_product[0]['id_list_price']), 'class="form-control select2" required=""'); ?>
                             <?php echo form_error('id_list_price') ?>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-3">
-                        <div class="form-group">
-                            <label for="id_country_price">País</label>
-                            <?php echo form_dropdown('id_country_price', $country, set_value('id_country_price', $information_price_product[0]['id_country_price']), 'class="form-control select2" required=""'); ?>
-                            <?php echo form_error('id_country_price') ?>
                         </div>
                     </div>
                 </div>
@@ -33,6 +24,15 @@
                             <label for="id_product_price">Producto</label>
                             <?php echo form_dropdown('id_product_price', $products, set_value('id_product_price', $information_price_product[0]['id_product_price']), 'class="form-control select2" required=""'); ?>
                             <?php echo form_error('id_product_price') ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label for="id_country_price">País</label>
+                            <?php echo form_dropdown('id_country_price', $country, set_value('id_country_price', $information_price_product[0]['id_country_price']), 'class="form-control select2" required=""'); ?>
+                            <?php echo form_error('id_country_price') ?>
                         </div>
                     </div>
                 </div>

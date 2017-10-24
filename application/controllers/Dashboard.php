@@ -18,7 +18,6 @@ class Dashboard extends CI_Controller {
 		# Notificaciones
 		$data['number_of_pending_notifications'] = $this->activity->number_of_pending_notifications($this->session->userdata['user']['id_user']);
 		$data['notification_details']	 		 = $this->activity->notification_details($this->session->userdata['user']['id_user']);
-
 		# Opciones items del menu principal del contenido
 		$data['option_nav'] = array(
 			'box_title' => 'Escritorio',
@@ -36,10 +35,13 @@ class Dashboard extends CI_Controller {
 				'class' 	=> 'active'
 			)
 		);
-
 		# Renderizando la vista | plantilla
 		$this->load->view('template/header', $data);
-		$this->load->view('dashboard');
+		if ( isset($this->session->userdata['user']['type_of_access']) and $this->session->userdata['user']['type_of_access'] == 'Administrador' ) {
+			$this->load->view('dashboard');
+		} elseif ( isset($this->session->userdata['user']['type_of_access']) and $this->session->userdata['user']['type_of_access'] == 'Coach' ) {
+			$this->load->view('coach/home');
+		} 
 		$this->load->view('template/footer');
 	}
 

@@ -78,6 +78,8 @@ class Products extends CI_Controller {
 		$data['category'] 		= $this->products->categories_listing();
 		# Listado de tipos de inventario
 		$data['typesinventory'] = $this->products->typesinv_listing();
+		# Listado de tipo de presentaciones de productos
+		$data['presentation'] 	= $this->products->presentation_listing();
 		# Listado de beneficios
 		$data['benefits'] 		= $this->products->benefits_listing();
 		# Listado de componentes

@@ -74,7 +74,8 @@
                     <div class="col-sm-4">
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary">Enviar</button>
-                            <button type="reset"  class="btn btn-default">Cancelar</button>
+                            <button type="submit" class="btn btn-primary">Env. Encuestar</button>
+                            <button type="reset"  class="btn btn-primary">Cancelar</button>
                         </div>
                     </div>
                 </div>

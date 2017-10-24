@@ -12,14 +12,17 @@
             <div class="control-sidebar-bg"></div>
         </div>
         <!-- ./wrapper -->
-        <!-- jQuery 3 -->
-        <script src="<?php echo base_url('assets/bower_components/jquery/dist/jquery.min.js') ?>"></script>
+        <?php if ($this->uri->segment(1) != 'calendar'): ?>
+            <script src="<?php echo base_url('assets/bower_components/jquery/dist/jquery.min.js') ?>"></script>
+        <?php else: ?>
+            <script src="<?=$base_url?>js/jquery.min.js"></script>
+        <?php endif ?>
         <!-- Bootstrap 3.3.7 -->
-        <script src="<?php echo base_url('assets/bower_components/bootstrap/dist/js/bootstrap.min.js') ?>"></script>
+        <script src="<?php echo base_url('assets/bower_components/bootstrap/dist/js/bootstrap.min.js') ?>"></script> 
         <!-- SlimScroll -->
         <script src="<?php echo base_url('assets/bower_components/jquery-slimscroll/jquery.slimscroll.min.js') ?>"></script>
         <!-- FastClick -->
-        <script src="<?php echo base_url('assets/bower_components/fastclick/lib/fastclick.js') ?>"></script>
+        <script src="<?php echo base_url('assets/bower_components/fastclick/lib/fastclick.js') ?>"></script> 
         <!-- AdminLTE App -->
         <script src="<?php echo base_url('assets/dist/js/adminlte.min.js') ?>"></script>
         <!-- AdminLTE for demo purposes -->
@@ -30,7 +33,7 @@
             });
         </script>
         <!-- DataTables -->
-        <?php if (($this->uri->segment(1) == 'users') || ($this->uri->segment(1) == 'modules') || ($this->uri->segment(1) == 'movement_types') || ($this->uri->segment(1) == 'categories') || ($this->uri->segment(1) == 'warehouses') || ($this->uri->segment(1) == 'countrys') || ($this->uri->segment(1) == 'benefits') || ($this->uri->segment(1) == 'typesinventory') || ($this->uri->segment(1) == 'components') || ($this->uri->segment(1) == 'unitsmeasure') || ($this->uri->segment(1) == 'products') || ($this->uri->segment(1) == 'partners') || ($this->uri->segment(1) == 'document_types') || ($this->uri->segment(1) == 'partner_types') || ($this->uri->segment(1) == 'cities') || ($this->uri->segment(1) == 'seals') || ($this->uri->segment(1) == 'list-price') || ($this->uri->segment(1) == 'banks') || ($this->uri->segment(1) == 'consumers') || ($this->uri->segment(1) == 'price-product' and ($this->uri->segment(2) !="add" or $this->uri->segment(2) !="edit")) || ($this->uri->segment(1) == 'catalogue' and ($this->uri->segment(2) !="add" or $this->uri->segment(2) !="edit")) || ($this->uri->segment(1) == 'certifications' and ($this->uri->segment(2) !="add" or $this->uri->segment(2) !="edit")) || ($this->uri->segment(1) == 'shop-layout-navbar' and ($this->uri->segment(2) !="add" or $this->uri->segment(2) !="edit")) || ($this->uri->segment(1) == 'shop-layout-filter' and ($this->uri->segment(2) !="add" or $this->uri->segment(2) !="edit")) || ($this->uri->segment(1) == 'shop-layout-filter-item' and ($this->uri->segment(2) !="add" or $this->uri->segment(2) !="edit")) ): ?>
+        <?php if (($this->uri->segment(1) == 'users') || ($this->uri->segment(1) == 'modules') || ($this->uri->segment(1) == 'movement_types') || ($this->uri->segment(1) == 'categories') || ($this->uri->segment(1) == 'warehouses') || ($this->uri->segment(1) == 'countrys') || ($this->uri->segment(1) == 'benefits') || ($this->uri->segment(1) == 'typesinventory') || ($this->uri->segment(1) == 'components') || ($this->uri->segment(1) == 'unitsmeasure') || ($this->uri->segment(1) == 'products') || ($this->uri->segment(1) == 'partners') || ($this->uri->segment(1) == 'document_types') || ($this->uri->segment(1) == 'partner_types') || ($this->uri->segment(1) == 'cities') || ($this->uri->segment(1) == 'seals') || ($this->uri->segment(1) == 'list-price') || ($this->uri->segment(1) == 'banks') || ($this->uri->segment(1) == 'consumers') || ($this->uri->segment(1) == 'price-product' and ($this->uri->segment(2) !="add" or $this->uri->segment(2) !="edit")) || ($this->uri->segment(1) == 'catalogue' and ($this->uri->segment(2) !="add" or $this->uri->segment(2) !="edit")) || ($this->uri->segment(1) == 'certifications' and ($this->uri->segment(2) !="add" or $this->uri->segment(2) !="edit")) || ($this->uri->segment(1) == 'shop-layout-navbar' and ($this->uri->segment(2) !="add" or $this->uri->segment(2) !="edit")) || ($this->uri->segment(1) == 'shop-layout-filter' and ($this->uri->segment(2) !="add" or $this->uri->segment(2) !="edit")) || ($this->uri->segment(1) == 'shop-layout-filter-item' and ($this->uri->segment(2) !="add" or $this->uri->segment(2) !="edit")) || ($this->uri->segment(1) == 'excel-providers' and ($this->uri->segment(2) !="add" or $this->uri->segment(2) !="edit")) || ($this->uri->segment(1) == 'requirements-matrix' and ($this->uri->segment(2) !="add" or $this->uri->segment(2) !="edit")) || ($this->uri->segment(1) == 'presentation' and ($this->uri->segment(2) !="add" or $this->uri->segment(2) !="edit")) ): ?>
             <!-- script para agregar clase no-padding para resoluciones moviles -->
             <script type="text/javascript">
                 if (screen.width <= 425) {
@@ -49,6 +52,9 @@
                     var table = $('#table-default').DataTable({
                         <?php if ($this->uri->segment(1) == 'price-product'): ?>
                             "order": [[ 1, "asc" ], [4, 'asc']],
+                        <?php endif; ?>
+                        <?php if ($this->uri->segment(1) == 'excel-providers'): ?>
+                            "order": [[ 0, "desc" ]],
                         <?php endif; ?>
                         colReorder: true,
                         'language' : {
@@ -187,6 +193,18 @@
                 elseif ($this->uri->segment(1) == 'shop-layout-filter-item')
                 {
                     $url = "shop-layout-filter-item";
+                }
+                elseif ($this->uri->segment(1) == 'excel-providers')
+                {
+                    $url = "excel-providers";
+                }
+                elseif ($this->uri->segment(1) == 'requirements-matrix')
+                {
+                    $url = "requirements-matrix";
+                }
+                elseif ($this->uri->segment(1) == 'presentation')
+                {
+                    $url = "presentation";
                 }
             ?>
                 $(document).ready(function()
@@ -435,7 +453,6 @@
             </script>
         <?php endif ?>
 
-        ?>
         <?php if ($this->uri->segment(1) == 'products' and ($this->uri->segment(2) == 'add' or $this->uri->segment(2) == 'edit')): ?>
             <script type="text/javascript" src="<?php echo base_url('assets/bower_components/ckeditor/ckeditor.js') ?>"></script>
             <script type="text/javascript" src="<?php echo base_url('assets/plugins/iCheck/icheck.min.js') ?>"></script>
@@ -577,6 +594,304 @@
                 value: "function myScript(){return 100;}\n",
                 mode:  "javascript"
               });
+            </script>
+        <?php endif ?>
+        <?php if ($this->uri->segment(1) == 'excel-providers'): ?>
+            <!-- script seccion de excel de proveedores -->
+            <script type="text/javascript">
+                $(document).ready(function(){
+                    $('button.btn-primary').on('click', function(){
+                        $('#container-box-datatable').css('color', '#e2e2e2');
+                        $('button.btn-primary').css('opacity', '0.1');
+                        $('button.btn-primary').prop("disabled",true);
+                        $('.bar-disable').show(500);
+                        var email        = $(this).attr('value');
+                        var id           = $(this).attr('id');
+                        var language     = $(this).attr('language');
+                        var company_name = $(this).attr('company_name');
+                        $.ajax({
+                            url  : '<?php echo base_url('sending-information-to-suppliers') ?>',
+                            data : { id: id, email: email, company_name: company_name, language: language },
+                            type : 'POST',
+                            success : function(response){
+
+                            },
+                            complete: function(){
+                                setTimeout(function(){
+                                    $('#container-box-datatable').css('color', '#333333');
+                                    $('button.btn-primary').css('opacity', '1');
+                                    $('button.btn-primary').prop("disabled",false);
+                                    $('.bar-disable').hide(500);
+                                    $('button.btn-primary[id=' + id + ']').css('background-color', '#4caf50');
+                                    $('button.btn-primary[id=' + id + ']').css('border-color', '#4caf50');
+                                    $('button.btn-primary[id=' + id + ']').empty().html('<i class="fa fa-share" aria-hidden="true"></i>');
+                                }, 2500);
+                            },
+                            error : function(){
+                                alert('Ha ocurrido un error...');
+                            }
+                        });
+                    });
+                });
+            </script>
+        <?php endif ?>
+        <?php if ($this->uri->segment(1) == 'requirements-matrix'): ?>
+            <!-- script seccion de matriz de requerimientos -->
+            <script type="text/javascript">
+                $(document).ready(function(){
+                    $('button.btn-primary').on('click', function(){
+                        $('#container-box-datatable').css('color', '#e2e2e2');
+                        $('button.btn-primary').css('opacity', '0.1');
+                        $('button.btn-primary').prop("disabled",true);
+                        $('.bar-disable').show(500);
+                        var email        = $(this).attr('value');
+                        var id           = $(this).attr('id');
+                        var language     = $(this).attr('language');
+                        var company_name = $(this).attr('company_name');
+                        var product_name = $(this).attr('product_name');
+                        $.ajax({
+                            url  : '<?php echo base_url('product-order-approval') ?>',
+                            data : { id: id, email: email, company_name: company_name, product_name: product_name, language: language },
+                            type : 'POST',
+                            success : function(response){
+
+                            },
+                            complete: function(){
+                                setTimeout(function(){
+                                    $('#container-box-datatable').css('color', '#333333');
+                                    $('button.btn-primary').css('opacity', '1');
+                                    $('button.btn-primary').prop("disabled",false);
+                                    $('.bar-disable').hide(500);
+                                    $('button.btn-primary[id=' + id + ']').css('background-color', '#4caf50');
+                                    $('button.btn-primary[id=' + id + ']').css('border-color', '#4caf50');
+                                    $('button.btn-primary[id=' + id + ']').empty().html('<i class="fa fa-share" aria-hidden="true"></i>');
+                                }, 2500);
+                            },
+                            error : function(){
+                                alert('Ha ocurrido un error...');
+                            }
+                        });
+                    });
+                    $('button.btn-view-requirements').on('click', function(){
+                        $('.th-option').css('width', '15%');
+                        var id = $(this).attr('id');
+                        $.ajax({
+                            url  : '<?php echo base_url('view-requirements') ?>',
+                            data : { id: id },
+                            type : 'POST',
+                            success : function(response){
+                                $('.modal-body').empty().html(response);
+                            },
+                            complete: function(){
+                                
+                            },
+                            error : function(){
+                                alert('Ha ocurrido un error...');
+                            }
+                        });
+                    });
+                });
+            </script>
+        <?php endif ?>
+        <?php if ( ($this->uri->segment(2) != 'add' or $this->uri->segment(2) != 'edit') and ($this->uri->segment(1) == 'consumers') ): ?>
+            <script type="text/javascript">
+                $(document).ready(function(){
+                    $('#table-default').css('min-width', '450px');
+                });
+            </script>
+        <?php endif ?>
+        <?php if ( ($this->uri->segment(2) != 'add' or $this->uri->segment(2) != 'edit') and ($this->uri->segment(1) == 'calendar') ): ?> 
+            <!-- <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"> -->
+            <!-- <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet"> -->
+            <!-- <script src="<?=$base_url?>js/bootstrap.min.js"></script> -->
+            <link rel="stylesheet" href="<?=$base_url?>css/calendar.css">
+            <script type="text/javascript" src="<?=$base_url?>js/es-ES.js"></script>
+            <script src="<?=$base_url?>js/moment.js"></script>
+            <script src="<?=$base_url?>js/bootstrap-datetimepicker.js"></script>
+            <link rel="stylesheet" href="<?=$base_url?>css/bootstrap-datetimepicker.min.css" />
+            <script src="<?=$base_url?>js/bootstrap-datetimepicker.es.js"></script>
+            <script src="<?=$base_url?>js/underscore-min.js"></script>
+            <script src="<?=$base_url?>js/calendar.js"></script>
+            <script type="text/javascript">
+                (function($){
+                        //creamos la fecha actual
+                        var date = new Date();
+                        var yyyy = date.getFullYear().toString();
+                        var mm = (date.getMonth()+1).toString().length == 1 ? "0"+(date.getMonth()+1).toString() : (date.getMonth()+1).toString();
+                        var dd  = (date.getDate()).toString().length == 1 ? "0"+(date.getDate()).toString() : (date.getDate()).toString();
+
+                        //establecemos los valores del calendario
+                        var options = {
+
+                            // definimos que los eventos se mostraran en ventana modal
+                                modal: '#events-modal', 
+
+                                // dentro de un iframe
+                                modal_type:'iframe',    
+
+                                //obtenemos los eventos de la base de datos
+                                events_source: '<? echo base_url("assets/plugins/calendar/"); ?>obtener_eventos.php', 
+
+                                // mostramos el calendario en el mes
+                                view: 'month',             
+
+                                // y dia actual
+                                day: yyyy+"-"+mm+"-"+dd,   
+
+
+                                // definimos el idioma por defecto
+                                language: 'es-ES', 
+
+                                //Template de nuestro calendario
+                                tmpl_path: '<?=$base_url?>tmpls/', 
+                                tmpl_cache: false,
+
+
+                                // Hora de inicio
+                                time_start: '08:00', 
+
+                                // y Hora final de cada dia
+                                time_end: '22:00',   
+
+                                // intervalo de tiempo entre las hora, en este caso son 30 minutos
+                                time_split: '30',    
+
+                                // Definimos un ancho del 100% a nuestro calendario
+                                width: '100%', 
+
+                                onAfterEventsLoad: function(events)
+                                {
+                                        if(!events)
+                                        {
+                                                return;
+                                        }
+                                        var list = $('#eventlist');
+                                        list.html('');
+
+                                        $.each(events, function(key, val)
+                                        {
+                                                $(document.createElement('li'))
+                                                        .html('<a href="' + val.url + '">' + val.title + '</a>')
+                                                        .appendTo(list);
+                                        });
+                                },
+                                onAfterViewLoad: function(view)
+                                {
+                                        $('.page-header h2').text(this.getTitle());
+                                        $('.btn-group button').removeClass('active');
+                                        $('button[data-calendar-view="' + view + '"]').addClass('active');
+                                },
+                                classes: {
+                                        months: {
+                                                general: 'label'
+                                        }
+                                }
+                        };
+
+
+                        // id del div donde se mostrara el calendario
+                        var calendar = $('#calendar').calendar(options); 
+
+                        $('.btn-group button[data-calendar-nav]').each(function()
+                        {
+                                var $this = $(this);
+                                $this.click(function()
+                                {
+                                        calendar.navigate($this.data('calendar-nav'));
+                                });
+                        });
+
+                        $('.btn-group button[data-calendar-view]').each(function()
+                        {
+                                var $this = $(this);
+                                $this.click(function()
+                                {
+                                        calendar.view($this.data('calendar-view'));
+                                });
+                        });
+
+                        $('#first_day').change(function()
+                        {
+                                var value = $(this).val();
+                                value = value.length ? parseInt(value) : null;
+                                calendar.setOptions({first_day: value});
+                                calendar.view();
+                        });
+                }(jQuery));
+            </script>
+            <script type="text/javascript">
+                $(function () {
+                    $('#from').datetimepicker({
+                        language: 'es',
+                        minDate: new Date()
+                    });
+                    $('#to').datetimepicker({
+                        language: 'es',
+                        minDate: new Date()
+                    });
+
+                });
+            </script>
+        <?php endif ?>
+        <?php if ($this->uri->segment(1) == 'consumers' and $this->uri->segment(2) == 'poll'): ?>
+            <!-- script para la sección de la encuenta -->
+            <script type="text/javascript">
+                $(document).ready(function(){
+                    $('#all_aspect').change(function(){
+                        var status = $('label[for=all_aspect]').text().trim();
+                        if (status == 'Todos') {
+                            $('label[for=all_aspect]').text('Deseleccionar');
+                        } else {
+                            $('label[for=all_aspect]').text('Todos');
+                        }
+                    });
+                });
+            </script>
+        <?php endif ?>
+        <?php if ($this->uri->segment(1) == 'partners' and $this->uri->segment(2) != 'add' and $this->uri->segment(2) != 'edit'): ?>
+            <!-- script seccion de proveedores -->
+            <script type="text/javascript">
+                $(document).ready(function(){
+                    $('button.btn-primary').on('click', function(){
+                        $('#container-box-datatable').css('color', '#e2e2e2');
+                        $('button.btn-primary').css('opacity', '0.1');
+                        $('button.btn-primary').prop("disabled",true);
+                        $('a.btn-warning').css('opacity', '0.1');
+                        $('a.btn-warning').prop("disabled",true);
+                        $('button.btn-delete').css('opacity', '0.1');
+                        $('button.btn-delete').prop("disabled",true);
+                        $('.bar-disable').show(500);
+                        var id           = $(this).attr('id');
+                        var email        = $(this).attr('value');
+                        var company      = $(this).attr('company');
+                        $.ajax({
+                            url  : '<?php echo base_url('send-user-and-password-information') ?>',
+                            data : { id: id, email: email, company: company },
+                            type : 'POST',
+                            success : function(response){
+                                
+                            },
+                            complete: function(){
+                                setTimeout(function(){
+                                    $('#container-box-datatable').css('color', '#333333');
+                                    $('button.btn-primary').css('opacity', '1');
+                                    $('button.btn-primary').prop("disabled",false);
+                                    $('a.btn-warning').css('opacity', '1');
+                                    $('a.btn-warning').prop("disabled",false);
+                                    $('button.btn-delete').css('opacity', '1');
+                                    $('button.btn-delete').prop("disabled",false);
+                                    $('.bar-disable').hide(500);
+                                    $('button.btn-primary[id=' + id + ']').css('background-color', '#4caf50');
+                                    $('button.btn-primary[id=' + id + ']').css('border-color', '#4caf50');
+                                    $('button.btn-primary[id=' + id + ']').empty().html('<i class="fa fa-share" aria-hidden="true"></i>');
+                                }, 2500);
+                            },
+                            error : function(){
+                                alert('Ha ocurrido un error...');
+                            }
+                        });
+                    });
+                });
             </script>
         <?php endif ?>
     </body>

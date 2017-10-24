@@ -1,3 +1,19 @@
+blockquote {
+    padding: 10px 0 20px 20px;
+}
+.btn-primary {
+    background: #2196f3;
+    border-color: #2196f3;
+}
+.btn-warning:hover {
+    border-color: #ffa413;
+}
+.btn-primary:hover {
+    border-color: #1a8de8;
+}
+.text-success {
+    color: #4CAF50;
+}
 @media (max-width: 425px) {
 	.box-header {
 		    padding: 1em 1em;
@@ -6,7 +22,65 @@
 label {
     display: inline-block;
     max-width: 100%;
-    margin-bottom: 5px;
-    font-weight: 600;
-    text-transform: uppercase;
+    margin-bottom: 0px;
+    font-weight: 600 !important;
+}
+@media (max-width: 425px){
+	div.dataTables_wrapper div.dataTables_length select {
+        width: 90%;
+    }
+    div.dataTables_wrapper div.dataTables_filter input {
+        width: 97%;
+    }
+    .box-body {
+	    padding: 0.8em 0.5em;
+	}
+    blockquote {
+        padding: 10px;
+        font-size: 11.5px;
+    }
+    span a.btn {
+        margin-top: -5px;
+    }
+}
+@media (min-width: 768px){
+	.navbar-nav>li>a {
+	    padding-top: 15px;
+	    padding-bottom: 20px;
+	}
+    .modal-dialog {
+        width: 60%;
+        margin-top: 15%;
+    }
+}
+.modal-body {
+    overflow-x: scroll;
+}
+.navbar {
+    border: none;
+}
+.form-control {
+    border-color: #ececec;
+    border-radius: 3px;
+}
+.form-control {
+    border: 2px solid #eeeeee;
+}
+select.input-lg {
+    height: 47px;
+}
+.input-group .input-group-addon {
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+    background-color: #fff;
+    border-top: 2px solid #e6e4e4;
+    border-bottom: 2px solid #e6e4e4;
+    border-left: 2px solid #e6e4e4;
+}
+.page-header {
+    border: none;
+}
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+    background-color: #2196f3;
+    border-color: #2196f3;
 }

@@ -9,7 +9,7 @@ class ConsumersModel extends CI_Model {
     {
         return $this->db
         ->from('ec_client cl')
-        ->select('cl.id_client, cl.name, cl.last_name, cl.email, co.name_country, ci.name_city')
+        ->select('cl.id_client, cl.name, cl.last_name, cl.email, cl.status, co.name_country, ci.name_city')
         ->join('countrys co', 'co.id_country = cl.country', 'left')
         ->join('cities ci', 'ci.id_city = cl.cities', 'left')
         ->get()

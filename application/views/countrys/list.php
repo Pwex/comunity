@@ -59,6 +59,7 @@
                 <thead>
                     <th>Código</th>
                     <th>Pais</th>
+                    <th>Idioma</th>
                     <th>Moneda</th>
                     <th>Iva</th>
                     <th>Estatus</th>
@@ -67,6 +68,7 @@
                 <tfoot>
                     <th>Código</th>
                     <th>Pais</th>
+                    <th>Idioma</th>
                     <th>Moneda</th>
                     <th>Iva</th>
                     <th>Estatus</th>
@@ -77,6 +79,7 @@
                         <tr>
                             <td><?php echo $value['id_country'] ?></td>
                             <td><?php echo $value['name_country'] ?></td>
+                            <td><?php echo $value['language'] ?></td>
                             <td><?php echo $value['coin'] ?></td>
                             <td><?php echo $value['tax_iva'] ?>%</td>
                             <td>

@@ -9,20 +9,27 @@
             <?php echo form_open('consumers/add') ?>
                 <div class="row">
                     <div class="col-sm-12">
-                        <div class="input-group">
-                            <!-- <label for="email">Correo electrónico</label> -->
-                            <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                            <input type="email" name="email" id="email" placeholder="Correo electrónico" class="form-control" value="<?php echo set_value('email') ?>" required="" />
-                            <?php echo form_error('email') ?>
+                        <div class="form-group">
+                            <label for="document_type">Tipo Documento</label>
+                            <?php echo form_dropdown('document_type', $document_types, set_value('document_type'), 'class="form-control input-lg" required=""'); ?>
+                            <?php echo form_error('document_type') ?>
                         </div>
                     </div>
                 </div>
-                <br>
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="form-group">
-                            <!-- <label for="name">Nombres</label> -->
-                            <input type="text" name="name" id="name" placeholder="Nombres" class="form-control" value="<?php echo set_value('name') ?>" required="" />
+                            <label for="document">Número Documento</label>
+                            <input type="text" name="document" id="id_document" class="form-control input-lg" value="<?php echo set_value('document') ?>" required="" />
+                            <?php echo form_error('document') ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label for="name">Nombres</label>
+                            <input type="text" name="name" id="name" class="form-control input-lg" value="<?php echo set_value('name') ?>" required="" />
                             <?php echo form_error('name') ?>
                         </div>
                     </div>
@@ -30,109 +37,91 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="form-group">
-                            <!-- <label for="last_name">Apellidos</label> -->
-                            <input type="text" name="last_name" id="last_name" placeholder="Apellidos" class="form-control" value="<?php echo set_value('last_name') ?>" required="" />
+                            <label for="last_name">Apellidos</label>
+                            <input type="text" name="last_name" id="last_name" class="form-control  input-lg" value="<?php echo set_value('last_name') ?>" required="" />
                             <?php echo form_error('last_name') ?>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-12">
-                        <div class="input-group">
-                            <!-- <label for="document_type">Tipo Documento</label> -->
-                            <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
-                            <?php echo form_dropdown('document_type', $document_types, set_value('document_type'), 'class="form-control" required=""'); ?>
-                            <?php echo form_error('document_type') ?>
+                        <div class="form-group">
+                            <label for="email">Correo electrónico</label>
+                            <input type="email" name="email" id="email" class="form-control  input-lg" value="<?php echo set_value('email') ?>" required="" />
+                            <?php echo form_error('email') ?>
                         </div>
                     </div>
                 </div>
-                <br>
                 <div class="row">
                     <div class="col-sm-12">
-                        <div class="input-group">
-                            <!-- <label for="document">Número Documento</label> -->
-                            <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
-                            <input type="text" name="document" id="id_document" placeholder="Número documento" class="form-control" value="<?php echo set_value('document') ?>" required="" />
-                            <?php echo form_error('document') ?>
-                        </div>
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="input-group">
-                            <!-- <label for="country">País</label> -->
-                            <span class="input-group-addon"><i class="fa fa-flag"></i></span>
-                            <?php echo form_dropdown('country', $countrys, set_value('country'), 'class="form-control" required=""'); ?>
+                        <div class="form-group">
+                            <label for="country">País</label>
+                            <?php echo form_dropdown('country', $countrys, set_value('country'), 'class="form-control input-lg" required=""'); ?>
                             <?php echo form_error('country') ?>
                         </div>
                     </div>
                 </div>
-                <br>
                 <div class="row">
                     <div class="col-sm-12">
-                        <div class="input-group">
-                            <!-- <label for="cities">Ciudad</label> -->
-                            <span class="input-group-addon"><i class="fa fa-map"></i></span>
-                            <?php echo form_dropdown('cities', $cities, set_value('cities'), 'class="form-control" required=""'); ?>
+                        <div class="form-group">
+                            <label for="cities">Ciudad</label>
+                            <?php echo form_dropdown('cities', $cities, set_value('cities'), 'class="form-control input-lg" required=""'); ?>
                             <?php echo form_error('cities') ?>
                         </div>
                     </div>
                 </div>
-                <br>
                 <div class="row">
                     <div class="col-sm-12">
-                        <div class="input-group">
-                            <!-- <label for="sex">Sexo </label> -->
-                            <span class="input-group-addon"><i class="fa fa-venus-mars"></i></span>
-                            <?php echo form_dropdown('sex', $sex, set_value('sex'), 'class="form-control" required=""'); ?>
+                        <div class="form-group">
+                            <label for="sex">Sexo </label>
+                            <?php echo form_dropdown('sex', $sex, set_value('sex'), 'class="form-control input-lg" required=""'); ?>
                             <?php echo form_error('sex') ?>
                         </div>
                     </div>
                 </div>
-                <br>
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="form-group">
-                            <!-- <label for="birth_date">Fecha Nacimiento </label> -->
+                            <label for="birth_date">Fecha Nacimiento </label>
                             <div class="input-group">
                                 <div class="input-group-addon">
                                     <i class="fa fa-calendar"></i>
                                 </div>
-                                <input type="text" name="birth_date" id="datemask" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask value="<?php echo set_value('birth_date') ?>">
+                                <input type="text" name="birth_date" id="datemask" class="form-control input-lg" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask value="<?php echo set_value('birth_date') ?>">
                                 <?php echo form_error('birth_date') ?>
                             </div>
                         </div>
                     </div>
                 </div>
-                <br>
                 <div class="row">
                     <div class="col-sm-12">
-                        <div class="input-group">
-                            <!-- <label for="height">Estatura </label> -->
-                            <span class="input-group-addon"><i class="fa fa-child"></i></span>
-                            <input type="text" name="height" id="height" placeholder="Estatura en cm" class="form-control" value="<?php echo set_value('height') ?>" />
+                        <div class="form-group">
+                            <label for="height">Estatura </label>
+                            <input type="text" name="height" id="height" class="form-control input-lg" value="<?php echo set_value('height') ?>" />
                             <?php echo form_error('height') ?>
                         </div>
                     </div>
                 </div>
-                <br>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="input-group">
-                            <!-- <label for="weight">Peso </label> -->
-                            <span class="input-group-addon"><i class="fa fa-balance-scale"></i></span>
-                            <input type="text" name="weight" id="weight" placeholder="Peso en KG" class="form-control" value="<?php echo set_value('weight') ?>" />
-                        </div>
-                    </div>
-                </div>
-                <br>
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary">Enviar</button>
-                            <button type="submit" class="btn btn-info">Enviar y Encuestar</button>
-                            <button type="reset"  class="btn btn-default">Cancelar</button>
+                            <label for="weight">Peso </label>
+                            <input type="text" name="weight" id="weight" class="form-control input-lg" value="<?php echo set_value('weight') ?>" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="btn-group btn-group-justified">
+                            <div class="btn-group" role="group">
+                                <button type="submit" class="btn btn-primary">Enviar</button>
+                            </div>
+                            <div class="btn-group" role="group">
+                                <button type="submit" class="btn btn-primary" style="padding-left: 0; padding-right: 0; text-align: center;">Env & Encuestar</button>
+                            </div>
+                            <div class="btn-group" role="group">
+                                <button type="reset"  class="btn btn-primary">Cancelar</button>
+                            </div>
                         </div>
                     </div>
                 </div>

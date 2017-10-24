@@ -46,7 +46,6 @@ class DocumentTypesModel extends CI_Model {
         foreach ($this->db->select('id_document_type, document_type')->order_by('document_type', 'ASC')->get('document_types')->result_array() as $key => $value) {
             $document_type[$value['id_document_type']] = $value['document_type'];
         }
-         $document_type[0] = '';
         asort($document_type);
         return $document_type;
     }

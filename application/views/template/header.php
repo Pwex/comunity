@@ -26,7 +26,7 @@
         <!-- Google Font -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
         <!-- estilo para el data tables encabezado y para el jquery ui para el borrado -->
-        <?php if ($this->uri->segment(1) == 'users' or $this->uri->segment(1) == 'modules' or $this->uri->segment(1) == 'movement_types' or $this->uri->segment(1) == 'categories' or $this->uri->segment(1) == 'warehouses' or $this->uri->segment(1) == 'countrys' or $this->uri->segment(1) == 'benefits' or $this->uri->segment(1) == 'typesinventory' or $this->uri->segment(1) == 'components' or $this->uri->segment(1) == 'unitsmeasure' or $this->uri->segment(1) == 'products' or $this->uri->segment(1) == 'partners' or $this->uri->segment(1) == 'document_types' or $this->uri->segment(1) == 'partner_types' or $this->uri->segment(1) == 'cities' or $this->uri->segment(1) == 'seals' or $this->uri->segment(1) == 'list-price' or $this->uri->segment(1) == 'price-product' or $this->uri->segment(1) == 'banks' or $this->uri->segment(1) == 'consumers' or $this->uri->segment(1) == 'catalogue' or $this->uri->segment(1) == 'certifications' or $this->uri->segment(1) == 'shop-layout-navbar' or $this->uri->segment(1) == 'shop-layout-filter' or $this->uri->segment(1) == 'shop-layout-filter-item' ): ?>
+        <?php if ($this->uri->segment(1) == 'users' or $this->uri->segment(1) == 'modules' or $this->uri->segment(1) == 'movement_types' or $this->uri->segment(1) == 'categories' or $this->uri->segment(1) == 'warehouses' or $this->uri->segment(1) == 'countrys' or $this->uri->segment(1) == 'benefits' or $this->uri->segment(1) == 'typesinventory' or $this->uri->segment(1) == 'components' or $this->uri->segment(1) == 'unitsmeasure' or $this->uri->segment(1) == 'products' or $this->uri->segment(1) == 'partners' or $this->uri->segment(1) == 'document_types' or $this->uri->segment(1) == 'partner_types' or $this->uri->segment(1) == 'cities' or $this->uri->segment(1) == 'seals' or $this->uri->segment(1) == 'list-price' or $this->uri->segment(1) == 'price-product' or $this->uri->segment(1) == 'banks' or $this->uri->segment(1) == 'consumers' or $this->uri->segment(1) == 'catalogue' or $this->uri->segment(1) == 'certifications' or $this->uri->segment(1) == 'shop-layout-navbar' or $this->uri->segment(1) == 'shop-layout-filter' or $this->uri->segment(1) == 'shop-layout-filter-item' or $this->uri->segment(1) == 'excel-providers' or $this->uri->segment(1) == 'requirements-matrix' or $this->uri->segment(1) == 'presentation' ): ?>
             <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
             <!-- DataTables -->
             <link rel="stylesheet" href="<?php echo base_url('assets/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css') ?>">
@@ -87,8 +87,6 @@
                     </a>
                     <div class="navbar-custom-menu">
                         <ul class="nav navbar-nav">
-                            <!-- Messages: style can be found in dropdown.less-->
-                            
                             <!-- Notifications: style can be found in dropdown.less -->
                             <li class="dropdown notifications-menu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -128,12 +126,11 @@
                                         <li class="footer"><a href="<?php echo base_url('all_notification_details') ?>">Ver todo</a></li>
                                     </ul>
                             </li>
-                           
                             <!-- User Account: style can be found in dropdown.less -->
                             <li class="dropdown user user-menu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <img src="<?php echo base_url('assets/dist/img/avatar-user-blanco.png') ?>" class="user-image" alt="User Image">
-                                <span class="hidden-xs"><?php echo $this->session->userdata['user']['name']; ?></span>
+                                    <span class="hidden-xs"><?php echo $this->session->userdata['user']['name']; ?></span>
+                                    <img src="<?php echo base_url('assets/dist/img/avatar-user-blanco.png') ?>" class="user-image" alt="<?php echo $this->session->userdata['user']['name']; ?>">
                                 </a>
                                 <ul class="dropdown-menu">
                                     <!-- User image -->
@@ -155,6 +152,11 @@
                                     </li>
                                 </ul>
                             </li>
+                            <?php if ( isset($this->session->userdata['user']['type_of_access']) and $this->session->userdata['user']['type_of_access'] == 'Coach' ): ?>
+                                <li>
+                                   <a href="#"><i class="fa fa-cogs" aria-hidden="true"></i></a>
+                                </li>
+                            <?php endif ?>
                         </ul>
                     </div>
                 </nav>
@@ -171,7 +173,7 @@
                         </div>
                         <div class="pull-left info">
                             <p><?php echo $this->session->userdata['user']['name'] ?></p>
-                            <a href=""><i class="fa fa-circle text-success"></i> Online</a>
+                            <a href=""><i class="fa fa-circle text-success"></i> Conectado</a>
                         </div>
                     </div>
                     <!-- search form -->
@@ -210,12 +212,12 @@
                                     <ul class="treeview-menu">
                                         <li>
                                             <a href="<?php echo base_url('modules') ?>">
-                                                <i class="fa fa-circle-o"></i> Módulos
+                                                <i class="fa fa-angle-right"></i> Módulos
                                             </a>
                                         </li>
                                         <li>
                                             <a href="<?php echo base_url('movement_types') ?>">
-                                                <i class="fa fa-circle-o"></i> Tipos movimiento
+                                                <i class="fa fa-angle-right"></i> Tipos movimiento
                                             </a>
                                         </li>
                                         <li>
@@ -240,16 +242,35 @@
                                         </li>
                                         <li>
                                             <a href="<?php echo base_url('list-price') ?>">
-                                                <i class="fa fa-angle-right"></i> Listado precios
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="<?php echo base_url('price-product') ?>">
-                                                <i class="fa fa-angle-right"></i> Precios productos
+                                                <i class="fa fa-angle-right"></i> Lista de Precios
                                             </a>
                                         </li>
                                     </ul>   <!-- cierra lista global -->
                                 </li> 
+                                <li class="treeview">
+                                    <a href="#"><i class="fa fa-angle-right"></i> Proveedores
+                                        <span class="pull-right-container">
+                                            <i class="fa fa-angle-left pull-right"></i>
+                                        </span>
+                                    </a>
+                                    <ul class="treeview-menu">
+                                        <li>
+                                            <a href="<?php echo base_url('partner_types') ?>">
+                                                <i class="fa fa-angle-right"></i> Tipos Proveedor
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="<?php echo base_url('banks') ?>">
+                                                <i class="fa fa-angle-right"></i> Bancos
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="<?php echo base_url('partners') ?>">
+                                                <i class="fa fa-angle-right"></i> Gestión Proveedores
+                                            </a>
+                                        </li>
+                                    </ul>   <!-- cierra lista menu proveedores -->
+                                </li>
                                 <li class="treeview">
                                     <a href="#"><i class="fa fa-angle-right"></i> Productos
                                         <span class="pull-right-container">
@@ -257,6 +278,16 @@
                                         </span>
                                     </a>
                                     <ul class="treeview-menu">
+                                        <li>
+                                            <a href="<?php echo base_url('catalogue') ?>">
+                                                <i class="fa fa-angle-right"></i> Categoría Principal
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="<?php echo base_url('categories') ?>">
+                                                <i class="fa fa-angle-right"></i> Categorias
+                                            </a>
+                                        </li>
                                         <li>
                                             <a href="<?php echo base_url('components') ?>">
                                                 <i class="fa fa-angle-right"></i> Activos
@@ -278,16 +309,6 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="<?php echo base_url('catalogue') ?>">
-                                                <i class="fa fa-angle-right"></i> Categoría Principal
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="<?php echo base_url('categories') ?>">
-                                                <i class="fa fa-angle-right"></i> Categorias
-                                            </a>
-                                        </li>
-                                        <li>
                                             <a href="<?php echo base_url('typesinventory') ?>">
                                                 <i class="fa fa-angle-right"></i> Tipos Inventario
                                             </a>
@@ -298,36 +319,22 @@
                                             </a>
                                         </li>
                                         <li>
+                                            <a href="<?php echo base_url('presentation') ?>">
+                                                <i class="fa fa-angle-right"></i> Presentaciones
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="<?php echo base_url('price-product') ?>">
+                                                <i class="fa fa-angle-right"></i> Precio de Productos
+                                            </a>
+                                        </li>
+                                        <li>
                                             <a href="<?php echo base_url('products') ?>">
-                                                <i class="fa fa-angle-right"></i> Productos
+                                                <i class="fa fa-angle-right"></i> Gestión Productos
                                             </a>
                                         </li>
                                     </ul>   <!-- cierra lista menu de productos -->
-                                </li> 
-                                <li class="treeview">
-                                    <a href="#"><i class="fa fa-angle-right"></i> Proveedores
-                                        <span class="pull-right-container">
-                                            <i class="fa fa-angle-left pull-right"></i>
-                                        </span>
-                                    </a>
-                                    <ul class="treeview-menu">
-                                        <li>
-                                            <a href="<?php echo base_url('partner_types') ?>">
-                                                <i class="fa fa-angle-right"></i> Tipos Proveedor
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="<?php echo base_url('banks') ?>">
-                                                <i class="fa fa-angle-right"></i> Bancos
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="<?php echo base_url('partners') ?>">
-                                                <i class="fa fa-angle-right"></i> Proveedores
-                                            </a>
-                                        </li>
-                                    </ul>   <!-- cierra lista menu proveedores -->
-                                </li> 
+                                </li>  
                             </ul>
                         </li>
                         <li class="treeview">
@@ -372,6 +379,26 @@
                                             </a>
                                         </li>
                                     </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-newspaper-o" aria-hidden="true"></i> <span>Innovación Mercados</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li>
+                                    <a href="<?php echo base_url('excel-providers') ?>">
+                                        <i class="fa fa-angle-right"></i> Registro Proveedores
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo base_url('requirements-matrix') ?>">
+                                        <i class="fa fa-angle-right"></i> Matriz Requerimientos
+                                    </a>
                                 </li>
                             </ul>
                         </li>
@@ -424,6 +451,24 @@
                                 </li>
                             </ul>
                         </li>
+                        <?php if ($this->session->userdata['user']['type_of_access'] == 'Proveedor'): ?>
+                            <li class="treeview">
+                                <a href="#">
+                                    <i class="fa fa-user-o" aria-hidden="true"></i>
+                                    <span>Partners</span>
+                                    <span class="pull-right-container">
+                                        <i class="fa fa-angle-left pull-right"></i>
+                                    </span>
+                                </a>
+                                <ul class="treeview-menu" style="display: none;">
+                                    <li>
+                                        <a href="<?php echo base_url('partners/list-of-products-supplier') ?>">
+                                            <i class="fa fa-angle-right"></i> Listado Productos
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        <?php endif ?>
                         <li>
                             <a href="<?php echo base_url('users') ?>">
                                 <i class="fa fa-users"></i> <span>Usuarios</span>

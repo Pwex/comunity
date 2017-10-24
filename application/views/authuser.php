@@ -18,11 +18,22 @@
         <link rel="stylesheet" href="<?php echo base_url('assets/plugins/iCheck/square/blue.css') ?>">
         <!-- style default -->
         <style type="text/css">
-            .login-box-body, .register-box-body, .login-page, .register-page  {
+            a {
+                color: #2196f3;
+            }
+           .login-box-body, .register-box-body, .login-page, .register-page  {
                 background: #ffffff;
             }
             .img-logo {
                 width: 5em;
+            }
+            .btn-primary {
+                background-color: #2196F3;
+                border-color: #2196F3;
+            }
+            .btn-primary:hover {
+                background-color: #1a8de8;
+                border-color: #1a8de8;
             }
         </style>
         <!-- Google Font -->
@@ -32,7 +43,7 @@
         <div class="login-box">
             <div class="login-logo" style="margin-bottom: 0;">
                 <img src="<?php echo base_url('assets/dist/img/pwex.png') ?>" class="img-logo" />
-                <a href="<?php echo site_url() ?>" style="letter-spacing: 0.2em">ADMINISTRADOR</a>
+                <a href="<?php echo site_url() ?>" style="letter-spacing: 0.1em">ADMINISTRATIVO</a>
             </div>
             <!-- /.login-logo -->
             <div class="login-box-body">
@@ -48,10 +59,10 @@
                     </div>
                     <div class="row">
                         <div class="col-xs-6">
-                            <button type="submit" class="btn btn-primary btn-block btn-flat">Enviar</button>
+                            <button type="reset" class="btn btn-default btn-block btn-flat" id="btn-cancel">Cancelar</button>
                         </div>
                         <div class="col-xs-6">
-                            <button type="reset" class="btn btn-default btn-block btn-flat" id="btn-cancel">Cancelar</button>
+                            <button type="submit" class="btn btn-primary btn-block btn-flat">Enviar</button>
                         </div>
                     </div>
                 </form>

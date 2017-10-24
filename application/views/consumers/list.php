@@ -96,33 +96,28 @@
         <div class="box-body table-responsive" id="container-box-datatable">
             <table class="table table-responsive table-bordered table-hover" id="table-default">
                 <thead>
-                    <th>Nombres</th>
-                    <th>Email</th>
-                    <th>Opciones</th>  
+                    <th>Nombres y Apellidos</th>
+                    <th>Correo Electrónico</th>  
+                    <th>Estado</th>
                 </thead>
                 <tfoot>
-                    <th>Nombres</th>
-                    <th>Email</th>
-                    <th>Opciones</th>  
+                    <th>Nombres y Apellidos</th>
+                    <th>Correo Electrónico</th>  
+                    <th>Estado</th>
                 </tfoot>
                 <tbody>
                     <?php foreach ($full_listing as $key => $value): ?>
                         <tr>
-                            <td><?php echo $value['name'].' '.$value['last_name'] ?></td>
+                            <td><a href="<?php echo base_url('view-consumer-profile/').$value['id_client'] ?>"><?php echo $value['name'].' '.$value['last_name'] ?></a></td>
                             <td><?php echo $value['email'] ?></td>
                             <td>
-                                <a href="<?php echo base_url('consumers/poll/').$value['id_client'] ?>" class="btn btn-info btn-sm">
-                                    <i class="fa fa-book"></i>
-                                </a>
-                                <a href="<?php echo base_url('consumers/measuring/').$value['id_client'] ?>" class="btn btn-info btn-sm">
-                                    <i class="fa fa-heartbeat"></i>
-                                </a>
-                                <a href="<?php echo base_url('consumers/edit/').$value['id_client'] ?>" class="btn btn-warning btn-sm">
-                                    <i class="fa fa-pencil"></i>
-                                </a>
-                                <button type="button" class="btn btn-danger btn-delete btn-sm" id="<?php echo $value['id_client'] ?>">
-                                    <i class="fa fa-trash"></i>
-                                </button>
+                                <?php 
+                                    if ($value['status'] == 1) {
+                                        echo 'Activo';
+                                    } else {
+                                        echo 'Inactivo';
+                                    }
+                                ?>
                             </td>
                         </tr>
                     <?php endforeach ?>

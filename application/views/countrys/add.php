@@ -32,6 +32,15 @@
         <div class="box-body">
             <?php echo form_open('countrys/add') ?>
                 <div class="row">
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label for="language">Lenguaje</label>
+                            <?php echo form_dropdown('language', $language, set_value('language'), 'class="form-control" id="language"') ?>
+                            <?php echo form_error('language') ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="name_country">Pais</label>
@@ -59,7 +68,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-4">
+                    <div class="col-sm-3">
                         <div class="input-group" style="width: 100%">
                             <label for="status_country">Estatus</label>
                             <?php echo form_dropdown('status_country', $status_country, set_value('status_country'), 'class="form-control" id="status_country"') ?>

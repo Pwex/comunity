@@ -11,7 +11,7 @@ class CountrysModel extends CI_Model {
     {
         return $this->db
         ->from('countrys')
-        ->select('id_country, name_country, coin, tax_iva, status_country')
+        ->select('id_country, name_country, coin, tax_iva, status_country, language')
         ->get()
         ->result_array();
     }
