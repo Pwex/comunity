@@ -40,4 +40,21 @@ class CatalogueModel extends CI_Model {
         $this->db->where('id', $id)->delete('catalogue');
     }
 
+    # Contenido de los item de categorias principales
+    public function item_categories_principal()
+    {
+        return $this->db->select('id, name_catalogue')->order_by('location', 'ASC')->get('catalogue')->result_array();
+    }
+
+    # Almacenar item del menu modificado
+    public function organize_save_item_categories_principal($positions)
+    {
+        foreach ($positions as $key => $value) {
+            $data = array(
+                'location' => $key
+            );
+            $this->db->set('location')->where('id', $value)->update('catalogue', $data);
+        }
+    }
+
 }

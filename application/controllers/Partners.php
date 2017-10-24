@@ -44,6 +44,42 @@ class Partners extends CI_Controller {
 		$this->load->view('template/footer');
 	}
 
+	# Listado de productos del proveedor
+	public function list_of_products_supplier()
+	{
+		# Carga del modelo de base de datos
+		$this->load->model('PartnersModel', 'partners', TRUE);
+		$this->load->model('ActivitiesModel', 'activity', TRUE);
+		# Notificaciones
+		$data['number_of_pending_notifications'] = $this->activity->number_of_pending_notifications($this->session->userdata['user']['id_user']);
+		$data['notification_details']	 		 = $this->activity->notification_details($this->session->userdata['user']['id_user']);
+		# Nombre del proveedor
+		$data['get_name_partner'] = $this->partners->get_name_partner();
+		# Listado de productos del proveedor
+		$data['list_of_products_supplier'] = $this->partners->list_of_products_supplier();
+		# Opciones items del menu principal del contenido
+		$data['option_nav'] = array(
+			'box_title' => 'Productos',
+			'box_span' 	=> 'Listado'
+		);
+		$data['option_nav_item'] = array(
+			'productos'	=> array(
+				'icon' 		=> 'fa fa-ellipsis-v',
+				'url' 		=> 'partners/list-of-products-supplier',
+				'class' 	=> NULL
+			), 
+			'listado'=> array(
+				'icon' 		=> '',
+				'url' 		=> '',
+				'class' 	=> 'active'
+			)
+		);
+		# Renderizando la vista | plantilla
+		$this->load->view('template/header', $data);
+		$this->load->view('partners/list_of_products_supplier');
+		$this->load->view('template/footer');
+	}
+
 	# Formulario Principal 
 	public function add()
 	{
@@ -319,6 +355,40 @@ class Partners extends CI_Controller {
 				}
 			break;
 		}
+	}
+
+	# Enviar email con usuario y clave al proveedor
+	public function send_user_and_password_information()
+	{
+		# Carga del modelo de base de datos
+		$this->load->model('PartnersModel', 'partners', TRUE);
+		$this->load->library('encrypt');
+		# Buscar la informacion del proveedor
+		$data_user_provider = $this->partners->get_data_user_provider($this->input->post('email'));
+        # Envio de informacion al correo electronico y a la base de datos
+        $subject = '
+            <div style="widht: 100%; text-align: center;"><img src="http://pwex.org/platform/assets/dist/img/email/mail-access-pwex-header.jpg" /></div>
+			<p style="font-family: century gothic; font-weight: 100; font-size: 18px; text-align: center;">Usuario : '.$data_user_provider[0]['email'].'</p>
+			<p style="font-family: century gothic; font-weight: 100; font-size: 18px; text-align: center;">Clave: '.$this->encrypt->decode($data_user_provider[0]['password']).'</p>
+			<p style="font-family: century gothic; font-weight: 100; font-size: 18px; text-align: center;"><strogn>Recuerda que:</strong></p>
+			<p style="font-family: century gothic; font-weight: 100; font-size: 18px; text-align: center;"><strong>Tu cuenta es personal e intransferible</strong></p>
+			<p style="font-family: century gothic; font-weight: 100; font-size: 18px; text-align: center;"><strong>Debes de cambiar tu clave una vez que ingreses a tu cuenta</strong></p>
+			<div style="widht: 100%; text-align: center;"><img src="http://pwex.org/platform/assets/dist/img/email/mail-access-pwex-footer.jpg" /></div>
+			<p style="font-family: century gothic; font-weight: 100; font-size: 18px;">Cordial Saludo,</p>
+			<p style="font-family: century gothic; font-weight: 100; font-size: 18px;"><strong>EL EQUIPO&nbsp;<img src="http://pwex.org/platform/assets/dist/img/email/logo.png" width="55" align="center" /></strong></p>
+			<p style="font-family: century gothic; font-weight: 100; font-size: 18px;">&iquest;Tienes alguna duda?</p>
+			<p style="font-family: century gothic; font-weight: 100; font-size: 18px;">Escr&iacute;benos a <a href="mailto:product.development@pwex.com">product.development@pwex.com</a></p>
+			<p style="font-family: century gothic; font-weight: 100; font-size: 18px;">O ll&aacute;manos a + xx xx xx xx xx</p>
+        ';
+        # Carga de la libreria de envio de email
+        $this->load->library('email');
+        $this->email->from('info@pwex.co', 'Pwex Market');
+        $this->email->to($this->input->post('email'));
+        $this->email->subject('Has sido activado como usuario PWEX');
+        $this->email->message($subject);
+        $this->email->send();
+        #Actualizar el estado de el email enviado al proveedor con el usuario y clave
+        $this->partners->change_email_sending_status($this->input->post('email'));
 	}
 
 }

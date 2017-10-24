@@ -115,6 +115,9 @@ $route['catalogue/edit/(:num)'] 	= 'Catalogue/edit_validate/$1';
 $route['catalogue/success-edit'] 	= 'Catalogue/full_listing';
 $route['catalogue/delete'] 			= 'Catalogue/delete';
 $route['catalogue/success-delete'] 	= 'Catalogue/full_listing';
+$route['catalogue/organize'] 		= 'Catalogue/organize';
+$route['catalogue/organize-categories-principal'] 			= 'Catalogue/organize_item_categories_principal';
+$route['catalogue/organize-save-item-categories-principal'] = 'Catalogue/organize_save_item_categories_principal';
 
 # Certificados
 $route['certifications'] 				= 'Certifications/full_listing';
@@ -202,6 +205,7 @@ $route['products/success-edit'] 	= 'Products/full_listing';
 $route['products/delete'] 			= 'Products/delete';
 $route['products/success-delete'] 	= 'Products/full_listing';
 $route['products/filter-settings']	= 'Products/filter_settings';
+$route['products/friendly-url'] 	= 'Products/friendly_url';
 
 # tipos de documento
 $route['document_types'] 				= 'Document_types/full_listing';
@@ -211,6 +215,7 @@ $route['document_types/edit/(:num)'] 	= 'Document_types/edit_validate/$1';
 $route['document_types/success-edit'] 	= 'Document_types/full_listing';
 $route['document_types/delete'] 		= 'Document_types/delete';
 $route['document_types/success-delete'] = 'Document_types/full_listing';
+
 # tipos de proveedor
 $route['partner_types'] 				= 'Partner_types/full_listing';
 $route['partner_types/success'] 		= 'Partner_types/full_listing';
@@ -220,18 +225,27 @@ $route['partner_types/success-edit'] 	= 'Partner_types/full_listing';
 $route['partner_types/delete'] 			= 'Partner_types/delete';
 $route['partner_types/success-delete'] 	= 'Partner_types/full_listing';
 # proveedores
-$route['partners'] 					= 'Partners/full_listing';
-$route['partners/success'] 			= 'Partners/full_listing';
-$route['partners/add'] 				= 'Partners/add_validate';
-$route['partners/edit/(:num)'] 		= 'Partners/edit_validate/$1';
-$route['partners/success-edit'] 	= 'Partners/full_listing';
-$route['partners/delete'] 			= 'Partners/delete';
-$route['partners/success-delete'] 	= 'Partners/full_listing';
+$route['partners'] 								= 'Partners/full_listing';
+$route['partners/success'] 						= 'Partners/full_listing';
+$route['partners/add'] 							= 'Partners/add_validate';
+$route['partners/edit/(:num)'] 					= 'Partners/edit_validate/$1';
+$route['partners/success-edit'] 				= 'Partners/full_listing';
+$route['partners/delete'] 						= 'Partners/delete';
+$route['partners/success-delete'] 				= 'Partners/full_listing';
+$route['partners/list-of-products-supplier'] 	= 'Partners/list_of_products_supplier';
+$route['send-user-and-password-information'] 	= 'Partners/send_user_and_password_information';
 
 # Formulario requerimientos proveedor
 $route['partners/requirements'] 	= 'Partners/add_requirements_validate';
 
-
+# tipos de presentaciones de productos
+$route['presentation'] 					= 'Presentation/full_listing';
+$route['presentation/success'] 			= 'Presentation/full_listing';
+$route['presentation/add'] 				= 'Presentation/add_validate';
+$route['presentation/edit/(:num)'] 		= 'Presentation/edit_validate/$1';
+$route['presentation/success-edit'] 	= 'Presentation/full_listing';
+$route['presentation/delete'] 			= 'Presentation/delete';
+$route['presentation/success-delete'] 	= 'Presentation/full_listing';
 
 # paises
 $route['countrys'] 					= 'Countrys/full_listing';
@@ -249,16 +263,20 @@ $route['cities/edit/(:num)'] 		= 'Cities/edit_validate/$1';
 $route['cities/success-edit'] 		= 'Cities/full_listing';
 $route['cities/delete'] 			= 'Cities/delete';
 $route['cities/success-delete'] 	= 'Cities/full_listing';
+
 # consumidor
 $route['consumers'] 				= 'Consumers/full_listing';
 $route['consumers/success'] 		= 'Consumers/full_listing';
 $route['consumers/add'] 			= 'Consumers/add_validate';
 $route['consumers/edit/(:num)'] 	= 'Consumers/edit_validate/$1';
 $route['consumers/poll/(:num)'] 	= 'Consumers/add_poll_validate/$1';
-$route['consumers/measuring/(:num)'] 	= 'Consumers/add_measuring/$1';
+$route['consumers/measuring/(:num)']= 'Consumers/add_measuring/$1';
 $route['consumers/success-edit'] 	= 'Consumers/full_listing';
 $route['consumers/delete'] 			= 'Consumers/delete';
 $route['consumers/success-delete'] 	= 'Consumers/full_listing';
+
+# Perfil del consumidor
+$route['view-consumer-profile/(:num)']	= 'Consumer_profile/view_consumer_profile/$1';
 
 # Bancos
 $route['banks'] 					= 'Banks/full_listing';
@@ -288,9 +306,16 @@ $route['multimedia/videos/error-select'] 	 = 'Multimedia/files_videos';
 $route['multimedia/videos/delete']	 		 = 'Multimedia/delete_videos';
 $route['multimedia/videos/add-file-manager'] = 'Multimedia/add_file_manager_videos';
 
+# Calendario
+$route['calendar'] = 'Calendar/get';
+
 # eCommerce
-$route['shop-layout'] 			= 'ShopLayout/shop_layout_validate';
-$route['shop-layout/success'] 	= 'ShopLayout/shop_layout_validate';
+$route['shop-layout'] 				= 'ShopLayout/shop_layout_validate';
+$route['shop-layout/success'] 		= 'ShopLayout/shop_layout_validate';
+
+# eCommerce google analytics
+$route['shop-layout-google-analytics'] 			= 'ShopLayout/shop_layout_validate_google_analytics';
+$route['shop-layout-google-analytics/success']  = 'ShopLayout/shop_layout_validate_google_analytics';
 
 # Creador de menus eCommerce
 $route['shop-layout-navbar'] 						= 'ShopLayout/navbar_full_listing';
@@ -314,10 +339,23 @@ $route['shop-layout-filter/delete'] 				= 'ShopLayout/filter_delete';
 $route['shop-layout-filter/success-delete'] 		= 'ShopLayout/filter_full_listing';
 
 # Parametros de busqueda eCommerce
-$route['shop-layout-filter-item'] 						= 'ShopLayout/filter_item_full_listing';
-$route['shop-layout-filter-item/success'] 				= 'ShopLayout/filter_item_full_listing';
-$route['shop-layout-filter-item/add'] 					= 'ShopLayout/filter_item_add_validate';
-$route['shop-layout-filter-item/edit/(:num)'] 			= 'ShopLayout/filter_item_edit_validate/$1';
-$route['shop-layout-filter-item/success-edit'] 			= 'ShopLayout/filter_item_full_listing';
-$route['shop-layout-filter-item/delete'] 				= 'ShopLayout/filter_item_delete';
-$route['shop-layout-filter-item/success-delete'] 		= 'ShopLayout/filter_item_full_listing';
+$route['shop-layout-filter-item'] 					= 'ShopLayout/filter_item_full_listing';
+$route['shop-layout-filter-item/success'] 			= 'ShopLayout/filter_item_full_listing';
+$route['shop-layout-filter-item/add'] 				= 'ShopLayout/filter_item_add_validate';
+$route['shop-layout-filter-item/edit/(:num)'] 		= 'ShopLayout/filter_item_edit_validate/$1';
+$route['shop-layout-filter-item/success-edit'] 		= 'ShopLayout/filter_item_full_listing';
+$route['shop-layout-filter-item/delete'] 			= 'ShopLayout/filter_item_delete';
+$route['shop-layout-filter-item/success-delete'] 	= 'ShopLayout/filter_item_full_listing';
+
+# Innovacion de Mercados
+$route['excel-providers']						= 'Innovation/excel_providers';
+$route['donwload']								= 'Innovation/donwload';
+$route['sending-information-to-suppliers']		= 'Innovation/sending_information_to_suppliers';
+$route['product-order-approval']				= 'Innovation/product_order_approval';
+
+$route['requirements-matrix'] 	= 'Innovation/requirements_matrix';
+$route['donwload-requirements']	= 'Innovation/donwload_requirements';
+$route['view-requirements']		= 'Innovation/view_requirements';
+
+# Aplicacion del Coach
+$route['my-world'] = 'Coach/menu';

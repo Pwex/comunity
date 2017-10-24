@@ -60,7 +60,7 @@ class PriceProductModel extends CI_Model {
     public function list_country()
     {
         $country = array();
-        foreach ($this->db->select('id_country, name_country')->order_by('name_country', 'ASC')->get('countrys')->result_array() as $key => $value) {
+        foreach ($this->db->select('id_country, name_country')->where('status_country', 1)->order_by('name_country', 'ASC')->get('countrys')->result_array() as $key => $value) {
             $country[$value['id_country']] = $value['name_country'];
         }
         asort($country);

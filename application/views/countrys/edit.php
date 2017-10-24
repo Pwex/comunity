@@ -32,6 +32,15 @@
         <div class="box-body">
             <?php echo form_open('countrys/edit/'.$this->uri->segment(3)) ?>
                 <div class="row">
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label for="language">Lenguaje</label>
+                            <?php echo form_dropdown('language', $language, set_value('language', $information_country[0]["language"]), 'class="form-control" id="language"') ?>
+                            <?php echo form_error('language') ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="name">Pais</label>
@@ -54,6 +63,15 @@
                         <div class="input-group">
                             <input type="number" name="tax_iva" id="tax_iva" class="form-control" value="<?php echo set_value('tax_iva', $information_country[0]["tax_iva"]) ?>" required="" />
                             <span class="input-group-addon"><i class="fa fa-percent"></i> Iva</span>
+                            <?php echo form_error('tax_iva') ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div class="input-group" style="width: 100%">
+                            <label for="status_country">Estatus</label>
+                            <?php echo form_dropdown('status_country', $status_country, set_value('status_country', $information_country[0]["status_country"]), 'class="form-control" id="status_country"') ?>
                             <?php echo form_error('tax_iva') ?>
                         </div>
                     </div>

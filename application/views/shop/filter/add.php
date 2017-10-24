@@ -3,7 +3,7 @@
     <div class="box box-danger">
         <div class="box-header">
             <blockquote style="margin-bottom: 0">
-                Crear Filtros y Búsqueda
+                Crear Filtros
             </blockquote>
         </div>
         <!-- /.box-header -->

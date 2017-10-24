@@ -76,6 +76,9 @@ class Countrys extends CI_Controller {
 		$data['list_images'] = $this->medios->list_images();
 		# Listado de categorias asociado a las imagenes
 		$data['categories_images'] = $this->medios->categories_images();
+		# Estatus del pais
+		$data['status_country'] = array(1 => 'Activo', 0 => 'Inactivo');
+		$data['language'] 		= array('Español' => 'Español', 'Ingles' => 'Ingles');
 		# Renderizando la vista | plantilla
 		$this->load->view('template/header', $data);
 		$this->load->view('countrys/add');
@@ -141,6 +144,8 @@ class Countrys extends CI_Controller {
 		$data['list_images'] = $this->medios->list_images();
 		# Listado de categorias asociado a las imagenes
 		$data['categories_images'] = $this->medios->categories_images();
+		$data['status_country'] = array(1 => 'Activo', 0 => 'Inactivo');
+		$data['language'] 		= array('Español' => 'Español', 'Ingles' => 'Ingles');
 		# Renderizando la vista | plantilla
 		$this->load->view('template/header', $data);
 		$this->load->view('countrys/edit');

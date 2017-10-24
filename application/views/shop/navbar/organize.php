@@ -11,8 +11,8 @@
             <blockquote style="margin-bottom: 0">
                 Organizar Menús
                 <span style="float: right; margin-top: -4px;">
-                    <span id="message_save_item_navbar" style="display: none; font-weight: 400; font-size: 14px; color: #607D8B; background: antiquewhite; padding: 8px; vertical-align: middle;">
-                        Has hechos algunos cambios en el menú debe de guardar 
+                    <span id="message_save_item_navbar" style="display: none; font-weight: 600;font-size: 14px;color: rgb(96, 125, 139);background: antiquewhite;padding: 8px;vertical-align: middle;">
+                        Has hechos algunos cambios en el menú debes de guardar 
                     </span>
                     <span style="color: #f8fafc"> | </span>
                     <button type="button" class="btn btn-primary" title="Guardar Menú" disabled="" id="btn_save_item_navbar">
@@ -57,13 +57,13 @@
 <style>
     #sortable { list-style-type: none; margin: 0; padding: 0; }
     #sortable li { 
+        font-size: 15px;
+        font-weight: 500;
+        margin-bottom: 0.8em !important;
         margin: 3px 3px 3px 0;
         padding: 10px 25px;
-        float: left;
-        width: 100%;
-        font-size: 20px;
-        font-weight: 500;
         text-align: left;
+        width: 30%;
     }
 </style>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -105,6 +105,7 @@
             var navbar_position = $('#navbar_position').val();
             if (navbar_position == 0) {
                 $('#container_item_navbar').hide();
+                $('#message_save_item_navbar').hide();
                 return false;
             }
             if (navbar_position > 0) {

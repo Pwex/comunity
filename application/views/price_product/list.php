@@ -60,15 +60,15 @@
                     <th>Código</th>
                     <th>Productos</th>
                     <th>Cuenta</th>
-                    <th>Precio</th>
+                    <th>PVP</th>
                     <th>País</th>
-                    <th>Opciones</th>  
+                    <th style="width: 12%">Opciones</th>  
                 </thead>
                 <tfoot>
                     <th>Código</th>
                     <th>Productos</th>
                     <th>Cuenta</th>
-                    <th>Precio</th>
+                    <th>PVP</th>
                     <th>País</th>
                     <th>Opciones</th>  
                 </tfoot>
@@ -81,12 +81,16 @@
                             <td><?php echo number_format($value['price'], '2', ',', '.').' '.$value['coin'] ?></td>
                             <td><?php echo $value['name_country'] ?></td>
                             <td>
-                                <a href="<?php echo base_url('price-product/edit/').$value['id_price_product'] ?>" class="btn btn-warning btn-sm">
-                                    <i class="fa fa-pencil"></i>
-                                </a>
-                                <button type="button" class="btn btn-danger btn-delete btn-sm" id="<?php echo $value['id_price_product'] ?>">
-                                    <i class="fa fa-trash"></i>
-                                </button>
+                                <div class="btn-group btn-group-justified">
+                                    <a href="<?php echo base_url('price-product/edit/').$value['id_price_product'] ?>" class="btn btn-warning btn-sm">
+                                        <i class="fa fa-pencil"></i>
+                                    </a>
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-danger btn-delete btn-sm" id="<?php echo $value['id_price_product'] ?>">
+                                            <i class="fa fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
                     <?php endforeach ?>

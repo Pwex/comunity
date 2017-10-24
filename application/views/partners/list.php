@@ -1,3 +1,18 @@
+<style type="text/css">
+    .bar-disable {
+        display: none; 
+        background: rgb(248, 250, 252);
+        border: 1px solid #eee;
+        color: #4a4a4a;
+        font-size: 21px;
+        padding: 56px;
+        position: absolute;
+        text-align: center;
+        top: 45%;
+        width: 93.6%;
+        z-index: 10;
+    }
+</style>
 <!-- Main content -->
 <section class="content">
     <div class="box box-danger">
@@ -45,7 +60,7 @@
                 <p></p>
             <?php endif ?>
             <blockquote style="margin-bottom: 0">
-                Listado de Proveedores
+                Listado de Proveedores <?php echo $this->uri->segment(1)  ?>
                 <span style="float: right; margin-top: -4px;">
                     <a href="<?php echo base_url('partners/add') ?>" class="btn btn-primary" title="Agregar Proveedor">
                         <i class="fa fa-plus-circle"></i>
@@ -55,31 +70,45 @@
         </div>
         <!-- /.box-header -->
         <div class="box-body table-responsive" id="container-box-datatable">
+            <div class="bar-disable">Enviando información al proveedor...</div>
             <table class="table table-responsive table-bordered table-hover" id="table-default">
                 <thead>
-                    <th>Tipo Dcto</th>
-                    <th>Documento</th>
                     <th>Nombre</th>
                     <th>Pais</th>
-                    <th>Opciones</th>
+                    <th>Tipo Dcto</th>
+                    <th>Documento</th>
+                    <th style="width: 25%">Opciones</th>
                 </thead>
                 <tfoot>
-                    <th>Tipo Dcto</th>
-                    <th>Documento</th>
                     <th>Nombre</th>
                     <th>Pais</th>
+                    <th>Tipo Dcto</th>
+                    <th>Documento</th>
                     <th>Opciones</th>
                 </tfoot>
                 <tbody>
                     <?php foreach ($full_listing as $key => $value): ?>
                         <tr>
-                            <td><?php echo $value['document_type'] ?></td>
-                            <td><?php echo $value['id_partner'] ?></td>
                             <td><?php echo $value['name_partner'] ?></td>
                             <td><?php echo $value['name_country'] ?></td>
+                            <td><?php echo $value['document_type'] ?></td>
+                            <td><?php echo $value['id_partner'] ?></td>
                             <td>
-                                <a href="<?php echo base_url('partners/edit/').$value['id_partner'] ?>" class="btn btn-warning btn-sm"><i class="fa fa-pencil"></i></a>
-                                <button type="button" class="btn btn-danger btn-delete btn-sm" id="<?php echo $value['id_partner'] ?>"><i class="fa fa-trash"></i></button>
+                                <div class="btn-group btn-group-justified">
+                                    <a href="<?php echo base_url('partners/edit/').$value['id_partner'] ?>" class="btn btn-warning btn-sm"><i class="fa fa-pencil"></i></a>
+                                    <div class="btn-group">
+                                        <button type="button" <?php if($value['email_sending_status'] == 1){ echo 'style="background-color:#4caf50; border-color:#4caf50;"'; } ?> value="<?php echo $value['email_partner'] ?>" id="<?php echo $value['id_partner'] ?>" company="<?php echo $value['name_partner'] ?>" language="<?php echo $value['language'] ?>" class="btn btn-primary btn-block btn-sm" title="<?php if($value['email_sending_status'] == 0){ echo 'Enviar'; } else{ echo 'Reenviar'; } ?>">
+                                            <?php if ($value['email_sending_status'] == 0): ?>
+                                                <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                                            <?php else: ?>
+                                                <i class="fa fa-share" aria-hidden="true"></i>
+                                            <?php endif ?>
+                                        </button>
+                                    </div>
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-danger btn-delete btn-sm" id="<?php echo $value['id_partner'] ?>"><i class="fa fa-trash"></i></button>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
                     <?php endforeach ?>

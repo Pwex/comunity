@@ -38,6 +38,10 @@ class ShopLayout extends CI_Controller {
 		);
 		# Información del registro en la base de datos
 		$data['row'] = $this->shop->information();
+		# Listado tipo de movientos contables
+		$data['movement_type'] = $this->shop->list_movement_type();
+		# Listado de bodegas
+		$data['list_warehouses'] = $this->shop->list_warehouses();
 		# Renderizando la vista | plantilla
 		$this->load->view('template/header', $data);
 		$this->load->view('shop/layout');
@@ -409,7 +413,7 @@ class ShopLayout extends CI_Controller {
 		# Opciones items del menu principal del contenido
 		$data['option_nav'] = array(
 			'box_title' => 'eCommerce',
-			'box_span' 	=> 'Filtros y Búsqueda'
+			'box_span' 	=> 'Filtros'
 		);
 		$data['option_nav_item'] = array(
 			'ecommerce'	=> array(
@@ -442,7 +446,7 @@ class ShopLayout extends CI_Controller {
 		$data['notification_details']	 		 = $this->activity->notification_details($this->session->userdata['user']['id_user']);
 		# Opciones items del menu principal del contenido
 		$data['option_nav'] = array(
-			'box_title' => 'Filtros y Búsqueda',
+			'box_title' => 'Filtros',
 			'box_span' 	=> 'Crear'
 		);
 		$data['option_nav_item'] = array(
@@ -501,7 +505,7 @@ class ShopLayout extends CI_Controller {
 		$data['notification_details']	 		 = $this->activity->notification_details($this->session->userdata['user']['id_user']);
 		# Opciones items del menu principal del contenido
 		$data['option_nav'] = array(
-			'box_title' => 'Filtros y Búsqueda',
+			'box_title' => 'Filtros',
 			'box_span' 	=> 'Editar'
 		);
 		$data['option_nav_item'] = array(
@@ -590,7 +594,7 @@ class ShopLayout extends CI_Controller {
 		# Opciones items del menu principal del contenido
 		$data['option_nav'] = array(
 			'box_title' => 'eCommerce',
-			'box_span' 	=> 'Parámetros de Búsqueda'
+			'box_span' 	=> 'Parámetros de Filtro'
 		);
 		$data['option_nav_item'] = array(
 			'ecommerce'	=> array(
@@ -623,7 +627,7 @@ class ShopLayout extends CI_Controller {
 		$data['notification_details']	 		 = $this->activity->notification_details($this->session->userdata['user']['id_user']);
 		# Opciones items del menu principal del contenido
 		$data['option_nav'] = array(
-			'box_title' => 'Parámetros de Búsqueda',
+			'box_title' => 'Parámetros de Filtro',
 			'box_span' 	=> 'Crear'
 		);
 		$data['option_nav_item'] = array(
@@ -682,7 +686,7 @@ class ShopLayout extends CI_Controller {
 		$data['notification_details']	 		 = $this->activity->notification_details($this->session->userdata['user']['id_user']);
 		# Opciones items del menu principal del contenido
 		$data['option_nav'] = array(
-			'box_title' => 'Parámetros de Búsqueda',
+			'box_title' => 'Parámetros de Filtro',
 			'box_span' 	=> 'Editar'
 		);
 		$data['option_nav_item'] = array(
@@ -756,6 +760,57 @@ class ShopLayout extends CI_Controller {
 		$this->load->library('form_validation');
 		$this->form_validation->set_error_delimiters('<p class="text-danger msg-error">', '</p>');
 		$this->form_validation->set_rules($config);
+	}
+
+	public function google_analytics()
+	{
+		# Cargando el modelo y librerias
+		$this->load->helper('form');
+		$this->load->model('ShopLayoutModel', 'shop', TRUE);
+		$this->load->model('ActivitiesModel', 'activity', TRUE);
+		# Notificaciones
+		$data['number_of_pending_notifications'] = $this->activity->number_of_pending_notifications($this->session->userdata['user']['id_user']);
+		$data['notification_details']	 		 = $this->activity->notification_details($this->session->userdata['user']['id_user']);
+		# Opciones items del menu principal del contenido
+		$data['option_nav'] = array(
+			'box_title' => 'eCommerce',
+			'box_span' 	=> 'Configuración'
+		);
+		$data['option_nav_item'] = array(
+			'ecommerce'	=> array(
+				'icon' 		=> 'fa fa-shopping-cart',
+				'url' 		=> 'shop-layout',
+				'class' 	=> NULL
+			), 
+			'configuración' => array(
+				'icon' 		=> '',
+				'url' 		=> '',
+				'class' 	=> 'active'
+			)
+		);
+		# Información del registro en la base de datos
+		$data['row'] = $this->shop->information_google_analytics();
+		# Renderizando la vista | plantilla
+		$this->load->view('template/header', $data);
+		$this->load->view('shop/google_analytics');
+		$this->load->view('template/footer');
+	}
+
+	# Almacenar y validar información de la tienda
+	public function shop_layout_validate_google_analytics()
+	{
+		switch ($this->input->post()) {
+			case FALSE:
+				$this->google_analytics();
+			break;
+			case TRUE:
+				# Cargar el modelo de base de datos
+				$this->load->model('ShopLayoutModel', 'shop', TRUE);
+				# Insertar información en la base de datos
+				$this->shop->save_google_analytics($this->input->post());
+				redirect('shop-layout-google-analytics/success');
+			break;
+		}
 	}
 
 }

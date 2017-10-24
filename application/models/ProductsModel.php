@@ -42,15 +42,31 @@ class ProductsModel extends CI_Model {
     }
 
     # Almacenar la informacion
-    public function save($data)
+    public function save($data, $image)
     {
         unset($data['filtr-search']);
         $data['id_benefits']        = implode(',', $data['id_benefits']);
         $data['id_component']       = implode(',', $data['id_component']);
-        $data['id_seals']           = implode(',', $data['id_seals']);
+        # Buscar las imagenes de los sellos
+            if (isset($data['id_seals']) and count($data['id_seals']) > 0) {
+                $data['images_seals'] = '';
+                foreach ($data['id_seals'] as $key => $value) {
+                    $temp = $this->db->select('images')->where('id_seals', $value)->get('seals')->result_array();
+                    $data['images_seals'] .= ','.$temp[0]['images'];
+                }
+                $data['images_seals'] = substr($data['images_seals'], 1);
+                $data['id_seals']           = implode(',', $data['id_seals']);
+            }
+            if (isset($data['filter_product'])) {
+                $data['filter_product']     = implode(',', $data['filter_product']);
+            }
         $data['images']             = implode(',', $data['images']);
-        $data['availability']       = implode(',', $data['availability']);
-        $data['filter_product']     = implode(',', $data['filter_product']);
+        $data['availability']       = implode(',', $data['availability']);        
+        if (!is_null($image)) {
+            $data['nutritional']    = $image['upload_data']['file_name'];
+        } else {
+            $data['nutritional']    = '';
+        }
         if (!empty($data['id_certifications'])) {
             $data['id_certifications']  = implode(',', $data['id_certifications']);
         } else {
@@ -92,6 +108,17 @@ class ProductsModel extends CI_Model {
         }
         asort($catalogue);
         return $catalogue;
+    }
+
+    # Lista de tipo de presentaciones de productos
+    public function presentation_listing()
+    {
+        $presentation = array();
+        foreach ($this->db->select('id_presentation, name_presentation')->order_by('name_presentation', 'ASC')->get('presentation')->result_array() as $key => $value) {
+            $presentation[$value['id_presentation']] = $value['name_presentation'];
+        }
+        asort($presentation);
+        return $presentation;
     }
 
     # Lista de categorias
@@ -166,6 +193,17 @@ class ProductsModel extends CI_Model {
         }
         asort($certifications);
         return $certifications;
+    }
+
+    # Lista de proveedores
+    public function provider_listing()
+    {
+        $provider = array();
+        foreach ($this->db->select('id_partner, name_partner')->order_by('name_partner', 'ASC')->get('partners')->result_array() as $key => $value) {
+            $provider[$value['id_partner']] = $value['name_partner'];
+        }
+        asort($provider);
+        return $provider;
     }
 
 }

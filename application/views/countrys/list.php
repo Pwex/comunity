@@ -59,15 +59,19 @@
                 <thead>
                     <th>Código</th>
                     <th>Pais</th>
+                    <th>Idioma</th>
                     <th>Moneda</th>
                     <th>Iva</th>
+                    <th>Estatus</th>
                     <th>Opciones</th>  
                 </thead>
                 <tfoot>
                     <th>Código</th>
                     <th>Pais</th>
+                    <th>Idioma</th>
                     <th>Moneda</th>
                     <th>Iva</th>
+                    <th>Estatus</th>
                     <th>Opciones</th>  
                 </tfoot>
                 <tbody>
@@ -75,8 +79,16 @@
                         <tr>
                             <td><?php echo $value['id_country'] ?></td>
                             <td><?php echo $value['name_country'] ?></td>
+                            <td><?php echo $value['language'] ?></td>
                             <td><?php echo $value['coin'] ?></td>
                             <td><?php echo $value['tax_iva'] ?>%</td>
+                            <td>
+                                <?php if ($value['status_country'] == 1): ?>
+                                    Activo
+                                <?php else: ?>
+                                    Inactivo
+                                <?php endif ?>
+                            </td>
                             <td>
                                 <a href="<?php echo base_url('countrys/edit/').$value['id_country'] ?>" class="btn btn-warning btn-sm">
                                     <i class="fa fa-pencil"></i>

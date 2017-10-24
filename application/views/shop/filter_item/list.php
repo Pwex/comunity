@@ -45,7 +45,7 @@
                 <p></p>
             <?php endif ?>
             <blockquote style="margin-bottom: 0">
-                Parámtros de Búsqueda
+                Parámtros de Filtro
                 <span style="float: right; margin-top: -4px;">
                     <a href="<?php echo base_url('shop-layout-filter-item/add') ?>" class="btn btn-primary" title="Agregar Menús">
                         <i class="fa fa-plus-circle"></i>
