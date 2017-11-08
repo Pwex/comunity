@@ -65,7 +65,7 @@
                     <th>Posición</th>
                     <th>Url</th>
                     <th>Estatus</th>
-                    <th>Opciones</th>  
+                    <th style="width: 15%">Opciones</th>  
                 </thead>
                 <tfoot>
                     <th>Código</th>
@@ -92,12 +92,16 @@
                                 ?>
                             </td>
                             <td>
-                                <a href="<?php echo base_url('shop-layout-navbar/edit/').$value['id_navbar'] ?>" class="btn btn-warning btn-sm">
-                                    <i class="fa fa-pencil"></i>
-                                </a>
-                                <button type="button" class="btn btn-danger btn-delete btn-sm" id="<?php echo $value['id_navbar'] ?>">
-                                    <i class="fa fa-trash"></i>
-                                </button>
+                                <div class="btn-group btn-group-justified">  
+                                    <a href="<?php echo base_url('shop-layout-navbar/edit/').$value['id_navbar'] ?>" class="btn btn-warning btn-sm">
+                                        <i class="fa fa-pencil"></i>
+                                    </a>
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-danger btn-delete btn-sm" id="<?php echo $value['id_navbar'] ?>">
+                                            <i class="fa fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
                     <?php endforeach ?>

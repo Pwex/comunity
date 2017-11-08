@@ -59,7 +59,7 @@
                 <thead>
                     <th>Código</th>
                     <th>Módulo</th>
-                    <th>Opciones</th>  
+                    <th style="width: 15%">Opciones</th>  
                 </thead>
                 <tfoot>
                     <th>Código</th>
@@ -72,12 +72,16 @@
                             <td><?php echo $value['id_module'] ?></td>
                             <td><?php echo $value['module_name'] ?></td>
                             <td>
-                                <a href="<?php echo base_url('modules/edit/').$value['id_module'] ?>" class="btn btn-warning btn-sm">
-                                    <i class="fa fa-pencil"></i>
-                                </a>
-                                <button type="button" class="btn btn-danger btn-delete btn-sm" id="<?php echo $value['id_module'] ?>">
-                                    <i class="fa fa-trash"></i>
-                                </button>
+                                <div class="btn-group btn-group-justified">  
+                                    <a href="<?php echo base_url('modules/edit/').$value['id_module'] ?>" class="btn btn-warning btn-sm">
+                                        <i class="fa fa-pencil"></i>
+                                    </a>
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-danger btn-delete btn-sm" id="<?php echo $value['id_module'] ?>">
+                                            <i class="fa fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
                     <?php endforeach ?>

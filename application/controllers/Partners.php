@@ -363,28 +363,31 @@ class Partners extends CI_Controller {
 		# Carga del modelo de base de datos
 		$this->load->model('PartnersModel', 'partners', TRUE);
 		$this->load->library('encrypt');
+		$this->load->helper('string');
 		# Buscar la informacion del proveedor
-		$data_user_provider = $this->partners->get_data_user_provider($this->input->post('email'));
+		$data_user_provider = $this->partners->get_data_user_provider(random_string('alnum', 16));
         # Envio de informacion al correo electronico y a la base de datos
         $subject = '
-            <div style="widht: 100%; text-align: center;"><img src="http://pwex.org/platform/assets/dist/img/email/mail-access-pwex-header.jpg" /></div>
-			<p style="font-family: century gothic; font-weight: 100; font-size: 18px; text-align: center;">Usuario : '.$data_user_provider[0]['email'].'</p>
+			<div style="text-align: center;"><img src="'.base_url("assets/dist/img/email/mail-access-pwex-header.jpg").'" width="100%" /></div>
+			<p style="font-family: century gothic; font-weight: 100; font-size: 18px; text-align: center;">Puedes ingresar a nuesta plataforma desde el siguiente <br /><a href="http://www.pwex.org/platform">http://www.pwex.org/platform</a></p>
+			<p style="font-family: century gothic; font-weight: 100; font-size: 18px; text-align: center;">Usuario: '.$data_user_provider[0]['email'].'</p>
 			<p style="font-family: century gothic; font-weight: 100; font-size: 18px; text-align: center;">Clave: '.$this->encrypt->decode($data_user_provider[0]['password']).'</p>
-			<p style="font-family: century gothic; font-weight: 100; font-size: 18px; text-align: center;"><strogn>Recuerda que:</strong></p>
-			<p style="font-family: century gothic; font-weight: 100; font-size: 18px; text-align: center;"><strong>Tu cuenta es personal e intransferible</strong></p>
-			<p style="font-family: century gothic; font-weight: 100; font-size: 18px; text-align: center;"><strong>Debes de cambiar tu clave una vez que ingreses a tu cuenta</strong></p>
-			<div style="widht: 100%; text-align: center;"><img src="http://pwex.org/platform/assets/dist/img/email/mail-access-pwex-footer.jpg" /></div>
-			<p style="font-family: century gothic; font-weight: 100; font-size: 18px;">Cordial Saludo,</p>
-			<p style="font-family: century gothic; font-weight: 100; font-size: 18px;"><strong>EL EQUIPO&nbsp;<img src="http://pwex.org/platform/assets/dist/img/email/logo.png" width="55" align="center" /></strong></p>
-			<p style="font-family: century gothic; font-weight: 100; font-size: 18px;">&iquest;Tienes alguna duda?</p>
-			<p style="font-family: century gothic; font-weight: 100; font-size: 18px;">Escr&iacute;benos a <a href="mailto:product.development@pwex.com">product.development@pwex.com</a></p>
-			<p style="font-family: century gothic; font-weight: 100; font-size: 18px;">O ll&aacute;manos a + xx xx xx xx xx</p>
+			<p style="font-family: century gothic; font-weight: 100; font-size: 18px; text-align: center;"><strong>Recuerda que:</strong></p>
+			<p style="font-family: century gothic; font-weight: 100; font-size: 18px; text-align: center;">Tu cuenta es personal e intransferible</p>
+			<p style="font-family: century gothic; font-weight: 100; font-size: 18px; text-align: center;">Debes de cambiar tu clave una vez que ingreses a tu cuenta</p>
+			<div style="text-align: center;"><img src="'.base_url("assets/dist/img/email/mail-access-pwex-footer.jpg").'" width="100%" /></div>
+			<p style="font-family: century gothic; font-weight: 100; font-size: 18px; text-align: center;"><strong>Cordial Saludo,</strong></p>
+			<p style="font-family: candara; font-size: 24px; margin-bottom: -20px !important; text-align: right;">&iquest;Tienes alguna pregunta?</p>
+			<p style="font-family: candara; font-size: 24px; margin-bottom: -20px !important; text-align: right;">Escribenos a: <a href="mailto:product.development@pwex.co">product.development@pwex.co</a></p>
+			<p style="font-family: candara; font-size: 24px; margin-bottom: -20px !important; text-align: right;">O llamanos a:&nbsp;210-828-5555&nbsp;</p>
+			<p style="font-family: candara; font-size: 24px; text-align: right;"><strong>El equipo de</strong>&nbsp;<img style="vertical-align: middle; height: 35px;" src="'.base_url("assets/dist/img/pwex-email.png").'" /></p>
+        	<p><img style="width:100%" src="http://pwex.org/platform/assets/dist/img/email/barra-inf.png" /></p>
         ';
         # Carga de la libreria de envio de email
         $this->load->library('email');
-        $this->email->from('info@pwex.co', 'Pwex Market');
+        $this->email->from('info@pwex.co', 'Pwex Platform');
         $this->email->to($this->input->post('email'));
-        $this->email->subject('Has sido activado como usuario PWEX');
+        $this->email->subject('Has sido activado como proveedor PWEX');
         $this->email->message($subject);
         $this->email->send();
         #Actualizar el estado de el email enviado al proveedor con el usuario y clave

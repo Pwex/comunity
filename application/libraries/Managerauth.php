@@ -22,7 +22,7 @@ class Managerauth {
     	
     	# Validar que existe una sesion abierta
     	if (empty($this->CI->session->userdata('agent')) or is_null($this->CI->session->userdata('agent'))) {
-    		show_404();
+    		redirect('', 'refresh');
     	}
     }
 

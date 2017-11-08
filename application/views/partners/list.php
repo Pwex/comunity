@@ -77,7 +77,7 @@
                     <th>Pais</th>
                     <th>Tipo Dcto</th>
                     <th>Documento</th>
-                    <th style="width: 25%">Opciones</th>
+                    <th style="width: 15%">Opciones</th>
                 </thead>
                 <tfoot>
                     <th>Nombre</th>
@@ -95,7 +95,6 @@
                             <td><?php echo $value['id_partner'] ?></td>
                             <td>
                                 <div class="btn-group btn-group-justified">
-                                    <a href="<?php echo base_url('partners/edit/').$value['id_partner'] ?>" class="btn btn-warning btn-sm"><i class="fa fa-pencil"></i></a>
                                     <div class="btn-group">
                                         <button type="button" <?php if($value['email_sending_status'] == 1){ echo 'style="background-color:#4caf50; border-color:#4caf50;"'; } ?> value="<?php echo $value['email_partner'] ?>" id="<?php echo $value['id_partner'] ?>" company="<?php echo $value['name_partner'] ?>" language="<?php echo $value['language'] ?>" class="btn btn-primary btn-block btn-sm" title="<?php if($value['email_sending_status'] == 0){ echo 'Enviar'; } else{ echo 'Reenviar'; } ?>">
                                             <?php if ($value['email_sending_status'] == 0): ?>
@@ -105,6 +104,9 @@
                                             <?php endif ?>
                                         </button>
                                     </div>
+                                    <a href="<?php echo base_url('partners/edit/').$value['id_partner'] ?>" class="btn btn-warning btn-sm">
+                                        <i class="fa fa-pencil"></i>
+                                    </a>
                                     <div class="btn-group">
                                         <button type="button" class="btn btn-danger btn-delete btn-sm" id="<?php echo $value['id_partner'] ?>"><i class="fa fa-trash"></i></button>
                                     </div>
@@ -122,4 +124,3 @@
 
     </div>
 </section>
-<!-- /.content -->   

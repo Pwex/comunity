@@ -29,7 +29,7 @@ class Consumers extends CI_Controller
 		);
 		$data['option_nav_item'] = array(
 				'Consumidores'	=> array(
-				'icon' 		=> 'fa fa-heartbeat',
+				'icon' 		=> 'fa fa-ellipsis-v',
 				'url' 		=> 'consumers',
 				'class' 	=> NULL
 			), 
@@ -64,7 +64,7 @@ class Consumers extends CI_Controller
 		);
 		$data['option_nav_item'] = array(
 			'Consumidores'	=> array(
-				'icon' 		=> 'fa fa-heartbeat',
+				'icon' 		=> 'fa fa-ellipsis-v',
 				'url' 		=> 'consumers',
 				'class' 	=> NULL
 			), 
@@ -133,7 +133,7 @@ class Consumers extends CI_Controller
 		);
 		$data['option_nav_item'] = array(
 			'Consumidores'	=> array(
-				'icon' 		=> 'fa fa-heartbeat',
+				'icon' 		=> 'fa fa-ellipsis-v',
 				'url' 		=> 'registeer_consumer',
 				'class' 	=> NULL
 			), 
@@ -170,7 +170,7 @@ class Consumers extends CI_Controller
 		);
 		$data['option_nav_item'] = array(
 			'Consumidores'	=> array(
-				'icon' 		=> 'fa fa-heartbeat',
+				'icon' 		=> 'fa fa-ellipsis-v',
 				'url' 		=> 'poll',
 				'class' 	=> NULL
 			), 
@@ -209,47 +209,13 @@ class Consumers extends CI_Controller
 						$this->load->model('ConsumersModel', 'consumers', TRUE);
 						# Insertar información en la base de datos
 						$this->consumers->save_poll($this->input->post(), $id);
-						redirect('consumers/success'); 
+						redirect('view-consumer-profile/'.$id.'/success'); 
 					break;
 				}
 			break;
 		}
 	}
 
-	public function add_measuring($id = NULL)
-	{
-		# Librerias
-		$this->load->helper('form');
-		$this->load->model('ActivitiesModel', 'activity', TRUE);
-		$this->load->model('CountrysModel', 'country', TRUE);
-		$this->load->model('ConsumersModel', 'ec_client', TRUE);
-		# Notificaciones
-		$data['number_of_pending_notifications'] = $this->activity->number_of_pending_notifications($this->session->userdata['user']['id_user']);
-		$data['notification_details']	 		 = $this->activity->notification_details($this->session->userdata['user']['id_user']);
-		# Opciones items del menu principal del contenido
-		$data['option_nav'] = array(
-			'box_title' => 'Consumidores',
-			'box_span' 	=> 'Medición'
-		);
-		$data['option_nav_item'] = array(
-			'Consumidores'	=> array(
-				'icon' 		=> 'fa fa-heartbeat',
-				'url' 		=> 'measuring',
-				'class' 	=> NULL
-			), 
-			'editar' => array(
-				'icon' 		=> '',
-				'url' 		=> '',
-				'class' 	=> 'active'
-			)
-		);
-		# Listado de paises
-		$data['country'] = $this->country->countrys_listing();
-		# Renderizando la vista | plantilla
-		$this->load->view('template/header', $data);
-		$this->load->view('consumers/measuring');
-		$this->load->view('template/footer');
-	}
 	# Recibir el Formulario de Editar y Validar las Reglas
 	public function edit_validate($id = NULL)
 	{
@@ -441,4 +407,42 @@ class Consumers extends CI_Controller
 		# Eliminar el usuario seleccionado
 		$this->ec_client->delete($this->input->post('id'));
 	}
+
+	public function add_measuring($id = NULL)
+	{
+		# Librerias
+		$this->load->helper('form');
+		$this->load->model('ActivitiesModel', 'activity', TRUE);
+		$this->load->model('CountrysModel', 'country', TRUE);
+		$this->load->model('ConsumersModel', 'ec_client', TRUE);
+		# Notificaciones
+		$data['number_of_pending_notifications'] = $this->activity->number_of_pending_notifications($this->session->userdata['user']['id_user']);
+		$data['notification_details']	 		 = $this->activity->notification_details($this->session->userdata['user']['id_user']);
+		# Opciones items del menu principal del contenido
+		$data['option_nav'] = array(
+			'box_title' => 'Consumidores',
+			'box_span' 	=> 'Medición'
+		);
+		$data['option_nav_item'] = array(
+			'Consumidores'	=> array(
+				'icon' 		=> 'fa fa-ellipsis-v',
+				'url' 		=> 'measuring',
+				'class' 	=> NULL
+			), 
+			'editar' => array(
+				'icon' 		=> '',
+				'url' 		=> '',
+				'class' 	=> 'active'
+			)
+		);
+		# Listado de paises
+		$data['country'] = $this->country->countrys_listing();
+		# Buscar el tipo de sexo del consumidor
+		$data['type_of_sex'] = $this->ec_client->type_of_sex($id); 
+		# Renderizando la vista | plantilla
+		$this->load->view('template/header', $data);
+		$this->load->view('consumers/measuring');
+		$this->load->view('template/footer');
+	}
+
 }

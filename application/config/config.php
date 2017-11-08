@@ -164,7 +164,7 @@ $config['composer_autoload'] = FALSE;
 | DO NOT CHANGE THIS UNLESS YOU FULLY UNDERSTAND THE REPERCUSSIONS!!
 |
 */
-$config['permitted_uri_chars'] = 'a-z 0-9~%.:_\-';
+$config['permitted_uri_chars'] = 'a-z 0-9~%.:_\-@';
 
 /*
 |--------------------------------------------------------------------------
@@ -385,7 +385,7 @@ $config['encryption_key'] = '04fab541b3b0388fe8dff6c833a13f2303a782ffa57cb7f2099
 */
 $config['sess_driver'] = 'files';
 $config['sess_cookie_name'] = 'ci_session';
-$config['sess_expiration'] = 7200;
+$config['sess_expiration'] = 86400;
 $config['sess_save_path'] = APPPATH.'session/';
 $config['sess_match_ip'] = FALSE;
 $config['sess_time_to_update'] = 300;

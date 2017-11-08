@@ -45,6 +45,7 @@ class ProductsModel extends CI_Model {
     public function save($data, $image)
     {
         unset($data['filtr-search']);
+        $data['creation_date']      = date('Y-m-d H:i:s');
         $data['id_benefits']        = implode(',', $data['id_benefits']);
         $data['id_component']       = implode(',', $data['id_component']);
         # Buscar las imagenes de los sellos

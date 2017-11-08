@@ -49,7 +49,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
+
+# Conectividad con el home page de proveedores
+
 $route['default_controller'] 		= 'AuthUser/index';
+$route['send-confirmation-requirements/(:any)/(:any)'] = 'HomePageProvider/send_confirmation_requirements/$1/$2';
 $route['access/denied'] 			= 'AuthUser/index';
 $route['exit'] 						= 'AuthUser/sess_destroy';
 $route['exit_session_other_device'] = 'AuthUser/exit_session_other_device';
@@ -270,13 +274,14 @@ $route['consumers/success'] 		= 'Consumers/full_listing';
 $route['consumers/add'] 			= 'Consumers/add_validate';
 $route['consumers/edit/(:num)'] 	= 'Consumers/edit_validate/$1';
 $route['consumers/poll/(:num)'] 	= 'Consumers/add_poll_validate/$1';
-$route['consumers/measuring/(:num)']= 'Consumers/add_measuring/$1';
 $route['consumers/success-edit'] 	= 'Consumers/full_listing';
 $route['consumers/delete'] 			= 'Consumers/delete';
 $route['consumers/success-delete'] 	= 'Consumers/full_listing';
+$route['consumers/measuring/(:num)']= 'Consumers/add_measuring/$1';
 
 # Perfil del consumidor
-$route['view-consumer-profile/(:num)']	= 'Consumer_profile/view_consumer_profile/$1';
+$route['view-consumer-profile/(:num)']			= 'Consumer_profile/view_consumer_profile/$1';
+$route['view-consumer-profile/(:num)/success']	= 'Consumer_profile/view_consumer_profile/$1';
 
 # Bancos
 $route['banks'] 					= 'Banks/full_listing';
@@ -348,10 +353,12 @@ $route['shop-layout-filter-item/delete'] 			= 'ShopLayout/filter_item_delete';
 $route['shop-layout-filter-item/success-delete'] 	= 'ShopLayout/filter_item_full_listing';
 
 # Innovacion de Mercados
-$route['excel-providers']						= 'Innovation/excel_providers';
-$route['donwload']								= 'Innovation/donwload';
-$route['sending-information-to-suppliers']		= 'Innovation/sending_information_to_suppliers';
-$route['product-order-approval']				= 'Innovation/product_order_approval';
+$route['excel-providers']							= 'Innovation/excel_providers';
+$route['donwload']									= 'Innovation/donwload';
+$route['product-order-approval']					= 'Innovation/product_order_approval';
+$route['sending-information-to-suppliers']			= 'Innovation/sending_information_to_suppliers';
+$route['sending-email-rejected-provider']			= 'Innovation/sending_email_rejected_provider';
+$route['shipping-email-supplier-rejection-matrix']	= 'Innovation/shipping_email_supplier_rejection_matrix';
 
 $route['requirements-matrix'] 	= 'Innovation/requirements_matrix';
 $route['donwload-requirements']	= 'Innovation/donwload_requirements';

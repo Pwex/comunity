@@ -60,7 +60,7 @@
                     <th>Código</th>
                     <th>Unidad Medida</th>
                     <th>Abreviatura</th>
-                    <th>Opciones</th>  
+                    <th style="width: 15%">Opciones</th>  
                 </thead>
                 <tfoot>
                     <th>Código</th>
@@ -75,12 +75,16 @@
                             <td><?php echo $value['unit_measure'] ?></td>
                             <td><?php echo $value['abbreviation'] ?></td>
                             <td>
-                                <a href="<?php echo base_url('unitsmeasure/edit/').$value['id_unit_measure'] ?>" class="btn btn-warning btn-sm">
-                                    <i class="fa fa-pencil"></i>
-                                </a>
-                                <button type="button" class="btn btn-danger btn-delete btn-sm" id="<?php echo $value['id_unit_measure'] ?>">
-                                    <i class="fa fa-trash"></i>
-                                </button>
+                                <div class="btn-group btn-group-justified">  
+                                    <a href="<?php echo base_url('unitsmeasure/edit/').$value['id_unit_measure'] ?>" class="btn btn-warning btn-sm">
+                                        <i class="fa fa-pencil"></i>
+                                    </a>
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-danger btn-delete btn-sm" id="<?php echo $value['id_unit_measure'] ?>">
+                                            <i class="fa fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
                     <?php endforeach ?>

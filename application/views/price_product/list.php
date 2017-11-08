@@ -59,7 +59,7 @@
                 <thead>
                     <th>Código</th>
                     <th>Productos</th>
-                    <th>Cuenta</th>
+                    <th>Lista de Precios</th>
                     <th>PVP</th>
                     <th>País</th>
                     <th style="width: 12%">Opciones</th>  
@@ -67,7 +67,7 @@
                 <tfoot>
                     <th>Código</th>
                     <th>Productos</th>
-                    <th>Cuenta</th>
+                    <th>Lista de Precios</th>
                     <th>PVP</th>
                     <th>País</th>
                     <th>Opciones</th>  
