@@ -61,7 +61,7 @@
                     <th>Email</th>
                     <th>Pais</th>
                     <th>Cuenta</th>  
-                    <th>Opciones</th>  
+                    <th style="width: 15%">Opciones</th>  
                 </thead>
                 <tfoot>
                     <th>Nombres</th>
@@ -78,8 +78,16 @@
                             <td><?php echo $value['name_country'] ?></td>
                             <td><?php echo $value['type_of_access'] ?></td>
                             <td>
-                                <a href="<?php echo base_url('users/edit/').$value['id_user'] ?>" class="btn btn-warning btn-sm"><i class="fa fa-pencil"></i></a>
-                                <button type="button" class="btn btn-danger btn-delete btn-sm" id="<?php echo $value['id_user'] ?>"><i class="fa fa-trash"></i></button>
+                                <div class="btn-group btn-group-justified">  
+                                    <a href="<?php echo base_url('users/edit/').$value['id_user'] ?>" class="btn btn-warning btn-sm">
+                                        <i class="fa fa-pencil"></i>
+                                    </a>
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-danger btn-delete btn-sm" id="<?php echo $value['id_user'] ?>">
+                                            <i class="fa fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
                     <?php endforeach ?>

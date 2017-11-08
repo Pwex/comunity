@@ -27,7 +27,7 @@ class Banks extends CI_Controller {
 		);
 		$data['option_nav_item'] = array(
 				'Bancos'	=> array(
-				'icon' 		=> 'fa fa-bank',
+				'icon' 		=> 'fa fa-ellipsis-v',
 				'url' 		=> 'banks',
 				'class' 	=> NULL
 			), 
@@ -61,7 +61,7 @@ class Banks extends CI_Controller {
 		);
 		$data['option_nav_item'] = array(
 				'Bancos'	=> array(
-				'icon' 		=> 'fa fa-bank',
+				'icon' 		=> 'fa fa-ellipsis-v',
 				'url' 		=> 'banks',
 				'class' 	=> NULL
 			), 
@@ -122,7 +122,7 @@ class Banks extends CI_Controller {
 		);
 		$data['option_nav_item'] = array(
 				'Bancos'	=> array(
-				'icon' 			=> 'fa fa-bank',
+				'icon' 			=> 'fa fa-ellipsis-v',
 				'url' 			=> 'banks',
 				'class' 		=> NULL
 			), 

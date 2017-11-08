@@ -24,7 +24,7 @@ class InnovationModel extends CI_Model {
         $config['dbcollat'] = 'utf8_general_ci';
         $con = $this->load->database($config, TRUE);
         $query = $con
-        ->select('id, datestamp, email_sending_status')
+        ->select('id, datestamp, email_sending_status, sending_email_rejected_provider')
         ->like('form_id', 'CF5968f76256174')   
         ->or_like('form_id', 'CF597122cccd306') 
         ->order_by('id', 'DESC')
@@ -34,6 +34,13 @@ class InnovationModel extends CI_Model {
             # Nombre de la empresa
             $temp = $con->select('value')->where(array('entry_id' => $value['id'], 'slug' => 'company_name'))->get('wp_cf_form_entry_values')->result_array();
             $query[$key]['company_name'] = $temp[0]['value'];
+            # Registro de la empresa
+            $temp = $con->select('value')->where(array('entry_id' => $value['id'], 'slug' => 'company_register'))->get('wp_cf_form_entry_values')->result_array();
+            if (!empty($temp[0]['value'])) {
+                $query[$key]['company_register'] = $temp[0]['value'];
+            } else {
+                $query[$key]['company_register'] = '';
+            }
             # Nombre del contacto
             $temp = $con->select('value')->where(array('entry_id' => $value['id'], 'slug' => 'contact_name'))->get('wp_cf_form_entry_values')->result_array();
             $query[$key]['contact_name'] = $temp[0]['value'];
@@ -130,6 +137,7 @@ class InnovationModel extends CI_Model {
             $excel = array(
                 'mainfunction_devices.opt1065926'           => 'Dispositivos de funciones principales',
                 'company_name'                              => 'Nombre Empresa',
+                'company_register'                          => 'Registro de la Empresa',
                 'webpage'                                   => 'Página web',
                 'email_address'                             => 'Correo electrónico',
                 'country'                                   => 'País',
@@ -202,6 +210,44 @@ class InnovationModel extends CI_Model {
         $con->set('email_sending_status', 1)->where('id', $id)->update('wp_cf_form_entries');
     }
 
+    public function sending_email_rejected_provider($id)
+    {
+        # Cambiar de conexion de base de datos
+        $config['hostname'] = 'mysql1409.ixwebhosting.com';
+        $config['username'] = 'C350257_admin';
+        $config['password'] = 'ticWA2011';
+        $config['database'] = 'C350257_pwex';
+        $config['dbdriver'] = 'mysqli';
+        $config['dbprefix'] = '';
+        $config['pconnect'] = FALSE;
+        $config['db_debug'] = TRUE;
+        $config['cache_on'] = FALSE;
+        $config['cachedir'] = '';
+        $config['char_set'] = 'utf8';
+        $config['dbcollat'] = 'utf8_general_ci';
+        $con = $this->load->database($config, TRUE);
+        $con->set('sending_email_rejected_provider', 1)->where('id', $id)->update('wp_cf_form_entries');
+    }
+
+    public function shipping_email_supplier_rejection_matrix($id)
+    {
+        # Cambiar de conexion de base de datos
+        $config['hostname'] = 'mysql1409.ixwebhosting.com';
+        $config['username'] = 'C350257_admin';
+        $config['password'] = 'ticWA2011';
+        $config['database'] = 'C350257_pwex';
+        $config['dbdriver'] = 'mysqli';
+        $config['dbprefix'] = '';
+        $config['pconnect'] = FALSE;
+        $config['db_debug'] = TRUE;
+        $config['cache_on'] = FALSE;
+        $config['cachedir'] = '';
+        $config['char_set'] = 'utf8';
+        $config['dbcollat'] = 'utf8_general_ci';
+        $con = $this->load->database($config, TRUE);
+        $con->set('shipping_email_supplier_rejection_matrix', 1)->where('id', $id)->update('wp_cf_form_entries');
+    }
+
     # Listado matriz de requerimientos de proveedores
     public function requirements_matrix()
     {
@@ -220,7 +266,7 @@ class InnovationModel extends CI_Model {
         $config['dbcollat'] = 'utf8_general_ci';
         $con = $this->load->database($config, TRUE);
         $query = $con
-        ->select('id, email_sending_status')
+        ->select('id, email_sending_status, shipping_email_supplier_rejection_matrix')
         ->like('form_id', 'CF59e0dee722faf') # Ingles    
         ->or_like('form_id', 'CF59ee0a56cd7a3') # Español    
         ->order_by('id', 'DESC')
@@ -242,6 +288,10 @@ class InnovationModel extends CI_Model {
             # Lenguaje
             $temp = $con->select('value')->where(array('entry_id' => $value['id'], 'slug' => 'language'))->get('wp_cf_form_entry_values')->result_array();
             $query[$key]['language'] = $temp[0]['value'];
+        }
+        foreach ($query as $key => $value) {
+            $q = $con->select('datestamp, ')->where('id', $value['id'])->get('wp_cf_form_entries')->result_array();
+            $query[$key]['creation_date'] = $q[0]['datestamp'];
         }
         return $query;
     }
@@ -265,7 +315,7 @@ class InnovationModel extends CI_Model {
         $con = $this->load->database($config, TRUE);
         # Buscar todos los registros principales de los formularios envios | Español
         $form_entry = $con
-        ->select('id, form_id')
+        ->select('id, form_id, email_sending_status')
         ->order_by('id', 'DESC')
         ->like('form_id', 'CF59e0dee722faf') # Ingles    
         ->or_like('form_id', 'CF59ee0a56cd7a3') # Español  
@@ -291,6 +341,14 @@ class InnovationModel extends CI_Model {
                     $data[$value['id']][$details_value['slug']] = $details_value['value'];
                     unset($form_entry_values[$details]);
                 }
+            }
+        }
+        foreach ($data as $key => $value) {
+            $q = $con->select('email_sending_status')->where('id', $key)->get('wp_cf_form_entries')->result_array();
+            if ($q[0]['email_sending_status'] == 1) {
+                $data[$key]['email_sending_status'] = 'Enviado';
+            } else {
+                $data[$key]['email_sending_status'] = 'Sin Enviar';
             }
         }
         # Completar las columnas que no existen y rellenar sus valores
@@ -329,12 +387,8 @@ class InnovationModel extends CI_Model {
                 'file_image'             => 'Archivo de imágenes del producto',
                 'opt_effectiveness'      => 'Estudio de eficiencia',
                 'file_effectiveness'     => 'Archivo de estudio de eficiencia',
-                'opt_certification'      => 'Certificado de análisis',
-                'file_certification'     => 'Archivo de certificado de análisis',
                 'opt_use_mode'           => 'Modo de uso',
                 'file_use_mode'          => 'Archivo de modo de uso',
-                'opt_microbiologica'     => 'Estudio microbiologico',
-                'file_microbiological'   => 'Archivo de estudio microbiologico',
                 'opt_regulatory'         => 'Certificados de Normatividad del producto',
                 'file_regulatory'        => 'Archivo certificados de normatividad del producto',
                 'opt_label'              => 'Lista de ingredientes y rotulado',
@@ -345,6 +399,7 @@ class InnovationModel extends CI_Model {
                 'file_toxicity'          => 'Archivo de estudios de toxicidad',
                 'opt_other'              => 'Otros',
                 'file_other'             => 'Archivo de otros',
+                'email_sending_status'   => 'Estatus del envio de correo electrónico',
             );
             foreach ($value as $item => $items) {
                 # Verificar que columnas no existen

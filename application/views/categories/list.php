@@ -61,7 +61,7 @@
                     <th>Nombre</th>
                     <th>Categoría Principal</th>
                     <th>Categoría Padre</th>
-                    <th>Opciones</th>  
+                    <th style="width: 15%">Opciones</th>  
                 </thead>
                 <tfoot>
                     <th>Código</th>
@@ -79,12 +79,16 @@
                                 <td><?php echo $value['name_catalogue'] ?></td>
                                 <td><?php echo $value['name_father'] ?></td>
                                 <td>
-                                    <a href="<?php echo base_url('categories/edit/').$value['id_category'] ?>" class="btn btn-warning btn-sm">
-                                        <i class="fa fa-pencil"></i>
-                                    </a>
-                                    <button type="button" class="btn btn-danger btn-delete btn-sm" id="<?php echo $value['id_category'] ?>">
-                                        <i class="fa fa-trash"></i>
-                                    </button>
+                                    <div class="btn-group btn-group-justified">  
+                                        <a href="<?php echo base_url('categories/edit/').$value['id_category'] ?>" class="btn btn-warning btn-sm">
+                                            <i class="fa fa-pencil"></i>
+                                        </a>
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-danger btn-delete btn-sm" id="<?php echo $value['id_category'] ?>">
+                                                <i class="fa fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </div>
                                 </td>
                             </tr>
                         <?php endif ?>

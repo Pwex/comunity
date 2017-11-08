@@ -37,11 +37,17 @@ class Dashboard extends CI_Controller {
 		);
 		# Renderizando la vista | plantilla
 		$this->load->view('template/header', $data);
-		if ( isset($this->session->userdata['user']['type_of_access']) and $this->session->userdata['user']['type_of_access'] == 'Administrador' ) {
-			$this->load->view('dashboard');
-		} elseif ( isset($this->session->userdata['user']['type_of_access']) and $this->session->userdata['user']['type_of_access'] == 'Coach' ) {
-			$this->load->view('coach/home');
-		} 
+		switch ($this->session->userdata['user']['type_of_access']) {
+			case 'Administrador':
+				$this->load->view('dashboard');
+			break;
+			case 'Proveedor':
+				$this->load->view('partners/home');
+			break;
+			case 'Coach':
+				$this->load->view('coach/home');
+			break;
+		}
 		$this->load->view('template/footer');
 	}
 

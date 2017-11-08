@@ -25,6 +25,7 @@ class Export_excel{
         # Estructura de las columnas
         $excel = array(
             'mainfunction_devices.opt1065926'           => 'Dispositivos de funciones principales',
+            'company_register'                          => 'Registro de la Empresa',
             'company_name'                              => 'Nombre Empresa',
             'webpage'                                   => 'Página web',
             'email_address'                             => 'Correo electrónico',
@@ -63,6 +64,7 @@ class Export_excel{
         );
         foreach($array as $key => $row){
             $hdata[$key]['company_name']                              = $row['company_name'];
+            $hdata[$key]['company_register']                          = $row['company_register'];
             $hdata[$key]['contact_name']                              = $row['contact_name'];
             $hdata[$key]['country']                                   = $row['country'];
             $hdata[$key]['language']                                  = $row['language'];
@@ -109,7 +111,7 @@ class Export_excel{
         echo '<table style="font-family:verdana;"><tr>';
         foreach($header as $key) {
             $key = ucwords($key);
-            echo '<th style="border:1px #e6e6e6 solid;background-color:#00aecc;color:white; padding: 5px;">'.$key.'</th>';
+            echo '<th style="border:1px #e6e6e6 solid;color:#000; padding: 5px; text-align:left;">'.$key.'</th>';
         }
         echo '</tr>';
         foreach($hdata as $row){

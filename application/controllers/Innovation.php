@@ -54,22 +54,27 @@ class Innovation extends CI_Controller {
 	{
 		if ($this->input->post('language') == 'Español') {
 			$subject = '
-				<div style="margin: 0 auto; background: #1d1d1b; width: 100%; text-align: center;">&nbsp;<img src="http://pwex.org/platform/assets/dist/img/email/mailing-matriz-1-header-spanish.jpg" style="margin-bottom: -3px;" /></div>
-				<p style="font-family: century gothic; font-size: 23px; text-align: center;">Para esto, ingresa al siguiente link <a href="http://pwex.org/requirements/?lang=es&email='.$this->input->post("email").'&company_name='.$this->input->post("company_name").'">www.pwex.org</a>.<br /> Aqu&iacute; podras contarnos todas las caracter&iacute;sticas diferenciales que cuentan tus productos.</p>
-				<p style="font-family: century gothic; font-size: 20px;"><strong>Tienes alguna duda</strong></p>
-				<p style="font-family: century gothic; font-size: 20px;">Escr&iacute;benos a <a href="mailto:product.development@pwex.co">product.development@pwex.co</a></p>
-				<p style="font-family: century gothic; font-size: 20px;">O ll&aacute;manos a + xx xx xx xx xx</p>
-				<h4 style="font-family: century gothic; font-size: 20px;">ATT. EL EQUIPO<img src="http://pwex.org/platform/assets/dist/img/email/logo.png" width="60" height="23" align="center" /></h4>
+				<div style="margin: 0 auto; width: 100%; text-align: center;">&nbsp;<img src="http://pwex.org/platform/assets/dist/img/email/mailing-matriz-1-header-spanish.jpg" style="margin-bottom: -3px; width:100%" /></div>
+				<br />
+				<p style="font-family: century gothic; font-size: 38px; text-align: center;">Para esto, ingresa al <br /><a href="http://pwex.org/requirements/?lang=es&email='.$this->input->post("email").'&company_name='.$this->input->post("company_name").'" style="text-decoration: none; background-color: #2196f3; color: #fff; padding: 6px 0; border-radius: 30px; margin-top: 7px !important; display: inline-block; width: 100%;">Siguiente Link</a><br /> Aqu&iacute; podras contarnos todas las caracter&iacute;sticas diferenciales de tus productos.</p>
+				<br >
+				<p style="font-family: candara; font-size: 24px; margin-bottom: -20px !important; text-align: right;">&iquest;Tienes alguna pregunta?</p>
+				<p style="font-family: candara; font-size: 24px; margin-bottom: -20px !important; text-align: right;">Escribenos a: <a href="mailto:product.development@pwex.co">product.development@pwex.co</a></p>
+				<p style="font-family: candara; font-size: 24px; margin-bottom: -20px !important; text-align: right;">O llamanos a:&nbsp;210-828-5555&nbsp;</p>
+				<p style="font-family: candara; font-size: 24px; text-align: right;"><strong>El equipo de</strong>&nbsp;<img style="vertical-align: middle; height: 35px;" src="'.base_url("assets/dist/img/pwex-email.png").'" /></p>
+	        	<p><img src="http://pwex.org/platform/assets/dist/img/email/barra-inf.png" style="float: right; width:100%" /></p>
 			';
 		}elseif ($this->input->post('language') == 'Ingles') {
 			$subject = '
-				<div style="margin: 0 auto; background: #1d1d1b; width: 100%; text-align: center;">&nbsp;<img style="margin-bottom: -3px;" src="http://pwex.org/platform/assets/dist/img/email/mailing-matriz-1-header-inlges.jpg" /></div>
-				<p style="font-family: century gothic; font-size: 23px; text-align: center;">Please, go to the following link <a href="http://pwex.org/requirements/?email='.$this->input->post("email").'&company_name='.$this->input->post("company_name").'">www.pwex.org</a>. and complete all the information related to the products and their differential characteristics.</p>
-				<p style="font-family: century gothic; font-size: 20px;"><strong>Do you have any doubt</strong></p>
-				<p style="font-family: century gothic; font-size: 20px;">Write us to&nbsp;<a href="mailto:product.development@pwex.co">product.development@pwex.co</a></p>
-				<p style="font-family: century gothic; font-size: 20px;">Or call us to + xx xx xx xx xx</p>
-				<p><strong>The <img src="http://pwex.org/platform/assets/dist/img/email/logo.png" width="60" height="23" align="center" /> Team</strong></p>
-				<h4 style="font-family: century gothic; font-size: 20px;"></h4>
+				<div style="margin: 0 auto; width: 100%; text-align: center;">&nbsp;<img style="margin-bottom: -3px; width:100%" src="http://pwex.org/platform/assets/dist/img/email/mailing-matriz-1-header-inlges.jpg" /></div>
+				<br />
+				<p style="font-family: century gothic; font-size: 38px; text-align: center;">Please, go to the <br /><a href="http://pwex.org/requirements/?email='.$this->input->post("email").'&company_name='.$this->input->post("company_name").'" style="text-decoration: none; background-color: #2196f3; color: #fff; padding: 6px 0; border-radius: 30px; margin-top: 7px !important; display: inline-block; width: 100%;">following Link</a> And complete all the information related to the products and their differential characteristics.</p>
+				<br />
+				<p style="font-family: candara; font-size: 24px; margin-bottom: -20px !important; text-align: right;">Do you have any question?</p>
+				<p style="font-family: candara; font-size: 24px; margin-bottom: -20px !important; text-align: right;">Write to: <a href="mailto:product.development@pwex.co">product.development@pwex.co</a></p>
+				<p style="font-family: candara; font-size: 24px; margin-bottom: -20px !important; text-align: right;">Or call us: 210-828-5555&nbsp;</p>
+				<p style="font-family: candara; font-size: 24px; text-align: right;"><strong>The</strong> <img style="vertical-align: middle; height: 35px;" src="'.base_url("assets/dist/img/pwex-email.png").'" /> <strong>Team</strong></p>
+	        	<p><img src="http://pwex.org/platform/assets/dist/img/email/barra-inf.png" style="float: right; width:100%" /></p>
 			';
 		}
         # Carga de la libreria de envio de email
@@ -90,21 +95,62 @@ class Innovation extends CI_Controller {
 	# Envio de informacion al proveedor de la aprobacion de la solicitud de productos
 	public function product_order_approval()
 	{
-		if ($this->input->post('language') == 'Español') {
-			$subject = '
-			<img style="margin: 0; margin-bottom: -20px;" src="'.base_url("assets/dist/img/email/mail-solicitud-muestras-encabezado.jpg").'" />
-			<div style="background-color: #1d1d1b; color: #fff; padding: 10px; width: 830px; margin-top: -3px; margin-bottom: -13px;">
-			<p style="text-align: center; font-family: century gothic; font-size: 20px;">Nuestro equipo de expertos considera que el producto '.$this->input->post("product_name").' cuenta con todas las caracter&iacute;sticas requeridas para el exigente mercado del continente Americano.</p>
-			</div>
-			<p><img style="margin-top: -15px;" src="'.base_url("assets/dist/img/email/mailing1-solicitud-muestras-inferior.jpg").'" /></p>
-			';
-		}elseif ($this->input->post('language') == 'Ingles') {
-			$subject = '
-				<p style="font-family: century gothic; font-size: 18px;">Our team of experts believes that the product '.$this->input->post("product_name").' has all the characteristics required for the demanding market of the American continent.</p>
-				<p style="font-family: century gothic; font-size: 18px;">To get to know the product we require you to send us 15 samples in commercial presentation. These samples will be evaluated by our laboratory staff, ensuring that your product is the best, to be integrated with the best.</p>
-				<p style="font-family: century gothic; font-size: 18px;"><strong>Shipping Address:</strong> 1001 Brickell Bay Drive, Suite 130 Miami, FL 33131</p>
-				<p style="font-family: century gothic; font-size: 18px;">The <strong>PWEX</strong> Team</p>
-			';
+		if ($this->input->post('category') !='Aparatologia') {
+			if ($this->input->post('language') == 'Español') {
+				$subject = '
+					<p><img style="display: block; margin-left: auto; margin-right: auto; width: 100%;" src="'.base_url("assets/dist/img/email/mail-solicitud-muestras-encabezado.jpg").'" /></p>
+					<br /><br />
+					<p style="font-family: century gothic; font-size: 38px; text-align: center;">Nuestro equipo de expertos considera que el producto <strong>'.ucfirst($this->input->post("product_name")).'</strong> cuenta con todas las caracter&iacute;sticas requeridas para el exigente mercado del continente Americano.</p>
+					<br />
+					<p style="text-align: center"><img style="margin-top: -15px; display: block; margin-left: auto; margin-right: auto; width: 100%;" src="'.base_url("assets/dist/img/email/mailing1-solicitud-muestras-inferior.jpg").'" /></p>
+					<p style="font-family: candara; font-size: 24px; margin-bottom: -20px !important; text-align: right;">&iquest;Tienes alguna pregunta?</p>
+					<p style="font-family: candara; font-size: 24px; margin-bottom: -20px !important; text-align: right;">Escribenos a: <a href="mailto:product.development@pwex.co">product.development@pwex.co</a></p>
+					<p style="font-family: candara; font-size: 24px; margin-bottom: -20px !important; text-align: right;">O llamanos a:&nbsp;210-828-5555&nbsp;</p>
+					<p style="font-family: candara; font-size: 24px; text-align: right;"><strong>El equipo de</strong>&nbsp;<img style="vertical-align: middle; height: 35px;" src="'.base_url("assets/dist/img/pwex-email.png").'" /></p>
+		        	<p><img src="http://pwex.org/platform/assets/dist/img/email/barra-inf.png" style="float: right; width:100%" /></p>
+				';
+			}elseif ($this->input->post('language') == 'Ingles') {
+				$subject = '
+					<p><img style="display: block; margin-left: auto; margin-right: auto; width: 100%;" src="'.base_url("assets/dist/img/email/mail-solicitud-muestras-encabezado.jpg").'" /></p>
+					<br /><br />
+					<p style="font-family: century gothic; font-size: 38px; text-align: center;">Our team of experts believes that the product <strong>'.$this->input->post("product_name").'</strong> has all the characteristics required for the demanding market of the American continent.</p>
+					<br />
+					<p style="text-align: center"><img style="margin-top: -15px; display: block; margin-left: auto; margin-right: auto; width: 100%;" src="'.base_url("assets/dist/img/email/mailing1-solicitud-muestras-inferior-ingles.jpg").'" /></p>
+					<p style="font-family: candara; font-size: 24px; margin-bottom: -20px !important; text-align: right;">Do you have any question?</p>
+					<p style="font-family: candara; font-size: 24px; margin-bottom: -20px !important; text-align: right;">Write to: <a href="mailto:product.development@pwex.co">product.development@pwex.co</a></p>
+					<p style="font-family: candara; font-size: 24px; margin-bottom: -20px !important; text-align: right;">Or call us: 210-828-5555&nbsp;</p>
+					<p style="font-family: candara; font-size: 24px; text-align: right;"><strong>The</strong> <img style="vertical-align: middle; height: 35px;" src="'.base_url("assets/dist/img/pwex-email.png").'" /> <strong>Team</strong></p>
+		        	<p><img src="http://pwex.org/platform/assets/dist/img/email/barra-inf.png" style="float: right; width:100%" /></p>
+				';
+			}
+		} else {
+			if ($this->input->post('language') == 'Español') {
+				$subject = '
+					<p><img style="display: block; margin-left: auto; margin-right: auto; width: 100%;" src="'.base_url("assets/dist/img/email/mail-solicitud-muestras-encabezado.jpg").'" /></p>
+					<br /><br />
+					<p style="font-family: century gothic; font-size: 38px; text-align: center;"">Nuestro equipo de expertos considera que el producto <strong>'.ucfirst($this->input->post("product_name")).'</strong> cuenta con todas las caracter&iacute;sticas requeridas para el exigente mercado del continente Americano.</p>
+					<br />
+					<p style="text-align: center"><img style="margin-top: -15px; display: block; margin-left: auto; margin-right: auto; width: 100%;" src="'.base_url("assets/dist/img/email/mailing-matriz-1-header-spanish-aparatologia.jpg").'" /></p>
+					<p style="font-family: candara; font-size: 24px; margin-bottom: -20px !important; text-align: right;">&iquest;Tienes alguna pregunta?</p>
+					<p style="font-family: candara; font-size: 24px; margin-bottom: -20px !important; text-align: right;">Escribenos a: <a href="mailto:product.development@pwex.co">product.development@pwex.co</a></p>
+					<p style="font-family: candara; font-size: 24px; margin-bottom: -20px !important; text-align: right;">O llamanos a:&nbsp;210-828-5555&nbsp;</p>
+					<p style="font-family: candara; font-size: 24px; text-align: right;"><strong>El equipo de</strong>&nbsp;<img style="vertical-align: middle; height: 35px;" src="'.base_url("assets/dist/img/pwex-email.png").'" /></p>
+		        	<p><img src="http://pwex.org/platform/assets/dist/img/email/barra-inf.png" style="float: right; width:100%" /></p>
+				';
+			}elseif ($this->input->post('language') == 'Ingles') {
+				$subject = '
+					<p><img style="display: block; margin-left: auto; margin-right: auto; width: 100%;" src="'.base_url("assets/dist/img/email/mail-solicitud-muestras-encabezado.jpg").'" /></p>
+					<br /><br />
+					<p style="font-family: century gothic; font-size: 38px; text-align: center;">Our team of experts believes that the product <strong>'.$this->input->post("product_name").'</strong> has all the characteristics required for the demanding market of the American continent.</p>
+					<br />
+					<p style="text-align: center"><img style="margin-top: -15px; display: block; margin-left: auto; margin-right: auto; width: 100%;" src="'.base_url("assets/dist/img/email/mailing-matriz-1-header-ingles-aparatologia.jpg").'" /></p>
+					<p style="font-family: candara; font-size: 24px; margin-bottom: -20px !important; text-align: right;">Do you have any question?</p>
+					<p style="font-family: candara; font-size: 24px; margin-bottom: -20px !important; text-align: right;">Write to: <a href="mailto:product.development@pwex.co">product.development@pwex.co</a></p>
+					<p style="font-family: candara; font-size: 24px; margin-bottom: -20px !important; text-align: right;">Or call us: 210-828-5555&nbsp;</p>
+					<p style="font-family: candara; font-size: 24px; text-align: right;"><strong>The</strong> <img style="vertical-align: middle; height: 35px;" src="'.base_url("assets/dist/img/pwex-email.png").'" /> <strong>Team</strong></p>
+		        	<p><img src="http://pwex.org/platform/assets/dist/img/email/barra-inf.png" style="float: right; width:100%" /></p>
+				';
+			}
 		}
         # Carga de la libreria de envio de email
         $this->load->library('email');
@@ -165,6 +211,83 @@ class Innovation extends CI_Controller {
 		$this->load->model('InnovationModel', 'innovation', TRUE);
 		$this->load->library('table_requirements_matrix');
         return $this->table_requirements_matrix->to_excel($this->innovation->view_requirements($this->input->post('id')), 'Matriz-Requerimientos');
+	}
+
+	public function sending_email_rejected_provider()
+	{
+		# Carga de la libreria de envio de email
+        $this->load->library('email');
+		if ($this->input->post('language') == 'Español') {
+        	$this->email->subject('¡Gracias por tu interés en PWEX!');
+			$subject = '
+				<p><img style="display: block; margin-left: auto; margin-right: auto;" src="'.base_url("assets/dist/img/email/mail-no-matriz-spanish.jpg").'" alt="" width="100%" /></p>
+				<p>&nbsp;</p>
+				<p style="font-family: candara; font-size: 24px;">Hemos revisado la informaci&oacute;n que suministraste en el formulario. Consideramos que las categor&iacute;as con las que cuenta tu empresa, no se incluyen en nuestro mercado objetivo.</p>
+				<p style="font-family: candara; font-size: 24px;">En caso de que pr&oacute;ximamente cuentes con nuevas categor&iacute;as estaremos atentos. No dudes en escribirnos.</p>
+				<p style="font-family: candara; font-size: 24px; margin-bottom: -20px !important; text-align: right;">&iquest;Tienes alguna pregunta?</p>
+				<p style="font-family: candara; font-size: 24px; margin-bottom: -20px !important; text-align: right;">Escribenos a: <a href="mailto:product.development@pwex.co">product.development@pwex.co</a></p>
+				<p style="font-family: candara; font-size: 24px; margin-bottom: -20px !important; text-align: right;">O llamanos a:&nbsp;210-828-5555&nbsp;</p>
+				<p style="font-family: candara; font-size: 24px; text-align: right;"><strong>El equipo de</strong>&nbsp;<img style="vertical-align: middle; height: 35px;" src="'.base_url("assets/dist/img/pwex-email.png").'" /></p>
+	        	<p><img src="http://pwex.org/platform/assets/dist/img/email/barra-inf.png" style="float: right; width:100%" /></p>
+			';
+		}elseif ($this->input->post('language') == 'Ingles') {
+        	$this->email->subject('Thank you for your interest in PWEX!');
+			$subject = '
+				<p><img style="display: block; margin-left: auto; margin-right: auto; width:100%" src="'.base_url("assets/dist/img/email/mail-no-matriz-ingles.jpg").'" alt="" /></p>
+				<p style="font-family: candara; font-size: 24px;">For the information provided in the form, we consider that the product categories of your company are not included in our target market.</p>
+				<p style="font-family: candara; font-size: 24px;">In case you include new categories soon we will be attentive, do not hesitate to write us.</p>
+				<p>&nbsp;</p>
+				<p style="font-family: candara; font-size: 24px; margin-bottom: -20px !important; text-align: right;">Do you have any question?</p>
+				<p style="font-family: candara; font-size: 24px; margin-bottom: -20px !important; text-align: right;">Write to: <a href="mailto:product.development@pwex.co">product.development@pwex.co</a></p>
+				<p style="font-family: candara; font-size: 24px; margin-bottom: -20px !important; text-align: right;">Or call us: 210-828-5555&nbsp;</p>
+				<p style="font-family: candara; font-size: 24px; text-align: right;"><strong>The</strong> <img style="vertical-align: middle; height: 35px;" src="'.base_url("assets/dist/img/pwex-email.png").'" /> <strong>Team</strong></p>
+	        	<p><img src="http://pwex.org/platform/assets/dist/img/email/barra-inf.png" style="float: right; width:100%" /></p>
+			';
+		}
+        $this->email->from('product.development@pwex.co', 'Pwex');
+        $this->email->to($this->input->post('email'));
+        $this->email->message($subject);
+        $this->email->send();
+        $this->load->model('InnovationModel', 'innovation', TRUE);
+        $this->innovation->sending_email_rejected_provider($this->input->post('id'));
+	}
+
+	public function shipping_email_supplier_rejection_matrix()
+	{
+		# Carga de la libreria de envio de email
+        $this->load->library('email');
+		if ($this->input->post('language') == 'Español') {
+        	$this->email->subject('¡Agradecemos tu interés en PWEX!');
+			$subject = '
+				<p><img style="display: block; margin-left: auto; margin-right: auto;" src="'.base_url("assets/dist/img/email/mail-no-ingreso1.jpg").'" alt="" width="100%" /></p>
+				<p>&nbsp;</p>
+				<p style="font-family: candara; font-size: 24px;">Hemos revisado la información que suministraste en la matriz de requerimientos. Consideramos que las características con las que cuenta tu producto no suplen los requerimientos de nuestra plataforma, por lo tanto te enviaremos un correo indicándote que puntos necesariamente se deben completar.</p>
+				<p style="font-family: candara; font-size: 24px; margin-bottom: -20px !important; text-align: right;">&iquest;Tienes alguna pregunta?</p>
+				<p style="font-family: candara; font-size: 24px; margin-bottom: -20px !important; text-align: right;">Escribenos a: <a href="mailto:product.development@pwex.co">product.development@pwex.co</a></p>
+				<p style="font-family: candara; font-size: 24px; margin-bottom: -20px !important; text-align: right;">O llamanos a:&nbsp;210-828-5555&nbsp;</p>
+				<p style="font-family: candara; font-size: 24px; text-align: right;"><strong>El equipo de</strong>&nbsp;<img style="vertical-align: middle; height: 35px;" src="'.base_url("assets/dist/img/pwex-email.png").'" /></p>
+				<p><img style="float: right; width: 100%;" src="http://pwex.org/platform/assets/dist/img/email/barra-inf.png" /></p>
+			';
+		}elseif ($this->input->post('language') == 'Ingles') {
+        	$this->email->subject('We appreciate your interest in PWEX!');
+			$subject = '
+				<p><img style="display: block; margin-left: auto; margin-right: auto;" src="'.base_url("assets/dist/img/email/mail-no-ingreso-ingles.jpg").'" alt="" width="100%" /></p>
+				<p>&nbsp;</p>
+				<p style="font-family: candara; font-size: 24px;">We have reviewed the information that you provided about your products and their characteristics. From the given description they do not meet the requirements of our platform, therefore we will send you an email indicating which points must necessarily be completed.</p>
+				<p>&nbsp;</p>
+				<p style="font-family: candara; font-size: 24px; margin-bottom: -20px !important; text-align: right;">Do you have any question?</p>
+				<p style="font-family: candara; font-size: 24px; margin-bottom: -20px !important; text-align: right;">Write to: <a href="mailto:product.development@pwex.co">product.development@pwex.co</a></p>
+				<p style="font-family: candara; font-size: 24px; margin-bottom: -20px !important; text-align: right;">Or call us: 210-828-5555&nbsp;</p>
+				<p style="font-family: candara; font-size: 24px; text-align: right;"><strong>The</strong> <img style="vertical-align: middle; height: 35px;" src="'.base_url("assets/dist/img/pwex-email.png").'" /> <strong>Team</strong></p>
+	        	<p><img src="http://pwex.org/platform/assets/dist/img/email/barra-inf.png" style="float: right; width:100%" /></p>
+			';
+		}
+        $this->email->from('product.development@pwex.co', 'Pwex');
+        $this->email->to($this->input->post('email'));
+        $this->email->message($subject);
+        $this->email->send();
+        $this->load->model('InnovationModel', 'innovation', TRUE);
+        $this->innovation->shipping_email_supplier_rejection_matrix($this->input->post('id'));
 	}
 
 }

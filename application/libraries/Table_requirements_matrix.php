@@ -56,18 +56,12 @@ class Table_requirements_matrix{
             'file_image'             => 'Archivo de imágenes del producto',
             'opt_effectiveness'      => 'Estudio de eficiencia',
             'file_effectiveness'     => 'Archivo de estudio de eficiencia',
-            'opt_certification'      => 'Certificado de análisis',
-            'file_certification'     => 'Archivo de certificado de análisis',
             'opt_use_mode'           => 'Modo de uso',
             'file_use_mode'          => 'Archivo de modo de uso',
-            'opt_microbiologica'     => 'Estudio microbiologico',
-            'file_microbiological'   => 'Archivo de estudio microbiologico',
             'opt_regulatory'         => 'Certificados de Normatividad del producto',
             'file_regulatory'        => 'Archivo certificados de normatividad del producto',
             'opt_label'              => 'Lista de ingredientes y rotulado',
             'file_label'             => 'Archivo de lista de ingredientes y rotulado',
-            'opt_certificate'        => 'Certificados de la empresa',
-            'file_certificate'       => 'Archivo de certificados de la empresa',
             'opt_toxicity'           => 'Estudios de toxicidad',
             'file_toxicity'          => 'Archivo de estudios de toxicidad',
             'opt_other'              => 'Otros',
@@ -104,18 +98,12 @@ class Table_requirements_matrix{
             $hdata[$key]['file_image']             = !empty($row['file_image']) ? "<a target='_blanck' href='".$row['file_image']."'>Adjunto</a>" : '';
             $hdata[$key]['opt_effectiveness']      = $row['opt_effectiveness'];
             $hdata[$key]['file_effectiveness']     = !empty($row['file_effectiveness']) ? "<a target='_blanck' href='".$row['file_effectiveness']."'>Adjunto</a>" : '';
-            $hdata[$key]['opt_certification']      = $row['opt_certification'];
-            $hdata[$key]['file_certification']     = !empty($row['file_certification']) ? "<a target='_blanck' href='".$row['file_certification']."'>Adjunto</a>" : '';
             $hdata[$key]['opt_use_mode']           = $row['opt_use_mode'];
             $hdata[$key]['file_use_mode']          = !empty($row['file_use_mode']) ? "<a target='_blanck' href='".$row['file_use_mode']."'>Adjunto</a>" : '';
-            $hdata[$key]['opt_microbiologica']     = $row['opt_microbiologica'];
-            $hdata[$key]['file_microbiological']   = !empty($row['file_microbiological']) ? "<a target='_blanck' href='".$row['file_microbiological']."'>Adjunto</a>" : '';
             $hdata[$key]['opt_regulatory']         = $row['opt_regulatory'];
             $hdata[$key]['file_regulatory']        = !empty($row['file_regulatory']) ? "<a target='_blanck' href='".$row['file_regulatory']."'>Adjunto</a>" : '';
             $hdata[$key]['opt_label']              = $row['opt_label'];
             $hdata[$key]['file_label']             = !empty($row['file_label']) ? "<a target='_blanck' href='".$row['file_label']."'>Adjunto</a>" : '';
-            $hdata[$key]['opt_certificate']        = $row['opt_certificate'];
-            $hdata[$key]['file_certificate']       = !empty($row['file_certificate']) ? "<a target='_blanck' href='".$row['file_certificate']."'>Adjunto</a>" : '';
             $hdata[$key]['opt_toxicity']           = $row['opt_toxicity'];
             $hdata[$key]['file_toxicity']          = !empty($row['file_toxicity']) ? "<a target='_blanck' href='".$row['file_toxicity']."'>Adjunto</a>" : '';
             $hdata[$key]['opt_other']              = $row['opt_other'];

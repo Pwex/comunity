@@ -1,4 +1,93 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
+<?php  
+    # Menu principal de gestion y gerencia
+    $menu_management_management = array(
+        'modules',
+        'movement_types',
+        'document_types',
+        'countrys',
+        'cities',
+        'warehouses',
+        'list-price',
+        'partner_types',
+        'banks',
+        'partners',
+        'catalogue',
+        'categories',
+        'components',
+        'benefits',
+        'certifications',
+        'seals',
+        'typesinventory',
+        'unitsmeasure',
+        'presentation',
+        'price-product',
+        'products',
+    );
+        # Sub menu de gestion y gerencia parametros globales
+        $menu_global_parameters = array(
+            'modules',
+            'movement_types',
+            'document_types',
+            'countrys',
+            'cities',
+            'warehouses',
+            'list-price',
+        );
+        # Sub menu de gestion y gerencia proveedores
+        $menu_provider = array(
+            'partner_types',
+            'banks',
+            'partners',
+        );
+        # Sub menu de gestion y gerencia productos
+        $menu_products = array(
+            'catalogue',
+            'categories',
+            'components',
+            'benefits',
+            'certifications',
+            'seals',
+            'typesinventory',
+            'unitsmeasure',
+            'presentation',
+            'price-product',
+            'products',
+        );
+    # Menu principal del eCommerce
+    $menu_ecommerce = array(
+        'shop-layout',
+        'shop-layout-navbar',
+        'shop-layout-filter',
+        'shop-layout-filter-item',
+        'shop-layout-google-analytics',
+    );
+        # Sub menu del ecommerce
+        $menu_marketing_digital = array(
+            'shop-layout-google-analytics',
+        );
+    # Menu principal Innovacion de mercados
+    $menu_innovation_markets = array(
+        'excel-providers',
+        'requirements-matrix',
+    );
+    # Menu principal Multimedia
+    $menu_multimedia = array(
+        'multimedia'
+    );
+    # Menu principal Clientes
+    $menu_client = array(
+        'consumers'
+    );
+    # Menu principal Proveedores
+    $menu_partners = array(
+        'list-of-products-supplier'
+    );
+    # Menu principal Usuarios
+    $menu_users = array(
+        'users'
+    );
+?>
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -23,8 +112,6 @@
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
-        <!-- Google Font -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
         <!-- estilo para el data tables encabezado y para el jquery ui para el borrado -->
         <?php if ($this->uri->segment(1) == 'users' or $this->uri->segment(1) == 'modules' or $this->uri->segment(1) == 'movement_types' or $this->uri->segment(1) == 'categories' or $this->uri->segment(1) == 'warehouses' or $this->uri->segment(1) == 'countrys' or $this->uri->segment(1) == 'benefits' or $this->uri->segment(1) == 'typesinventory' or $this->uri->segment(1) == 'components' or $this->uri->segment(1) == 'unitsmeasure' or $this->uri->segment(1) == 'products' or $this->uri->segment(1) == 'partners' or $this->uri->segment(1) == 'document_types' or $this->uri->segment(1) == 'partner_types' or $this->uri->segment(1) == 'cities' or $this->uri->segment(1) == 'seals' or $this->uri->segment(1) == 'list-price' or $this->uri->segment(1) == 'price-product' or $this->uri->segment(1) == 'banks' or $this->uri->segment(1) == 'consumers' or $this->uri->segment(1) == 'catalogue' or $this->uri->segment(1) == 'certifications' or $this->uri->segment(1) == 'shop-layout-navbar' or $this->uri->segment(1) == 'shop-layout-filter' or $this->uri->segment(1) == 'shop-layout-filter-item' or $this->uri->segment(1) == 'excel-providers' or $this->uri->segment(1) == 'requirements-matrix' or $this->uri->segment(1) == 'presentation' ): ?>
             <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -64,6 +151,21 @@
         <link rel="stylesheet" href="<?php echo base_url('assets/dist/css/AdminLTE.min.css') ?>">
         <!-- Main -->
         <link rel="stylesheet" href="<?php echo base_url('assets/dist/css/main.css') ?>">
+        <style type="text/css">
+            /*@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+            *{
+                font-family: 'Open Sans', sans-serif;
+            }*/
+            @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
+            *{
+                font-family: 'Roboto Condensed', sans-serif;
+            }
+        </style>
+        <?php if ($this->uri->segment(1) != 'calendar'): ?>
+            <script src="<?php echo base_url('assets/bower_components/jquery/dist/jquery.min.js') ?>"></script>
+        <?php else: ?>
+            <script src="<?=$base_url?>js/jquery.min.js"></script>
+        <?php endif ?>
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
         <!-- Site wrapper -->
@@ -74,7 +176,7 @@
                     <!-- mini logo for sidebar mini 50x50 pixels -->
                     <span class="logo-mini"><b>PWX</b></span>
                     <!-- logo for regular state and mobile devices -->
-                    <span class="logo-lg"><img src="<?php echo base_url('assets/dist/img/logo-pwex-white.png') ?>" width="80"></span>
+                    <span class="logo-lg"><img src="<?php echo base_url('assets/dist/img/pwex-white.png') ?>" width="80"></span>
                 </a>
                 <!-- Header Navbar: style can be found in header.less -->
                 <nav class="navbar navbar-static-top">
@@ -135,7 +237,7 @@
                                 <ul class="dropdown-menu">
                                     <!-- User image -->
                                     <li class="user-header">
-                                        <img src="<?php echo base_url('assets/dist/img/avatar-user-blanco.png') ?>" class="img-circle" alt="User Image">
+                                        <img src="<?php echo base_url('assets/dist/img/avatar-user-gris.png') ?>" class="img-circle" alt="User Image">
                                         <p>
                                             <?php echo $this->session->userdata['user']['name'].' '.$this->session->userdata['user']['last_name']; ?>
                                             <small><?php echo ucfirst($this->session->userdata['user']['type_of_access']) ?> | <?php echo date('d-m-Y') ?></small>
@@ -190,190 +292,190 @@
                     <!-- sidebar menu: : style can be found in sidebar.less -->
                     <ul class="sidebar-menu" data-widget="tree">
                         <li class="header">MENU PRINCIPAL</li>
-                        <li>
+                        <li <?php if($this->uri->segment(1) == 'escritorio'){ echo "class='active'"; } ?>>
                             <a href="<?php echo base_url('escritorio') ?>">
                                 <i class="fa fa-dashboard"></i> <span>Escritorio</span>
                             </a>
                         </li>
-                        <li class="treeview">
+                        <li class="treeview <?php if(in_array($this->uri->segment(1), $menu_management_management)  == TRUE and $this->uri->segment(2) <> 'list-of-products-supplier'){ echo 'menu-open active'; } ?>">
                             <a href="#">
                                 <i class="fa fa-th-large"></i> <span>Gerencia y Gestión</span>
                                 <span class="pull-right-container">
                                     <i class="fa fa-angle-left pull-right"></i>
                                 </span>
                             </a>
-                            <ul class="treeview-menu">
-                                <li class="treeview">
+                            <ul class="treeview-menu" <?php if(in_array($this->uri->segment(1), $menu_management_management)  == TRUE and $this->uri->segment(2) <> 'list-of-products-supplier'){ echo 'style="display:block;"'; } ?>>
+                                <li class="treeview <?php if(in_array($this->uri->segment(1), $menu_global_parameters)){ echo 'menu-open'; } ?>">
                                     <a href="#"><i class="fa fa-angle-right"></i> Parámetros Globales
                                         <span class="pull-right-container">
                                             <i class="fa fa-angle-left pull-right"></i>
                                         </span>
                                     </a>
-                                    <ul class="treeview-menu">
-                                        <li>
+                                    <ul class="treeview-menu" <?php if(in_array($this->uri->segment(1), $menu_global_parameters)){ echo 'style="display:block;"'; } ?>>
+                                        <li <?php if($this->uri->segment(1) == 'modules'){ echo "class='active'"; } ?>>
                                             <a href="<?php echo base_url('modules') ?>">
                                                 <i class="fa fa-angle-right"></i> Módulos
                                             </a>
                                         </li>
-                                        <li>
+                                        <li <?php if($this->uri->segment(1) == 'movement_types'){ echo "class='active'"; } ?>>
                                             <a href="<?php echo base_url('movement_types') ?>">
                                                 <i class="fa fa-angle-right"></i> Tipos movimiento
                                             </a>
                                         </li>
-                                        <li>
+                                        <li <?php if($this->uri->segment(1) == 'document_types'){ echo "class='active'"; } ?>>
                                             <a href="<?php echo base_url('document_types') ?>">
                                                 <i class="fa fa-angle-right"></i> Tipos Documento
                                             </a>
                                         </li>
-                                        <li>
+                                        <li <?php if($this->uri->segment(1) == 'countrys'){ echo "class='active'"; } ?>>
                                             <a href="<?php echo base_url('countrys') ?>">
                                                 <i class="fa fa-angle-right"></i> Paises
                                             </a>
                                         </li>
-                                        <li>
+                                        <li <?php if($this->uri->segment(1) == 'cities'){ echo "class='active'"; } ?>>
                                             <a href="<?php echo base_url('cities') ?>">
                                                 <i class="fa fa-angle-right"></i> Ciudades
                                             </a>
                                         </li>
-                                        <li>
+                                        <li <?php if($this->uri->segment(1) == 'warehouses'){ echo "class='active'"; } ?>>
                                             <a href="<?php echo base_url('warehouses') ?>">
                                                 <i class="fa fa-angle-right"></i> Bodegas
                                             </a>
                                         </li>
-                                        <li>
+                                        <li <?php if($this->uri->segment(1) == 'list-price'){ echo "class='active'"; } ?>>
                                             <a href="<?php echo base_url('list-price') ?>">
                                                 <i class="fa fa-angle-right"></i> Lista de Precios
                                             </a>
                                         </li>
                                     </ul>   <!-- cierra lista global -->
                                 </li> 
-                                <li class="treeview">
+                                <li class="treeview <?php if(in_array($this->uri->segment(1), $menu_provider) == TRUE and $this->uri->segment(2) <> 'list-of-products-supplier'){ echo 'menu-open'; } ?>">
                                     <a href="#"><i class="fa fa-angle-right"></i> Proveedores
                                         <span class="pull-right-container">
                                             <i class="fa fa-angle-left pull-right"></i>
                                         </span>
                                     </a>
-                                    <ul class="treeview-menu">
-                                        <li>
+                                    <ul class="treeview-menu" <?php if(in_array($this->uri->segment(1), $menu_provider)  == TRUE and $this->uri->segment(2) <> 'list-of-products-supplier'){ echo 'style="display:block;"'; } ?>>
+                                        <li <?php if($this->uri->segment(1) == 'partner_types'){ echo "class='active'"; } ?>>
                                             <a href="<?php echo base_url('partner_types') ?>">
                                                 <i class="fa fa-angle-right"></i> Tipos Proveedor
                                             </a>
                                         </li>
-                                        <li>
+                                        <li <?php if($this->uri->segment(1) == 'banks'){ echo "class='active'"; } ?>>
                                             <a href="<?php echo base_url('banks') ?>">
                                                 <i class="fa fa-angle-right"></i> Bancos
                                             </a>
                                         </li>
-                                        <li>
+                                        <li <?php if($this->uri->segment(1) == 'partners' and empty($this->uri->segment(2))){ echo "class='active'"; } ?>>
                                             <a href="<?php echo base_url('partners') ?>">
                                                 <i class="fa fa-angle-right"></i> Gestión Proveedores
                                             </a>
                                         </li>
                                     </ul>   <!-- cierra lista menu proveedores -->
                                 </li>
-                                <li class="treeview">
+                                <li class="treeview <?php if(in_array($this->uri->segment(1), $menu_products)){ echo 'menu-open'; } ?>">
                                     <a href="#"><i class="fa fa-angle-right"></i> Productos
                                         <span class="pull-right-container">
                                             <i class="fa fa-angle-left pull-right"></i>
                                         </span>
                                     </a>
-                                    <ul class="treeview-menu">
-                                        <li>
+                                    <ul class="treeview-menu" <?php if(in_array($this->uri->segment(1), $menu_products)){ echo 'style="display:block;"'; } ?>>
+                                        <li <?php if($this->uri->segment(1) == 'catalogue'){ echo "class='active'"; } ?>>
                                             <a href="<?php echo base_url('catalogue') ?>">
                                                 <i class="fa fa-angle-right"></i> Categoría Principal
                                             </a>
                                         </li>
-                                        <li>
+                                        <li <?php if($this->uri->segment(1) == 'categories'){ echo "class='active'"; } ?>>
                                             <a href="<?php echo base_url('categories') ?>">
                                                 <i class="fa fa-angle-right"></i> Categorias
                                             </a>
                                         </li>
-                                        <li>
+                                        <li <?php if($this->uri->segment(1) == 'components'){ echo "class='active'"; } ?>>
                                             <a href="<?php echo base_url('components') ?>">
                                                 <i class="fa fa-angle-right"></i> Activos
                                             </a>
                                         </li>
-                                        <li>
+                                        <li <?php if($this->uri->segment(1) == 'benefits'){ echo "class='active'"; } ?>>
                                             <a href="<?php echo base_url('benefits') ?>">
                                                 <i class="fa fa-angle-right"></i> Beneficios
                                             </a>
                                         </li>
-                                        <li>
+                                        <li <?php if($this->uri->segment(1) == 'certifications'){ echo "class='active'"; } ?>>
                                             <a href="<?php echo base_url('certifications') ?>">
                                                 <i class="fa fa-angle-right"></i> Certificaciones
                                             </a>
                                         </li>
-                                        <li>
+                                        <li <?php if($this->uri->segment(1) == 'seals'){ echo "class='active'"; } ?>>
                                             <a href="<?php echo base_url('seals') ?>">
                                                 <i class="fa fa-angle-right"></i> Sellos
                                             </a>
                                         </li>
-                                        <li>
+                                        <li <?php if($this->uri->segment(1) == 'typesinventory'){ echo "class='active'"; } ?>>
                                             <a href="<?php echo base_url('typesinventory') ?>">
                                                 <i class="fa fa-angle-right"></i> Tipos Inventario
                                             </a>
                                         </li>
-                                        <li>
+                                        <li <?php if($this->uri->segment(1) == 'unitsmeasure'){ echo "class='active'"; } ?>>
                                             <a href="<?php echo base_url('unitsmeasure') ?>">
                                                 <i class="fa fa-angle-right"></i> Unidades Medida
                                             </a>
                                         </li>
-                                        <li>
+                                        <li <?php if($this->uri->segment(1) == 'presentation'){ echo "class='active'"; } ?>>
                                             <a href="<?php echo base_url('presentation') ?>">
                                                 <i class="fa fa-angle-right"></i> Presentaciones
                                             </a>
                                         </li>
-                                        <li>
-                                            <a href="<?php echo base_url('price-product') ?>">
-                                                <i class="fa fa-angle-right"></i> Precio de Productos
-                                            </a>
-                                        </li>
-                                        <li>
+                                        <li <?php if($this->uri->segment(1) == 'products'){ echo "class='active'"; } ?>>
                                             <a href="<?php echo base_url('products') ?>">
                                                 <i class="fa fa-angle-right"></i> Gestión Productos
+                                            </a>
+                                        </li>
+                                        <li <?php if($this->uri->segment(1) == 'price-product'){ echo "class='active'"; } ?>>
+                                            <a href="<?php echo base_url('price-product') ?>">
+                                                <i class="fa fa-angle-right"></i> Precio de Productos
                                             </a>
                                         </li>
                                     </ul>   <!-- cierra lista menu de productos -->
                                 </li>  
                             </ul>
                         </li>
-                        <li class="treeview">
+                        <li class="treeview <?php if(in_array($this->uri->segment(1), $menu_ecommerce)){ echo 'menu-open active'; } ?>">
                             <a href="#">
                                 <i class="fa fa-shopping-basket"></i> <span>eCommerce</span>
                                 <span class="pull-right-container">
                                     <i class="fa fa-angle-left pull-right"></i>
                                 </span>
                             </a>
-                            <ul class="treeview-menu">
-                                <li>
+                            <ul class="treeview-menu" <?php if(in_array($this->uri->segment(1), $menu_ecommerce)){ echo 'style="display:block;"'; } ?>>
+                                <li <?php if($this->uri->segment(1) == 'shop-layout'){ echo "class='active'"; } ?>>
                                     <a href="<?php echo base_url('shop-layout') ?>">
                                         <i class="fa fa-angle-right"></i> Configuración
                                     </a>
                                 </li>
-                                <li>
+                                <li <?php if($this->uri->segment(1) == 'shop-layout-navbar'){ echo "class='active'"; } ?>>
                                     <a href="<?php echo base_url('shop-layout-navbar') ?>">
                                         <i class="fa fa-angle-right"></i> Menús
                                     </a>
                                 </li>
-                                <li>
+                                <li <?php if($this->uri->segment(1) == 'shop-layout-filter'){ echo "class='active'"; } ?>>
                                     <a href="<?php echo base_url('shop-layout-filter') ?>">
                                         <i class="fa fa-angle-right"></i> Administrador de Filtros
                                     </a>
                                 </li>
-                                <li>
+                                <li <?php if($this->uri->segment(1) == 'shop-layout-filter-item'){ echo "class='active'"; } ?>>
                                     <a href="<?php echo base_url('shop-layout-filter-item') ?>">
                                         <i class="fa fa-angle-right"></i> Parámetros de Filtro
                                     </a>
                                 </li>
-                                <li class="treeview">
+                                <li class="treeview <?php if(in_array($this->uri->segment(1), $menu_marketing_digital)){ echo 'menu-open'; } ?>">
                                     <a href="#">
                                         <i class="fa fa-angle-right"></i> <span>Marketing Digital</span>
                                         <span class="pull-right-container">
                                             <i class="fa fa-angle-left pull-right"></i>
                                         </span>
                                     </a>
-                                    <ul class="treeview-menu">
-                                        <li>
+                                    <ul class="treeview-menu" <?php if(in_array($this->uri->segment(1), $menu_marketing_digital)){ echo 'style="display:block;"'; } ?>>
+                                        <li <?php if($this->uri->segment(1) == 'shop-layout-google-analytics'){ echo "class='active'"; } ?>>
                                             <a href="<?php echo base_url('shop-layout-google-analytics') ?>">
                                                 <i class="fa fa-angle-right"></i> Google Analytics
                                             </a>
@@ -382,27 +484,27 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="treeview">
+                        <li class="treeview <?php if(in_array($this->uri->segment(1), $menu_innovation_markets)){ echo 'menu-open active'; } ?>">
                             <a href="#">
                                 <i class="fa fa-newspaper-o" aria-hidden="true"></i> <span>Innovación Mercados</span>
                                 <span class="pull-right-container">
                                     <i class="fa fa-angle-left pull-right"></i>
                                 </span>
                             </a>
-                            <ul class="treeview-menu">
-                                <li>
+                            <ul class="treeview-menu" <?php if(in_array($this->uri->segment(1), $menu_innovation_markets)){ echo 'style="display:block;"'; } ?>>
+                                <li <?php if($this->uri->segment(1) == 'excel-providers'){ echo "class='active'"; } ?>>
                                     <a href="<?php echo base_url('excel-providers') ?>">
                                         <i class="fa fa-angle-right"></i> Registro Proveedores
                                     </a>
                                 </li>
-                                <li>
+                                <li <?php if($this->uri->segment(1) == 'requirements-matrix'){ echo "class='active'"; } ?>>
                                     <a href="<?php echo base_url('requirements-matrix') ?>">
                                         <i class="fa fa-angle-right"></i> Matriz Requerimientos
                                     </a>
                                 </li>
                             </ul>
                         </li>
-                        <li class="treeview">
+                        <li class="treeview <?php if(in_array($this->uri->segment(1), $menu_multimedia)){ echo 'menu-open active'; } ?>">
                             <a href="#">
                                 <i class="fa fa-film"></i>
                                 <span>Multimedia</span>
@@ -410,16 +512,16 @@
                                     <i class="fa fa-angle-left pull-right"></i>
                                 </span>
                             </a>
-                            <ul class="treeview-menu" style="display: none;">
-                                <li>
+                            <ul class="treeview-menu" <?php if(in_array($this->uri->segment(1), $menu_multimedia)){ echo 'style="display:block;"'; } ?>>
+                                <li <?php if($this->uri->segment(1) == 'multimedia' and $this->uri->segment(2) != 'videos'){ echo "class='active'"; } ?>>
                                     <a href="<?php echo base_url('multimedia') ?>"><i class="fa fa-image"></i> Imágenes</a>
                                 </li>
-                                <li>
+                                <li <?php if($this->uri->segment(1) == 'multimedia' and $this->uri->segment(2) == 'videos'){ echo "class='active'"; } ?>>
                                     <a href="<?php echo base_url('multimedia/videos') ?>"><i class="fa fa-video-camera"></i> Vídeos</a>
                                 </li>
                             </ul>
                         </li>
-                        <li class="treeview">
+                        <li class="treeview <?php if(in_array($this->uri->segment(1), $menu_client)){ echo 'menu-open active'; } ?>">
                             <a href="#">
                                 <i class="fa fa-user-circle"></i>
                                 <span>Clientes</span>
@@ -427,32 +529,16 @@
                                     <i class="fa fa-angle-left pull-right"></i>
                                 </span>
                             </a>
-                            <ul class="treeview-menu" style="display: none;">
-                                <li>
+                            <ul class="treeview-menu" <?php if(in_array($this->uri->segment(1), $menu_client)){ echo 'style="display:block;"'; } ?>>
+                                <li <?php if($this->uri->segment(1) == 'consumers'){ echo "class='active'"; } ?>>
                                     <a href="<?php echo base_url('consumers') ?>">
                                         <i class="fa fa-edit"></i> Registro
                                     </a>
                                 </li>
                             </ul>
                         </li>
-                        <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-user-md"></i>
-                                <span>Lider Coach</span>
-                                <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </span>
-                            </a>
-                            <ul class="treeview-menu" style="display: none;">
-                                <li>
-                                    <a href="">
-                                        <i class="fa fa-edit"></i> Registro inicial
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
                         <?php if ($this->session->userdata['user']['type_of_access'] == 'Proveedor'): ?>
-                            <li class="treeview">
+                            <li class="treeview <?php if(in_array($this->uri->segment(2), $menu_partners)){ echo 'menu-open active'; } ?>">
                                 <a href="#">
                                     <i class="fa fa-user-o" aria-hidden="true"></i>
                                     <span>Partners</span>
@@ -460,8 +546,8 @@
                                         <i class="fa fa-angle-left pull-right"></i>
                                     </span>
                                 </a>
-                                <ul class="treeview-menu" style="display: none;">
-                                    <li>
+                                <ul class="treeview-menu" <?php if(in_array($this->uri->segment(2), $menu_partners)){ echo 'style="display:block;"'; } ?>>
+                                    <li <?php if($this->uri->segment(2) == 'list-of-products-supplier'){ echo "class='active'"; } ?>>
                                         <a href="<?php echo base_url('partners/list-of-products-supplier') ?>">
                                             <i class="fa fa-angle-right"></i> Listado Productos
                                         </a>
@@ -469,7 +555,7 @@
                                 </ul>
                             </li>
                         <?php endif ?>
-                        <li>
+                        <li <?php if($this->uri->segment(1) == 'users'){ echo "class='active'"; } ?>>
                             <a href="<?php echo base_url('users') ?>">
                                 <i class="fa fa-users"></i> <span>Usuarios</span>
                             </a>
@@ -488,10 +574,12 @@
             <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
-                    <h1>
-                        <?php echo $option_nav['box_title'] ?>
-                        <small><?php echo $option_nav['box_span'] ?></small>
-                    </h1>
+                    <?php if ($this->session->userdata['user']['type_of_access'] != 'Coach'): ?>
+                        <h1>
+                            <?php echo $option_nav['box_title'] ?>
+                            <small><?php echo $option_nav['box_span'] ?></small>
+                        </h1>
+                    <?php endif ?>
                     <ol class="breadcrumb">
                         <?php foreach ($option_nav_item as $key => $value): ?>
                             <li <?php if(!empty($value['class']) and $value['class'] == 'active'){ echo 'class="'.$value['class'].'"'; } ?> >

@@ -4,7 +4,7 @@
                 <div class="pull-right hidden-xs">
                     <b>Version</b> 1.0
                 </div>
-                © 2017-<?php echo date('Y'); ?> Pwex Todos los derechos reservados.
+                Pwex © 2017-<?php echo date('Y'); ?> Todos los derechos reservados.
             </footer>
            
             <!-- Add the sidebar's background. This div must be placed
@@ -12,11 +12,30 @@
             <div class="control-sidebar-bg"></div>
         </div>
         <!-- ./wrapper -->
-        <?php if ($this->uri->segment(1) != 'calendar'): ?>
-            <script src="<?php echo base_url('assets/bower_components/jquery/dist/jquery.min.js') ?>"></script>
-        <?php else: ?>
-            <script src="<?=$base_url?>js/jquery.min.js"></script>
-        <?php endif ?>
+        <style type="text/css">
+            .categories-container {
+                background: rgb(255, 255, 255) !important;
+                border-radius: 0px !important;
+                border: none !important;
+                padding: 0.4em 0em !important;
+            }
+            .simplefilter li {
+                background-color: #ffffff !important;
+                border-color: #f2f2f2 !important;
+                box-shadow: none !important;
+                color: #4b5154 !important;
+                font-size: 13px;
+                font-weight: bold;
+                margin-bottom: 5px;
+                padding: 3px 10px !important;
+                text-align: left !important;
+                text-shadow: none !important;
+                width: 16.4%;
+            }
+                .simplefilter li:hover{
+                    background-color: #f8fafc !important;
+                }
+        </style>
         <!-- Bootstrap 3.3.7 -->
         <script src="<?php echo base_url('assets/bower_components/bootstrap/dist/js/bootstrap.min.js') ?>"></script> 
         <!-- SlimScroll -->
@@ -27,11 +46,79 @@
         <script src="<?php echo base_url('assets/dist/js/adminlte.min.js') ?>"></script>
         <!-- AdminLTE for demo purposes -->
         <script src="<?php echo base_url('assets/dist/js/demo.js') ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('assets/plugins/ion-sound/ion.sound.min.js') ?>"></script>
         <script>
             $(document).ready(function () {
-              $('.sidebar-menu').tree()
+                $('.sidebar-menu').tree()
             });
         </script>
+        <?php if ($this->session->userdata['user']['type_of_access'] == 'Proveedor'): ?>
+            <!-- seccion de escritorio para cuando inicia sesion un proveedor -->
+            <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+            <script type="text/javascript">
+              google.charts.load('current', {'packages':['corechart']});
+              google.charts.setOnLoadCallback(drawChart);
+
+              function drawChart() {
+                var data = google.visualization.arrayToDataTable([
+                  ['Year', 'Sales', 'Expenses'],
+                  ['2004',  1000,      400],
+                  ['2005',  1170,      460],
+                  ['2006',  660,       1120],
+                  ['2007',  1030,      540]
+                ]);
+
+                var options = {
+                  title: 'Company Performance',
+                  curveType: 'function',
+                  legend: { position: 'bottom' }
+                };
+
+                var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+                chart.draw(data, options);
+              }
+            </script>
+            <script type="text/javascript">
+                google.charts.load('current', {'packages':['corechart']});
+                google.charts.setOnLoadCallback(drawChart);
+                function drawChart() {
+                    var data = google.visualization.arrayToDataTable([
+                        ['Task', 'Hours per Day'],
+                        ['Work',     11],
+                        ['Eat',      2],
+                        ['Commute',  2],
+                        ['Watch TV', 2],
+                        ['Sleep',    7]
+                    ]);
+                    var options = {
+                      title: 'My Daily Activities'
+                    };
+                    var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+                    chart.draw(data, options);
+                }
+            </script>
+            <script type="text/javascript">
+                google.charts.load('current', {'packages':['corechart']});
+                google.charts.setOnLoadCallback(drawChart);
+                function drawChart() {
+                    var data = google.visualization.arrayToDataTable([
+                        ['Year', 'Sales', 'Expenses'],
+                        ['2013',  1000,      400],
+                        ['2014',  1170,      460],
+                        ['2015',  660,       1120],
+                        ['2016',  1030,      540]
+                    ]);
+                    var options = {
+                        title: 'Company Performance',
+                        hAxis: {title: 'Year',  titleTextStyle: {color: '#333'}},
+                        vAxis: {minValue: 0}
+                    };
+                    var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
+                    chart.draw(data, options);
+                }
+            </script>
+        <?php endif ?>
         <!-- DataTables -->
         <?php if (($this->uri->segment(1) == 'users') || ($this->uri->segment(1) == 'modules') || ($this->uri->segment(1) == 'movement_types') || ($this->uri->segment(1) == 'categories') || ($this->uri->segment(1) == 'warehouses') || ($this->uri->segment(1) == 'countrys') || ($this->uri->segment(1) == 'benefits') || ($this->uri->segment(1) == 'typesinventory') || ($this->uri->segment(1) == 'components') || ($this->uri->segment(1) == 'unitsmeasure') || ($this->uri->segment(1) == 'products') || ($this->uri->segment(1) == 'partners') || ($this->uri->segment(1) == 'document_types') || ($this->uri->segment(1) == 'partner_types') || ($this->uri->segment(1) == 'cities') || ($this->uri->segment(1) == 'seals') || ($this->uri->segment(1) == 'list-price') || ($this->uri->segment(1) == 'banks') || ($this->uri->segment(1) == 'consumers') || ($this->uri->segment(1) == 'price-product' and ($this->uri->segment(2) !="add" or $this->uri->segment(2) !="edit")) || ($this->uri->segment(1) == 'catalogue' and ($this->uri->segment(2) !="add" or $this->uri->segment(2) !="edit")) || ($this->uri->segment(1) == 'certifications' and ($this->uri->segment(2) !="add" or $this->uri->segment(2) !="edit")) || ($this->uri->segment(1) == 'shop-layout-navbar' and ($this->uri->segment(2) !="add" or $this->uri->segment(2) !="edit")) || ($this->uri->segment(1) == 'shop-layout-filter' and ($this->uri->segment(2) !="add" or $this->uri->segment(2) !="edit")) || ($this->uri->segment(1) == 'shop-layout-filter-item' and ($this->uri->segment(2) !="add" or $this->uri->segment(2) !="edit")) || ($this->uri->segment(1) == 'excel-providers' and ($this->uri->segment(2) !="add" or $this->uri->segment(2) !="edit")) || ($this->uri->segment(1) == 'requirements-matrix' and ($this->uri->segment(2) !="add" or $this->uri->segment(2) !="edit")) || ($this->uri->segment(1) == 'presentation' and ($this->uri->segment(2) !="add" or $this->uri->segment(2) !="edit")) ): ?>
             <!-- script para agregar clase no-padding para resoluciones moviles -->
@@ -50,10 +137,16 @@
                         $(this).html( '<input type="text" class="form-control input-sm" placeholder="'+title+'" style="font-weight: 600; width: 100%" />' );
                     } );
                     var table = $('#table-default').DataTable({
+                        <?php if ($this->uri->segment(1) == 'products'): ?>
+                            "order": [[ 0, "desc" ]],
+                        <?php endif; ?>
                         <?php if ($this->uri->segment(1) == 'price-product'): ?>
                             "order": [[ 1, "asc" ], [4, 'asc']],
                         <?php endif; ?>
                         <?php if ($this->uri->segment(1) == 'excel-providers'): ?>
+                            "order": [[ 0, "desc" ]],
+                        <?php endif; ?>
+                        <?php if ($this->uri->segment(1) == 'requirements-matrix'): ?>
                             "order": [[ 0, "desc" ]],
                         <?php endif; ?>
                         colReorder: true,
@@ -411,7 +504,12 @@
                 $(function() {
                     //Initialize filterizr with default options
                     var filterizd = $('.filtr-container').filterizr({
-                        layout: 'sameSize'
+                        layout: 'sameSize',
+                        <?php if(($this->uri->segment(2) == 'add' or $this->uri->segment(2) == 'edit') and $this->uri->segment(1) == 'seals'): ?>
+                            filter: 2,
+                        <?php elseif(($this->uri->segment(2) == 'add' or $this->uri->segment(2) == 'edit') and $this->uri->segment(1) == 'countrys'): ?>
+                            filter: 34,
+                        <?php endif; ?>
                     });
                 });
             </script>
@@ -603,7 +701,7 @@
                     $('button.btn-primary').on('click', function(){
                         $('#container-box-datatable').css('color', '#e2e2e2');
                         $('button.btn-primary').css('opacity', '0.1');
-                        $('button.btn-primary').prop("disabled",true);
+                        $('button.btn').prop("disabled",true);
                         $('.bar-disable').show(500);
                         var email        = $(this).attr('value');
                         var id           = $(this).attr('id');
@@ -620,10 +718,11 @@
                                 setTimeout(function(){
                                     $('#container-box-datatable').css('color', '#333333');
                                     $('button.btn-primary').css('opacity', '1');
-                                    $('button.btn-primary').prop("disabled",false);
+                                    $('button.btn').prop("disabled",false);
+                                    $('button.btn-primary').prop('title', 'Reenviar');
                                     $('.bar-disable').hide(500);
-                                    $('button.btn-primary[id=' + id + ']').css('background-color', '#4caf50');
-                                    $('button.btn-primary[id=' + id + ']').css('border-color', '#4caf50');
+                                    $('button.btn-primary[id=' + id + ']').css('background-color', '#1976D2');
+                                    $('button.btn-primary[id=' + id + ']').css('border-color', '#1976D2');
                                     $('button.btn-primary[id=' + id + ']').empty().html('<i class="fa fa-share" aria-hidden="true"></i>');
                                 }, 2500);
                             },
@@ -642,16 +741,17 @@
                     $('button.btn-primary').on('click', function(){
                         $('#container-box-datatable').css('color', '#e2e2e2');
                         $('button.btn-primary').css('opacity', '0.1');
-                        $('button.btn-primary').prop("disabled",true);
+                        $('button.btn').prop("disabled",true);
                         $('.bar-disable').show(500);
                         var email        = $(this).attr('value');
                         var id           = $(this).attr('id');
                         var language     = $(this).attr('language');
                         var company_name = $(this).attr('company_name');
                         var product_name = $(this).attr('product_name');
+                        var category     = $(this).attr('category');
                         $.ajax({
                             url  : '<?php echo base_url('product-order-approval') ?>',
-                            data : { id: id, email: email, company_name: company_name, product_name: product_name, language: language },
+                            data : { id: id, email: email, company_name: company_name, product_name: product_name, language: language, category: category },
                             type : 'POST',
                             success : function(response){
 
@@ -660,10 +760,11 @@
                                 setTimeout(function(){
                                     $('#container-box-datatable').css('color', '#333333');
                                     $('button.btn-primary').css('opacity', '1');
-                                    $('button.btn-primary').prop("disabled",false);
+                                    $('button.btn-primary').prop('title', 'Reenviar');
+                                    $('button.btn').prop("disabled",false);
                                     $('.bar-disable').hide(500);
-                                    $('button.btn-primary[id=' + id + ']').css('background-color', '#4caf50');
-                                    $('button.btn-primary[id=' + id + ']').css('border-color', '#4caf50');
+                                    $('button.btn-primary[id=' + id + ']').css('background-color', '#1976D2');
+                                    $('button.btn-primary[id=' + id + ']').css('border-color', '#1976D2');
                                     $('button.btn-primary[id=' + id + ']').empty().html('<i class="fa fa-share" aria-hidden="true"></i>');
                                 }, 2500);
                             },
@@ -835,8 +936,23 @@
         <?php endif ?>
         <?php if ($this->uri->segment(1) == 'consumers' and $this->uri->segment(2) == 'poll'): ?>
             <!-- script para la sección de la encuenta -->
+            <script type="text/javascript" src="<?php echo base_url('assets/plugins/ion-sound/ion.sound.min.js') ?>"></script>
             <script type="text/javascript">
                 $(document).ready(function(){
+                    $('.btn-poll-checked').on('click', function(){
+                        ion.sound({
+                        sounds: [
+                            {name: "water_droplet_3"}
+                        ],
+                        path: "<?php echo base_url('assets/plugins/ion-sound/sounds/') ?>",
+                        preload: true,
+                        multiplay: true,
+                        volume: 0.9
+                    });
+
+                    // play sound
+                    ion.sound.play("water_droplet_3");
+                    });
                     $('#all_aspect').change(function(){
                         var status = $('label[for=all_aspect]').text().trim();
                         if (status == 'Todos') {

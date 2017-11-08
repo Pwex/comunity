@@ -23,6 +23,7 @@ class MultimediaModel extends CI_Model {
         return $this->db
         ->from('categories')
         ->select('categories.id_category, categories.name_category')
+        ->order_by('categories.name_category')
         ->join('medios', 'medios.id_category = categories.id_category')
         ->group_by('medios.id_category')
         ->get()

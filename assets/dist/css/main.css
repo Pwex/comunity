@@ -11,8 +11,32 @@ blockquote {
 .btn-primary:hover {
     border-color: #1a8de8;
 }
+.btn-primary.active, .btn-primary:active, .open>.dropdown-toggle.btn-primary {
+    background-color: #2196f3;
+    border-color: #2196f3;
+}
+.btn-primary.focus, .btn-primary:focus {
+    background-color: #2196f3;
+    border-color: #2196f3;
+}
+.btn-primary.active.focus, .btn-primary.active:focus, .btn-primary.active:hover, .btn-primary:active.focus, .btn-primary:active:focus, .btn-primary:active:hover, .open>.dropdown-toggle.btn-primary.focus, .open>.dropdown-toggle.btn-primary:focus, .open>.dropdown-toggle.btn-primary:hover {
+    background-color: #2196f3;
+    border-color: #2196f3;
+}
 .text-success {
     color: #4CAF50;
+}
+.btn-success:hover {
+    color: #fff;
+    background-color: #449d44;
+    border-color: #48a74c;
+}
+.btn-success.focus, .btn-success:focus {
+    border-color: #4CAF50;
+}
+.btn-warning.active.focus, .btn-warning.active:focus, .btn-warning.active:hover, .btn-warning:active.focus, .btn-warning:active:focus, .btn-warning:active:hover, .open>.dropdown-toggle.btn-warning.focus, .open>.dropdown-toggle.btn-warning:focus, .open>.dropdown-toggle.btn-warning:hover {
+    background-color: #d58512;
+    border-color: #d58512;
 }
 @media (max-width: 425px) {
 	.box-header {
@@ -44,13 +68,16 @@ label {
     }
 }
 @media (min-width: 768px){
-	.navbar-nav>li>a {
+    .navbar-nav>li>a {
 	    padding-top: 15px;
 	    padding-bottom: 20px;
 	}
     .modal-dialog {
         width: 60%;
         margin-top: 15%;
+    }
+    .small-box>.small-box-footer {
+        background: rgba(19, 18, 18, 0.13);
     }
 }
 .modal-body {
@@ -83,4 +110,15 @@ select.input-lg {
 .pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
     background-color: #2196f3;
     border-color: #2196f3;
+}
+.badge {
+    border-radius: 2px;
+}
+.form-group label {
+    margin-bottom: 3px;
+}
+.bootstrap-tagsinput {
+    border: 2px solid #eee !important;
+    box-shadow: none !important; 
+    border-radius: 2px !important;
 }

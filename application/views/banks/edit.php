@@ -1,24 +1,24 @@
-<!-- Main content -->
+<?php echo form_open('banks/edit/'.$this->uri->segment(3), 'autocomplete="off"') ?>
 <section class="content">
     <div class="box box-danger">
         <div class="box-header">
             <blockquote style="margin-bottom: 0">
                 Editar Banco
+                <div class="col-sm-6 col-xs-6 col-md-3 pull-right">
+                    <div class="btn-group btn-group-justified">
+                        <div class="btn-group">
+                            <button type="submit" class="btn btn-default" data-toggle="tooltip" title="Almacenar información"><i class="fa fa-check" aria-hidden="true"></i></button>
+                        </div>
+                        <div class="btn-group">
+                            <button type="reset"  class="btn btn-default" data-toggle="tooltip" title="Cancelar información"><i class="fa fa-ban" aria-hidden="true"></i></button>
+                        </div>
+                        <a href="<?php echo base_url('banks') ?>" class="btn btn-default" data-toggle="tooltip" title="Listado de Bancos"><i class="fa fa-table" aria-hidden="true"></i></a>
+                    </div>
+                </div>
             </blockquote>
         </div>
         <!-- /.box-header -->
         <div class="box-body">
-            <?php echo form_open('banks/edit/'.$this->uri->segment(3)) ?>
-                <div class="row">
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <label for="name">Banco</label>
-                            <input type="text" name="name_bank" id="name_bank" class="form-control" placeholder="Nombre del banco" value="<?php echo set_value('name_bank', $information_banks[0]["name_bank"]) ?>" required="" />
-                            <?php echo form_error('name') ?>
-                        </div>
-                    </div>
-                </div>
- 
                 <div class="row">
                     <div class="col-sm-3">
                         <div class="form-group">
@@ -29,10 +29,11 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-4">
+                    <div class="col-sm-6">
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary">Enviar</button>
-                            <button type="reset"  class="btn btn-default">Cancelar</button>
+                            <label for="name">Banco</label>
+                            <input type="text" name="name_bank" id="name_bank" class="form-control" placeholder="Nombre del banco" value="<?php echo set_value('name_bank', $information_banks[0]["name_bank"]) ?>" required="" />
+                            <?php echo form_error('name') ?>
                         </div>
                     </div>
                 </div>

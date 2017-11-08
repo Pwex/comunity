@@ -13,6 +13,12 @@ class Export_excel_requirements_matrix{
                 table{
                     width:100%;
                 }
+                table th tr td {
+                    color: #333;
+                }
+                table tr td, table tr td a {
+                    color: #fff;
+                }
                 table td, table th{
                     white-space: nowrap;
                 }
@@ -56,12 +62,8 @@ class Export_excel_requirements_matrix{
             'file_image'             => 'Archivo de imágenes del producto',
             'opt_effectiveness'      => 'Estudio de eficiencia',
             'file_effectiveness'     => 'Archivo de estudio de eficiencia',
-            'opt_certification'      => 'Certificado de análisis',
-            'file_certification'     => 'Archivo de certificado de análisis',
             'opt_use_mode'           => 'Modo de uso',
             'file_use_mode'          => 'Archivo de modo de uso',
-            'opt_microbiologica'     => 'Estudio microbiologico',
-            'file_microbiological'   => 'Archivo de estudio microbiologico',
             'opt_regulatory'         => 'Certificados de Normatividad del producto',
             'file_regulatory'        => 'Archivo certificados de normatividad del producto',
             'opt_label'              => 'Lista de ingredientes y rotulado',
@@ -72,6 +74,7 @@ class Export_excel_requirements_matrix{
             'file_toxicity'          => 'Archivo de estudios de toxicidad',
             'opt_other'              => 'Otros',
             'file_other'             => 'Archivo de otros',
+            'email_sending_status'   => 'Estatus del envio de correo electrónico',
         );
         foreach($array as $key => $row){
             $hdata[$key]['company_name']           = $row['company_name'];
@@ -104,12 +107,8 @@ class Export_excel_requirements_matrix{
             $hdata[$key]['file_image']             = !empty($row['file_image']) ? "<a href='".$row['file_image']."'>Adjunto</a>" : '';
             $hdata[$key]['opt_effectiveness']      = $row['opt_effectiveness'];
             $hdata[$key]['file_effectiveness']     = !empty($row['file_effectiveness']) ? "<a href='".$row['file_effectiveness']."'>Adjunto</a>" : '';
-            $hdata[$key]['opt_certification']      = $row['opt_certification'];
-            $hdata[$key]['file_certification']     = !empty($row['file_certification']) ? "<a href='".$row['file_certification']."'>Adjunto</a>" : '';
             $hdata[$key]['opt_use_mode']           = $row['opt_use_mode'];
             $hdata[$key]['file_use_mode']          = !empty($row['file_use_mode']) ? "<a href='".$row['file_use_mode']."'>Adjunto</a>" : '';
-            $hdata[$key]['opt_microbiologica']     = $row['opt_microbiologica'];
-            $hdata[$key]['file_microbiological']   = !empty($row['file_microbiological']) ? "<a href='".$row['file_microbiological']."'>Adjunto</a>" : '';
             $hdata[$key]['opt_regulatory']         = $row['opt_regulatory'];
             $hdata[$key]['file_regulatory']        = !empty($row['file_regulatory']) ? "<a href='".$row['file_regulatory']."'>Adjunto</a>" : '';
             $hdata[$key]['opt_label']              = $row['opt_label'];
@@ -122,6 +121,7 @@ class Export_excel_requirements_matrix{
             $hdata[$key]['file_other']             = !empty($row['file_other']) ? "<a href='".$row['file_other']."'>Adjunto</a>" : '';
             $hdata[$key]['language']               = $row['language'];
             $hdata[$key]['email']                  = $row['email'];
+            $hdata[$key]['email_sending_status']   = $row['email_sending_status'];
             foreach($hdata as $key => $val){
                 foreach ($val as $item => $item_val) {
                     if(!in_array($item, $h)){
@@ -134,11 +134,15 @@ class Export_excel_requirements_matrix{
         echo '<table style="font-family:verdana;"><tr>';
         foreach($header as $key) {
             $key = ucwords($key);
-            echo '<th style="border:1px #e6e6e6 solid;background-color:#00aecc;color:white; padding: 5px;">'.$key.'</th>';
+            echo '<th style="border:1px #e6e6e6 solid;color:#000; padding: 5px; text-align:left;">'.$key.'</th>';
         }
         echo '</tr>';
         foreach($hdata as $row){
-            echo '<tr>';
+            if ($row['email_sending_status'] == 'Enviado') {
+                echo '<tr style="color:#388e3c">';
+            } else {
+                echo '<tr style="color:#f44336;">';
+            }
             foreach($row as $val) {
                 $this->writeRow($val);   
             }
@@ -148,7 +152,7 @@ class Export_excel_requirements_matrix{
     }
 
     function writeRow($val) {
-        echo '<td style="border:1px #ececec solid;color:#555;">'.$val.'</td>';              
+        echo '<td style="border:1px #ececec solid;">'.$val.'</td>';              
     }
 
 }

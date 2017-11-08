@@ -10,45 +10,6 @@
                     </a>
                 </span>
             </blockquote>
-            <?php if ($this->uri->segment(2) == 'success'): ?>
-                <div class="row" style="margin-top: 0.8em">
-                    <div class="col-sm-12" style="margin-bottom: -1.5em">
-                        <div class="alert alert-success alert-dismissible">
-                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                            <h4>
-                                <i class="icon fa fa-check"></i> Exitoso
-                            </h4>
-                            El registro ingresado se ha almacenado correctamente.
-                        </div>
-                    </div>
-                </div>
-            <?php endif ?>
-            <?php if ($this->uri->segment(2) == 'success-delete'): ?>
-                <div class="row" style="margin-top: 0.8em">
-                    <div class="col-sm-12" style="margin-bottom: -1.5em">
-                        <div class="alert alert-danger alert-dismissible">
-                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                            <h4>
-                                <i class="icon fa fa-trash"></i> Exitoso
-                            </h4>
-                            El registro seleccionado ha sido eliminado correctamente.
-                        </div>
-                    </div>
-                </div>
-            <?php endif ?>
-            <?php if ($this->uri->segment(2) == 'success-edit'): ?>
-                <div class="row" style="margin-top: 0.8em">
-                    <div class="col-sm-12" style="margin-bottom: -1.5em">
-                        <div class="alert alert-info alert-dismissible">
-                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                            <h4>
-                                <i class="icon fa fa-pencil"></i> Exitoso
-                            </h4>
-                            El registro seleccionado ha sido actualizado correctamente.
-                        </div>
-                    </div>
-                </div>
-            <?php endif ?>
         </div>
         <!-- /.box-header -->
         <div class="box-body table-responsive" id="container-box-datatable">
@@ -108,4 +69,33 @@
 
     </div>
 </section>
-<!-- /.content -->   
+<!-- /.content -->
+<?php if ($this->uri->segment(2) == 'success' or $this->uri->segment(2) == 'success-edit' or $this->uri->segment(2) == 'success-delete'): ?>
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/plugins/alertify/css/alertify.min.css') ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/plugins/alertify/css/themes/bootstrap.min.css') ?>">
+    <style type="text/css">
+        .alertify-notifier .ajs-message.ajs-warning {
+          width: 350px;
+          font-weight: bold;
+        }
+    </style>
+    <script type="text/javascript" src="<?php echo base_url('assets/plugins/alertify/alertify.min.js') ?>"></script>
+    <?php if ($this->uri->segment(2) == 'success'): ?>
+        <script type="text/javascript">
+            alertify.set('notifier','position', 'bottom-center');
+            alertify.warning('<i class="fa fa-check-square-o fa-lg" aria-hidden="true"></i> | Registro guardado correctamente.');
+        </script>
+    <?php endif ?>
+    <?php if ($this->uri->segment(2) == 'success-edit'): ?>
+        <script type="text/javascript">
+            alertify.set('notifier','position', 'bottom-center');
+            alertify.warning('<i class="fa fa-pencil-square fa-lg" aria-hidden="true"></i> | Registro actualizado correctamente.');
+        </script>
+    <?php endif ?>
+    <?php if ($this->uri->segment(2) == 'success-delete'): ?>
+        <script type="text/javascript">
+            alertify.set('notifier','position', 'bottom-center');
+            alertify.warning('<i class="fa fa-trash fa-lg" aria-hidden="true"></i> | Registro eliminado correctamente.');
+        </script>
+    <?php endif ?>
+<?php endif ?>

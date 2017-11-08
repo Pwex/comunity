@@ -18,6 +18,14 @@
         <link rel="stylesheet" href="<?php echo base_url('assets/plugins/iCheck/square/blue.css') ?>">
         <!-- style default -->
         <style type="text/css">
+            body {
+                overflow-x: hidden;
+                overflow-y: hidden;
+            }
+            .login-box-body, .register-box-body, .login-page, .register-page {
+                background: #1E88E5 !important;
+                color: #fff !important;
+            }
             a {
                 color: #2196f3;
             }
@@ -35,6 +43,9 @@
                 background-color: #1a8de8;
                 border-color: #1a8de8;
             }
+            .login-box-body .form-control-feedback, .register-box-body .form-control-feedback {
+                color: #607D8B;
+            }
         </style>
         <!-- Google Font -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
@@ -42,8 +53,8 @@
     <body class="hold-transition login-page">
         <div class="login-box">
             <div class="login-logo" style="margin-bottom: 0;">
-                <img src="<?php echo base_url('assets/dist/img/pwex.png') ?>" class="img-logo" />
-                <a href="<?php echo site_url() ?>" style="letter-spacing: 0.1em">ADMINISTRATIVO</a>
+                <img src="<?php echo base_url('assets/dist/img/pwex-white.png') ?>" class="img-logo" />
+                <a href="<?php echo site_url() ?>" style="letter-spacing: 6px; color: #fff; font-weight: 500;">ADMINISTRATIVO</a>
             </div>
             <!-- /.login-logo -->
             <div class="login-box-body">
@@ -62,14 +73,15 @@
                             <button type="reset" class="btn btn-default btn-block btn-flat" id="btn-cancel">Cancelar</button>
                         </div>
                         <div class="col-xs-6">
-                            <button type="submit" class="btn btn-primary btn-block btn-flat">Enviar</button>
+                            <button type="submit" class="btn btn-default btn-block btn-flat">Enviar</button>
                         </div>
                     </div>
                 </form>
                 <p></p>
                 <div>
-                    <p><a href="<?php echo base_url('reset-key') ?>" class="lead">Olvidé mi clave de seguridad</a><br>
-                    <a href="register.html" class="text-center lead">Registrar una nueva membresía</a></p>
+                    <p>
+                        <a href="<?php echo base_url('reset-key') ?>" class="lead" style="color: #fff;">Olvidé mi clave de seguridad</a><br>
+                        <a href="register.html" class="text-center lead" style="color: #fff;">Registrar una nueva membresía</a></p>
                     <p class="footer">© 2017-<?php echo date('Y') ?> Pwex Todos los derechos reservados.</p>
                 </div>
                 <?php if ($this->uri->segment(1) == 'access' and $this->uri->segment(2) == 'denied'): ?>

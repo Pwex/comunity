@@ -1,4 +1,14 @@
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/plugins/bootstrap-tags/bootstrap-tagsinput.css') ?>">
 <style type="text/css">
+    .bootstrap-tagsinput {
+        width: 100%;
+    }
+    .bg-aqua, .callout.callout-info, .alert-info, .label-info, .modal-info .modal-body {
+        background-color: #2196F3 !important;
+    }
+    .container-tab {
+        width: 100%;
+    }
     .img {
         border-radius: 5px;
         border: 2px solid rgb(236, 236, 236);
@@ -75,7 +85,7 @@
                             <div class="tab-pane active" id="tab_1">
                                 <strong>General</strong>
                                 <p>Ingresar toda la información general del producto, esta sera utilizada para la publicación del mismo.</p>
-                                <div class="container">
+                                <div class="container-tab">
                                     <div class="row">
                                         <div class="col-sm-3">
                                             <div class="form-group">
@@ -150,6 +160,15 @@
                                     <div class="row">
                                         <div class="col-sm-3">
                                             <div class="form-group">
+                                                <label for="cost_in_dollars">Costo en Dólares</label>
+                                                <input type="number" name="cost_in_dollars" id="cost_in_dollars" class="form-control" value="<?php echo set_value('cost_in_dollars') ?>" required="" />
+                                                <?php echo form_error('cost_in_dollars') ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
                                                 <label for="enabled_product">Estatus</label>
                                                 <?php echo form_dropdown('enabled_product', $status, set_value('enabled_product'), 'class="form-control"'); ?>
                                                 <?php echo form_error('enabled_product') ?>
@@ -172,7 +191,7 @@
                             <div class="tab-pane" id="tab_2">
                                 <strong>Características</strong>
                                 <p>Por favor seleccione las descripciones físicas que tiene el producto.</p>
-                                <div class="container">
+                                <div class="container-tab">
                                     <div class="row">
                                         <div class="col-sm-12">
                                             <div class="form-group">
@@ -326,7 +345,7 @@
                             <div class="tab-pane" id="tab_3">
                                 <strong>Específicos</strong>
                                 <p>Por favor seleccione los datos específicos del producto a publicar.</p>
-                                <div class="container">
+                                <div class="container-tab">
                                     <div class="row">
                                         <div class="col-sm-3">
                                             <div class="form-group">
@@ -445,50 +464,50 @@
                             <div class="tab-pane" id="tab_5">
                                 <strong>Dimensiones</strong>
                                 <p>Proporciona los datos necesarios para calcular el costo de la logistica del producto.</p>
-                                <div class="container">
+                                <div class="container-tab">
                                     <div class="row">
-                                        <div class="col-sm-4">
+                                        <div class="col-sm-6">
                                             <div class="form-group">
-                                                <label for="grammage">Contenido neto</label>
+                                                <label for="grammage">Contenido Neto</label>
                                                 <input type="number" name="grammage" id="grammage" class="form-control" value="<?php echo set_value('grammage') ?>" />
                                                 <?php echo form_error('grammage') ?>
                                             </div>
                                         </div>
-                                        <div class="col-sm-4">
+                                        <div class="col-sm-6">
                                             <div class="form-group">
-                                                <label for="id_unitsmeasure">Unidad de medida</label>
+                                                <label for="id_unitsmeasure">Unidad de Medida</label>
                                                 <?php echo form_dropdown('id_unitsmeasure', $unitsmeasure, set_value('id_unitsmeasure'), 'data-placeholder="Seleccionar..." class="form-control"'); ?>
                                                 <?php echo form_error('id_unitsmeasure') ?>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-sm-4">
+                                        <div class="col-sm-6">
                                             <div class="form-group">
-                                                <label for="width">Ancho</label>
+                                                <label for="width">Ancho (cm)</label>
                                                 <input type="number" name="width" id="width" class="form-control" value="<?php echo set_value('width') ?>" required="" />
                                                 <?php echo form_error('width') ?>
                                             </div>
                                         </div>
-                                        <div class="col-sm-4">
+                                        <div class="col-sm-6">
                                             <div class="form-group">
-                                                <label for="high">Altura</label>
+                                                <label for="high">Altura (cm)</label>
                                                 <input type="number" name="high" id="high" class="form-control" value="<?php echo set_value('high') ?>" />
                                                 <?php echo form_error('high') ?>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-sm-4">
+                                        <div class="col-sm-6">
                                             <div class="form-group">
-                                                <label for="depth">Profundidad</label>
+                                                <label for="depth">Profundidad (cm)</label>
                                                 <input type="number" name="depth" id="depth" class="form-control" value="<?php echo set_value('depth') ?>" />
                                                 <?php echo form_error('depth') ?>
                                             </div>
                                         </div>
-                                        <div class="col-sm-4">
+                                        <div class="col-sm-6">
                                             <div class="form-group">
-                                                <label for="weight">Peso Total (Contenido neto más envase)</label>
+                                                <label for="weight">Peso Total (Contenido neto más envase kg)</label>
                                                 <input type="number" name="weight" id="weight" class="form-control" value="<?php echo set_value('weight') ?>" />
                                                 <?php echo form_error('weight') ?>
                                             </div>
@@ -500,18 +519,9 @@
                             <div class="tab-pane" id="tab_6">
                                 <strong>Posicionamiento</strong>
                                 <p>Ayuda a que el producto tenga un buen posicionamiento en la busqueda de los navegadores.</p>
-                                <div class="container">
+                                <div class="container-tab">
                                     <div class="row">
                                         <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label for="url">Url Amigable</label>
-                                                <input type="text" name="url" id="url" class="form-control" value="<?php echo set_value('url') ?>"  />
-                                                <?php echo form_error('url') ?>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-12">
                                             <div class="form-group">
                                                 <label for="meta_title">Meta Título</label>
                                                 <input type="text" name="meta_title" id="meta_title" class="form-control" value="<?php echo set_value('meta_title') ?>"  />
@@ -522,8 +532,26 @@
                                     <div class="row">
                                         <div class="col-sm-12">
                                             <div class="form-group">
+                                                <label for="url">Url Amigable</label>
+                                                <input type="text" name="url" id="url" class="form-control" value="<?php echo set_value('url') ?>" />
+                                                <?php echo form_error('url') ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <label for="keywords">Keywords (Palabras clave)</label>
+                                                <input type="text" name="keywords" id="keywords" class="form-control" value="<?php echo set_value('keywords') ?>" data-role="tagsinput" style="width: 100%" /> 
+                                                <?php echo form_error('keywords') ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
                                                 <label for="meta_description">Meta Descripción</label>
-                                                <textarea name="meta_description" id="meta_description" rows="2" class="form-control"><?php echo set_value('meta_description'); ?></textarea>
+                                                <textarea name="meta_description" id="meta_description" rows="8" class="form-control"><?php echo set_value('meta_description'); ?></textarea>
                                                 <?php echo form_error('meta_description') ?>
                                             </div>
                                         </div>
@@ -548,4 +576,12 @@
         </div>
     </div>
 </section>
-<!-- /.content -->   
+<!-- /.content -->      
+<script type="text/javascript" src="<?php echo base_url('assets/plugins/bootstrap-tags/bootstrap-tagsinput.js') ?>"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#keywords').tagsinput({
+            tagClass: 'label label-primary'
+        });
+    });
+</script>

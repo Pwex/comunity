@@ -37,7 +37,7 @@ class PartnersModel extends CI_Model {
         $user['password']          = $this->encrypt->encode($data['email_partner']);
         $user['type_of_access']    = 'Proveedor';
         $user['ip']                = '';
-        $user['status']            = 1;
+        $user['status']            = 0;
         $user['restore_key']       = '';
         $this->db->insert('users', $user);
     }
