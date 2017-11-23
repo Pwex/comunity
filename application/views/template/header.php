@@ -70,6 +70,7 @@
     $menu_innovation_markets = array(
         'excel-providers',
         'requirements-matrix',
+        'innovation-calendar-partners',
     );
     # Menu principal Multimedia
     $menu_multimedia = array(
@@ -113,7 +114,7 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
         <!-- estilo para el data tables encabezado y para el jquery ui para el borrado -->
-        <?php if ($this->uri->segment(1) == 'users' or $this->uri->segment(1) == 'modules' or $this->uri->segment(1) == 'movement_types' or $this->uri->segment(1) == 'categories' or $this->uri->segment(1) == 'warehouses' or $this->uri->segment(1) == 'countrys' or $this->uri->segment(1) == 'benefits' or $this->uri->segment(1) == 'typesinventory' or $this->uri->segment(1) == 'components' or $this->uri->segment(1) == 'unitsmeasure' or $this->uri->segment(1) == 'products' or $this->uri->segment(1) == 'partners' or $this->uri->segment(1) == 'document_types' or $this->uri->segment(1) == 'partner_types' or $this->uri->segment(1) == 'cities' or $this->uri->segment(1) == 'seals' or $this->uri->segment(1) == 'list-price' or $this->uri->segment(1) == 'price-product' or $this->uri->segment(1) == 'banks' or $this->uri->segment(1) == 'consumers' or $this->uri->segment(1) == 'catalogue' or $this->uri->segment(1) == 'certifications' or $this->uri->segment(1) == 'shop-layout-navbar' or $this->uri->segment(1) == 'shop-layout-filter' or $this->uri->segment(1) == 'shop-layout-filter-item' or $this->uri->segment(1) == 'excel-providers' or $this->uri->segment(1) == 'requirements-matrix' or $this->uri->segment(1) == 'presentation' ): ?>
+        <?php if ($this->uri->segment(1) == 'users' or $this->uri->segment(1) == 'modules' or $this->uri->segment(1) == 'movement_types' or $this->uri->segment(1) == 'categories' or $this->uri->segment(1) == 'warehouses' or $this->uri->segment(1) == 'countrys' or $this->uri->segment(1) == 'benefits' or $this->uri->segment(1) == 'typesinventory' or $this->uri->segment(1) == 'components' or $this->uri->segment(1) == 'unitsmeasure' or $this->uri->segment(1) == 'products' or $this->uri->segment(1) == 'partners' or $this->uri->segment(1) == 'document_types' or $this->uri->segment(1) == 'partner_types' or $this->uri->segment(1) == 'cities' or $this->uri->segment(1) == 'seals' or $this->uri->segment(1) == 'list-price' or $this->uri->segment(1) == 'price-product' or $this->uri->segment(1) == 'banks' or $this->uri->segment(1) == 'consumers' or $this->uri->segment(1) == 'catalogue' or $this->uri->segment(1) == 'certifications' or $this->uri->segment(1) == 'shop-layout-navbar' or $this->uri->segment(1) == 'shop-layout-filter' or $this->uri->segment(1) == 'shop-layout-filter-item' or $this->uri->segment(1) == 'excel-providers' or $this->uri->segment(1) == 'requirements-matrix' or $this->uri->segment(1) == 'presentation' or ($this->uri->segment(1) == 'consumer-profile' and $this->uri->segment(2) == 'purchases') or $this->uri->segment(1) == 'innovation-calendar-partners' ): ?>
             <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
             <!-- DataTables -->
             <link rel="stylesheet" href="<?php echo base_url('assets/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css') ?>">
@@ -152,13 +153,9 @@
         <!-- Main -->
         <link rel="stylesheet" href="<?php echo base_url('assets/dist/css/main.css') ?>">
         <style type="text/css">
-            /*@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+            @import url('https://fonts.googleapis.com/css?family=Roboto');
             *{
-                font-family: 'Open Sans', sans-serif;
-            }*/
-            @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
-            *{
-                font-family: 'Roboto Condensed', sans-serif;
+                font-family: 'Roboto', sans-serif;
             }
         </style>
         <?php if ($this->uri->segment(1) != 'calendar'): ?>
@@ -486,7 +483,7 @@
                         </li>
                         <li class="treeview <?php if(in_array($this->uri->segment(1), $menu_innovation_markets)){ echo 'menu-open active'; } ?>">
                             <a href="#">
-                                <i class="fa fa-newspaper-o" aria-hidden="true"></i> <span>Innovación Mercados</span>
+                                <i class="fa fa-newspaper-o" aria-hidden="true"></i> <span>Innovación de Mercados</span>
                                 <span class="pull-right-container">
                                     <i class="fa fa-angle-left pull-right"></i>
                                 </span>
@@ -500,6 +497,11 @@
                                 <li <?php if($this->uri->segment(1) == 'requirements-matrix'){ echo "class='active'"; } ?>>
                                     <a href="<?php echo base_url('requirements-matrix') ?>">
                                         <i class="fa fa-angle-right"></i> Matriz Requerimientos
+                                    </a>
+                                </li>
+                                <li <?php if($this->uri->segment(1) == 'innovation-calendar-partners'){ echo "class='active'"; } ?>>
+                                    <a href="<?php echo base_url('innovation-calendar-partners') ?>">
+                                        <i class="fa fa-angle-right"></i> Agenda Proveedores
                                     </a>
                                 </li>
                             </ul>

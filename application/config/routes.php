@@ -280,8 +280,9 @@ $route['consumers/success-delete'] 	= 'Consumers/full_listing';
 $route['consumers/measuring/(:num)']= 'Consumers/add_measuring/$1';
 
 # Perfil del consumidor
-$route['view-consumer-profile/(:num)']			= 'Consumer_profile/view_consumer_profile/$1';
-$route['view-consumer-profile/(:num)/success']	= 'Consumer_profile/view_consumer_profile/$1';
+$route['view-consumer-profile/(:num)']				= 'Consumer_profile/view_consumer_profile/$1';
+$route['view-consumer-profile/(:num)/success']		= 'Consumer_profile/view_consumer_profile/$1';
+$route['consumer-profile/purchases/(:num)']	= 'Consumer_profile/purchases/$1';
 
 # Bancos
 $route['banks'] 					= 'Banks/full_listing';
@@ -312,7 +313,12 @@ $route['multimedia/videos/delete']	 		 = 'Multimedia/delete_videos';
 $route['multimedia/videos/add-file-manager'] = 'Multimedia/add_file_manager_videos';
 
 # Calendario
-$route['calendar'] = 'Calendar/get';
+$route['calendar'] 										= 'Calendar/get';
+$route['es-partners-calendar/(:any)/(:any)'] 			= 'Partner_calendar/get_es/$1/$2';
+$route['es-partners-calendar/(:any)/(:any)/(:any)'] 	= 'Partner_calendar/get_es/$1/$2/$3';
+$route['en-partners-calendar/(:any)/(:any)'] 			= 'Partner_calendar/get_es/$1/$2';
+$route['en-partners-calendar/(:any)/(:any)/(:any)'] 	= 'Partner_calendar/get_es/$1/$2/$3';
+$route['convert-date'] 									= 'Partner_calendar/convert_date';
 
 # eCommerce
 $route['shop-layout'] 				= 'ShopLayout/shop_layout_validate';
@@ -364,5 +370,9 @@ $route['requirements-matrix'] 	= 'Innovation/requirements_matrix';
 $route['donwload-requirements']	= 'Innovation/donwload_requirements';
 $route['view-requirements']		= 'Innovation/view_requirements';
 
+$route['innovation-calendar-partners'] 	= 'Innovation/calendar_partners';
+$route['download-calendar-partners']	= 'Innovation/download_calendar_partners';
+$route['confirm-appointment-provider'] 	= 'Innovation/confirm_appointment_provider';
+	
 # Aplicacion del Coach
 $route['my-world'] = 'Coach/menu';

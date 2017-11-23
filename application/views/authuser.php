@@ -23,8 +23,13 @@
                 overflow-y: hidden;
             }
             .login-box-body, .register-box-body, .login-page, .register-page {
-                background: #1E88E5 !important;
                 color: #fff !important;
+                /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#cedce7+0,596a72+100;Grey+3D+%231 */
+                background: rgb(206,220,231) !important; /* Old browsers */
+                background: -moz-linear-gradient(45deg, rgba(206,220,231,1) 0%, rgba(89,106,114,1) 100%) !important; /* FF3.6-15 */
+                background: -webkit-linear-gradient(45deg, rgba(206,220,231,1) 0%,rgba(89,106,114,1) 100%) !important; /* Chrome10-25,Safari5.1-6 */
+                background: linear-gradient(45deg, rgba(206,220,231,1) 0%,rgba(89,106,114,1) 100%) !important; /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cedce7', endColorstr='#596a72',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
             }
             a {
                 color: #2196f3;
@@ -35,16 +40,8 @@
             .img-logo {
                 width: 5em;
             }
-            .btn-primary {
-                background-color: #2196F3;
-                border-color: #2196F3;
-            }
-            .btn-primary:hover {
-                background-color: #1a8de8;
-                border-color: #1a8de8;
-            }
             .login-box-body .form-control-feedback, .register-box-body .form-control-feedback {
-                color: #607D8B;
+                color: #000;
             }
         </style>
         <!-- Google Font -->
@@ -54,11 +51,11 @@
         <div class="login-box">
             <div class="login-logo" style="margin-bottom: 0;">
                 <img src="<?php echo base_url('assets/dist/img/pwex-white.png') ?>" class="img-logo" />
-                <a href="<?php echo site_url() ?>" style="letter-spacing: 6px; color: #fff; font-weight: 500;">ADMINISTRATIVO</a>
+                <a href="<?php echo site_url() ?>" style="letter-spacing: 3px; color: #fff; font-weight: 500; font-size: 1em; padding-left: 0; padding-right: 0; margin-left: 0; margin-right: 0; text-align: center; display: inline-block;">ADMINISTRATIVO</a>
             </div>
             <!-- /.login-logo -->
-            <div class="login-box-body">
-                <p class="login-box-msg" style="font-size: 1.5em; margin-top: -0.7em;">Iniciar sesión de usuario</p>
+            <div class="login-box-body" style="background: none !important;">
+                <p class="login-box-msg" style="font-size: 1.2em; margin-top: -0.7em; text-transform: uppercase;">Inicio de sesión de usuarios</p>
                 <?php echo form_open('validation/access') ?>
                     <div class="form-group has-feedback">
                         <input name="email" id="email" type="email" class="form-control" placeholder="Correo electrónico" required="">
@@ -70,10 +67,10 @@
                     </div>
                     <div class="row">
                         <div class="col-xs-6">
-                            <button type="reset" class="btn btn-default btn-block btn-flat" id="btn-cancel">Cancelar</button>
+                            <button type="reset" class="btn btn-default btn-block" id="btn-cancel">Cancelar</button>
                         </div>
                         <div class="col-xs-6">
-                            <button type="submit" class="btn btn-default btn-block btn-flat">Enviar</button>
+                            <button type="submit" class="btn btn-default btn-block">Enviar</button>
                         </div>
                     </div>
                 </form>

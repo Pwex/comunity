@@ -1,0 +1,26 @@
+<%  
+	segments = window.location.pathname.split("/")
+%>
+<div class="cal-month-day <%= cls %>">
+	<span class="pull-right" data-cal-date="<%= data_day %>" data-cal-view="day"><%= day %></span>
+	<% if (events.length > 0) { %>
+		<div data-cal-start="<%= start %>" data-cal-end="<%= end %>" style="font-size: 11px; width: 100%; padding: 2px 5px; position: absolute; bottom: 0;">
+			<% _.each(events, function(event) { %>
+				<% i++; %>
+			<% }); %>
+			<% if((8 - i) > 0) { %>
+				<% if(segments[2] == 'es-partners-calendar') { %>
+					<%= (8 - i) %> CITAS DISPONIBLES
+				<% } else if(segments[2] == 'en-partners-calendar') { %>
+					<%= (8 - i) %> AVAILABLE APPOINTMENTS
+				<% } %>
+			<% } else if((8 - i) == 0) { %>
+				<% if(segments[2] == 'es-partners-calendar') { %>
+					<%= (8 - i) %> CITAS DISPONIBLES
+				<% } else if(segments[2] == 'en-partners-calendar') { %>
+					<%= (8 - i) %> AVAILABLE APPOINTMENTS
+				<% } %>
+			<% } %>
+		</div>
+	<% i = 0; } %>
+</div>

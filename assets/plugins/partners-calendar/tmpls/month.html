@@ -1,0 +1,30 @@
+<%  
+	segments = window.location.pathname.split("/")
+%>
+<% if(segments[2] == 'es-partners-calendar') { %>
+	<h4 style="font-size: 16px; color: #ffa019; text-align: center; text-transform: uppercase; margin-bottom: 0px; margin-top: -10px;">Para agendar, haga click sobre el día de su preferencia</h4>
+<% } else if(segments[2] == 'en-partners-calendar') { %>
+	<h4 style="font-size: 16px; color: #ffa019; text-align: center; text-transform: uppercase; margin-bottom: 0px; margin-top: -10px;">To schedule, click on the day of your preference</h4>
+<% } %>
+<p></p>
+<div class="cal-row-fluid cal-row-head" style="background: #fff1d9; padding-left: 15px; border: 1px solid #e1e1e1; border-bottom: none;">
+	<% _.each(months, function(name){ %>
+		<div class="cal-cell1"><%= name %></div>
+	<% }) %>
+</div>
+<div class="cal-month-box">
+	<% for(i = 0; i < 6; i++) { %>
+		<% if(cal.stop_cycling == true) break; %>
+		<div class="cal-row-fluid cal-before-eventlist">
+			<div class="cal-cell1 cal-cell" data-cal-row="-day1"><%= cal._day(i, day++) %></div>
+			<div class="cal-cell1 cal-cell" data-cal-row="-day2"><%= cal._day(i, day++) %></div>
+			<div class="cal-cell1 cal-cell" data-cal-row="-day3"><%= cal._day(i, day++) %></div>
+			<div class="cal-cell1 cal-cell" data-cal-row="-day4"><%= cal._day(i, day++) %></div>
+			<div class="cal-cell1 cal-cell" data-cal-row="-day5"><%= cal._day(i, day++) %></div>
+			<div class="cal-cell1 cal-cell" data-cal-row="-day6"><%= cal._day(i, day++) %></div>
+			<div class="cal-cell1 cal-cell" data-cal-row="-day7"><%= cal._day(i, day++) %></div>
+		</div>
+	<% } %>
+</div>
+<br />
+<br />

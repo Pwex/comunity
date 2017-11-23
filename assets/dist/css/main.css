@@ -1,5 +1,19 @@
+*::-moz-selection{
+   background: #000;
+   color: #fff;
+}
+*::selection {
+   background: #000;
+   color: #fff;
+}
 blockquote {
     padding: 10px 0 20px 20px;
+}
+.text-primary {
+    color: #2196F3 !important;
+}
+.btn-link {
+    color: #000000;
 }
 .btn-primary {
     background: #2196f3;
@@ -12,16 +26,16 @@ blockquote {
     border-color: #1a8de8;
 }
 .btn-primary.active, .btn-primary:active, .open>.dropdown-toggle.btn-primary {
-    background-color: #2196f3;
-    border-color: #2196f3;
+    background-color: #FFC107;
+    border-color: #FFC107;
 }
 .btn-primary.focus, .btn-primary:focus {
-    background-color: #2196f3;
-    border-color: #2196f3;
+    background-color: #FFC107;
+    border-color: #FFC107;
 }
 .btn-primary.active.focus, .btn-primary.active:focus, .btn-primary.active:hover, .btn-primary:active.focus, .btn-primary:active:focus, .btn-primary:active:hover, .open>.dropdown-toggle.btn-primary.focus, .open>.dropdown-toggle.btn-primary:focus, .open>.dropdown-toggle.btn-primary:hover {
-    background-color: #2196f3;
-    border-color: #2196f3;
+    background-color: #FFC107;
+    border-color: #FFC107;
 }
 .text-success {
     color: #4CAF50;
@@ -50,11 +64,11 @@ label {
     font-weight: 600 !important;
 }
 @media (max-width: 425px){
-	div.dataTables_wrapper div.dataTables_length select {
-        width: 90%;
-    }
-    div.dataTables_wrapper div.dataTables_filter input {
-        width: 97%;
+	.btn-default {
+        background-color: #fff !important;
+        border: 2px solid #000 !important;
+        color: #000 !important;
+        font-size: 16px !important;
     }
     .box-body {
 	    padding: 0.8em 0.5em;
@@ -66,6 +80,26 @@ label {
     span a.btn {
         margin-top: -5px;
     }
+    .content-header>.breadcrumb {
+        background: #000;
+    }
+    .content-header>.breadcrumb>li>a {
+        color: #fff;
+    }
+        .content-header>.breadcrumb li:before {
+            color: #fff;
+        }
+    .content-header {
+        padding: 0;
+        border-radius: 0px !important;
+    }
+    .breadcrumb {
+        border-radius: 0px !important;
+        padding: 5px 15px !important;
+    }
+    .breadcrumb>li {
+        font-size: 16px;
+    }
 }
 @media (min-width: 768px){
     .navbar-nav>li>a {
@@ -74,7 +108,7 @@ label {
 	}
     .modal-dialog {
         width: 60%;
-        margin-top: 15%;
+        margin-top: 17%;
     }
     .small-box>.small-box-footer {
         background: rgba(19, 18, 18, 0.13);
@@ -93,8 +127,9 @@ label {
 .form-control {
     border: 2px solid #eeeeee;
 }
-select.input-lg {
-    height: 47px;
+.input-lg {
+    height: 45px !important;
+    padding: 10px 10px !important;
 }
 .input-group .input-group-addon {
     border-top-left-radius: 2px;
@@ -121,4 +156,7 @@ select.input-lg {
     border: 2px solid #eee !important;
     box-shadow: none !important; 
     border-radius: 2px !important;
+}
+#table-default tbody tr td {
+    vertical-align: middle;
 }

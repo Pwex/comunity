@@ -4,30 +4,35 @@
         padding-right: 0;
     }
     .bg-blue {
-        background-color: #f8fafc !important;
-        border: 1px solid #f2f2f2;
+        background-color: #fff !important;
+        border: none;
     }
+        .small-box:hover, .bg-blue:hover {
+            background-color: #ffc107 !important;
+            cursor: pointer !important;
+        }
     .small-box h3 {
-        margin: 0 0 10px 0;
-        color: #7e868a;
+        margin: 5px 0 15px 0;
+        color: #000;
     }
     .small-box p {
-        color: #5d5c5c;
+        color: #000;
         font-size: 16px;
-        font-weight: bold;
+        font-weight: normal;
         margin-left: 0;
         margin-right: 0;
         padding-left: 0;
         padding-right: 0;
     }
     .small-box>.small-box-footer {
-        color: #7e868a;
+        color: #fff;
+        background: #212020;
     }
 </style>
 <section class="content">
     <div class="row">
         <a href="<?php echo base_url('calendar') ?>">
-            <div class="col-xs-6" style="padding-right: 6px;">
+            <div class="col-xs-6" style="padding-right: 3px;">
                 <!-- small box -->
                 <div class="small-box bg-blue">
                     <div class="inner">
@@ -43,11 +48,11 @@
         </a>
         <!-- ./col -->
         <a href="<?php echo base_url('consumers') ?>">
-            <div class="col-xs-6" style="padding-left: 6px;">
+            <div class="col-xs-6" style="padding-left: 3px;">
                 <!-- small box -->
                 <div class="small-box bg-blue">
                     <div class="inner">
-                        <h3><span class="badge" style="color: #fff; background: #7e868a; font-size: 25px;">3</span></h3>
+                        <h3><span class="badge" style="color: #fff; background: #ffc107; font-size: 25px;">3</span></h3>
                         <p>Mis Mensajes</p>
                     </div>
                     <div class="icon">
@@ -59,7 +64,7 @@
         </a>
         <!-- ./col -->
         <a href="#">
-            <div class="col-xs-6" style="padding-right: 6px; margin-top: -6px">
+            <div class="col-xs-6" style="padding-right: 3px; margin-top: -6px">
                 <!-- small box -->
                 <div class="small-box bg-blue">
                     <div class="inner">
@@ -75,7 +80,7 @@
         </a>
         <!-- ./col -->
         <a href="#">
-            <div class="col-xs-6" style="padding-left: 6px; margin-top: -6px">
+            <div class="col-xs-6" style="padding-left: 3px; margin-top: -6px">
                 <!-- small box -->
                 <div class="small-box bg-blue">
                     <div class="inner">
@@ -92,4 +97,10 @@
         <!-- ./col -->
     </div>
 </section>
-<!-- /.content -->
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('.small-box, .bg-blue').on('click', function(){
+            $('h3, p', this).css('color', '#fff');
+        });
+    });
+</script>

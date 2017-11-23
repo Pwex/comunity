@@ -192,7 +192,7 @@
                                 <strong>Características</strong>
                                 <p>Por favor seleccione las descripciones físicas que tiene el producto.</p>
                                 <div class="container-tab">
-                                    <div class="row">
+                                    <div class="row" id="section_id_presentation">
                                         <div class="col-sm-12">
                                             <div class="form-group">
                                                 <label for="id_presentation">Presentación</label>
@@ -584,4 +584,50 @@
             tagClass: 'label label-primary'
         });
     });
+</script>
+<script type="text/javascript">
+   $(document).ready(function(){
+        var normalize = (function() {
+            var from = " ", 
+                to   = "-",
+                mapping = {};
+          for(var i = 0, j = from.length; i < j; i++ )
+              mapping[ from.charAt( i ) ] = to.charAt( i );
+          return function( str ) {
+              var ret = [];
+              for( var i = 0, j = str.length; i < j; i++ ) {
+                  var c = str.charAt( i );
+                  if( mapping.hasOwnProperty( str.charAt( i ) ) )
+                      ret.push( mapping[ c ] );
+                  else
+                      ret.push( c );
+              }      
+              return ret.join( '' );
+          }
+        })();
+        var tabProducts = (function(){
+            var id = $('#id_catalogue option:selected').html();
+            id = normalize(id.trim());
+            if (id == 'APARATOLOGIA-ESTETICA') {
+                $('div.section-aparatologia').show();
+                $('#tab3_nav').hide();
+                $('#container_sellos').hide();
+                $('#section_id_presentation').hide();
+            } else if(id == 'BELLEZA' || id == 'NUTRICION' || id == 'SALUD' || id == 'SUPLEMENTOS-DIETARIOS') {
+                $('div.section-aparatologia').hide();
+                $('#tab3_nav').show();
+                $('#container_sellos').show();
+                $('#section_id_presentation').show();
+            }
+            if (id == 'APARATOLOGIA-ESTETICA' || id == 'BELLEZA') {
+                $('#container_nutritional').hide();
+            } else {
+                $('#container_nutritional').show();
+            }
+        });
+        tabProducts();
+        $('#id_catalogue').change('click', function(){
+            tabProducts();
+        });
+   });
 </script>

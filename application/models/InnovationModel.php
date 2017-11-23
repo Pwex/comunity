@@ -10,10 +10,10 @@ class InnovationModel extends CI_Model {
     public function registered_suppliers()
     {
         # Cambiar de conexion de base de datos
-        $config['hostname'] = 'mysql1409.ixwebhosting.com';
-        $config['username'] = 'C350257_admin';
-        $config['password'] = 'ticWA2011';
-        $config['database'] = 'C350257_pwex';
+        $config['hostname'] = 'localhost';
+        $config['username'] = 'pwexor5_admpwex';
+        $config['password'] = 'BDpw%0169';
+        $config['database'] = 'pwexor5_wptwex';
         $config['dbdriver'] = 'mysqli';
         $config['dbprefix'] = '';
         $config['pconnect'] = FALSE;
@@ -61,10 +61,10 @@ class InnovationModel extends CI_Model {
     public function list_page_provider()
     {
         # Cambiar de conexion de base de datos
-        $config['hostname'] = 'mysql1409.ixwebhosting.com';
-        $config['username'] = 'C350257_admin';
-        $config['password'] = 'ticWA2011';
-        $config['database'] = 'C350257_pwex';
+        $config['hostname'] = 'localhost';
+        $config['username'] = 'pwexor5_admpwex';
+        $config['password'] = 'BDpw%0169';
+        $config['database'] = 'pwexor5_wptwex';
         $config['dbdriver'] = 'mysqli';
         $config['dbprefix'] = '';
         $config['pconnect'] = FALSE;
@@ -194,10 +194,10 @@ class InnovationModel extends CI_Model {
     public function email_sending_status($id)
     {
         # Cambiar de conexion de base de datos
-        $config['hostname'] = 'mysql1409.ixwebhosting.com';
-        $config['username'] = 'C350257_admin';
-        $config['password'] = 'ticWA2011';
-        $config['database'] = 'C350257_pwex';
+        $config['hostname'] = 'localhost';
+        $config['username'] = 'pwexor5_admpwex';
+        $config['password'] = 'BDpw%0169';
+        $config['database'] = 'pwexor5_wptwex';
         $config['dbdriver'] = 'mysqli';
         $config['dbprefix'] = '';
         $config['pconnect'] = FALSE;
@@ -213,10 +213,10 @@ class InnovationModel extends CI_Model {
     public function sending_email_rejected_provider($id)
     {
         # Cambiar de conexion de base de datos
-        $config['hostname'] = 'mysql1409.ixwebhosting.com';
-        $config['username'] = 'C350257_admin';
-        $config['password'] = 'ticWA2011';
-        $config['database'] = 'C350257_pwex';
+        $config['hostname'] = 'localhost';
+        $config['username'] = 'pwexor5_admpwex';
+        $config['password'] = 'BDpw%0169';
+        $config['database'] = 'pwexor5_wptwex';
         $config['dbdriver'] = 'mysqli';
         $config['dbprefix'] = '';
         $config['pconnect'] = FALSE;
@@ -232,10 +232,10 @@ class InnovationModel extends CI_Model {
     public function shipping_email_supplier_rejection_matrix($id)
     {
         # Cambiar de conexion de base de datos
-        $config['hostname'] = 'mysql1409.ixwebhosting.com';
-        $config['username'] = 'C350257_admin';
-        $config['password'] = 'ticWA2011';
-        $config['database'] = 'C350257_pwex';
+        $config['hostname'] = 'localhost';
+        $config['username'] = 'pwexor5_admpwex';
+        $config['password'] = 'BDpw%0169';
+        $config['database'] = 'pwexor5_wptwex';
         $config['dbdriver'] = 'mysqli';
         $config['dbprefix'] = '';
         $config['pconnect'] = FALSE;
@@ -252,10 +252,10 @@ class InnovationModel extends CI_Model {
     public function requirements_matrix()
     {
         # Cambiar de conexion de base de datos
-        $config['hostname'] = 'mysql1409.ixwebhosting.com';
-        $config['username'] = 'C350257_admin';
-        $config['password'] = 'ticWA2011';
-        $config['database'] = 'C350257_pwex';
+        $config['hostname'] = 'localhost';
+        $config['username'] = 'pwexor5_admpwex';
+        $config['password'] = 'BDpw%0169';
+        $config['database'] = 'pwexor5_wptwex';
         $config['dbdriver'] = 'mysqli';
         $config['dbprefix'] = '';
         $config['pconnect'] = FALSE;
@@ -300,10 +300,10 @@ class InnovationModel extends CI_Model {
     public function list_requirements_matrix()
     {
         # Cambiar de conexion de base de datos
-        $config['hostname'] = 'mysql1409.ixwebhosting.com';
-        $config['username'] = 'C350257_admin';
-        $config['password'] = 'ticWA2011';
-        $config['database'] = 'C350257_pwex';
+        $config['hostname'] = 'localhost';
+        $config['username'] = 'pwexor5_admpwex';
+        $config['password'] = 'BDpw%0169';
+        $config['database'] = 'pwexor5_wptwex';
         $config['dbdriver'] = 'mysqli';
         $config['dbprefix'] = '';
         $config['pconnect'] = FALSE;
@@ -360,6 +360,9 @@ class InnovationModel extends CI_Model {
                 'email'                  => 'Correo electrónico',
                 'language'               => 'Lenguaje',
                 'categories'             => 'Categoría',
+                'product_cost'           => 'Costo producto',
+                'product_content'        => 'Contenido producto',
+                'product_unit'           => 'Unidad de producto',
                 'claims1'                => 'Reclamaciones 1',
                 'claims2'                => 'Reclamaciones 2',
                 'claims3'                => 'Reclamaciones 3',
@@ -422,10 +425,10 @@ class InnovationModel extends CI_Model {
     public function view_requirements($id)
     {
         # Cambiar de conexion de base de datos
-        $config['hostname'] = 'mysql1409.ixwebhosting.com';
-        $config['username'] = 'C350257_admin';
-        $config['password'] = 'ticWA2011';
-        $config['database'] = 'C350257_pwex';
+        $config['hostname'] = 'localhost';
+        $config['username'] = 'pwexor5_admpwex';
+        $config['password'] = 'BDpw%0169';
+        $config['database'] = 'pwexor5_wptwex';
         $config['dbdriver'] = 'mysqli';
         $config['dbprefix'] = '';
         $config['pconnect'] = FALSE;
@@ -562,6 +565,24 @@ class InnovationModel extends CI_Model {
             ksort($data[$key]);
         }
         return $data;   
+    }
+
+    public function calendar_partners()
+    {
+        return $this->db
+        ->select('id, title, body, inicio_normal, final_normal, email, tools, status, language')
+        ->where('operation', 0)
+        ->order_by('inicio_normal', 'DESC')
+        ->get('appointment')
+        ->result_array();
+    }
+
+    public function confirm_appointment_provider($id)
+    {
+        return $this->db
+        ->set('status', 1)
+        ->where('id', $id)
+        ->update('appointment');
     }
 
 }

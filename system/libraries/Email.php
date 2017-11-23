@@ -69,28 +69,28 @@ class CI_Email {
 	 *
 	 * @var	string	'mail', 'sendmail' or 'smtp'
 	 */
-	public $protocol	= 'mail';		// mail/sendmail/smtp
+	public $protocol	= 'sendmail';		// mail/sendmail/smtp
 
 	/**
 	 * STMP Server host
 	 *
 	 * @var	string
 	 */
-	public $smtp_host	= '';
+	public $smtp_host	= 'vps33850.inmotionhosting.com';
 
 	/**
 	 * SMTP Username
 	 *
 	 * @var	string
 	 */
-	public $smtp_user	= '';
+	public $smtp_user	= 'platform.admin@pwex.org';
 
 	/**
 	 * SMTP Password
 	 *
 	 * @var	string
 	 */
-	public $smtp_pass	= '';
+	public $smtp_pass	= 'ADMpw.9537';
 
 	/**
 	 * SMTP Server port
@@ -177,7 +177,7 @@ class CI_Email {
 	 * @link	http://www.ietf.org/rfc/rfc822.txt
 	 * @var	string	"\r\n" or "\n"
 	 */
-	public $newline		= "\n";			// Default newline. "\r\n" or "\n" (Use "\r\n" to comply with RFC 822)
+	public $newline		= "\r\n";			// Default newline. "\r\n" or "\n" (Use "\r\n" to comply with RFC 822)
 
 	/**
 	 * CRLF character sequence
@@ -279,7 +279,7 @@ class CI_Email {
 	 *
 	 * @var	bool
 	 */
-	protected $_smtp_auth		= FALSE;
+	protected $_smtp_auth		= TRUE;
 
 	/**
 	 * Whether to send a Reply-To header

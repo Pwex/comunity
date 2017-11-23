@@ -108,7 +108,7 @@ class Export_excel{
             }
         }
         $header = array_unique($h);
-        echo '<table style="font-family:verdana;"><tr>';
+        echo '<table style="font-family:calibri;"><tr>';
         foreach($header as $key) {
             $key = ucwords($key);
             echo '<th style="border:1px #e6e6e6 solid;color:#000; padding: 5px; text-align:left;">'.$key.'</th>';

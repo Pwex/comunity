@@ -1,14 +1,10 @@
 </div>
-            <!-- /.content-wrapper -->
             <footer class="main-footer">
                 <div class="pull-right hidden-xs">
                     <b>Version</b> 1.0
                 </div>
-                Pwex © 2017-<?php echo date('Y'); ?> Todos los derechos reservados.
+                2017-<?php echo date('Y'); ?> © Pwex Todos los derechos reservados.
             </footer>
-           
-            <!-- Add the sidebar's background. This div must be placed
-                immediately after the control sidebar -->
             <div class="control-sidebar-bg"></div>
         </div>
         <!-- ./wrapper -->
@@ -120,7 +116,7 @@
             </script>
         <?php endif ?>
         <!-- DataTables -->
-        <?php if (($this->uri->segment(1) == 'users') || ($this->uri->segment(1) == 'modules') || ($this->uri->segment(1) == 'movement_types') || ($this->uri->segment(1) == 'categories') || ($this->uri->segment(1) == 'warehouses') || ($this->uri->segment(1) == 'countrys') || ($this->uri->segment(1) == 'benefits') || ($this->uri->segment(1) == 'typesinventory') || ($this->uri->segment(1) == 'components') || ($this->uri->segment(1) == 'unitsmeasure') || ($this->uri->segment(1) == 'products') || ($this->uri->segment(1) == 'partners') || ($this->uri->segment(1) == 'document_types') || ($this->uri->segment(1) == 'partner_types') || ($this->uri->segment(1) == 'cities') || ($this->uri->segment(1) == 'seals') || ($this->uri->segment(1) == 'list-price') || ($this->uri->segment(1) == 'banks') || ($this->uri->segment(1) == 'consumers') || ($this->uri->segment(1) == 'price-product' and ($this->uri->segment(2) !="add" or $this->uri->segment(2) !="edit")) || ($this->uri->segment(1) == 'catalogue' and ($this->uri->segment(2) !="add" or $this->uri->segment(2) !="edit")) || ($this->uri->segment(1) == 'certifications' and ($this->uri->segment(2) !="add" or $this->uri->segment(2) !="edit")) || ($this->uri->segment(1) == 'shop-layout-navbar' and ($this->uri->segment(2) !="add" or $this->uri->segment(2) !="edit")) || ($this->uri->segment(1) == 'shop-layout-filter' and ($this->uri->segment(2) !="add" or $this->uri->segment(2) !="edit")) || ($this->uri->segment(1) == 'shop-layout-filter-item' and ($this->uri->segment(2) !="add" or $this->uri->segment(2) !="edit")) || ($this->uri->segment(1) == 'excel-providers' and ($this->uri->segment(2) !="add" or $this->uri->segment(2) !="edit")) || ($this->uri->segment(1) == 'requirements-matrix' and ($this->uri->segment(2) !="add" or $this->uri->segment(2) !="edit")) || ($this->uri->segment(1) == 'presentation' and ($this->uri->segment(2) !="add" or $this->uri->segment(2) !="edit")) ): ?>
+        <?php if (($this->uri->segment(1) == 'users') || ($this->uri->segment(1) == 'modules') || ($this->uri->segment(1) == 'movement_types') || ($this->uri->segment(1) == 'categories') || ($this->uri->segment(1) == 'warehouses') || ($this->uri->segment(1) == 'countrys') || ($this->uri->segment(1) == 'benefits') || ($this->uri->segment(1) == 'typesinventory') || ($this->uri->segment(1) == 'components') || ($this->uri->segment(1) == 'unitsmeasure') || ($this->uri->segment(1) == 'products') || ($this->uri->segment(1) == 'partners') || ($this->uri->segment(1) == 'document_types') || ($this->uri->segment(1) == 'partner_types') || ($this->uri->segment(1) == 'cities') || ($this->uri->segment(1) == 'seals') || ($this->uri->segment(1) == 'list-price') || ($this->uri->segment(1) == 'banks') || ($this->uri->segment(1) == 'consumers') || ($this->uri->segment(1) == 'price-product' and ($this->uri->segment(2) !="add" or $this->uri->segment(2) !="edit")) || ($this->uri->segment(1) == 'catalogue' and ($this->uri->segment(2) !="add" or $this->uri->segment(2) !="edit")) || ($this->uri->segment(1) == 'certifications' and ($this->uri->segment(2) !="add" or $this->uri->segment(2) !="edit")) || ($this->uri->segment(1) == 'shop-layout-navbar' and ($this->uri->segment(2) !="add" or $this->uri->segment(2) !="edit")) || ($this->uri->segment(1) == 'shop-layout-filter' and ($this->uri->segment(2) !="add" or $this->uri->segment(2) !="edit")) || ($this->uri->segment(1) == 'shop-layout-filter-item' and ($this->uri->segment(2) !="add" or $this->uri->segment(2) !="edit")) || ($this->uri->segment(1) == 'excel-providers' and ($this->uri->segment(2) !="add" or $this->uri->segment(2) !="edit")) || ($this->uri->segment(1) == 'requirements-matrix' and ($this->uri->segment(2) !="add" or $this->uri->segment(2) !="edit")) || ($this->uri->segment(1) == 'presentation' and ($this->uri->segment(2) !="add" or $this->uri->segment(2) !="edit")) || ($this->uri->segment(1) == 'consumer-profile' and $this->uri->segment(2) == 'purchases' and ($this->uri->segment(2) !="add" or $this->uri->segment(2) !="edit")) or $this->uri->segment(1) == 'innovation-calendar-partners' ): ?>
             <!-- script para agregar clase no-padding para resoluciones moviles -->
             <script type="text/javascript">
                 if (screen.width <= 425) {
@@ -149,14 +145,21 @@
                         <?php if ($this->uri->segment(1) == 'requirements-matrix'): ?>
                             "order": [[ 0, "desc" ]],
                         <?php endif; ?>
+                        <?php if ($this->uri->segment(1) == 'innovation-calendar-partners'): ?>
+                            "order": [[ 0, "desc" ]],
+                        <?php endif; ?>
                         colReorder: true,
+                        <?php if ( $this->uri->segment(1) == 'consumers' or ($this->uri->segment(1) == 'consumer-profile' and $this->uri->segment(2) == 'purchases') ): ?>
+                            "scrollX": true,
+                        <?php endif; ?>
+                        // 'bLengthChange': false,
                         'language' : {
                             "sProcessing":     "Procesando...",
-                            "sLengthMenu":     "Mostrar _MENU_ registros",
+                            "sLengthMenu":     "Mostrar _MENU_ Registros",
                             "sZeroRecords":    "No se encontraron resultados",
                             "sEmptyTable":     "Ningún dato disponible en esta tabla",
-                            "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-                            "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+                            "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ Registros",
+                            "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 Registros",
                             "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
                             "sInfoPostFix":    "",
                             "sSearch":         "Buscar:",
@@ -179,7 +182,8 @@
                         table
                             .column( $(this).parent().index()+':visible' )
                             .search( this.value )
-                            .draw();
+                            .draw()
+                            .addClass('form-control input-lg col-xs-12');
                     } );
                 });
             </script>
@@ -298,6 +302,13 @@
                 elseif ($this->uri->segment(1) == 'presentation')
                 {
                     $url = "presentation";
+                }
+                elseif ($this->uri->segment(1) == 'consumer-profile' and $this->uri->segment(2) == 'purchases')
+                {
+                    $url = "purchases";
+                }
+                else {
+                    $url = '';
                 }
             ?>
                 $(document).ready(function()
@@ -556,43 +567,6 @@
             <script type="text/javascript" src="<?php echo base_url('assets/plugins/iCheck/icheck.min.js') ?>"></script>
             <script type="text/javascript">
                 $(document).ready(function(){
-                    var normalize = (function() {
-                    var from = " ", 
-                        to   = "-",
-                        mapping = {};
-                  for(var i = 0, j = from.length; i < j; i++ )
-                      mapping[ from.charAt( i ) ] = to.charAt( i );
-                  return function( str ) {
-                      var ret = [];
-                      for( var i = 0, j = str.length; i < j; i++ ) {
-                          var c = str.charAt( i );
-                          if( mapping.hasOwnProperty( str.charAt( i ) ) )
-                              ret.push( mapping[ c ] );
-                          else
-                              ret.push( c );
-                      }      
-                      return ret.join( '' );
-                  }
-                 
-                })();
-                    $('#id_catalogue').change('click', function(){
-                        var id = $('#id_catalogue option:selected').html();
-                        id = normalize(id.trim());
-                        if (id == 'APARATOLOGIA-ESTETICA') {
-                            $('div.section-aparatologia').show();
-                            $('#tab3_nav').hide();
-                            $('#container_sellos').hide();
-                        } else if(id == 'BELLEZA' || id == 'NUTRICION' || id == 'SALUD' || id == 'SUPLEMENTOS-DIETARIOS') {
-                            $('div.section-aparatologia').hide();
-                            $('#tab3_nav').show();
-                            $('#container_sellos').show();
-                        }
-                        if (id == 'APARATOLOGIA-ESTETICA' || id == 'BELLEZA') {
-                            $('#container_nutritional').hide();
-                        } else {
-                            $('#container_nutritional').show();
-                        }
-                    });
                     $('#status_filter_products').change('click', function(){
                         var id = $('#status_filter_products option:selected').val();
                         if (id != 0) {

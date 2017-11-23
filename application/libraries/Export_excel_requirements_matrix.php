@@ -35,6 +35,9 @@ class Export_excel_requirements_matrix{
             'email'                  => 'Correo electrónico',
             'language'               => 'Lenguaje',
             'categories'             => 'Categoría',
+            'product_cost'           => 'Costo producto',
+            'product_content'        => 'Contenido producto',
+            'product_unit'           => 'Unidad de producto',
             'claims1'                => 'Claims/Beneficio 1',
             'claims2'                => 'Claims/Beneficio 2',
             'claims3'                => 'Claims/Beneficio 3',
@@ -80,6 +83,9 @@ class Export_excel_requirements_matrix{
             $hdata[$key]['company_name']           = $row['company_name'];
             $hdata[$key]['product_name']           = $row['product_name'];
             $hdata[$key]['categories']             = $row['categories'];
+            $hdata[$key]['product_cost']           = $row['product_cost'];
+            $hdata[$key]['product_content']        = $row['product_content'];
+            $hdata[$key]['product_unit']           = $row['product_unit'];
             $hdata[$key]['claims1']                = $row['claims1'];
             $hdata[$key]['claims2']                = $row['claims2'];
             $hdata[$key]['claims3']                = $row['claims3'];
@@ -131,7 +137,7 @@ class Export_excel_requirements_matrix{
             }
         }
         $header = array_unique($h);
-        echo '<table style="font-family:verdana;"><tr>';
+        echo '<table style="font-family:calibri;"><tr>';
         foreach($header as $key) {
             $key = ucwords($key);
             echo '<th style="border:1px #e6e6e6 solid;color:#000; padding: 5px; text-align:left;">'.$key.'</th>';

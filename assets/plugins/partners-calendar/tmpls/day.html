@@ -1,0 +1,194 @@
+<style type="text/css">
+	.btn-primary.active, .btn-primary:active, .open>.dropdown-toggle.btn-primary {
+	    background-color: #2196F3 !important;
+	    border-color: #2196F3 !important;
+	}
+	.btn-primary.focus, .btn-primary:focus {
+	    background-color: #2196F3 !important;
+	    border-color: #2196F3 !important;
+	}
+	.day-event:hover {
+		background-color: #cfe3f7 !important;
+	}
+	#cal-day-box .day-highlight {
+	    line-height: 55px !important;
+	}
+	.cal-day-hour {
+	    background-color: #607d8b1a;
+	}
+	#cal-day-box .day-event {
+    	max-width: 100% !important;
+    	width: 100% !important;
+	}
+	#cal-day-box .cal-day-hour:nth-child(odd) {
+	    background-color: white !important;
+	}
+	#cal-day-box .day-highlight.dh-event-info {
+	    border: 1px solid #c4bca0 !important;
+	    background: #fff1d9 !important;
+	}
+</style>
+<%  
+	segments = window.location.pathname.split("/")
+%>
+<% if(segments[2] == 'es-partners-calendar') { %>
+	<h4 style="color: #000; text-transform: uppercase;">Seleccione la hora del día más conveniente</h4>
+<% } else if(segments[2] == 'en-partners-calendar') { %>
+	<h4 style="color: #000; text-transform: uppercase;">Select the most convenient time of the day</h4>
+<% } %>
+<p></p>
+<div id="cal-day-box">
+	<div class="row-fluid cal-row-head" style="padding: 10px 0; margin-top: -15px;">
+		<div class="span1 col-xs-1" style="font-weight: bold; padding: 5px 10px; text-align: left; color: #000; text-transform: uppercase;">HORA</div>
+		<div class="span11 col-xs-11" style="font-weight: bold; padding: 5px 0; text-align: left; color: #000; text-transform: uppercase;">ESTADO</div>
+	</div>
+	<br />
+	<% if(all_day.length) {%>
+		<div class="row-fluid clearfix cal-day-hour">
+			<div class="span1 col-xs-1"><b><%= cal.locale.all_day %></b></div>
+			<div class="span11 col-xs-11">
+				<% _.each(all_day, function(event){ %>
+					<div class="day-highlight dh-<%= event.class %>">
+						<%= event.title %>
+					</div>
+				<% }); %>
+			</div>
+		</div>
+	<% }; %>
+	<% if(before_time.length) {%>
+		<div class="row-fluid clearfix cal-day-hour">
+			<div class="span1 col-xs-3"><b><%= cal.locale.before_time %></b></div>
+			<div class="span5 col-xs-5">
+				<% _.each(before_time, function(event){ %>
+					<div class="day-highlight dh-<%= event.class %>">
+						<span class="cal-hours pull-right"><%= event.end_hour %></span>
+						<%= event.title %>
+					</div>
+				<% }); %>
+			</div>
+		</div>
+	<% }; %>
+	<div id="cal-day-panel" class="clearfix" style="z-index: 0;">
+		<% _.each(by_hour, function(event){ %>
+			<div class="pull-right day-event day-highlight dh-<%= event.class %>" style="margin-top: <%= (event.top * 30) %>px; height: <%= (event.lines * 30) %>px; position: absolute !important; right: -1px !important; padding-left: 15px;">
+				<span class="cal-hours"><%= event.start_hour %> - <%= event.end_hour %></span>
+				<strong class="status_language"></strong>
+			</div>
+		<% }); %>
+		<!-- Filas Horas -->
+		<div id="cal-day-panel-hour">
+			<% for(i = 0; i < hours; i++){ %>
+				<div class="cal-day-hour" <% if(i == 5 || i == 6) { %> style="background-color: #fff !important;" <% }; %>>
+					<% for(l = 0; l < in_hour; l++){ %>
+						<% if(l == 0) { %>
+							<div class="row-fluid cal-day-hour-part" style="border:none;">
+								<div class="span1 col-xs-1"><b style="position: absolute; top: 20px;"><%= cal._hour(i, l) %></b></div>
+								<div class="span11 col-xs-11"></div>
+							</div>
+						<% } else { %>
+							<div class="row-fluid cal-day-hour-part">
+								<div class="span1 col-xs-1"></div>
+								<div class="span11 col-xs-11"></div>
+							</div>
+						<% }; %>
+					<% }; %>
+				</div>
+				<% if(i != 5 && i != 6) { %>
+					<span style="float: right; margin-top: -48px; margin-right: 8px;">
+						<button class="btn btn-warning btn-modal-add-event" data-toggle='modal' data-target='#add_evento' start_hour="<% if(i == 0) { %>7:00<% } else if(i == 1) { %>8:00<% } else if(i == 2) { %>9:00<% } else if(i == 3) { %>10:00<% } else if(i == 4) { %>11:00<% } else if(i == 7) { %>14:00<% } else if(i == 8) { %>15:00<% } else if(i == 9) { %>16:00<% }; %>" end_hour="<% if(i == 0) { %>8:00<% } else if(i == 1) { %>9:00<% } else if(i == 2) { %>10:00<% } else if(i == 3) { %>11:00<% } else if(i == 4) { %>12:00<% } else if(i == 7) { %>15:00<% } else if(i == 8) { %>16:00<% } else if(i == 9) { %>17:00<% }; %>">
+							<i class="fa fa-plus"></i>
+						</button>
+					</span>
+				<% }; %>
+			<% }; %>
+		</div>
+	</div>
+	<% if(after_time.length) {%>
+	<div class="row-fluid clearfix cal-day-hour">
+		<div class="span1 col-xs-3"><b><%= cal.locale.after_time %></b></div>
+		<div class="span11 col-xs-9">
+			<% _.each(after_time, function(event){ %>
+			<div class="day-highlight dh-<%= event.class %>">
+				<span class="cal-hours"><%= event.start_hour %></span>
+				<%= event.title %>
+			</div>
+			<% }); %>
+		</div>
+	</div>
+	<% }; %>
+</div>
+<br /><br />
+<script type="text/javascript">
+	$(document).ready(function(){
+		function replaceall(str,replace,with_this)
+		{
+		    var str_hasil ="";
+		    var temp;
+		    for(var i=0;i<str.length;i++) // not need to be equal. it causes the last change: undefined..
+		    {
+		    	if (str[i] == replace)
+		        {
+		            temp = with_this;
+		        }
+		        else
+		        {
+		                temp = str[i];
+		        }
+		        str_hasil += temp;
+		    }
+		    return str_hasil;
+		}
+		var language = null;
+		var url  = window.location.origin + '/platform/convert-date';
+		var segments   = window.location.pathname.split("/")
+		var url_status = segments[2];
+			if (url_status == 'es-partners-calendar') {
+				$('.status_language').text('Reservado');
+				language = 'Español';
+			} else if(url_status == 'en-partners-calendar'){
+				$('.status_language').text('Reserved');
+				language = 'Ingles';
+			}
+		$('.btn-modal-add-event').on('click', function(){
+			var date = null;
+			var start_hour = $(this).attr('start_hour');
+			var end_hour   = $(this).attr('end_hour');
+			var url  = window.location.origin + '/platform/convert-date';
+			var segments    = window.location.pathname.split("/")
+			var url_email   = segments[3];
+			var url_company = replaceall(segments[4], '%', ' ');
+			var url_company = replaceall(url_company, '2', '');
+			var url_company = replaceall(url_company, '0', '');
+			var date_current = $('#current-date').text().split(' ');
+			if (date_current[2] == 'Enero')      { date_current[2] = 'January';   }
+			if (date_current[2] == 'Febrero')    { date_current[2] = 'February';  }
+			if (date_current[2] == 'Marzo')      { date_current[2] = 'March';     }
+			if (date_current[2] == 'Marzo')      { date_current[2] = 'March';     }
+			if (date_current[2] == 'Abril')      { date_current[2] = 'April';     }
+			if (date_current[2] == 'Mayo')       { date_current[2] = 'May';       }
+			if (date_current[2] == 'Junio')      { date_current[2] = 'June';      }
+			if (date_current[2] == 'Julio')      { date_current[2] = 'July';      }
+			if (date_current[2] == 'Agosto')     { date_current[2] = 'August';    }
+			if (date_current[2] == 'Septiembre') { date_current[2] = 'September'; }
+			if (date_current[2] == 'Octubre')    { date_current[2] = 'October';   }
+			if (date_current[2] == 'Noviembre')  { date_current[2] = 'November';  }
+			if (date_current[2] == 'Diciembre')  { date_current[2] = 'December';  }
+			date = date_current[1] + ' ' + date_current[2] + ' ' + date_current[3];
+			$.ajax({
+				url  : url,
+				data : { date : date, },
+				type : 'POST',
+				success : function(response){
+					$('input[name="from"]').val(response + ' ' + start_hour);
+					$('input[name="to"]').val(response + ' ' + end_hour);
+					$('input[name="title"]').val(url_company.toUpperCase());
+					$('input[name="email"]').val(url_email);
+					$('input[name="language"]').val(language);
+				},
+				error : function(){
+					alert('Ha ocurrido un error al conectar con el servidor');
+				}
+			});
+		});
+	});
+</script>

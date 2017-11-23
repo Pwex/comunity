@@ -9,7 +9,7 @@
     }
     .btn-check-main {
         font-size: 1.1em;
-        padding: 20px 10px;
+        padding: 10px;
         width: 12.5%;
         text-align: left;
     }
@@ -65,7 +65,7 @@
         font-size: 18px !important;
         position: absolute !important;
         right: 3px !important;
-        top: 17px !important;
+        top: 7px !important;
     }
 </style>
 <!-- Main content -->
@@ -91,19 +91,19 @@
                     <div class="col-xs-12">
                         <p style="margin-bottom: 0">Hombre</p>
                         <div class="btn-group add-check" data-toggle="buttons">
-                            <label class="btn btn-default btn-check-main btn-poll-checked" style="border-top-left-radius: 2px; border-bottom-left-radius: 2px; width: 100%">10% Delgado
+                            <label class="btn btn-default btn-check-main btn-poll-checked" style="border-top-left-radius: 2px; border-bottom-left-radius: 2px; width: 100%; padding: 20px;">10% Delgado
                                 <input type="radio" name="body_fat_man" value="10" <?php echo set_radio('body_fat_man', '10'); ?> id="body_fat_man1" autocomplete="off" required="">
                                 <span class="glyphicon glyphicon-ok"></span>
                             </label>
-                            <label class="btn btn-default btn-check-main btn-poll-checked" style="border-top-left-radius: 2px; border-bottom-left-radius: 2px; width: 100%">20% Estándar
+                            <label class="btn btn-default btn-check-main btn-poll-checked" style="border-top-left-radius: 2px; border-bottom-left-radius: 2px; width: 100%; padding: 20px;">20% Estándar
                                 <input type="radio" name="body_fat_man" value="20" <?php echo set_radio('body_fat_man', '20'); ?> id="body_fat_man1" autocomplete="off" required="">
                                 <span class="glyphicon glyphicon-ok"></span>
                             </label>
-                            <label class="btn btn-default btn-check-main btn-poll-checked" style="border-top-left-radius: 2px; border-bottom-left-radius: 2px; width: 100%">25% Semi-Corpulento
+                            <label class="btn btn-default btn-check-main btn-poll-checked" style="border-top-left-radius: 2px; border-bottom-left-radius: 2px; width: 100%; padding: 20px;">25% Semi-Corpulento
                                 <input type="radio" name="body_fat_man" value="25" <?php echo set_radio('body_fat_man', '25'); ?> id="body_fat_man1" autocomplete="off" required="">
                                 <span class="glyphicon glyphicon-ok"></span>
                             </label>
-                            <label class="btn btn-default btn-check-main btn-poll-checked" style="border-top-left-radius: 2px; border-bottom-left-radius: 2px; width: 100%">>25% Corpulento
+                            <label class="btn btn-default btn-check-main btn-poll-checked" style="border-top-left-radius: 2px; border-bottom-left-radius: 2px; width: 100%; padding: 20px;">>25% Corpulento
                                 <input type="radio" name="body_fat_man" value="30" <?php echo set_radio('body_fat_man', '30'); ?> id="body_fat_man1" autocomplete="off" required="">
                                 <span class="glyphicon glyphicon-ok"></span>
                             </label>
@@ -148,13 +148,13 @@
                 <div class="col-sm-12">
                     <div class="btn-group btn-group-justified">
                         <div class="btn-group">
-                            <button type="button" class="btn btn-default btn-lg active" id="palm">Palma</button>
+                            <button type="button" class="btn btn-default active" id="palm">Palma</button>
                         </div>
                         <div class="btn-group">
-                            <button type="button" class="btn btn-primary btn-lg" id="arm">Brazo</button>
+                            <button type="button" class="btn btn-primary" id="arm">Brazo</button>
                         </div>
                         <div class="btn-group">
-                            <button type="button" class="btn btn-primary btn-lg" id="face">Rostro</button>
+                            <button type="button" class="btn btn-primary" id="face">Rostro</button>
                         </div>
                     </div>
                 </div>

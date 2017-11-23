@@ -41,14 +41,26 @@ class ProductsModel extends CI_Model {
         return $this->db->where('id_product', $id)->get('products')->result_array();
     }
 
-    # Almacenar la informacion
+    # Guardar informacion
     public function save($data, $image)
     {
+    # Configuraciones globales
         unset($data['filtr-search']);
-        $data['creation_date']      = date('Y-m-d H:i:s');
-        $data['id_benefits']        = implode(',', $data['id_benefits']);
-        $data['id_component']       = implode(',', $data['id_component']);
-        # Buscar las imagenes de los sellos
+        $data['creation_date']      = date('Y-m-d H:i:s');    
+    # Beneficios
+        if (!empty($data['id_benefits'])) {
+            $data_temp['id_benefits']   = $data['id_benefits'];
+            unset($data['id_benefits']);
+        }
+    # Componentes
+        if (!empty($data['id_component'])) {
+            $data_temp['id_component']  = $data['id_component'];
+            unset($data['id_component']);
+        }
+    # Sellos
+        if (!empty($data['id_seals'])) {
+            $data_temp['id_seals']      = $data['id_seals'];
+            # Buscar las imagenes de los sellos
             if (isset($data['id_seals']) and count($data['id_seals']) > 0) {
                 $data['images_seals'] = '';
                 foreach ($data['id_seals'] as $key => $value) {
@@ -61,19 +73,80 @@ class ProductsModel extends CI_Model {
             if (isset($data['filter_product'])) {
                 $data['filter_product']     = implode(',', $data['filter_product']);
             }
-        $data['images']             = implode(',', $data['images']);
-        $data['availability']       = implode(',', $data['availability']);        
+            unset($data['id_seals']);
+        }
+    # Disponibilidad
+        if (!empty($data['availability'])) {
+            $data_temp['availability']      = $data['availability'];
+            unset($data['availability']);
+        }
+    # Certificados
+        if (!empty($data['id_certifications'])) {
+            $data_temp['id_certifications'] = $data['id_certifications'];
+            unset($data['id_certifications']);
+        }
+
+        $data['images']             = implode(',', $data['images']);      
         if (!is_null($image)) {
             $data['nutritional']    = $image['upload_data']['file_name'];
         } else {
             $data['nutritional']    = '';
         }
-        if (!empty($data['id_certifications'])) {
-            $data['id_certifications']  = implode(',', $data['id_certifications']);
-        } else {
-            $data['id_certifications'] = '';
-        }
+
+        # Insertar la informacion del producto
         $this->db->insert('products', $data);
+
+        # Insertar los beneficios del producto
+        if (!empty($data_temp['id_benefits']) and count($data_temp['id_benefits']) > 0) {
+            foreach ($data_temp['id_benefits'] as $key => $benefits) {
+                $query_string = array(
+                    'id_product_benefits' => $data['id_product'],
+                    'id_benefits'         => $benefits
+                );
+                $this->db->insert('products_benefits', $query_string);
+            }
+        }
+        # Insertar los componentes del producto
+        if (!empty($data_temp['id_component']) and count($data_temp['id_component']) > 0) {
+            foreach ($data_temp['id_component'] as $key => $components) {
+                $query_string = array(
+                    'id_product_component' => $data['id_product'],
+                    'id_component'         => $components
+                );
+                $this->db->insert('products_components', $query_string);
+            }
+        }
+        # Insertar los sellos del producto
+        if (!empty($data_temp['id_seals']) and count($data_temp['id_seals']) > 0) {
+            foreach ($data_temp['id_seals'] as $key => $seals) {
+                $query_string = array(
+                    'id_product_seals' => $data['id_product'],
+                    'id_seals'         => $seals
+                );
+                $this->db->insert('products_seals', $query_string);
+            }
+        }
+        # Insertar la disponibilidad del producto
+        if (!empty($data_temp['availability']) and count($data_temp['availability']) > 0) {
+            foreach ($data_temp['availability'] as $key => $availability) {
+                $query_string = array(
+                    'id_product_availability' => $data['id_product'],
+                    'id_availability'         => $availability
+                );
+                $this->db->insert('products_availability', $query_string);
+            }
+        }
+        # Insertar certificados del producto
+        if (!empty($data_temp['id_certifications']) and count($data_temp['id_certifications']) > 0) {
+            foreach ($data_temp['id_certifications'] as $key => $certifications) {
+                $query_string = array(
+                    'id_product_certifications' => $data['id_product'],
+                    'id_certifications'         => $certifications
+                );
+                $this->db->insert('products_certifications', $query_string);
+            }
+        }
+
     }
 
     # Editar la informacion
@@ -104,10 +177,9 @@ class ProductsModel extends CI_Model {
     public function catalogue_listing()
     {
         $catalogue = array();
-        foreach ($this->db->select('id, name_catalogue')->order_by('name_catalogue', 'ASC')->get('catalogue')->result_array() as $key => $value) {
+        foreach ($this->db->select('id, name_catalogue')->order_by('location', 'ASC')->get('catalogue')->result_array() as $key => $value) {
             $catalogue[$value['id']] = $value['name_catalogue'];
         }
-        asort($catalogue);
         return $catalogue;
     }
 

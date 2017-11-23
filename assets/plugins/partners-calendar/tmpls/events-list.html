@@ -1,0 +1,11 @@
+<span id="cal-slide-tick" style="display: none"></span>
+<div id="cal-slide-content" class="cal-event-list">
+	<ul class="unstyled list-unstyled">
+		<% _.each(events, function(event) { %>
+			<li style="color: #000; font-size: 16px; margin-bottom: 5px;">
+				<span class="pull-left event <%= event['class'] %>"></span>&nbsp;
+				<%= event.inicio_normal %> - <%= event.final_normal %>
+			</li>
+		<% }) %>
+	</ul>
+</div>

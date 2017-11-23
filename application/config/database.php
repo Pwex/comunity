@@ -81,10 +81,10 @@ $db['default'] = array(
 	'database' => 'comunidadtwex', */
 
 
-	'hostname' => 'mysql1409.ixwebhosting.com',
-	'username' => 'C350257_admin',
-	'password' => 'ticWA2011',
-	'database' => 'C350257_comunidadtwex',
+	'hostname' => 'localhost',
+	'username' => 'pwexor5_admpwex',
+	'password' => 'BDpw%0169',
+	'database' => 'pwexor5_platformpwex',
 
 
 	'dbdriver' => 'mysqli',
